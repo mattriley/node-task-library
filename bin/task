@@ -9,12 +9,12 @@ TOTAL_TASK_PATHS=(${TASK_PATHS[@]} "./node_modules/task-library/src")
 function task() {
     TASK_NAME=$1
     for TASK_PATH in "${TOTAL_TASK_PATHS[@]}"; do [ -f "$TASK_PATH/$TASK_NAME" ] && TASK_FILE="$TASK_PATH/$TASK_NAME" && break; done
-    [ -z "$TASK_FILE" ] && echo "Task "$TASK_NAME" not found" && exit 1
-    echo "Task "$TASK_FILE" started"
+    [ -z "$TASK_FILE" ] && echo "Task \"$TASK_NAME\" not found." && exit 1
+    echo "Task \"$TASK_NAME\" started. Source: $TASK_FILE"
     "$TASK_FILE" "${@:2}"
     EXIT_CODE=$?
     echo
-    echo "Task "$TASK_FILE" completed with exit code $EXIT_CODE"
+    echo "Task \"$TASK_NAME\" completed with exit code $EXIT_CODE"
 }
 
 time task $@

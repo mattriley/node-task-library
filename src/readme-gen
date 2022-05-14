@@ -6,10 +6,17 @@
 
 SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
 
+OPTIONS=(
+    "--input-type=module"
+    "--experimental-specifier-resolution=node"
+)
+
+if grep -q "@node-loader/babel" "./package.json"; then
+    OPTIONS+="--experimental-loader @node-loader/babel"
+fi
+
 node \
-    --experimental-specifier-resolution=node \
-    --experimental-loader @node-loader/babel \
-    --input-type=module \
+    ${OPTIONS[@]} \
     - "$README_TEMPLATE" < $SCRIPT_DIR/readme-file-generator.js > "$README"
 
 npx doctoc \

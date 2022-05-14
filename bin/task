@@ -2,7 +2,7 @@
 
 . ./task-vars
 
-TOTAL_TASK_PATHS=(${TASK_PATHS[@]} "./node_modules/task-library" "./node_modules/task-library/defaults" "./node_modules/task-library/lib")
+TOTAL_TASK_PATHS=(${TASK_PATHS[@]} "./node_modules/task-library/src" "./node_modules/task-library/src/defaults" "./node_modules/task-library/src/lib")
 
 function task() {
     TASK_NAME=$1

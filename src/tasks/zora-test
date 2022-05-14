@@ -2,9 +2,7 @@
   
 . ./task-vars
 
-SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
-
 node \
     --experimental-specifier-resolution=node \
     --input-type=module \
-    - < $SCRIPT_DIR/zora-testrunner.js "$TEST_PATTERN"
+    - < $TASK_LIBRARY_LIB/zora-testrunner.js "$TEST_PATTERN"

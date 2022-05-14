@@ -1,0 +1,9 @@
+#!/bin/bash
+  
+. ./task-vars
+
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+
+node \
+    --experimental-specifier-resolution=node \
+    $SCRIPT_DIR/zora-spa-testrunner.js "$TEST_PATTERN"

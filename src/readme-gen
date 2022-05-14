@@ -4,11 +4,13 @@
 
 [ ! -f "$README_TEMPLATE" ] && exit 0
 
+SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+
 node \
     --experimental-specifier-resolution=node \
     --experimental-loader @node-loader/babel \
     --input-type=module \
-    - "$README_TEMPLATE" < ./tasks/lib/readme-file-generator.js > "$README"
+    - "$README_TEMPLATE" < $SCRIPT_DIR/readme-file-generator.js > "$README"
 
 npx doctoc \
     --maxlevel=2 \

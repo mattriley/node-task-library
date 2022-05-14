@@ -2,7 +2,9 @@
 
 . ./task-vars
 
-TOTAL_TASK_PATHS=(${TASK_PATHS[@]} "./node_modules/task-library/src" "./node_modules/task-library/src/defaults" "./node_modules/task-library/src/lib")
+# SCRIPT_DIR=$(dirname "$(readlink -f "$0")")
+
+TOTAL_TASK_PATHS=(${TASK_PATHS[@]} "./node_modules/task-library/src")
 
 function task() {
     TASK_NAME=$1

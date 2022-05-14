@@ -4,8 +4,6 @@
 
 set -ex
 
-./task lint
-
-./task cov-check
-
-./task readme-gen
+npx task lint
+npx task cov-check
+npx task readme-gen

@@ -2,7 +2,7 @@
   
 . ./task-vars
 
-npx --no tap \
+npx tap \
     "$TEST_PATTERN" \
     --no-coverage \
     "$@"

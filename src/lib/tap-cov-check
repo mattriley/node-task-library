@@ -2,7 +2,7 @@
   
 . ./task-vars
 
-./tasks/lib/tap-cov \
+npx task tap-cov \
     --no-browser \
     --check-coverage \
     --branches $COV_BRANCHES \

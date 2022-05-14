@@ -2,7 +2,7 @@
   
 . ./task-vars
 
-npx --no indexgen \
+npx indexgen \
     "${INDEXGEN_PATHS[@]}" \
     "$INDEXGEN_OPTIONS" \
     "$@"

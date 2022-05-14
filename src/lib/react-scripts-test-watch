@@ -2,4 +2,4 @@
   
 . ./task-vars
 
-npx --no react-scripts test
+npx react-scripts test

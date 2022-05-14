@@ -2,4 +2,4 @@
   
 . ./task-vars
 
-ZORA_ONLY=true ./task test
+ZORA_ONLY=true npx task test

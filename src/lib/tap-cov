@@ -2,7 +2,7 @@
   
 . ./task-vars
 
-./tasks/lib/tap-test \
+npx task tap-test \
     --no-browser \
     --no-check-coverage \
     --coverage \

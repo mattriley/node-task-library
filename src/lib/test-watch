@@ -2,6 +2,6 @@
   
 . ./task-vars
 
-npx --no chokidar \
+npx chokidar \
     "${TEST_WATCH_PATHS[@]}" \
-    -c "./task test"
+    -c "npx task test"

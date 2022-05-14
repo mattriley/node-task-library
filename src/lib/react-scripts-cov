@@ -2,6 +2,6 @@
   
 . ./task-vars
 
-./tasks/lib/react-scripts-test \
+npx task react-scripts-test \
     --coverage \
     "$@"

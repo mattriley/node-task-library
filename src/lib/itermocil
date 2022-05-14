@@ -2,8 +2,7 @@
   
 . ./task-vars
 
-
-./tasks/lib/itermocil-install   
+npx task itermocil-install   
 
 cat > "itermocil.yml" <<EOF
 windows:

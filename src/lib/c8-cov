@@ -2,10 +2,10 @@
   
 . ./task-vars
 
-npx --no c8 -- \
+npx c8 -- \
     --all \
     --src "$SRC" \
     --reporter=text-summary \
     --reporter=lcov \
     "$@" \
-    ./task test
+    npx task test

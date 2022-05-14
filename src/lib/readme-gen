@@ -10,6 +10,6 @@ node \
     --input-type=module \
     - "$README_TEMPLATE" < ./tasks/lib/readme-file-generator.js > "$README"
 
-npx --no doctoc \
+npx doctoc \
     --maxlevel=2 \
     "$README"

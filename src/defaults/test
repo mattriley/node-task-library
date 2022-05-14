@@ -1,0 +1,5 @@
+#!/bin/bash
+  
+. ./task-vars
+
+./tasks/lib/tape-test

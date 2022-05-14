@@ -1,0 +1,11 @@
+#!/bin/bash
+  
+. ./task-vars
+
+npx --no c8 -- \
+    --all \
+    --src "$SRC" \
+    --reporter=text-summary \
+    --reporter=lcov \
+    "$@" \
+    ./task test

@@ -1,17 +1,20 @@
 {
     "name": "task-library",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+    "bin": {
+        "task": "bin/task"
     },
+    "files": [
+        "src/**/*",
+        "bin/**/*"
+    ],
     "repository": {
         "type": "git",
         "url": "git+https://github.com/mattriley/node-task-library.git"
     },
     "keywords": [],
-    "author": "",
+    "author": "Matt Riley",
     "license": "ISC",
     "bugs": {
         "url": "https://github.com/mattriley/node-task-library/issues"

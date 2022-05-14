@@ -1,0 +1,7 @@
+#!/bin/bash
+  
+. ./task-vars
+
+npx --no eslint \
+    "${ESLINT_PATHS[@]}" \
+    "$@"

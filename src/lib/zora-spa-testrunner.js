@@ -11,9 +11,9 @@ const testHarness = createHarness({ indent: true });
 const test = testHarness[process.env.ZORA_ONLY === 'true' ? 'only' : 'test'];
 
 const start = async () => {
-    const composeModules = await import('./src/compose');
-    const composeTesting = await import('./testing/compose');
-    const testConfig = await import('./testing/test-config');
+    const { default: composeModules } = await import('./src/compose');
+    const { default: composeTesting } = await import('./testing/compose');
+    const { default: testConfig } = await import('./testing/test-config');
 
     const setup = () => {
         const { window } = new JSDOM.JSDOM('', { url: 'https://localhost/' });

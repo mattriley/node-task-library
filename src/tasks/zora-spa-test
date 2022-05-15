@@ -4,4 +4,5 @@
 
 node \
     --experimental-specifier-resolution=node \
-    $TASK_LIBRARY_LIB/zora-spa-testrunner.js "$TEST_PATTERN"
+    --input-type=module \
+    - < $TASK_LIBRARY_LIB/zora-spa-testrunner.js "$TEST_PATTERN"

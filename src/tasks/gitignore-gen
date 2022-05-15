@@ -17,4 +17,4 @@ cat <<END >> $GITIGNORE
 .DS_Store
 END
 
-sort -u $GITIGNORE > $GITIGNORE
+sort -u -o $GITIGNORE $GITIGNORE

@@ -1,0 +1,18 @@
+#!/bin/bash
+  
+. $TASK_LIBRARY_SRC/load-task-vars
+
+cat <<END >> .gitignore
+/*cache
+/*output
+/build
+/coverage
+/node_modules
+/temp
+/config.*
+/itermocil.yml
+/.vscode
+.DS_Store
+END
+
+sort .gitignore | uniq -u

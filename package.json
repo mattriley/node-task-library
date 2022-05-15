@@ -1,6 +1,6 @@
 {
     "name": "task-library",
-    "version": "0.0.17",
+    "version": "0.0.18",
     "description": "",
     "bin": {
         "task": "bin/task"

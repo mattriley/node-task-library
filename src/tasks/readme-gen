@@ -10,13 +10,9 @@ OPTIONS=(
 )
 
 if grep -q "@node-loader/babel" "./package.json"; then
-    OPTIONS+="--experimental-loader @node-loader/babel"
+    OPTIONS+=" --experimental-loader @node-loader/babel"
 fi
 
-node \
-    ${OPTIONS[@]} \
-    - "$README_TEMPLATE" < $TASK_LIBRARY_LIB/readme-file-generator.js > "$README"
+node ${OPTIONS[@]} - "$README_TEMPLATE" < $TASK_LIBRARY_LIB/readme-file-generator.js > "$README"
 
-npx doctoc \
-    --maxlevel=2 \
-    "$README"
+npx doctoc --maxlevel=2 "$README"

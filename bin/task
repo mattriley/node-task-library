@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. $TASK_LIBRARY_SRC/load-task-vars
-
 export TASK_LIBRARY_ROOT="./node_modules/task-library"
 export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
 export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"

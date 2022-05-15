@@ -2,7 +2,7 @@
   
 . ./task-vars
 
-npx c8 -- \
+npx c8 \
     --all \
     --src "$SRC" \
     --reporter=text-summary \

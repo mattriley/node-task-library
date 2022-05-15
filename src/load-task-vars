@@ -1,0 +1,4 @@
+#!/bin/bash
+
+. $TASK_LIBRARY_SRC/task-vars-defaults
+. ./task-vars

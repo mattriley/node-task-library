@@ -1,6 +1,6 @@
 #!/bin/bash
   
-. ./task-vars
+. $TASK_LIBRARY_SRC/load-task-vars
 
 FORMULA="TomAnthony/brews/itermocil"
 brew list $FORMULA > /dev/null && exit 0

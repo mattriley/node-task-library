@@ -1,5 +1,5 @@
 #!/bin/bash
   
-. ./task-vars
+. $TASK_LIBRARY_SRC/load-task-vars
 
 code .

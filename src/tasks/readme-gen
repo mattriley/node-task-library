@@ -1,6 +1,6 @@
 #!/bin/bash
   
-. ./task-vars
+. $TASK_LIBRARY_SRC/load-task-vars
 
 [ ! -f "$README_TEMPLATE" ] && exit 0
 

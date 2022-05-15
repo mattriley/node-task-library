@@ -1,6 +1,6 @@
 #!/bin/bash
   
-. ./task-vars
+. $TASK_LIBRARY_SRC/load-task-vars
 
 TEST_FILES=($(node -e "require('fast-glob').sync('$TEST_PATTERN').forEach(f => console.log(f))"))
 for TEST_FILE in ${TEST_FILES[@]}; do node --experimental-specifier-resolution=node "$TEST_FILE"; done

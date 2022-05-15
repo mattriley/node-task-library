@@ -2,7 +2,9 @@
   
 . $TASK_LIBRARY_SRC/load-task-vars
 
-cat <<END >> .gitignore
+GITIGNORE=".gitignore"
+
+cat <<END >> $GITIGNORE
 /*cache
 /*output
 /build
@@ -15,4 +17,4 @@ cat <<END >> .gitignore
 .DS_Store
 END
 
-sort .gitignore | uniq -u
+sort -u $GITIGNORE > $GITIGNORE

@@ -2,4 +2,4 @@
   
 . $TASK_LIBRARY_SRC/load-task-vars
 
-node $TASK_LIBRARY_LIB/package-json-tidy.js > ./package.json
+echo "$(node $TASK_LIBRARY_LIB/package-json-tidy.js)" > ./package.json

@@ -2,4 +2,4 @@
   
 . $TASK_LIBRARY_SRC/load-task-vars
 
-node $TASK_LIBRARY_LIB/eslint-config-generator.js > ./.eslintrc
+echo "$(node $TASK_LIBRARY_LIB/eslint-config-generator.js)" > ./.eslintrc

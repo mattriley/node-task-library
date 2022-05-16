@@ -15,7 +15,8 @@ const unk = Object.keys(package).filter(key => !seq.includes(key));
 
 const newEntries = [...seq, ...unk].reduce((acc, key) => {
     const val = package[key];
-    if (Array.isArray(val) && val.length === 0) return acc;
+    if (Array.isArray(val) && !val.length) return acc;
+    if (typeof val === 'object' && !Object.keys(val).length) return acc;
     return [...acc, [key, val]];
 }, []);
 

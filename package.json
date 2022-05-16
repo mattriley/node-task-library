@@ -1,6 +1,6 @@
 {
     "name": "task-library",
-    "version": "0.0.22",
+    "version": "0.0.23",
     "description": "",
     "author": "Matt Riley",
     "license": "ISC",
@@ -20,6 +20,7 @@
         "bin/**/*"
     ],
     "dependencies": {
-        "fast-glob": "^3.2.11"
+        "fast-glob": "^3.2.11",
+        "npm-check-updates": "^13.0.0"
     }
 }

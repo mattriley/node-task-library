@@ -4,22 +4,20 @@ export TASK_LIBRARY_ROOT="./node_modules/task-library"
 export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
 export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
 export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
-
 . $TASK_LIBRARY_SRC/load-task-vars
-
 export TASK_LIBRARY_TASK_PATHS=(${TASK_PATHS[@]} "$TASK_LIBRARY_TASKS")
 
-function task() {
-    TASK_NAME=$1
-    for TASK_PATH in ${TASK_LIBRARY_TASK_PATHS[@]}; do [ -f "$TASK_PATH/$TASK_NAME" ] && TASK_FILE="$TASK_PATH/$TASK_NAME" && break; done
-    [ -z "$TASK_FILE" ] && echo "Task \"$TASK_NAME\" not found." && exit 1
-    echo "Task \"$TASK_NAME\" started. Source: $TASK_FILE"
-    "$TASK_FILE" "${@:2}"
-    EXIT_CODE=$?
-    echo
-    echo "Task \"$TASK_NAME\" completed with exit code $EXIT_CODE"
-}
+function nowInMs() { echo $(node -e 'console.log(Date.now())') ; }
 
-time task $@
+TASK_NAME=$1
+for TASK_PATH in ${TASK_LIBRARY_TASK_PATHS[@]}; do [ -f "$TASK_PATH/$TASK_NAME" ] && TASK_FILE="$TASK_PATH/$TASK_NAME" && break; done
+[ -z "$TASK_FILE" ] && echo "Task \"$TASK_NAME\" not found." && exit 1
+echo "Task \"$TASK_NAME\" started. Source: $TASK_FILE"
+START=$(nowInMs)
+"$TASK_FILE" "${@:2}"
+EXIT_CODE=$?
+END=$(nowInMs)
+
 echo
+echo "Task \"$TASK_NAME\" completed with exit code $EXIT_CODE in $((END-START)) ms."
 exit $EXIT_CODE

@@ -20,5 +20,5 @@ const newEntries = [...seq, ...unk].reduce((acc, key) => {
 }, []);
 
 const newPackage = Object.fromEntries(newEntries);
-const newPackageJson = JSON.stringify(newPackage, null, 4);
-console.log(newPackageJson);
+const jsonOutput = JSON.stringify(newPackage, null, 4);
+console.log(jsonOutput);

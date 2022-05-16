@@ -10,5 +10,5 @@ if (package.devDependencies?.react || package.dependencies?.react) {
     eslintConfig.extends.push('plugin:react/jsx-runtime');
 }
 
-const newEslintConfig = JSON.stringify(data, null, 4)
-console.log(newEslintConfig);
+const jsonOutput = JSON.stringify(eslintConfig, null, 4)
+console.log(jsonOutput);

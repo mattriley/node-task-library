@@ -2,3 +2,13 @@
 
 . $TASK_LIBRARY_SRC/default-task-vars
 . ./task-vars
+
+function nowInMs() { 
+    echo $(node -e 'console.log(Date.now())') ; 
+}
+
+function taskfile() {
+    TASK_NAME="$1"
+    for TASK_PATH in ${TASK_LIBRARY_TASK_PATHS[@]}; do [ -f "$TASK_PATH/$TASK_NAME" ] && TASK_FILE="$TASK_PATH/$TASK_NAME" && break; done
+    echo "$TASK_FILE"
+}

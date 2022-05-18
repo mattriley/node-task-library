@@ -4,9 +4,7 @@ export TASK_LIBRARY_ROOT="./node_modules/task-library"
 export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
 export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
 export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
-
 . $TASK_LIBRARY_SRC/load-task-vars
-export TASK_LIBRARY_TASK_PATHS=(${TASK_PATHS[@]} "$TASK_LIBRARY_TASKS")
 
 TASK_NAME=$1
 TASK_FILE=$(taskfile $TASK_NAME)

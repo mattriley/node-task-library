@@ -30,7 +30,7 @@ const renderCode = (code, summary, opts = {}) => {
 };
 
 const moduleGraph = compose => () => {
-    const { mermaid } = compose().composition;
+    const { mermaid } = compose({}).composition;
     return [
         '```mermaid',
         mermaid(),

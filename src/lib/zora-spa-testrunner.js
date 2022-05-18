@@ -22,7 +22,7 @@ const start = async () => {
         const compose = (config = {}) => {
             window.document.getElementsByTagName('html')[0].innerHTML = '';
             delete window.dataLayer;
-            const modules = composeModules({ window }, testConfig, config);
+            const modules = composeModules({ window, config: [testConfig, config] });
             modules.startup.start();
             return modules;
         };

@@ -16,3 +16,5 @@ fi
 node ${OPTIONS[@]} - "$README_TEMPLATE" < $TASK_LIBRARY_LIB/readme-file-generator.js > "$README"
 
 npx doctoc --maxlevel=2 "$README"
+
+git add "$README"

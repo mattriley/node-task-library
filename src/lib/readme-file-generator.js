@@ -2,17 +2,16 @@ import fs from 'fs';
 import ejs from 'ejs';
 import child from 'child_process';
 import process from 'process';
-import glob from 'fast-glob';
 
-const fetchText = url => child.execSync(`curl ${url}`).toString('utf8');
+const fetchText = url => child.execSync(`curl ${url} -s`).toString('utf8');
 
-const fetchCode = (url, opts = {}) => {
+const fetchCode = async (url, opts = {}) => {
     const code = fetchText(url);
     return renderCode(code, url, opts);
 };
 
-const readCode = (path, opts = {}) => {
-    const code = fs.readFileSync(path, 'utf-8');
+const readCode = async (path, opts = {}) => {
+    const code = await fs.promises.readFile(path, 'utf-8');
     return renderCode(code, path, opts);
 };
 
@@ -30,33 +29,20 @@ const renderCode = (code, summary, opts = {}) => {
     ].join('\n');
 };
 
-const moduleGraph = composes => (composePath = './src/compose.js') => {
-    const compose = composes[composePath];
-    const { mermaid } = compose({}).composition;
+const moduleGraph = async (composePath = './src/compose.js') => {
+    const composeImport = await import(composePath);
+    const compose = composeImport?.default ?? composeImport;
+    const { composition } = compose({});
     return [
         '```mermaid',
-        mermaid(),
+        composition.mermaid(),
         '```',
     ].join('\n');
 };
 
 const [templateFile] = process.argv.slice(2);
-const composePaths = glob.sync('./**/compose.js', { ignore: ['node_modules'] })
-
-const start = async () => {
-    const composes = await composePaths.reduce(async (p, path) => {
-        const acc = await p;
-        const composeImport = await import('./' + path);
-        const compose = composeImport?.default ?? composeImport;
-        return { ...acc, ['./' + path]: compose };
-    }, Promise.resolve({}));
-
-    const data = { fetchText, fetchCode, readCode, moduleGraph: moduleGraph(composes) };
-
-    ejs.renderFile(templateFile, data, {}, (err, res) => {
-        if (err) throw err;
-        process.stdout.write(res);
-    });
-};
-
-start();
+const data = { fetchText, fetchCode, readCode, moduleGraph };
+ejs.renderFile(templateFile, data, { async: true }, async (err, p) => {
+    if (err) throw err;
+    process.stdout.write(await p);
+});

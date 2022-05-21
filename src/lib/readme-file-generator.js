@@ -1,7 +1,8 @@
 import fs from 'fs';
 import ejs from 'ejs';
-import child from 'child_process';
+import module from 'module';
 import process from 'process';
+import child from 'child_process';
 
 const fetchText = url => child.execSync(`curl ${url}`).toString('utf8');
 
@@ -17,7 +18,6 @@ const readCode = (path, opts = {}) => {
 
 const renderCode = (code, summary, opts = {}) => {
     const open = opts.open || true;
-
     return [
         `<details ${open ? 'open' : ''}>`,
         `<summary>${summary}</summary>`,
@@ -29,7 +29,9 @@ const renderCode = (code, summary, opts = {}) => {
     ].join('\n');
 };
 
-const moduleGraph = compose => () => {
+const moduleGraph = (composePath = './src/compose.js') => {
+    const composeImport = module.createRequire(composePath);
+    const compose = composeImport?.default ?? composeImport;
     const { mermaid } = compose({}).composition;
     return [
         '```mermaid',
@@ -39,17 +41,9 @@ const moduleGraph = compose => () => {
 };
 
 const [templateFile] = process.argv.slice(2);
-const composeFile = './src/compose.js';
+const data = { fetchText, fetchCode, readCode, moduleGraph };
 
-const start = async () => {
-    const composeImport = fs.existsSync(composeFile) ? await import(composeFile) : undefined;
-    const compose = composeImport?.default ?? composeImport;
-    const data = { fetchText, fetchCode, readCode, moduleGraph: moduleGraph(compose) };
-
-    ejs.renderFile(templateFile, data, {}, (err, res) => {
-        if (err) throw err;
-        process.stdout.write(res);
-    });
-};
-
-start();
+ejs.renderFile(templateFile, data, {}, (err, res) => {
+    if (err) throw err;
+    process.stdout.write(res);
+});

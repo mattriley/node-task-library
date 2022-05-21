@@ -2,6 +2,7 @@ import fs from 'fs';
 import ejs from 'ejs';
 import child from 'child_process';
 import process from 'process';
+import glob from 'fast-glob';
 
 const fetchText = url => child.execSync(`curl ${url}`).toString('utf8');
 
@@ -29,7 +30,8 @@ const renderCode = (code, summary, opts = {}) => {
     ].join('\n');
 };
 
-const moduleGraph = compose => () => {
+const moduleGraph = composes => (composePath = './src/compose.js') => {
+    const compose = composes[composePath];
     const { mermaid } = compose({}).composition;
     return [
         '```mermaid',
@@ -39,12 +41,17 @@ const moduleGraph = compose => () => {
 };
 
 const [templateFile] = process.argv.slice(2);
-const composeFile = './src/compose.js';
+const composePaths = glob.sync('./**/compose.js', { ignore: ['node_modules'] })
 
 const start = async () => {
-    const composeImport = fs.existsSync(composeFile) ? await import(composeFile) : undefined;
-    const compose = composeImport?.default ?? composeImport;
-    const data = { fetchText, fetchCode, readCode, moduleGraph: moduleGraph(compose) };
+    const composes = await composePaths.reduce(async (p, path) => {
+        const acc = await p;
+        const composeImport = await import('./' + path);
+        const compose = composeImport?.default ?? composeImport;
+        return { ...acc, ['./' + path]: compose };
+    }, Promise.resolve({}));
+
+    const data = { fetchText, fetchCode, readCode, moduleGraph: moduleGraph(composes) };
 
     ejs.renderFile(templateFile, data, {}, (err, res) => {
         if (err) throw err;

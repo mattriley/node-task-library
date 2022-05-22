@@ -1,5 +1,6 @@
 import fs from 'fs';
 import ejs from 'ejs';
+import path from 'path';
 import child from 'child_process';
 import process from 'process';
 
@@ -10,9 +11,12 @@ const fetchCode = async (url, opts = {}) => {
     return renderCode(code, url, opts);
 };
 
-const readCode = async (path, opts = {}) => {
-    const code = await fs.promises.readFile(path, 'utf-8');
-    return renderCode(code, path, opts);
+const readCode = async (paths, opts = {}) => {
+    const codePaths = [paths].flat();
+    const [summary] = codePaths.slice(-1);
+    const codePath = path.join(...codePaths);
+    const code = await fs.promises.readFile(codePath, 'utf-8');
+    return renderCode(code, summary, opts);
 };
 
 const renderCode = (code, summary, opts = {}) => {

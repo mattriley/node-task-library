@@ -21,7 +21,7 @@ const readCode = async (paths, opts = {}) => {
 };
 
 const renderCode = (code, lang) => {
-    return ['```' + lang, code, '```'].join('\n');
+    return ['```' + lang, code.trimEnd(), '```'].join('\n');
 };
 
 const moduleGraph = async (composePath = './src/compose.js') => {

@@ -8,40 +8,27 @@ const fetchText = url => child.execSync(`curl ${url} -s`).toString('utf8');
 
 const fetchCode = async (url, opts = {}) => {
     const code = fetchText(url);
-    return renderCode(code, url, opts);
+    const lang = opts.lang ?? path.extname(url).replace('.', '');
+    return renderCode(code, lang);
 };
 
 const readCode = async (paths, opts = {}) => {
     const codePaths = [paths].flat();
-    const [summary] = codePaths.slice(-1);
     const codePath = path.join(...codePaths);
     const code = await fs.promises.readFile(codePath, 'utf-8');
-    return renderCode(code, summary, opts);
+    const lang = opts.lang ?? path.extname(codePath).replace('.', '');
+    return renderCode(code, lang);
 };
 
-const renderCode = (code, summary, opts = {}) => {
-    const open = opts.open || true;
-
-    return [
-        `<details ${open ? 'open' : ''}>`,
-        `<summary>${summary}</summary>`,
-        '',
-        '```js',
-        (opts.includeFootnotes ? code : code.split('/*')[0]).trim(),
-        '```',
-        '</details>'
-    ].join('\n');
+const renderCode = (code, lang) => {
+    return ['```' + lang, code, '```'].join('\n');
 };
 
 const moduleGraph = async (composePath = './src/compose.js') => {
     const composeImport = await import(composePath);
     const compose = composeImport?.default ?? composeImport;
     const { composition } = compose({});
-    return [
-        '```mermaid',
-        composition.mermaid(),
-        '```',
-    ].join('\n');
+    return renderCode(composition.mermaid(), 'mermaid');
 };
 
 const [templateFile] = process.argv.slice(2);

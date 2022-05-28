@@ -27,8 +27,8 @@ const renderCode = (code, lang) => {
 const moduleGraph = async (composePath = './src/compose.js') => {
     const composeImport = await import(composePath);
     const compose = composeImport?.default ?? composeImport;
-    const { composition } = compose({});
-    return renderCode(composition.mermaid(), 'mermaid');
+    const { mermaid } = compose({});
+    return renderCode(mermaid(), 'mermaid');
 };
 
 const [templateFile] = process.argv.slice(2);

@@ -17,12 +17,12 @@ const start = async () => {
 
     const setup = () => {
         const { window } = new JSDOM.JSDOM('', { url: 'https://localhost/' });
-        const { helpers } = composeTesting({ window });
+        const { helpers } = composeTesting({ window }).modules;
 
         const compose = (config = {}) => {
             window.document.getElementsByTagName('html')[0].innerHTML = '';
             delete window.dataLayer;
-            const modules = composeModules({ window, configs: [testConfig, config] });
+            const { modules } = composeModules({ window, configs: [testConfig, config] });
             modules.startup.start();
             return modules;
         };

@@ -13,18 +13,18 @@ const test = testHarness[process.env.ZORA_ONLY === 'true' ? 'only' : 'test'];
 const start = async () => {
     const { default: composeModules } = await import('./src/compose');
     const { default: composeTesting } = await import('./testing/compose');
-    const { default: testConfig } = await import('./testing/test-config');
+    const { default: defaultTestConfig } = await import('./testing/test-config');
 
     const setup = () => {
         const { window } = new JSDOM.JSDOM('', { url: 'https://localhost/' });
         const { helpers } = composeTesting({ window }).modules;
 
-        const compose = (config = {}) => {
+        const compose = (testConfig = {}) => {
             window.document.getElementsByTagName('html')[0].innerHTML = '';
             delete window.dataLayer;
-            const { modules } = composeModules({ window, configs: [testConfig, config] });
-            modules.startup.start();
-            return modules;
+            const composition = composeModules({ window, configs: [defaultTestConfig, testConfig] });
+            composition.modules.startup.start();
+            return composition;
         };
 
         return { compose, window, helpers };

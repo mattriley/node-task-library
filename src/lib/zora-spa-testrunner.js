@@ -22,8 +22,8 @@ const start = async () => {
         const compose = (testConfig = {}) => {
             window.document.getElementsByTagName('html')[0].innerHTML = '';
             delete window.dataLayer;
-            const composition = composeModules({ window, configs: [defaultTestConfig, testConfig] });
-            composition.modules.startup.start();
+            const { modules, composition } = composeModules({ window, configs: [defaultTestConfig, testConfig] });
+            modules.startup.start({ composition });
             return composition;
         };
 

@@ -19,10 +19,10 @@ const start = async () => {
         const { window } = new JSDOM.JSDOM('', { url: 'https://localhost/' });
         const { helpers } = composeTesting({ window }).modules;
 
-        const compose = (testConfig = {}) => {
+        const compose = ({ defaults, overrides, configs } = {}) => {
             window.document.getElementsByTagName('html')[0].innerHTML = '';
             delete window.dataLayer;
-            const { modules, composition } = composeModules({ window, configs: [defaultTestConfig, testConfig] });
+            const { modules, composition } = composeModules({ window, defaults, overrides, configs: [defaultTestConfig, configs] });
             modules.startup.start({ composition });
             return composition;
         };

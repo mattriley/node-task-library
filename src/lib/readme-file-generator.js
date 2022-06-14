@@ -24,15 +24,19 @@ const renderCode = (code, lang) => {
     return ['```' + lang, code.trimEnd(), '```'].join('\n');
 };
 
-const moduleGraph = async (composePath = './src/compose.js') => {
+const compose = async (composePath = './src/compose.js', ...args) => {
     const composeImport = await import(composePath);
     const compose = composeImport?.default ?? composeImport;
-    const { mermaid } = compose({});
+    return compose(...args);
+};
+
+const moduleGraph = async (composePath = './src/compose.js') => {
+    const { mermaid } = await compose(composePath);
     return renderCode(mermaid, 'mermaid');
 };
 
 const [templateFile] = process.argv.slice(2);
-const data = { fetchText, fetchCode, readCode, moduleGraph };
+const data = { compose, fetchText, fetchCode, readCode, moduleGraph };
 ejs.renderFile(templateFile, data, { async: true }, async (err, p) => {
     if (err) throw err;
     process.stdout.write(await p);

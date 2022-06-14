@@ -24,10 +24,11 @@ const renderCode = (code, lang) => {
     return ['```' + lang, code.trimEnd(), '```'].join('\n');
 };
 
-const compose = async (composePath = './src/compose.js', composeArgs = {}) => {
+const compose = async (composePath = './src/compose.js', composeArgs = {}, callback) => {
     const composeImport = await import(composePath);
     const compose = composeImport?.default ?? composeImport;
-    return compose(composeArgs);
+    const composeResult = compose(composeArgs);
+    return callback ? callback(composeResult) : composeResult;
 };
 
 const [templateFile] = process.argv.slice(2);

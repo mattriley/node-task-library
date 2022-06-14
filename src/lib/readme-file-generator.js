@@ -24,10 +24,10 @@ const renderCode = (code, lang) => {
     return ['```' + lang, code.trimEnd(), '```'].join('\n');
 };
 
-const compose = async (composePath = './src/compose.js', ...args) => {
+const compose = async (composePath = './src/compose.js', composeArgs = {}) => {
     const composeImport = await import(composePath);
     const compose = composeImport?.default ?? composeImport;
-    return compose(...args);
+    return compose(composeArgs);
 };
 
 const moduleGraph = async (composePath = './src/compose.js') => {

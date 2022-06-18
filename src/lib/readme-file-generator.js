@@ -9,7 +9,7 @@ const fetchText = url => child.execSync(`curl ${url} -s`).toString('utf8');
 const fetchCode = async (url, opts = {}) => {
     const code = fetchText(url);
     const lang = opts.lang ?? path.extname(url).replace('.', '');
-    return renderCode(code, lang);
+    return renderCode(code, lang, url);
 };
 
 const readCode = async (paths, opts = {}) => {
@@ -17,11 +17,17 @@ const readCode = async (paths, opts = {}) => {
     const codePath = path.join(...codePaths);
     const code = await fs.promises.readFile(codePath, 'utf-8');
     const lang = opts.lang ?? path.extname(codePath).replace('.', '');
-    return renderCode(code, lang);
+    return renderCode(code, lang, codePath);
 };
 
-const renderCode = (code, lang) => {
-    return ['```' + lang, code.trimEnd(), '```'].join('\n');
+const renderCode = (code, lang, source) => {
+    const lines = ['```' + lang, code.trimEnd(), '```']
+    const href = source?.replace('./', '');
+    if (href && !href.startsWith('.')) {
+        const caption = `<p align="right"><a href="${href}">View source</a></p>`;
+        lines.push(caption);
+    }
+    return lines.join('\n');
 };
 
 const compose = async (composePath = './src/compose.js', composeArgs = {}) => {

@@ -25,8 +25,6 @@ const readCode = async (paths, opts = {}) => {
 };
 
 
-// ###### <p align="right" id="code-1">examples/basic/compose-no-export.js • <a href="examples/basic/compose-no-export.js">View source</a></p>
-
 const code = (codeStr, lang, source) => {
     codeId++;
     const href = source?.replace('./', '');
@@ -36,12 +34,11 @@ const code = (codeStr, lang, source) => {
         lines.push(`###### <p id="code-${codeId}" align="right">${href} • <a href="${href}">View source</a></p>`);
     }
 
-    lines.push('```' + lang, codeStr.trim(), '```');
-
     if (lang === 'mermaid') {
-        lines.push(`<p align="right"><em>Diagram not rendering?</em> <a href="${packageData.homepage}">View on GitHub</a></p>`);
+        lines.push(`###### <p id="code-${codeId}" align="right"><em>Can't see the diagram?</em> <a href="${packageData.homepage}#user-content-code-${codeId}">View it on GitHub</a></p>`);
     }
 
+    lines.push('```' + lang, codeStr.trim(), '```');
     return lines.join('\n');
 };
 

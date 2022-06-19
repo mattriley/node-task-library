@@ -4,6 +4,8 @@ import path from 'path';
 import child from 'child_process';
 import process from 'process';
 
+let codeId = 0;
+
 const packageData = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 
 const fetchText = url => child.execSync(`curl ${url} -s`).toString('utf8');
@@ -22,13 +24,20 @@ const readCode = async (paths, opts = {}) => {
     return code(codeStr, lang, codePath);
 };
 
+
+// ###### <p align="right" id="code-1">examples/basic/compose-no-export.js • <a href="examples/basic/compose-no-export.js">View source</a></p>
+
 const code = (codeStr, lang, source) => {
-    const lines = ['```' + lang, codeStr.trim(), '```']
+    codeId++;
     const href = source?.replace('./', '');
+    const lines = [];
+
     if (href && !href.startsWith('.')) {
-        const caption = `<p align="right"><a href="${href}">View source</a></p>`;
-        lines.push(caption);
+        lines.push(`###### <p id="code-${codeId}" align="right">${href} • <a href="${href}">View source</a></p>`);
     }
+
+    lines.push('```' + lang, codeStr.trim(), '```');
+
     if (lang === 'mermaid') {
         lines.push(`<p align="right"><em>Diagram not rendering?</em> <a href="${packageData.homepage}">View on GitHub</a></p>`);
     }

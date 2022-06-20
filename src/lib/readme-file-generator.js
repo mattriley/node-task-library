@@ -70,8 +70,14 @@ const compose = async (composePath = './src/compose.js', composeArgs = {}) => {
     return compose(composeArgs);
 };
 
+const compose2 = async (callback, composePath = './src/compose.js', composeArgs = {}) => {
+    const composeImport = await import(composePath);
+    const compose = composeImport?.default ?? composeImport;
+    return callback(compose(composeArgs));
+};
+
 const [templateFile] = process.argv.slice(2);
-const data = { compose, mermaid, fetchText, fetchCode, readCode, code };
+const data = { compose, compose2, mermaid, fetchText, fetchCode, readCode, code };
 ejs.renderFile(templateFile, data, { async: true }, async (err, p) => {
     if (err) throw err;
     process.stdout.write(await p);

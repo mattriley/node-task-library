@@ -1,6 +1,7 @@
 import fs from 'fs';
 import ejs from 'ejs';
 import path from 'path';
+import child from 'child_process';
 import process from 'process';
 
 let codeId = 0;
@@ -8,28 +9,41 @@ let codeId = 0;
 const packageData = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 const readmeRoot = process.env.READMEGEN_ROOT ?? packageData.homepage;
 const readmeCodeRoot = process.env.READMEGEN_CODE_ROOT ?? `${readmeRoot}/blob/main`;
-const replacements = (process.env.READMEGEN_REPLACE ?? '').split(',').map(str => str.split(' '));
 
-const readCode = async (paths, opts = {}) => {
-    const codePaths = [paths].flat();
-    const codePath = path.join(...codePaths);
-    const codeStr = await fs.promises.readFile(codePath, 'utf-8');
-    const lang = opts.lang ?? path.extname(codePath).replace('.', '');
-    return code(codeStr, lang, codePath);
+const fetchText = loc => child.execSync(`curl ${loc} -s`).toString('utf8');
+const readText = loc => fs.promises.readFile(loc, 'utf-8');
+
+const fetchCode = async (source, root, webroot) => {
+    const fullSource = path.join(root ?? '', source);
+    const getCode = fullSource.startsWith('http') ? fetchText : readText;
+    const code = await getCode(fullSource);
+    const lang = path.extname(fullSource).replace('.', '');
+    return { code, lang, source, root, webroot };
 };
 
-const code = (codeStr, lang = '', source = '') => {
+
+const renderCode = async (codePromise, lang) => {
+
+    if (typeof codePromise === 'string') codePromise = { code: codePromise, lang };
+
+    const { code, lang: defaultLang, source, root, webroot } = await codePromise;
+    lang = lang ?? defaultLang ?? '';
+
     codeId++;
 
     const lines = [];
 
-    replacements.forEach(([from, to]) => source = source.replace(from, to));
 
-    const href = source?.replace('./', '');
+    const src = source?.replace('./', '');
 
-    const codeLink = href.startsWith('http') ? href : `${readmeCodeRoot}/${href}`;
+    const href = webroot ? path.join(webroot, src) : src;
 
-    if (href && !href.startsWith('.')) {
+    // const codeLink = href && href.startsWith('http') ? href : `${readmeCodeRoot}/${href}`;
+
+    const codeLink = href && href.startsWith('http') ? href : `${readmeCodeRoot}/${href}`;
+
+    // if (href && !href.startsWith('.')) {
+    if (href) {
         lines.push(`###### <p id="code-${codeId}" align="right"><a href="${codeLink}" target="_blank">${href}</a></p>`);
     }
 
@@ -37,19 +51,20 @@ const code = (codeStr, lang = '', source = '') => {
         lines.push(`###### <p id="code-${codeId}" align="right"><em>Can't see the diagram?</em> <a href="${readmeRoot}#user-content-code-${codeId}" target="_blank">View it on GitHub</a></p>`);
     }
 
-    lines.push('```' + lang, codeStr.trim(), '```');
+    lines.push('```' + lang, code.trim(), '```');
     return lines.join('\n');
 };
 
 const compose = async (callback, path = './src/compose.js', args = {}) => {
     const imported = await import(path);
     const compose = imported?.default ?? imported;
-    return callback(compose(args));
+    return callback(await compose(args));
 };
 
 const [templateFile] = process.argv.slice(2);
-const data = { compose, code, readCode, vars: {} };
+const data = { compose, renderCode, fetchCode, vars: {} };
 ejs.renderFile(templateFile, data, { async: true }, async (err, p) => {
     if (err) throw err;
     process.stdout.write(await p);
 });
+

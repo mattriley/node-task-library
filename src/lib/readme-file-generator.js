@@ -34,9 +34,9 @@ const renderCode = async (codePromise, lang) => {
     const lines = [];
 
 
-    const src = source?.replace('./', '');
+    const src = source?.startsWith('./') ? source.replace('./', '') : source
 
-    const href = webroot ? path.join(webroot, src) : src;
+    const href = webroot ? webroot + '/' + src : src;
 
     // const codeLink = href && href.startsWith('http') ? href : `${readmeCodeRoot}/${href}`;
 

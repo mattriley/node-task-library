@@ -30,12 +30,13 @@ const renderLinkWithId = (href, text) => {
 };
 
 
-const renderCode = async (codePromise, lang) => {
+const renderCode = async (codePromise, lang, source) => {
 
     if (typeof codePromise === 'string') codePromise = { code: codePromise, lang };
 
-    const { code, lang: defaultLang, source, root, webroot } = await codePromise;
+    const { code, lang: defaultLang, source: defaultSource, webroot } = await codePromise;
     lang = lang ?? defaultLang ?? '';
+    source = source ?? defaultSource;
 
     const lines = [];
 

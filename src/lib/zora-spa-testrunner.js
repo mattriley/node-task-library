@@ -22,8 +22,8 @@ const start = async () => {
         const compose = ({ defaults, overrides, config } = {}) => {
             window.document.getElementsByTagName('html')[0].innerHTML = '';
             delete window.dataLayer;
-            const { modules, composition } = composeModules({ window, defaults, overrides, configs: [defaultTestConfig, config] });
-            modules.startup.start({ composition });
+            const composition = composeModules({ window, defaults, overrides, configs: [defaultTestConfig, config] });
+            composition.modules.startup.start({ composition });
             return composition;
         };
 

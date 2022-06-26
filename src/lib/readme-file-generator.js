@@ -42,7 +42,7 @@ const renderCode = async (codePromise, lang, source) => {
 
     if (source) {
         const text = webroot ? `${webroot}/${source}` : source;
-        const href = `${webroot ?? readmeCodeRoot}/${source}`;
+        const href = source.startsWith('http') ? source : `${webroot ?? readmeCodeRoot}/${source}`;
         const link = renderLink(href, text);
         lines.push(`###### <p align="right">${link}</p>`);
     }

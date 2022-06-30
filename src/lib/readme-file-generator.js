@@ -13,7 +13,7 @@ const readmeCodeRoot = process.env.READMEGEN_CODE_ROOT ?? `${readmeRoot}/blob/ma
 
 const data = {};
 data.sloc = (path = srcPath) => sloc({ path });
-data.json = obj => JSON.stringify(obj, null, 4);
+data.json = async obj => JSON.stringify(await obj, null, 4);
 data.readText = loc => fs.promises.readFile(loc, 'utf-8');
 data.fetchText = loc => child.execSync(`curl ${loc} -s`).toString('utf8');
 data.renderLink = (href, text) => `<a href="${href}">${text}</a>`;
@@ -39,12 +39,12 @@ data.renderCode = async (codePromise, lang, source) => {
     if (source) {
         const text = webroot ? `${webroot}/${source}` : source;
         const href = source.startsWith('http') ? source : `${webroot ?? readmeCodeRoot}/${source}`;
-        const link = renderLink(href, text);
+        const link = data.renderLink(href, text);
         lines.push(`###### <p align="right">${link}</p>`);
     }
 
     if (lang === 'mermaid') {
-        const link = renderLinkWithId(readmeRoot, 'View it on GitHub');
+        const link = data.renderLinkWithId(readmeRoot, 'View it on GitHub');
         lines.push(`###### <p align="right"><em>Can't see the diagram?</em> ${link}</p>`);
     }
 

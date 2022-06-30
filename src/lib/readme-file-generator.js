@@ -13,11 +13,11 @@ const readmeCodeRoot = process.env.READMEGEN_CODE_ROOT ?? `${readmeRoot}/blob/ma
 
 const data = {};
 data.sloc = (path = srcPath) => sloc({ path });
-data.json = async obj => JSON.stringify(await obj, null, 4);
+data.json = obj => JSON.stringify(obj, null, 4);
 data.readText = loc => fs.promises.readFile(loc, 'utf-8');
 data.fetchText = loc => child.execSync(`curl ${loc} -s`).toString('utf8');
 data.renderLink = (href, text) => `<a href="${href}">${text}</a>`;
-data.renderLinkWithId = (href, text) => `<a id="link-${linkId++}" href="${href}#user-content-link-${linkId}">${text}</a>`;
+data.renderLinkWithId = (href, text) => `<a id="link-${++linkId}" href="${href}#user-content-link-${linkId}">${text}</a>`;
 
 data.fetchCode = async (source, root = './', webroot) => {
     const fullSource = path.join(root, source);
@@ -56,7 +56,8 @@ data.compose = async (callback, path = 'src/compose.js', args = {}) => {
     if (!path.startsWith('.')) path = `./${path}`
     const imported = await import(path);
     const compose = imported?.default ?? imported;
-    return callback(await compose(args));
+    const composition = compose(args);
+    return callback(composition);
 };
 
 const [templateFile] = process.argv.slice(2);

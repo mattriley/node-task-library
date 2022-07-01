@@ -1,4 +1,4 @@
-import process from 'process';
+const process = require('process');
 
 const data = {
     cov: require(process.cwd() + `/${process.env.METRICS_COV}`),

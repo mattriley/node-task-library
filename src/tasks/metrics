@@ -2,11 +2,6 @@
 
 . $TASK_LIBRARY_SRC/load-task-vars
 
-mkdir -p "$METRICS"
-
 npx task cov
-cp ./coverage/coverage-summary.json "$METRICS_COV"
-
-node -e "require('node-sloc')({ path: '$SRC' }).then(res => require('fs').writeFileSync('$METRICS_LOC', JSON.stringify(res, null, 4)));"
-
-echo "$(node $TASK_LIBRARY_LIB/metrics-summary.js)" > "$METRICS_SUMMARY"
+npx task sloc
+npx task metrics-summary

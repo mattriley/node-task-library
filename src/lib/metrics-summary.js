@@ -8,7 +8,8 @@ const data = {
 const dimensions = ['lines', 'statements', 'functions', 'branches'];
 const percentages = dimensions.map(dim => data.cov.total[dim].pct);
 const cov = Math.min(...percentages);
-const loc = data.loc.sloc;
-const metrics = { cov, loc };
+const sloc = data.loc.SUM.code;
+const files = data.loc.SUM.nFiles;
+const metrics = { cov, sloc, files };
 const json = JSON.stringify(metrics, null, 4);
 console.log(json);

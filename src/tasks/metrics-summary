@@ -1,0 +1,9 @@
+#!/bin/bash
+
+. $TASK_LIBRARY_SRC/load-task-vars
+
+rm -rf "$METRICS"
+mkdir -p "$METRICS"
+cp "$COVERAGE_JSON_SUMMARY" "$METRICS_COV"
+
+echo "$(node $TASK_LIBRARY_LIB/metrics-summary.js)" > "$METRICS_SUMMARY"

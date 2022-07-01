@@ -3,11 +3,13 @@
 export PROJECT_NAME=$(node -e "console.log(require('./package.json').name.split('/').pop());")
 export SRC="./src"
 export MODULES="$SRC/modules"
+export ESLINT_PATHS=("$SRC" "$TESTS")
 export TESTS="./tests"
 export TEST_PATTERN="$TESTS/**/*.test.js"
 export TEST_HELPERS="./test-helpers"
 export TEST_WATCH_PATHS=("$SRC" "$TESTS" "$TEST_HELPERS")
-export ESLINT_PATHS=("$SRC" "$TESTS")
+export COVERAGE="./coverage"
+export COVERAGE_JSON_SUMMARY="$COVERAGE/coverage-summary.json"
 export METRICS="./metrics"
 export METRICS_COV="$METRICS/cov.json"
 export METRICS_LOC="$METRICS/loc.json"

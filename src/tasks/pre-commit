@@ -6,4 +6,6 @@ set -ex
 
 npx task lint
 npx task cov-check
+npx task sloc
+npx task metrics-summary
 npx task readme-gen

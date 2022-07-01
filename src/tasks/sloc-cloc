@@ -1,0 +1,5 @@
+#!/bin/bash
+
+. $TASK_LIBRARY_SRC/load-task-vars
+
+npx cloc --json "$SRC" > "$METRICS_LOC"

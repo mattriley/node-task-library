@@ -11,6 +11,7 @@ export ESLINT_PATHS=("$SRC" "$TESTS")
 export METRICS="./metrics"
 export METRICS_COV="$METRICS/cov.json"
 export METRICS_LOC="$METRICS/loc.json"
+export METRICS_SUMMARY="$METRICS/metrics-summary.json"
 export INDEXGEN_PATHS=("$MODULES")
 export ITERMOCIL_TASKS=("edit" "test-watch" "indexgen-watch" "start")
 export TASK_PATHS=("./tasks")

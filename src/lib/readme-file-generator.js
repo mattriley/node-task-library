@@ -1,18 +1,16 @@
 import fs from 'fs';
 import ejs from 'ejs';
 import path from 'path';
-import sloc from 'node-sloc';
 import child from 'child_process';
 import process from 'process';
 
 let linkId = 0;
-const srcPath = process.env.SRC;
 const packageData = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 const readmeRoot = process.env.READMEGEN_ROOT ?? packageData.homepage;
 const readmeCodeRoot = process.env.READMEGEN_CODE_ROOT ?? `${readmeRoot}/blob/main`;
 
 const data = {};
-data.sloc = (path = srcPath) => sloc({ path });
+data.metrics = () => JSON.parse(fs.readFileSync(process.env.METRICS_SUMMARY, 'utf-8'));
 data.json = obj => JSON.stringify(obj, null, 4);
 data.readText = loc => fs.promises.readFile(loc, 'utf-8');
 data.fetchText = loc => child.execSync(`curl ${loc} -s`).toString('utf8');

@@ -9,6 +9,7 @@ cat <<END >> $GITIGNORE
 /*output
 /build
 /coverage
+/metrics
 /node_modules
 /temp
 /config.*

@@ -1,8 +1,9 @@
+const path = require('path');
 const process = require('process');
 
 const data = {
-    cov: require(process.cwd() + `/${process.env.METRICS_COV}`),
-    loc: require(process.cwd() + `/${process.env.METRICS_LOC}`)
+    cov: require(path.resolve(process.env.METRICS_COV)),
+    loc: require(path.resolve(process.env.METRICS_LOC))
 };
 
 const dimensions = ['lines', 'statements', 'functions', 'branches'];

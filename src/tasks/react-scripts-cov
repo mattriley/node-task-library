@@ -2,6 +2,8 @@
   
 . $TASK_LIBRARY_SRC/load-task-vars
 
+echo "$(node $TASK_LIBRARY_LIB/configure-jest-coverage-reporters.js)" > ./package.json
+
 npx task react-scripts-test \
     --coverage \
     "$@"

@@ -4,6 +4,7 @@
 
 set -ex
 
+npx task lint-config-gen
 npx task lint
 npx task cov-check
 npx task sloc

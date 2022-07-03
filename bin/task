@@ -1,10 +1,11 @@
 #!/bin/bash
 
 export TASK_LIBRARY_ROOT="./node_modules/task-library"
-export TASK_LIBRARY_BIN="$TASK_LIBRARY_ROOT/bin"
 export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
-export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
+export TASK_LIBRARY_BIN="$TASK_LIBRARY_SRC/bin"
 export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
+export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
+
 . $TASK_LIBRARY_SRC/load-task-vars
 
 TASK_NAME=$1

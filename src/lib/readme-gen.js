@@ -57,6 +57,18 @@ lib.renderCode = async (codePromise, lang, source) => {
     return lines.join('\n');
 };
 
+lib.renderImage = (path, caption) => {
+    return [
+        '<br />',
+        '<p align="center">',
+        `  <img src="${path}?raw=true" />`,
+        '  <br />',
+        `  <em>${caption}</em>`,
+        '</p>',
+        '<br>',
+    ].join('\n');
+};
+
 lib.renderMetrics = () => {
     const { cov, sloc, files, deps, devdeps } = lib.metrics();
     return `<p align="right">

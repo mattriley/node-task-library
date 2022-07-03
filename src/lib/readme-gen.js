@@ -6,7 +6,7 @@ const process = require('process');
 
 let linkId = 0;
 const p = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
-const readmeTitle = process.env.README_TITLE;
+const readmeTitle = process.env.PROJECT_NAME;
 const readmeRoot = process.env.READMEGEN_ROOT ?? p.homepage;
 const readmeCodeRoot = process.env.READMEGEN_CODE_ROOT ?? `${readmeRoot}/blob/main`;
 
@@ -78,8 +78,7 @@ lib.renderOpening = () => {
         '## Table of Contents',
         '',
         '<!-- START doctoc -->',
-        '<!-- END doctoc -->',
-        ''
+        '<!-- END doctoc -->'
     ].join('\n');
 };
 

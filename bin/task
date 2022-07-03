@@ -10,12 +10,10 @@ TASK_NAME=$1
 TASK_FILE=$(taskfile $TASK_NAME)
 [ -z "$TASK_FILE" ] && echo "Task \"$TASK_NAME\" not found." && exit 1
 chmod +x "$TASK_FILE"
-echo "Task \"$TASK_NAME\" started. Source: $TASK_FILE"
+echo "⚡️ Task \"$TASK_NAME\" started. Source: $TASK_FILE"
 START=$(nowInMs)
 "$TASK_FILE" "${@:2}"
 EXIT_CODE=$?
 END=$(nowInMs)
-
-echo
-echo "Task \"$TASK_NAME\" completed with exit code $EXIT_CODE in $((END-START)) ms."
+echo "🏁 Task \"$TASK_NAME\" completed with exit code $EXIT_CODE in $((END-START)) ms."
 exit $EXIT_CODE

@@ -5,7 +5,6 @@ const child = require('child_process');
 const process = require('process');
 
 let linkId = 0;
-const [templateFile] = process.argv.slice(2);
 const p = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 const readmeRoot = process.env.READMEGEN_ROOT ?? p.homepage;
 const readmeCodeRoot = process.env.READMEGEN_CODE_ROOT ?? `${readmeRoot}/blob/main`;
@@ -65,8 +64,11 @@ lib.renderMetrics = () => {
     <code>${files} files</code></p>`;
 };
 
+lib.renderFile = templateFile => {
+    ejs.renderFile(templateFile, { lib }, { async: true }, async (err, p) => {
+        if (err) throw err;
+        process.stdout.write(await p);
+    });
+};
 
-ejs.renderFile(templateFile, { lib }, { async: true }, async (err, p) => {
-    if (err) throw err;
-    process.stdout.write(await p);
-});
+module.exports = lib;

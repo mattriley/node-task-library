@@ -4,8 +4,7 @@
 
 [ ! -f "$README_TEMPLATE" ] && exit 0
 
-node \ 
-    --experimental-loader @node-loader/babel \
+node --experimental-loader @node-loader/babel \
     "$TASK_LIBRARY_LIB/readme-file-generator.js" "$README_TEMPLATE" > "$README"
 
 npx doctoc --maxlevel=2 "$README"

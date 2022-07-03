@@ -1,1 +1,11 @@
+.DS_Store
+/*cache
+/*output
+/.vscode
+/build
+/config.*
+/coverage
+/itermocil.yml
+/metrics
+/temp
 node_modules

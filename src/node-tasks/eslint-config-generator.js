@@ -1,5 +1,5 @@
 const fs = require('fs');
-const eslintConfig = require('./eslintrc.json');
+const eslintConfig = require('../lib/eslintrc.json');
 const p = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 
 if (p.type === 'module') {

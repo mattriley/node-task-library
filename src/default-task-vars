@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PACKAGE_NAME=$(node -e "console.log(require('./package.json').name.split('/').pop());")
+export PACKAGE_NAME=$(package "name.split('/').pop()")
 export PROJECT_NAME="$PACKAGE_NAME"
 export SRC="./src"
 export MODULES="$SRC/modules"

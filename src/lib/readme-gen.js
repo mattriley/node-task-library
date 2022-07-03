@@ -7,7 +7,7 @@ const process = require('process');
 let linkId = 0;
 const p = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 const readmeTitle = process.env.PROJECT_NAME;
-const readmeRoot = process.env.READMEGEN_ROOT ?? p.homepage;
+const readmeRoot = process.env.READMEGEN_ROOT;
 const readmeCodeRoot = process.env.READMEGEN_CODE_ROOT ?? `${readmeRoot}/blob/main`;
 
 const lib = {};

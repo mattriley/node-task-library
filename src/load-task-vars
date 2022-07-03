@@ -4,14 +4,14 @@ function package() {
     echo $(node -e "console.log(require('./package.json').$1)")
 }
 
+function nowInMs() { 
+    echo $(node -e 'console.log(Date.now())') ; 
+}
+
 . $TASK_LIBRARY_SRC/default-task-vars
 . ./task-vars
 
 export TASK_LIBRARY_TASK_PATHS=(${TASK_PATHS[@]} "$TASK_LIBRARY_TASKS")
-
-function nowInMs() { 
-    echo $(node -e 'console.log(Date.now())') ; 
-}
 
 function taskfile() {
     TASK_NAME="$1"

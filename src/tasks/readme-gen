@@ -13,7 +13,7 @@ if grep -q "@node-loader/babel" "./package.json"; then
 fi
 
 node ${OPTIONS[@]} \
-    "$TASK_LIBRARY_BIN/readme-gen.js" "$README_TEMPLATE" > "$README"
+    "$TASK_LIBRARY_NODE_TASKS/readme-gen.js" "$README_TEMPLATE" > "$README"
 
 npx doctoc --maxlevel=2 "$README"
 

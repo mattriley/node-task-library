@@ -1,5 +1,7 @@
 #!/bin/bash
   
+set -e
+
 . $TASK_LIBRARY_SRC/load-task-vars
 
 [ ! -f "$README_TEMPLATE" ] && exit 0

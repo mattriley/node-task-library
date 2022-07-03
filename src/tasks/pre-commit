@@ -2,8 +2,6 @@
   
 . $TASK_LIBRARY_SRC/load-task-vars
 
-set -ex
-
 npx task lint-config-gen
 npx task lint
 npx task cov-check

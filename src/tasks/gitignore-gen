@@ -5,12 +5,12 @@
 GITIGNORE=".gitignore"
 
 cat <<END >> $GITIGNORE
+node_modules
 /*cache
 /*output
 /build
 /coverage
 /metrics
-/node_modules
 /temp
 /config.*
 /itermocil.yml

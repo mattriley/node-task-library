@@ -3,9 +3,9 @@ const ejs = require('ejs');
 const path = require('path');
 const child = require('child_process');
 const process = require('process');
+const p = require('../lib/package');
 
 let linkId = 0;
-const p = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 const readmeTitle = process.env.PROJECT_NAME;
 const readmeRoot = process.env.README_ROOT;
 const readmeCodeRoot = `${readmeRoot}/blob/${process.env.GIT_BRANCH}`;

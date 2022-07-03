@@ -1,8 +1,7 @@
 const glob = require('fast-glob');
 const path = require('path');
-const process = require('process');
+const p = require('../lib/package');
 
-const p = require(process.cwd() + '/package.json');
 const binFiles = glob.sync('./bin/*');
 
 p.bin = binFiles.reduce((acc, f) => {

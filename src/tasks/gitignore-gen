@@ -19,3 +19,5 @@ cat <<END >> $GITIGNORE
 END
 
 sort -u -o $GITIGNORE $GITIGNORE
+
+git add "$GITIGNORE"

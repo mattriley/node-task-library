@@ -57,11 +57,13 @@ lib.renderCode = async (codePromise, lang, source) => {
 };
 
 lib.renderMetrics = () => {
-    const { cov, sloc, files } = lib.metrics();
+    const { cov, sloc, files, deps, devdeps } = lib.metrics();
     return `<p align="right">
     <code>${cov}% cov</code>&nbsp;
     <code>${sloc} sloc</code>&nbsp;
-    <code>${files} files</code></p>`;
+    <code>${files} files</code>&nbsp;
+    <code>${deps} deps</code>&nbsp;
+    <code>${devdeps} dev deps</code></p>`;
 };
 
 lib.renderFile = templateFile => {

@@ -9,7 +9,7 @@ const data = {
 
 const dimensions = ['lines', 'statements', 'functions', 'branches'];
 const percentages = dimensions.map(dim => data.cov.total[dim].pct);
-const cov = Math.min(...percentages);
+const cov = Math.min(...percentages) ?? 0;
 const sloc = data.loc.SUM.code;
 const files = data.loc.SUM.nFiles;
 const deps = Object.keys(p.dependencies ?? {}).length;

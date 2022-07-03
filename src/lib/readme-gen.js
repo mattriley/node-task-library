@@ -6,6 +6,7 @@ const process = require('process');
 
 let linkId = 0;
 const p = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
+const readmeTitle = process.env.README_TITLE;
 const readmeRoot = process.env.READMEGEN_ROOT ?? p.homepage;
 const readmeCodeRoot = process.env.READMEGEN_CODE_ROOT ?? `${readmeRoot}/blob/main`;
 
@@ -64,6 +65,22 @@ lib.renderMetrics = () => {
     <code>${files} files</code>&nbsp;
     <code>${deps} deps</code>&nbsp;
     <code>${devdeps} dev deps</code></p>`;
+};
+
+lib.renderOpening = () => {
+    return [
+        `# ${readmeTitle}`,
+        '',
+        lib.renderMetrics(),
+        '',
+        p.description,
+        '',
+        '## Table of Contents',
+        '',
+        '<!-- START doctoc -->',
+        '<!-- END doctoc -->',
+        ''
+    ].join('\n');
 };
 
 lib.renderFile = templateFile => {

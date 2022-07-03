@@ -6,7 +6,7 @@ npx task itermocil-install
 
 cat > "itermocil.yml" <<EOF
 windows:
-  - name: $PROJECT_NAME
+  - name: $PACKAGE_NAME
     root: $(pwd)
     layout: main-vertical
     panes:

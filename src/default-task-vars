@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PROJECT_NAME=$(node -e "console.log(require('./package.json').name.split('/').pop());")
+export PACKAGE_NAME=$(node -e "console.log(require('./package.json').name.split('/').pop());")
 export SRC="./src"
 export MODULES="$SRC/modules"
 export ESLINT_PATHS=("$SRC" "$TESTS")
@@ -20,6 +20,7 @@ export TASK_PATHS=("./tasks")
 export GITHUB_PAGES_PATH="./docs"
 export README="./README.md"
 export README_TEMPLATE="./README-TEMPLATE.md"
+export README_TITLE="$PROJECT_NAME"
 export COV_BRANCHES=100
 export COV_LINES=100
 export COV_FUNCTIONS=100

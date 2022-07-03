@@ -3,5 +3,6 @@
 . $TASK_LIBRARY_SRC/load-task-vars
 
 npx eslint \
+    --ext .mjs --ext .js --ext .jsx \
     "${ESLINT_PATHS[@]}" \
     "$@"

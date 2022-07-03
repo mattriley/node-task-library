@@ -6,8 +6,8 @@ import process from 'process';
 
 let linkId = 0;
 const [templateFile] = process.argv.slice(2);
-const packageData = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
-const readmeRoot = process.env.READMEGEN_ROOT ?? packageData.homepage;
+const p = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
+const readmeRoot = process.env.READMEGEN_ROOT ?? p.homepage;
 const readmeCodeRoot = process.env.READMEGEN_CODE_ROOT ?? `${readmeRoot}/blob/main`;
 
 const lib = {};

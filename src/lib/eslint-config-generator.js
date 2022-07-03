@@ -1,11 +1,12 @@
+const fs = require('fs');
 const eslintConfig = require('./eslintrc.json');
-const package = require(process.cwd() + '/package.json');
+const p = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 
-if (package.type === 'module') {
+if (p.type === 'module') {
     eslintConfig.parserOptions.sourceType = 'module';
 }
 
-if (package.devDependencies?.react || package.dependencies?.react) {
+if (p.devDependencies?.react || p.dependencies?.react) {
     eslintConfig.extends.push('plugin:react/recommended');
     eslintConfig.extends.push('plugin:react/jsx-runtime');
 }

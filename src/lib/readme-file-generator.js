@@ -1,8 +1,8 @@
-import fs from 'fs';
-import ejs from 'ejs';
-import path from 'path';
-import child from 'child_process';
-import process from 'process';
+const fs = require('fs');
+const ejs = require('ejs');
+const path = require('path');
+const child = require('child_process');
+const process = require('process');
 
 let linkId = 0;
 const [templateFile] = process.argv.slice(2);
@@ -26,9 +26,8 @@ lib.fetchCode = async (source, root = './', webroot) => {
     return { code, lang, source, root, webroot };
 };
 
-lib.compose = async (callback, path = 'src/compose.js', args = {}) => {
-    if (!path.startsWith('.')) path = `./${path}`
-    const imported = await import(path);
+lib.compose = async (callback, composeFile = 'src/compose.js', args = {}) => {
+    const imported = await import(path.resolve(composeFile));
     const compose = imported?.default ?? imported;
     const composition = compose(args);
     return callback(composition);
@@ -63,7 +62,7 @@ lib.renderMetrics = () => {
     return `<p align="right">
     <code>${cov}% cov</code>&nbsp;
     <code>${sloc} sloc</code>&nbsp;
-    <code>${files} files</code></p>`
+    <code>${files} files</code></p>`;
 };
 
 

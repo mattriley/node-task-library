@@ -1,19 +1,14 @@
 #!/bin/bash
   
+set -ex
+
 . $TASK_LIBRARY_SRC/load-task-vars
 
 [ ! -f "$README_TEMPLATE" ] && exit 0
 
-OPTIONS=(
-    "--input-type=module"
-    "--experimental-specifier-resolution=node"
-)
-
-if grep -q "@node-loader/babel" "./package.json"; then
-    OPTIONS+=" --experimental-loader @node-loader/babel"
-fi
-
-node ${OPTIONS[@]} - "$README_TEMPLATE" < $TASK_LIBRARY_LIB/readme-file-generator.js > "$README"
+node \ 
+    --experimental-loader @node-loader/babel \
+    "$TASK_LIBRARY_LIB/readme-file-generator.js" "$README_TEMPLATE" > "$README"
 
 npx doctoc --maxlevel=2 "$README"
 

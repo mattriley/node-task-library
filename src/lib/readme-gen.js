@@ -8,7 +8,7 @@ let linkId = 0;
 const p = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
 const readmeTitle = process.env.PROJECT_NAME;
 const readmeRoot = process.env.README_ROOT;
-const readmeCodeRoot = `${readmeRoot}/blob/main`;
+const readmeCodeRoot = `${readmeRoot}/blob/${process.env.GIT_BRANCH}`;
 
 const lib = {};
 lib.metrics = () => JSON.parse(fs.readFileSync(process.env.METRICS_SUMMARY, 'utf-8'));

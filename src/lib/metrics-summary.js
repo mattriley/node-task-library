@@ -1,5 +1,6 @@
 const path = require('path');
 const process = require('process');
+const p = require('./package.json');
 
 const data = {
     cov: require(path.resolve(process.env.METRICS_COV)),
@@ -11,6 +12,8 @@ const percentages = dimensions.map(dim => data.cov.total[dim].pct);
 const cov = Math.min(...percentages);
 const sloc = data.loc.SUM.code;
 const files = data.loc.SUM.nFiles;
-const metrics = { cov, sloc, files };
+const deps = Object.keys(p.dependencies ?? {}).length;
+const devdeps = Object.keys(p.devDependencies ?? {}).length;
+const metrics = { cov, sloc, files, deps, devdeps };
 const json = JSON.stringify(metrics, null, 4);
 console.log(json);

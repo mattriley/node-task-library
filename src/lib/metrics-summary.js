@@ -1,6 +1,6 @@
 const path = require('path');
 const process = require('process');
-const p = require('./package.json');
+const p = require(path.resolve('./package.json'));
 
 const data = {
     cov: require(path.resolve(process.env.METRICS_COV)),

@@ -94,8 +94,8 @@ lib.renderOpening = () => {
     ].join('\n');
 };
 
-lib.renderFile = templateFile => {
-    ejs.renderFile(templateFile, { lib }, { async: true }, async (err, p) => {
+lib.renderFile = (templateFile, templateData = {}) => {
+    ejs.renderFile(templateFile, { lib, ...templateData }, { async: true }, async (err, p) => {
         if (err) throw err;
         process.stdout.write(await p);
     });

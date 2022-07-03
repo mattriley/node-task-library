@@ -1,5 +1,6 @@
 const path = require('path');
 const process = require('process');
+const logJson = require('../lib/log-json');
 const p = require('../lib/package');
 
 const data = {
@@ -15,5 +16,4 @@ const files = data.loc.SUM.nFiles;
 const deps = Object.keys(p.dependencies ?? {}).length;
 const devdeps = Object.keys(p.devDependencies ?? {}).length;
 const metrics = { cov, sloc, files, deps, devdeps };
-const json = JSON.stringify(metrics, null, 4);
-console.log(json);
+logJson(metrics);

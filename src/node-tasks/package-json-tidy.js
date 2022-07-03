@@ -1,6 +1,7 @@
 const glob = require('fast-glob');
 const path = require('path');
 const p = require('../lib/package');
+const logJson = require('../lib/log-json');
 
 const binFiles = glob.sync('./bin/*');
 
@@ -20,5 +21,4 @@ const newEntries = [...seq, ...unk].reduce((acc, key) => {
 }, []);
 
 const newPackage = Object.fromEntries(newEntries);
-const jsonOutput = JSON.stringify(newPackage, null, 4);
-console.log(jsonOutput);
+logJson(newPackage);

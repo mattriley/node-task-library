@@ -1,0 +1,9 @@
+#!/bin/bash
+  
+. $TASK_LIBRARY_SRC/load-task-vars
+
+rm -rf "$DIST"
+
+npx parcel build "$PUBLIC_INDEX_HTML" \
+    --public-url "$DIST_PUBLIC_URL" \
+    --dist-dir "$DIST"

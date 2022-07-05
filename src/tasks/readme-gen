@@ -12,8 +12,7 @@ if grep -q "@node-loader/babel" "./package.json"; then
     OPTIONS+=" --experimental-loader @node-loader/babel"
 fi
 
-node ${OPTIONS[@]} \
-    "$README_GEN" "$README_TEMPLATE" > "$README"
+node ${OPTIONS[@]} "$README_GEN" > "$README"
 
 npx doctoc --maxlevel=2 "$README"
 

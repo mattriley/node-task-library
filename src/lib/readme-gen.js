@@ -8,8 +8,8 @@ const p = require('../lib/package');
 const defaultConfig = {
     template: process.env.README_TEMPLATE,
     title: process.env.PROJECT_NAME,
-    root: process.env.README_ROOT,
-    codeRoot: `${process.env.README_ROOT}/blob/${process.env.GIT_BRANCH}`,
+    baseUrl: process.env.README_BASE_URL,
+    gitBranch: process.env.GIT_BRANCH,
     metricsSummary: process.env.METRICS_SUMMARY
 };
 
@@ -51,13 +51,14 @@ module.exports = (userConfig = {}) => {
 
         if (source) {
             const text = webroot ? `${webroot}/${source}` : source;
-            const href = source.startsWith('http') ? source : `${webroot ?? config.root}/${source}`;
+            const codeBaseUrl = `${config.baseUrl}/blob/${config.gitBranch}`;
+            const href = source.startsWith('http') ? source : `${webroot ?? codeBaseUrl}/${source}`;
             const link = lib.renderLink(href, text);
             lines.push(`###### <p align="right">${link}</p>`);
         }
 
         if (lang === 'mermaid') {
-            const link = lib.renderLinkWithId(config.root, 'View it on GitHub');
+            const link = lib.renderLinkWithId(config.baseUrl, 'View it on GitHub');
             lines.push(`###### <p align="right"><em>Can't see the diagram?</em> ${link}</p>`);
         }
 
@@ -110,4 +111,5 @@ module.exports = (userConfig = {}) => {
     };
 
     return lib;
+
 };

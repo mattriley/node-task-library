@@ -6,9 +6,9 @@ PARCEL_COMMAND="${1:-build}"
 
 rm -rf "$DIST"
 mkdir -p "$DIST"
-cp -r "$PUBLIC" "$DIST/"
+cp -a "$STATIC/." "$DIST/"
 
 npx parcel "$PARCEL_COMMAND" \
-    "$PUBLIC_INDEX_HTML" \
+    "$INDEX_HTML" \
     --public-url "$DIST_PUBLIC_URL" \
     --dist-dir "$DIST"

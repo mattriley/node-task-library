@@ -3,6 +3,7 @@
 . $TASK_LIBRARY_SRC/load-task-vars
 
 PARCEL_COMMAND="${1:-build}"
+[[ $PARCEL_COMMAND = 'build' ]] && PUBLIC_URL="$DIST_PUBLIC_URL" || PUBLIC_URL="/"
 
 rm -rf "$DIST"
 mkdir -p "$DIST"
@@ -10,5 +11,5 @@ cp -a "$STATIC/." "$DIST/"
 
 npx parcel "$PARCEL_COMMAND" \
     "$INDEX_HTML" \
-    --public-url "$DIST_PUBLIC_URL" \
+    --public-url "$PUBLIC_URL" \
     --dist-dir "$DIST"

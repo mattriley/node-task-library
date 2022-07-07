@@ -37,12 +37,14 @@ export INDEX_HTML_TITLE="$PROJECT_NAME"
 export INDEX_HTML_DESCRIPTION="$(package description)"
 export INDEX_HTML_AUTHOR="$(package author)"
 
-export STATIC="./static"
-export DOCS="./docs"
-export DIST="./dist"
-
 export WEB_HOST_NAME=""
 export WEB_BASE_PATH="/"
+
+export STATIC="./static"
+export DIST="./dist"
+
+export GITHUB_PAGES_PATH="./docs"
+export GITHUB_PAGES_CNAME="$WEB_HOST_NAME"
 
 export COV_BRANCHES=100
 export COV_LINES=100

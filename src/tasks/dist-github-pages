@@ -1,0 +1,9 @@
+#!/bin/bash
+
+. $TASK_LIBRARY_SRC/load-task-vars
+
+npx task dist
+
+[ ! -z "$GITHUB_PAGES_CNAME" ]] && cat "$GITHUB_PAGES_CNAME" > "$DIST/CNAME"
+
+rsync -au --delete "$DIST/" "$GITHUB_PAGES_PATH"

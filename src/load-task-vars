@@ -9,7 +9,7 @@ function nowInMs() {
 }
 
 . $TASK_LIBRARY_SRC/default-task-vars
-. ./task-vars
+[ -f "./task-vars" ] && . ./task-vars
 . $TASK_LIBRARY_SRC/post-load-task-vars
 
 export TASK_LIBRARY_TASK_PATHS=(${TASK_PATHS[@]} "$TASK_LIBRARY_TASKS")

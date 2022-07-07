@@ -1,5 +1,8 @@
 #!/bin/bash
 
+ENV_BEFORE=$(env)
+
+export TASK_NAME="$1"
 export TASK_LIBRARY_ROOT="./node_modules/task-library"
 export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
 export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
@@ -8,7 +11,13 @@ export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
 
 . $TASK_LIBRARY_SRC/load-task-vars
 
-TASK_NAME=$1
+ENV_AFTER=$(env)
+
+if [ "$TASK_NAME" = "vars" ]; then
+    sort <(echo "$ENV_BEFORE" ) <(echo "$ENV_AFTER") | uniq -u
+    exit
+fi
+
 TASK_FILE=$(taskfile $TASK_NAME)
 [ -z "$TASK_FILE" ] && echo "Task \"$TASK_NAME\" not found." && exit 1
 chmod +x "$TASK_FILE"

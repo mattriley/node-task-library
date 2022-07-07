@@ -6,9 +6,9 @@ PARCEL_COMMAND="${1:-build}"
 DIST_DIR="${2:-$DIST}"
 [[ $PARCEL_COMMAND = 'build' ]] && PUBLIC_URL="$DIST_PUBLIC_URL" || PUBLIC_URL="/"
 
-rm -rf "$DIST"
-mkdir -p "$DIST"
-cp -a "$STATIC/." "$DIST/"
+rm -rf "$DIST_DIR"
+mkdir -p "$DIST_DIR"
+cp -a "$STATIC/." "$DIST_DIR/"
 
 npx task index-html-gen
 

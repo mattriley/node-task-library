@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. $TASK_LIBRARY_SRC/load-task-vars
-
 mkdir -p "$METRICS"
 
 npx cloc --json "$SRC" > "$METRICS_LOC"

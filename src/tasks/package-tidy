@@ -1,7 +1,5 @@
 #!/bin/bash
   
-. $TASK_LIBRARY_SRC/load-task-vars
-
 PACKAGE_JSON="./package.json"
 
 echo "$(node $TASK_LIBRARY_NODE_TASKS/package-json-tidy.js)" > "$PACKAGE_JSON"

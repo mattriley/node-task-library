@@ -1,7 +1,5 @@
 #!/bin/bash
   
-. $TASK_LIBRARY_SRC/load-task-vars
-
 npx task tap-test \
     --no-browser \
     --no-check-coverage \

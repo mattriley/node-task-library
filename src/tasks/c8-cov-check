@@ -1,7 +1,5 @@
 #!/bin/bash
   
-. $TASK_LIBRARY_SRC/load-task-vars
-
 npx task c8-cov \
     --check-coverage \
     --branches $COV_BRANCHES \

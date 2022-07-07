@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. $TASK_LIBRARY_SRC/load-task-vars
-
 mkdir -p "$METRICS"
 cp "$COVERAGE_JSON_SUMMARY" "$METRICS_COV"
 

@@ -1,7 +1,5 @@
 #!/bin/bash
   
-. $TASK_LIBRARY_SRC/load-task-vars
-
 npx chokidar \
     "${TEST_WATCH_PATHS[@]}" \
     -c "npx task test"

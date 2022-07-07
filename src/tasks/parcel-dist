@@ -1,7 +1,5 @@
 #!/bin/bash
   
-. $TASK_LIBRARY_SRC/load-task-vars
-
 PARCEL_COMMAND="${1:-build}"
 [[ $PARCEL_COMMAND = 'build' ]] && BASE_PATH="$WEB_BASE_PATH" || BASE_PATH="/"
 

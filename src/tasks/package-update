@@ -1,6 +1,4 @@
 #!/bin/bash
   
-. $TASK_LIBRARY_SRC/load-task-vars
-
 npx -p npm-check-updates ncu -u
 npm i 

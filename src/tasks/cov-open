@@ -1,7 +1,5 @@
 #!/bin/bash
   
-. $TASK_LIBRARY_SRC/load-task-vars
-
 npx task cov
 
 INDEX_HTML="$(set -- ./coverage/**/index.html; echo "$1")"

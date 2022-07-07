@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. $TASK_LIBRARY_SRC/load-task-vars
-
 npx task cov
 npx task sloc
 npx task metrics-summary

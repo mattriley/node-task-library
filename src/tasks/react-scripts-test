@@ -1,7 +1,5 @@
 #!/bin/bash
   
-. $TASK_LIBRARY_SRC/load-task-vars
-
 npx react-scripts test \
     --roots "$TESTS" \
     --testMatch "<rootDir>/$TEST_PATTERN" \

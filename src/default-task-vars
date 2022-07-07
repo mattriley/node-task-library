@@ -5,6 +5,8 @@ export ITERMOCIL_TASKS=("edit" "test-watch" "barrel-gen-watch" "start")
 
 export PACKAGE_NAME=$(package "name.split('/').pop()")
 export PROJECT_NAME="$PACKAGE_NAME"
+
+export GIT_IGNORE="./.gitignore"
 export GIT_BRANCH=$(git branch --show-current)
 
 export SRC="./src"
@@ -24,6 +26,7 @@ export METRICS_COV="$METRICS/cov.json"
 export METRICS_LOC="$METRICS/loc.json"
 export METRICS_SUMMARY="$METRICS/metrics-summary.json"
 
+export ESLINT_CONFIG="./.eslintrc"
 export ESLINT_PATHS=("$SRC" "$TESTS")
 
 export README="./README.md"

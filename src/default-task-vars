@@ -32,19 +32,19 @@ export README_BASE_URL=$(package homepage)
 export README_GEN="$TASK_LIBRARY_NODE_TASKS/readme-gen.js"
 
 export INDEX_HTML="$SRC/index.html"
-export INDEX_HTML_URL=""
+export INDEX_HTML_URL=
 export INDEX_HTML_TITLE="$PROJECT_NAME"
 export INDEX_HTML_DESCRIPTION="$(package description)"
 export INDEX_HTML_AUTHOR="$(package author)"
 
-export WEB_HOST_NAME=""
+export WEB_HOST_NAME=
 export WEB_BASE_PATH="/"
 
 export STATIC="./static"
 export DIST="./dist"
 
 export GITHUB_PAGES_PATH="./docs"
-export GITHUB_PAGES_CNAME="$WEB_HOST_NAME"
+export GITHUB_PAGES_CNAME=
 
 export COV_BRANCHES=100
 export COV_LINES=100

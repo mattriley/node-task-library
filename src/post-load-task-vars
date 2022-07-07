@@ -1,0 +1,5 @@
+#!/bin/bash
+
+${INDEX_HTML_URL:="https://$WEB_HOST_NAME"}
+
+${GITHUB_PAGES_CNAME:="$WEB_HOST_NAME"}

@@ -10,6 +10,8 @@ rm -rf "$DIST"
 mkdir -p "$DIST"
 cp -a "$STATIC/." "$DIST/"
 
+npx task index-html-gen
+
 npx parcel "$PARCEL_COMMAND" \
     "$INDEX_HTML" \
     --public-url "$PUBLIC_URL" \

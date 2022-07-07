@@ -5,7 +5,7 @@
 PARCEL_COMMAND="${1:-build}"
 [[ $PARCEL_COMMAND = 'build' ]] && PUBLIC_URL="$DIST_PUBLIC_URL" || PUBLIC_URL="/"
 
-rsync -au --delete "$STATIC" "$DIST"  
+rsync -au --delete "$STATIC/" "$DIST"  
 
 npx task index-html-gen
 

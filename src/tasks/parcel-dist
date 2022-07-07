@@ -3,7 +3,7 @@
 . $TASK_LIBRARY_SRC/load-task-vars
 
 PARCEL_COMMAND="${1:-build}"
-[[ $PARCEL_COMMAND = 'build' ]] && PUBLIC_URL="$DIST_PUBLIC_URL" || PUBLIC_URL="/"
+[[ $PARCEL_COMMAND = 'build' ]] && BASE_PATH="$WEB_BASE_PATH" || BASE_PATH="/"
 
 rsync -au --delete "$STATIC/" "$DIST"  
 
@@ -11,5 +11,5 @@ npx task index-html-gen
 
 npx parcel "$PARCEL_COMMAND" \
     "$INDEX_HTML" \
-    --public-url "$PUBLIC_URL" \
+    --public-url "$BASE_PATH" \
     --dist-dir "$DIST"

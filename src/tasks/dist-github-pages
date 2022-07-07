@@ -6,4 +6,6 @@ npx task dist
 
 [ ! -z "$GITHUB_PAGES_CNAME" ]] && cat "$GITHUB_PAGES_CNAME" > "$DIST/CNAME"
 
-rsync -au --delete "$DIST/" "$GITHUB_PAGES_PATH"
+rm -rf "$GITHUB_PAGES_PATH"
+mkdir -p "$GITHUB_PAGES_PATH"
+cp -a "$DIST/" "$GITHUB_PAGES_PATH"

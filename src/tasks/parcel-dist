@@ -3,16 +3,13 @@
 . $TASK_LIBRARY_SRC/load-task-vars
 
 PARCEL_COMMAND="${1:-build}"
-DIST_DIR="${2:-$DIST}"
 [[ $PARCEL_COMMAND = 'build' ]] && PUBLIC_URL="$DIST_PUBLIC_URL" || PUBLIC_URL="/"
 
-rm -rf "$DIST_DIR"
-mkdir -p "$DIST_DIR"
-cp -a "$STATIC/." "$DIST_DIR/"
+rsync -au --delete "$STATIC" "$DIST"  
 
 npx task index-html-gen
 
 npx parcel "$PARCEL_COMMAND" \
     "$INDEX_HTML" \
     --public-url "$PUBLIC_URL" \
-    --dist-dir "$DIST_DIR"
+    --dist-dir "$DIST"

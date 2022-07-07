@@ -33,7 +33,7 @@ export README_GEN="$TASK_LIBRARY_NODE_TASKS/readme-gen.js"
 
 export INDEX_HTML="$SRC/index.html"
 export INDEX_HTML_URL=
-export INDEX_HTML_TITLE="$PROJECT_NAME"
+export INDEX_HTML_TITLE=
 export INDEX_HTML_DESCRIPTION="$(package description)"
 export INDEX_HTML_AUTHOR="$(package author)"
 

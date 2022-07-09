@@ -12,7 +12,10 @@ node_modules
 /config.*
 /itermocil.yml
 /.vscode
+/.serverless
+/.nyc_output
 .DS_Store
+npm-debug.log
 END
 
 sort -u -o $GIT_IGNORE $GIT_IGNORE

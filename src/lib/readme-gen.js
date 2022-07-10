@@ -96,8 +96,6 @@ module.exports = (userConfig = {}) => {
             '',
             p.description,
             '',
-            '## Table of Contents',
-            '',
             '<!-- START doctoc -->',
             '<!-- END doctoc -->'
         ].join('\n');

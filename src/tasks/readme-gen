@@ -12,6 +12,6 @@ fi
 
 node ${OPTIONS[@]} "$README_GEN" > "$README"
 
-npx doctoc --maxlevel=2 "$README"
+npx doctoc --title "## Table of Contents" --maxlevel 2 "$README"
 
 git add "$README"

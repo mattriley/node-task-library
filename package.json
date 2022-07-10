@@ -22,6 +22,7 @@
     "dependencies": {
         "c8": "^7.11.3",
         "chokidar-cli": "^3.0.0",
+        "cloc": "^2.10.0",
         "doctoc": "^2.2.0",
         "ejs": "^3.1.8",
         "eslint": "^8.18.0",

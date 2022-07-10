@@ -41,6 +41,7 @@ export INDEX_HTML_URL=
 export INDEX_HTML_TITLE=
 export INDEX_HTML_DESCRIPTION="$(package description)"
 export INDEX_HTML_AUTHOR="$(package author)"
+export INDEX_HTML_HEAD=
 
 export WEB_HOST_NAME=
 export WEB_BASE_PATH="/"

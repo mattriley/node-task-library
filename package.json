@@ -28,9 +28,11 @@
         "eslint": "^8.19.0",
         "eslint-plugin-import": "^2.26.0",
         "fast-glob": "^3.2.11",
-        "husky": "^8.0.1",
         "module-indexgen": "^0.15.0",
         "npm-check-updates": "^15.2.6",
         "task-library": "file:./"
+    },
+    "devDependencies": {
+        "husky": "^8.0.1"
     }
 }

@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export ESLINT_PATHS=("$SRC")
-
 export COV_BRANCHES=0
 export COV_LINES=0
 export COV_FUNCTIONS=0

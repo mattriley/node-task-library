@@ -1,6 +1,6 @@
 {
     "name": "task-library",
-    "version": "0.4.11",
+    "version": "0.5.0",
     "description": "",
     "author": "Matt Riley",
     "license": "ISC",
@@ -25,12 +25,12 @@
         "cloc": "^2.10.0",
         "doctoc": "^2.2.0",
         "ejs": "^3.1.8",
-        "eslint": "^8.18.0",
+        "eslint": "^8.19.0",
         "eslint-plugin-import": "^2.26.0",
         "fast-glob": "^3.2.11",
         "husky": "^8.0.1",
-        "module-indexgen": "^0.14.1",
-        "npm-check-updates": "^13.0.0",
+        "module-indexgen": "^0.15.0",
+        "npm-check-updates": "^15.2.6",
         "task-library": "file:./"
     }
 }

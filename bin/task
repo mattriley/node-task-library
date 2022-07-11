@@ -1,22 +1,4 @@
 #!/bin/bash
 
-. ./node_modules/task-library/src/functions
-load_vars
-
-BOLD=$(tput bold)
-NORM=$(tput sgr0)
-
-TASK_NAME="$1"
-TASK_FILE=$(taskfile $TASK_NAME)
-[ -z "$TASK_FILE" ] && echo -e "Task ${BOLD}$TASK_NAME${NORM} not found" && exit 1
-chmod +x "$TASK_FILE"
-echo -e "${NORM}⚡️ Task ${BOLD}$TASK_NAME${NORM} started" # Source: $TASK_FILE"
-TIME_BEFORE=$(now)
-"$TASK_FILE" "${@:2}"
-EXIT_CODE=$?
-TIME_AFTER=$(now)
-TIME_TAKEN_MS=$((TIME_AFTER-TIME_BEFORE))
-TIME_TAKEN_S=$(echo "scale=1;${TIME_TAKEN_MS}/1000" | bc)
-[[ $TIME_TAKEN_S == .* ]] && TIME_TAKEN_S="0$TIME_TAKEN_S"
-echo -e "${NORM}🏁 Task ${BOLD}$TASK_NAME${NORM} completed with exit code $EXIT_CODE in ${TIME_TAKEN_MS}ms (${TIME_TAKEN_S}s)"
-exit $EXIT_CODE
+source ./node_modules/task-library/src/functions
+task "$@"

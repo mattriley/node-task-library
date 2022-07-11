@@ -1,27 +1,47 @@
 #!/bin/bash
 
+BOLD=$(tput bold)
+NORM=$(tput sgr0)
+
+function task() {
+    TASK_NAME="$1"
+    [ -z $TASK_NAME ] && echo "Task name is required" && exit 1
+    [ -z "$VARS" ] && load_vars
+    TASK_FILE=$(taskfile $TASK_NAME)
+    [ -z "$TASK_FILE" ] && echo -e "Task ${BOLD}$TASK_NAME${NORM} not found" && exit 1
+    chmod +x "$TASK_FILE"
+    echo -e "${NORM}⚡️ Task ${BOLD}$TASK_NAME${NORM} started" # Source: $TASK_FILE"
+    TIME_BEFORE=$(now)
+    "$TASK_FILE" "${@:2}"
+    EXIT_CODE=$?
+    TIME_AFTER=$(now)
+    TIME_TAKEN_MS=$((TIME_AFTER-TIME_BEFORE))
+    TIME_TAKEN_S=$(echo "scale=1;${TIME_TAKEN_MS}/1000" | bc)
+    [[ $TIME_TAKEN_S == .* ]] && TIME_TAKEN_S="0$TIME_TAKEN_S"
+    echo -e "${NORM}🏁 Task ${BOLD}$TASK_NAME${NORM} completed with exit code $EXIT_CODE in ${TIME_TAKEN_MS}ms (${TIME_TAKEN_S}s)"
+    exit $EXIT_CODE
+}
+
 function load_vars() {
-    if [ -z "$VARS" ]; then
-        printf "Loading task vars..."
-        ENV_BEFORE=$(env)
-        export TASK_LIBRARY_ROOT="./node_modules/task-library"
-        export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
-        export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
-        export TASK_LIBRARY_NODE_TASKS="$TASK_LIBRARY_SRC/node-tasks"
-        export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
+    printf "Loading task vars..."
+    ENV_BEFORE=$(env)
+    export TASK_LIBRARY_ROOT="./node_modules/task-library"
+    export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
+    export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
+    export TASK_LIBRARY_NODE_TASKS="$TASK_LIBRARY_SRC/node-tasks"
+    export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
 
-        source "$TASK_LIBRARY_SRC/default-task-vars"
-        [ -f "$TASK_VARS" ] && source "$TASK_VARS"
-        source "$TASK_LIBRARY_SRC/post-load-task-vars"
+    source "$TASK_LIBRARY_SRC/default-task-vars"
+    [ -f "$TASK_VARS" ] && source "$TASK_VARS"
+    source "$TASK_LIBRARY_SRC/post-load-task-vars"
 
-        ENV_AFTER=$(env)
-        export VARS=$(sort <(echo "$ENV_BEFORE" ) <(echo "$ENV_AFTER") | uniq -u)
-        echo " done"
-    fi
+    ENV_AFTER=$(env)
+    export VARS=$(sort <(echo "$ENV_BEFORE" ) <(echo "$ENV_AFTER") | uniq -u)
+    echo " done"
 }
 
 function taskfile() {
-    TASK_NAME=${1:="$TASK_NAME"}
+    TASK_NAME="$1"
     [ -z $TASK_NAME ] && echo "Task name is required" && exit 1
     TASK_PATHS=("$TASKS" "$TASK_LIBRARY_TASKS")
     for TASK_PATH in ${TASK_PATHS[@]}; do [ -f "$TASK_PATH/$1" ] && TASK_FILE="$TASK_PATH/$1" && break; done

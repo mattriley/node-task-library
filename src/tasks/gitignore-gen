@@ -1,21 +1,22 @@
 #!/bin/bash
   
 cat <<END >> $GIT_IGNORE
-node_modules
+.DS_Store
 /*cache
 /*output
+/.nyc_output
+/.serverless
+/.vscode
 /build
+/config.*
 /coverage
 /dist
-/metrics
-/temp
-/config.*
 /itermocil.yml
-/.vscode
-/.serverless
-/.nyc_output
-.DS_Store
-npm-debug.log
+/metrics
+/task-library
+/temp
+/node_modules
+/npm-debug.log
 END
 
 sort -u -o $GIT_IGNORE $GIT_IGNORE

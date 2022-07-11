@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ln -s "$TASK_LIBRARY_ROOT" ./task-library

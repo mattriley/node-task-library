@@ -9,4 +9,4 @@ npx task sloc
 npx task metrics-summary
 npx task readme-gen
 npx task gitignore-gen
-npx task package-tidy
+npx task package-gen

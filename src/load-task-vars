@@ -8,14 +8,17 @@ function nowInMs() {
     echo $(node -e 'console.log(Date.now())') ; 
 }
 
-. $TASK_LIBRARY_SRC/default-task-vars
-[ -f "./task-vars" ] && . ./task-vars
-. $TASK_LIBRARY_SRC/post-load-task-vars
+if [ -z "$VARS_LOADED" ]; then
+    . $TASK_LIBRARY_SRC/default-task-vars
+    [ -f "./task-vars" ] && . ./task-vars
+    . $TASK_LIBRARY_SRC/post-load-task-vars
+    export VARS_LOADED=1
+fi
 
 export TASK_LIBRARY_TASK_PATHS=(${TASK_PATHS[@]} "$TASK_LIBRARY_TASKS")
 
 function taskfile() {
-    TASK_NAME="$1"
+    # TASK_NAME="$1"
     for TASK_PATH in ${TASK_LIBRARY_TASK_PATHS[@]}; do [ -f "$TASK_PATH/$TASK_NAME" ] && TASK_FILE="$TASK_PATH/$TASK_NAME" && break; done
     echo "$TASK_FILE"
 }

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-export TASK_PATHS=("./tasks")
+export TASKS="./tasks"
+export TASK_VARS="./task-vars"
 
 export ITERMOCIL_CONFIG="./itermocil.yml"
 export ITERMOCIL_TASKS=("edit" "test-watch" "barrel-gen-watch" "start")

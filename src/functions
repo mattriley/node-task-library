@@ -1,0 +1,37 @@
+#!/bin/bash
+
+function load_vars() {
+    if [ -z "$VARS" ]; then
+        printf "Loading task vars..."
+        ENV_BEFORE=$(env)
+        export TASK_LIBRARY_ROOT="./node_modules/task-library"
+        export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
+        export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
+        export TASK_LIBRARY_NODE_TASKS="$TASK_LIBRARY_SRC/node-tasks"
+        export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
+
+        source "$TASK_LIBRARY_SRC/default-task-vars"
+        [ -f "$TASK_VARS" ] && source "$TASK_VARS"
+        source "$TASK_LIBRARY_SRC/post-load-task-vars"
+
+        ENV_AFTER=$(env)
+        export VARS=$(sort <(echo "$ENV_BEFORE" ) <(echo "$ENV_AFTER") | uniq -u)
+        echo " done"
+    fi
+}
+
+function taskfile() {
+    TASK_NAME=${1:="$TASK_NAME"}
+    [ -z $TASK_NAME ] && echo "Task name is required" && exit 1
+    TASK_PATHS=("$TASKS" "$TASK_LIBRARY_TASKS")
+    for TASK_PATH in ${TASK_PATHS[@]}; do [ -f "$TASK_PATH/$1" ] && TASK_FILE="$TASK_PATH/$1" && break; done
+    echo "$TASK_FILE"
+}
+
+function package() {
+    echo $(node -e "console.log(require('./package.json').$1 || '')")
+}
+
+function now() { 
+    echo $(node -e "console.log(Date.now())") ; 
+}

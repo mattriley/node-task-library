@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+
 import { createHarness } from 'zora';
 import { createDiffReporter } from 'zora-reporters';
 import glob from 'fast-glob';

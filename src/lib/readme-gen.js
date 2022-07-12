@@ -74,7 +74,7 @@ module.exports = (userConfig = {}) => {
             '  <br />',
             `  <em>${caption}</em>`,
             '</p>',
-            '<br>',
+            '<br>'
         ].join('\n');
     };
 

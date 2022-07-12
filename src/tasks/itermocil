@@ -10,7 +10,9 @@ windows:
     panes:
 EOF
 
-for TASK_NAME in "${ITERMOCIL_TASKS[@]}"
+IFS=' | '; ITERMOCIL_TASKS_ARR=($ITERMOCIL_TASKS); unset IFS
+
+for TASK_NAME in "${ITERMOCIL_TASKS_ARR[@]}"
 do
 TASK_FILE=$(taskfile $TASK_NAME)
 if [[ ! -z "$TASK_FILE" ]]; then

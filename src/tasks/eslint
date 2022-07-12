@@ -1,6 +1,8 @@
 #!/bin/bash
-  
+
+IFS=' | '; ESLINT_PATHS_ARR=($ESLINT_PATHS); unset IFS
+
 npx eslint \
     --ext .mjs --ext .js --ext .jsx \
-    "${ESLINT_PATHS[@]}" \
+    "${ESLINT_PATHS_ARR[@]}" \
     "$@"

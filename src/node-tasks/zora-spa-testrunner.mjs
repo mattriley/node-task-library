@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+
 import JSDOM from 'jsdom';
 import { createHarness } from 'zora';
 import { createDiffReporter } from 'zora-reporters';

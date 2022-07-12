@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -a # to export functions
+
 BOLD=$(tput bold)
 NORM=$(tput sgr0)
 

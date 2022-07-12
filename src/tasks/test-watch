@@ -1,5 +1,7 @@
 #!/bin/bash
-  
+
+IFS=' | '; TEST_WATCH_PATHS_ARR=($TEST_WATCH_PATHS); unset IFS
+
 npx chokidar \
-    "${TEST_WATCH_PATHS[@]}" \
+    "${TEST_WATCH_PATHS_ARR[@]}" \
     -c "npx task test"

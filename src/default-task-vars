@@ -4,7 +4,7 @@ export TASKS="./tasks"
 export TASK_VARS="./task-vars"
 
 export ITERMOCIL_CONFIG="./itermocil.yml"
-export ITERMOCIL_TASKS=("edit" "test-watch" "barrel-gen-watch" "start")
+export ITERMOCIL_TASKS="edit | test-watch | barrel-gen-watch | start"
 
 export PACKAGE_NAME=$(package "name.split('/').pop()")
 export INTERNAL_NAME=
@@ -15,12 +15,12 @@ export GIT_BRANCH=$(git branch --show-current)
 
 export SRC="./src"
 export MODULES="$SRC/modules"
-export BARREL_PATHS=("$MODULES")
+export BARREL_PATHS="$MODULES"
 
 export TESTS="./tests"
 export TEST_PATTERN="$TESTS/**/*.test.js"
 export TEST_HELPERS="./test-helpers"
-export TEST_WATCH_PATHS=("$SRC" "$TESTS" "$TEST_HELPERS")
+export TEST_WATCH_PATHS="$SRC | $TESTS | $TEST_HELPERS"
 
 export COVERAGE="./coverage"
 export COVERAGE_JSON_SUMMARY="$COVERAGE/coverage-summary.json"
@@ -31,7 +31,7 @@ export METRICS_LOC="$METRICS/loc.json"
 export METRICS_SUMMARY="$METRICS/metrics-summary.json"
 
 export ESLINT_CONFIG="./.eslintrc"
-export ESLINT_PATHS=("$SRC")
+export ESLINT_PATHS="$SRC"
 
 export README="./README.md"
 export README_TEMPLATE="./README-TEMPLATE.md"

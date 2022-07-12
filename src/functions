@@ -1,9 +1,11 @@
 #!/bin/bash
 
-set -a # to export functions
+# set -a # to export functions # unintended side-effects; using export -f instead
 
 BOLD=$(tput bold)
 NORM=$(tput sgr0)
+
+# private (non-exported functions)
 
 function task() {
     TASK_NAME="$1"
@@ -42,6 +44,16 @@ function load_vars() {
     echo " done"
 }
 
+function now() { 
+    echo $(node -e "console.log(Date.now())") ; 
+}
+
+# public (exported functions)
+
+function package() {
+    echo $(node -e "console.log(require('./package.json').$1 || '')")
+}
+
 function taskfile() {
     TASK_NAME="$1"
     [ -z $TASK_NAME ] && echo "Task name is required" && exit 1
@@ -50,10 +62,5 @@ function taskfile() {
     echo "$TASK_FILE"
 }
 
-function package() {
-    echo $(node -e "console.log(require('./package.json').$1 || '')")
-}
-
-function now() { 
-    echo $(node -e "console.log(Date.now())") ; 
-}
+export -f package 
+export -f taskfile

@@ -2,6 +2,7 @@
 
 set -e
 
+npx task code-gen
 npx task lint-config-gen
 npx task lint
 npx task cov-check

@@ -52,6 +52,7 @@ export WEB_BASE_PATH="/"
 
 export STATIC="./static"
 export DIST="./dist"
+export DATA="./data"
 
 export GITHUB_PAGES_PATH="./docs"
 export GITHUB_PAGES_CNAME=

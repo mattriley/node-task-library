@@ -7,6 +7,7 @@ rm -rf "$DIST"
 mkdir -p "$DIST"
 cp -a "$STATIC/" "$DIST"
 
+npx task code-gen
 npx task index-html-gen
 
 npx parcel "$PARCEL_COMMAND" \

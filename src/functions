@@ -2,8 +2,8 @@
 
 # set -a # to export functions # unintended side-effects; using export -f instead
 
-BOLD=$(tput bold)
-NORM=$(tput sgr0)
+export BOLD=$(tput bold)
+export NORM=$(tput sgr0)
 
 function task() {
     TASK_NAME="$1"
@@ -26,8 +26,7 @@ function task() {
 
 function load_vars() {
     export STAGE="$1"
-    [ ! -z $STAGE ] && echo -e "Stage is ${BOLD}$STAGE${NORM} "
-    printf "Loading task vars..."
+    printf "   Stage is ${BOLD}${STAGE:=(unset)}${NORM}. Loading task vars..."
     ENV_BEFORE=$(env)
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
     export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
@@ -61,7 +60,7 @@ function now() {
 }
 
 function ssm {
-    echo $(aws ssm get-parameter --region $AWS_REGION --name $1 --with-decryption | jq -r '.Parameter.Value')
+    echo $(aws ssm get-parameter --region $AWS_REGION --name "$1" --with-decryption | jq -r '.Parameter.Value')
 }
 
 export -f load_vars

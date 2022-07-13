@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export VERSION_DATE=$(date)
+
 export TASKS="./tasks"
 export TASK_VARS="./task-vars"
 

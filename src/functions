@@ -5,8 +5,6 @@
 BOLD=$(tput bold)
 NORM=$(tput sgr0)
 
-# private (non-exported functions)
-
 function task() {
     TASK_NAME="$1"
     [ -z $TASK_NAME ] && echo "Task name is required" && exit 1
@@ -27,6 +25,8 @@ function task() {
 }
 
 function load_vars() {
+    export STAGE="$1"
+    [ ! -z $STAGE ] && echo -e "Stage is ${BOLD}$STAGE${NORM} "
     printf "Loading task vars..."
     ENV_BEFORE=$(env)
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
@@ -44,16 +44,6 @@ function load_vars() {
     echo " done"
 }
 
-function now() { 
-    echo $(node -e "console.log(Date.now())") ; 
-}
-
-# public (exported functions)
-
-function package() {
-    echo $(node -e "console.log(require('./package.json').$1 || '')")
-}
-
 function taskfile() {
     TASK_NAME="$1"
     [ -z $TASK_NAME ] && echo "Task name is required" && exit 1
@@ -62,5 +52,20 @@ function taskfile() {
     echo "$TASK_FILE"
 }
 
-export -f package 
+function package() {
+    echo $(node -e "console.log(require('./package.json').$1 || '')")
+}
+
+function now() { 
+    echo $(node -e "console.log(Date.now())") ; 
+}
+
+function ssm {
+    echo $(aws ssm get-parameter --region $AWS_REGION --name $1 --with-decryption | jq -r '.Parameter.Value')
+}
+
+export -f load_vars
 export -f taskfile
+export -f package 
+export -f now
+export -f ssm

@@ -3,12 +3,12 @@
 PARCEL_COMMAND="${1:-build}"
 [[ $PARCEL_COMMAND = 'build' ]] && BASE_PATH="$WEB_BASE_PATH" || BASE_PATH="/"
 
+npx task code-gen
+npx task index-html-gen
+
 rm -rf "$DIST"
 mkdir -p "$DIST"
 cp -a "$STATIC/" "$DIST"
-
-npx task code-gen
-npx task index-html-gen
 
 npx parcel "$PARCEL_COMMAND" \
     "$INDEX_HTML" \

@@ -12,6 +12,19 @@ export PACKAGE_NAME=$(package "name.split('/').pop()")
 export INTERNAL_NAME=
 export EXTERNAL_NAME=
 
+export PACKAGE_DESCRIPTION=$(package description)
+
+export AUTHOR_NAME=$(package author.name)
+export AUTHOR_NAME=${AUTHOR_NAME:=$(package author)}
+export AUTHOR_EMAIL=$(package author.email)
+export AUTHOR_URL=$(package author.url)
+
+export ISSUES_URL=$(package bugs.url)
+export ISSUES_URL=${ISSUES_URL:=$(package bugs)}
+export ISSUES_EMAIL=$(package bugs.email)
+
+export SOURCE_URL=$(node "$TASK_LIBRARY_NODE_TASKS/source-url.js")
+
 export GIT_IGNORE="./.gitignore"
 export GIT_BRANCH=$(git branch --show-current)
 
@@ -43,8 +56,8 @@ export README_GEN="$TASK_LIBRARY_NODE_TASKS/readme-gen.js"
 export INDEX_HTML="$SRC/index.html"
 export INDEX_HTML_URL=
 export INDEX_HTML_TITLE=
-export INDEX_HTML_DESCRIPTION="$(package description)"
-export INDEX_HTML_AUTHOR="$(package author)"
+export INDEX_HTML_DESCRIPTION="$PACKAGE_DESCRIPTION"
+export INDEX_HTML_AUTHOR="$AUTHOR"
 export INDEX_HTML_HEAD=
 
 export WEB_HOST_NAME=

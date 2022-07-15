@@ -62,6 +62,7 @@ export INDEX_HTML_HEAD=
 
 export WEB_HOST_NAME=
 export WEB_BASE_PATH="/"
+export WEB_URL=
 
 export STATIC="./static"
 export DIST="./dist"

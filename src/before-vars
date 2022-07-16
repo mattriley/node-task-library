@@ -2,11 +2,7 @@
 
 export VERSION_DATE=$(date)
 
-# origin_url=$(git config --get remote.origin.url)
-
-# export GITHUB_USER_NAME=$(node )
-
-export PACKAGE_NAME=$(package "name.split('/').pop()")
+export PACKAGE_NAME
 export DISPLAY_NAME
 
 export WEB_HOST_NAME

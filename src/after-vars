@@ -1,5 +1,6 @@
 #!/bin/bash
 
+[ -z "$PACKAGE_NAME" ] && PACKAGE_NAME=$(npm run env | grep "npm_package_name" | awk -F "=" '{print $2}')
 [ -z "$DISPLAY_NAME" ] && [ "$PACKAGE_NAME" ] && DISPLAY_NAME="$PACKAGE_NAME"
 
 [ -z "$WEB_BASE_PATH" ] && WEB_BASE_PATH="/"

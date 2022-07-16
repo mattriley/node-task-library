@@ -29,8 +29,9 @@ p.repository = `github:${process.env.GITHUB_REPO_PATH}`;
 if (!p.scripts) p.scripts = {};
 p.scripts.test = 'npx task test';
 p.scripts.start = 'npx task start';
+p.scripts.deploy = 'npx task deploy';
 
-const seq = ['name', 'version', 'description', 'homepage', 'license', 'keywords', 'author', 'repository', 'bugs', 'private', 'type', 'main', 'bin', 'files', 'scripts', 'dependencies', 'devDependencies'];
+const seq = ['name', 'version', 'description', 'license', 'homepage', 'repository', 'author', 'bugs', 'bin', 'files', 'main', 'type', 'private', 'scripts', 'dependencies', 'devDependencies', 'keywords'];
 const unk = Object.keys(p).filter(key => !seq.includes(key));
 
 const newEntries = [...seq, ...unk].reduce((acc, key) => {

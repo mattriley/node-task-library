@@ -1,15 +1,15 @@
 {
     "name": "task-library",
-    "version": "0.6.2",
+    "version": "0.6.3",
     "description": "",
-    "homepage": "https://github.com/mattriley/node-task-library",
     "license": "ISC",
+    "homepage": "https://github.com/mattriley/node-task-library",
+    "repository": "github:mattriley/node-task-library",
     "author": {
         "name": "Matt Riley",
         "email": "m@ttriley.dev",
         "url": "https://github.com/mattriley"
     },
-    "repository": "github:mattriley/node-task-library",
     "bugs": {
         "url": "https://github.com/mattriley/node-task-library/issues",
         "email": "m@ttriley.dev"
@@ -23,7 +23,8 @@
     ],
     "scripts": {
         "test": "npx task test",
-        "start": "npx task start"
+        "start": "npx task start",
+        "deploy": "npx task deploy"
     },
     "dependencies": {
         "c8": "^7.11.3",

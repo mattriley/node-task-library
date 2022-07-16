@@ -74,18 +74,17 @@ function ssm {
 }
 
 function is_on_npm() {
-    echo "$NPM_URL"
-    npm_status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "$NPM_URL")
-    [ $npm_status_code = "200" ] && exit 0 || exit 1
+    npm view > /dev/null 2>&1
+    echo "$?"
 }
 
 function is_on_ghp() {    
-    npm_status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "$GITHUB_PAGES_URL/") # trailing slash is needed
-    [ $npm_status_code = "200" ] && exit 0 || exit 1
+    status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "$GITHUB_PAGES_URL/") # trailing slash is needed
+    [ $status_code = "200" ] && echo 0 || echo 1
 }
 
 function is_on_sls() {
-    [ -f "./serverless.yml" ] && exit 0 || exit 1
+    [ -f "./serverless.yml" ] && echo 0 || echo 1
 }
 
 export -f load_vars

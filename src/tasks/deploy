@@ -1,7 +1,7 @@
 #!/bin/bash
 
-[ "$(is_on_npm)" ] && npm publish
+[ "$(is_on_npm)" = "0" ] && npm publish
 
-[ "$(is_on_ghp)" ] && npx task dist-github-pages
+[ "$(is_on_ghp)" = "0" ] && npx task dist-github-pages
 
-[ "$(is_on_sls)" ] && sls deploy
+[ "$(is_on_sls)" = "0" ] && sls deploy

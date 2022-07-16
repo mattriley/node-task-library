@@ -62,11 +62,11 @@ function warn_unset() {
 }
 
 function package() {
-    echo $(node -e "console.log(require('./package.json').$1 || '')")
+    node -p "require('./package.json').$1 || ''"
 }
 
 function now() { 
-    echo $(node -e "console.log(Date.now())") ; 
+    node -p "Date.now()" 
 }
 
 function ssm {

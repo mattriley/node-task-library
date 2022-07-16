@@ -1,6 +1,5 @@
 #!/bin/bash
 
-[ -z "$PACKAGE_NAME" ] && PACKAGE_NAME=$(npm run env | grep "npm_package_name" | awk -F "=" '{print $2}')
 [ -z "$DISPLAY_NAME" ] && [ "$PACKAGE_NAME" ] && DISPLAY_NAME="$PACKAGE_NAME"
 
 [ -z "$WEB_BASE_PATH" ] && WEB_BASE_PATH="/"
@@ -9,19 +8,6 @@
 [ -z "$ITERMOCIL_TASKS" ] && ITERMOCIL_TASKS="edit | test-watch | barrel-gen-watch | start"
 [ -z "$TEST_WATCH_PATHS" ] && TEST_WATCH_PATHS="$SRC | $TESTS | $TEST_HELPERS"
 [ -z "$ESLINT_PATHS" ] && ESLINT_PATHS="$SRC"
-
-[ -z "$NPM_URL" ] && NPM_URL="https://www.npmjs.com/package/$PACKAGE_NAME"
-
-[[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]
-
-[ -z "$GITHUB_USER_NAME" ] && [ ${BASH_REMATCH[1]} ] && GITHUB_USER_NAME=${BASH_REMATCH[1]}
-[ -z "$GITHUB_REPO_NAME" ] && [ ${BASH_REMATCH[2]} ] && GITHUB_REPO_NAME=${BASH_REMATCH[2]}
-[ -z "$GITHUB_REPO_PATH" ] && GITHUB_REPO_PATH="$GITHUB_USER_NAME/$GITHUB_REPO_NAME"
-[ -z "$GITHUB_USER_URL" ] && GITHUB_USER_URL="https://github.com/$GITHUB_USER_NAME"
-[ -z "$GITHUB_REPO_URL" ] && GITHUB_REPO_URL="$GITHUB_USER_URL/$GITHUB_REPO_NAME"
-[ -z "$GITHUB_ISSUES_URL" ] && GITHUB_ISSUES_URL="$GITHUB_REPO_URL/issues"
-[ -z "$GITHUB_PAGES_URL" ] && GITHUB_PAGES_URL="https://$GITHUB_USER_NAME.github.io/$GITHUB_REPO_NAME"
-[ -z "$GITHUB_PAGES_CNAME" ] && [[ ! "$WEB_HOST_NAME" == *".github.io" ]] && GITHUB_PAGES_CNAME="$WEB_HOST_NAME"
 
 [ -z "$ISSUES_URL" ] && ISSUES_URL="$GITHUB_ISSUES_URL"
 [ -z "$ISSUES_EMAIL" ] && ISSUES_EMAIL="$AUTHOR_EMAIL"

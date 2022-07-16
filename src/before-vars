@@ -2,25 +2,23 @@
 
 export VERSION_DATE=$(date)
 
+export PACKAGE_NAME=$(package "name.split('/').pop()")
+export DISPLAY_NAME
+
 export TASKS="./tasks"
 export TASK_VARS="./task-vars"
 
 export ITERMOCIL_CONFIG="./itermocil.yml"
-export ITERMOCIL_TASKS=
+export ITERMOCIL_TASKS
 
-export PACKAGE_NAME=$(package "name.split('/').pop()")
-export DISPLAY_NAME=
+export GITHUB_USER_NAME
+export GITHUB_USER_URL
+export GITHUB_REPO_URL
+export GITHUB_ISSUES_URL
+export ISSUES_URL
+export ISSUES_EMAIL
 
-package_description=$(package description)
-
-export GITHUB_USER_NAME=
-export GITHUB_USER_URL=
-export GITHUB_REPO_URL=
-export GITHUB_ISSUES_URL=
-export ISSUES_URL=
-export ISSUES_EMAIL=
-
-export SOURCE_CODE_URL=
+export SOURCE_CODE_URL
 
 export GIT_IGNORE="./.gitignore"
 export GIT_BRANCH=$(git branch --show-current)
@@ -32,7 +30,7 @@ export BARREL_PATHS="$MODULES"
 export TESTS="./tests"
 export TEST_PATTERN="$TESTS/**/*.test.js"
 export TEST_HELPERS="./test-helpers"
-export TEST_WATCH_PATHS=
+export TEST_WATCH_PATHS
 
 export COVERAGE="./coverage"
 export COVERAGE_JSON_SUMMARY="$COVERAGE/coverage-summary.json"
@@ -43,32 +41,36 @@ export METRICS_LOC="$METRICS/loc.json"
 export METRICS_SUMMARY="$METRICS/metrics-summary.json"
 
 export ESLINT_CONFIG="./.eslintrc"
-export ESLINT_PATHS=
+export ESLINT_PATHS
 
 export README="./README.md"
 export README_TEMPLATE="./README-TEMPLATE.md"
-export README_BASE_URL=
-export README_GEN=
+export README_BASE_URL
+export README_GEN
 
 export INDEX_HTML="$SRC/index.html"
-export INDEX_HTML_URL=
-export INDEX_HTML_TITLE=
-export INDEX_HTML_DESCRIPTION="$package_description"
-export INDEX_HTML_AUTHOR=
-export INDEX_HTML_HEAD=
+export INDEX_HTML_URL
+export INDEX_HTML_TITLE
+export INDEX_HTML_DESCRIPTION
+export INDEX_HTML_AUTHOR
+export INDEX_HTML_HEAD
 
-export WEB_HOST_NAME=
-export WEB_BASE_PATH=
-export WEB_URL=
+export WEB_HOST_NAME
+export WEB_BASE_PATH
+export WEB_URL
 
 export STATIC="./static"
 export DIST="./dist"
 export DATA="./data"
 
 export GITHUB_PAGES_PATH="./docs"
-export GITHUB_PAGES_CNAME=
+export GITHUB_PAGES_CNAME
 
 export COV_BRANCHES=100
 export COV_LINES=100
 export COV_FUNCTIONS=100
 export COV_STATEMENTS=100
+
+export IS_ON_NPM
+export IS_ON_GHP
+export IS_ON_SLS

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+[ "$IS_ON_GHP" = "true" ] && npx task dist-github-pages
+
+[ "$IS_ON_NPM" = "true" ] && npm publish
+
+[ "$IS_ON_SLS" = "true" ] && sls deploy

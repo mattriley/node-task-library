@@ -1,5 +1,7 @@
 #!/bin/bash
 
+package_description=$(package description)
+
 [ -z "$DISPLAY_NAME" ] && [ "$PACKAGE_NAME" ] && DISPLAY_NAME="$PACKAGE_NAME"
 
 [ -z "$WEB_BASE_PATH" ] && WEB_BASE_PATH="/"
@@ -24,8 +26,24 @@ fi
 [ -z "$SOURCE_CODE_URL" ] && [ "$GITHUB_REPO_URL" ] && SOURCE_CODE_URL="$GITHUB_REPO_URL"
 
 [ -z "$INDEX_HTML_TITLE" ] && [ "$DISPLAY_NAME" ] && INDEX_HTML_TITLE="$DISPLAY_NAME"
+[ -z "$INDEX_HTML_DESCRIPTION" ] && [ "$package_description" ] && INDEX_HTML_DESCRIPTION="$package_description"
 [ -z "$INDEX_HTML_AUTHOR" ] && [ "$AUTHOR_NAME" ] && INDEX_HTML_AUTHOR="$AUTHOR_NAME"
 [ -z "$INDEX_HTML_URL" ] && [ "$WEB_URL" ] && INDEX_HTML_URL="$WEB_URL"
 
 [ -z "$README_BASE_URL" ] && [ "$GITHUB_REPO_URL" ] && README_BASE_URL="$GITHUB_REPO_URL"
 [ -z "$README_GEN" ] && README_GEN="$TASK_LIBRARY_NODE_TASKS/readme-gen.js"
+
+if [ -z "$IS_ON_NPM" ]; then
+    npm_status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "https://www.npmjs.com/package/$PACKAGE_NAME")
+    [ $npm_status_code = "200" ] && IS_ON_NPM="true" || IS_ON_NPM="false"
+fi
+
+if [ -z "$IS_ON_GHP" ]; then
+    # trailing slash is needed
+    npm_status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "https://$GITHUB_USER_NAME.github.io/$GITHUB_REPO_NAME/")
+    [ $npm_status_code = "200" ] && IS_ON_GHP="true" || IS_ON_GHP="false"
+fi
+
+if [ -z "$IS_ON_SLS" ]; then
+    [ -f "./serverless.yml" ] && IS_ON_SLS="true" || IS_ON_SLS="false"
+fi

@@ -2,6 +2,7 @@
     "name": "task-library",
     "version": "0.6.0",
     "description": "",
+    "homepage": "https://github.com/mattriley/node-task-library",
     "license": "ISC",
     "author": {
         "name": "Matt Riley",
@@ -13,6 +14,7 @@
         "url": "git+https://github.com/mattriley/node-task-library.git"
     },
     "bugs": {
+        "url": "https://github.com/mattriley/node-task-library/issues",
         "email": "m@ttriley.dev"
     },
     "bin": {

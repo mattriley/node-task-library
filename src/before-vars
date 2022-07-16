@@ -1,7 +1,5 @@
 #!/bin/bash
 
-warn_unset "GITHUB_REPO_NAME"
-
 export VERSION_DATE=$(date)
 
 export TASKS="./tasks"

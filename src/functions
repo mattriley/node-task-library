@@ -2,32 +2,37 @@
 
 # set -a # to export functions # unintended side-effects; using export -f instead
 
-export BOLD=$(tput bold)
 export NORM=$(tput sgr0)
+export BOLD=$(tput bold)
+export RED=$(tput setaf 1)
+export GRE=$(tput setaf 2)
 
 function task() {
-    TASK_NAME="$1"
-    [ -z $TASK_NAME ] && echo "Task name is required" && exit 1
+    task_name="$1"
+    [ -z $task_name ] && echo "Task name is required" && exit 1
     [ -z "$VARS" ] && load_vars
-    TASK_FILE=$(taskfile $TASK_NAME)
-    [ -z "$TASK_FILE" ] && echo -e "Task ${BOLD}$TASK_NAME${NORM} not found" && exit 1
-    chmod +x "$TASK_FILE"
-    echo -e "${NORM}⚡️ Task ${BOLD}$TASK_NAME${NORM} started" # Source: $TASK_FILE"
-    TIME_BEFORE=$(now)
-    "$TASK_FILE" "${@:2}"
-    EXIT_CODE=$?
-    TIME_AFTER=$(now)
-    TIME_TAKEN_MS=$((TIME_AFTER-TIME_BEFORE))
-    TIME_TAKEN_S=$(echo "scale=1;${TIME_TAKEN_MS}/1000" | bc)
-    [[ $TIME_TAKEN_S == .* ]] && TIME_TAKEN_S="0$TIME_TAKEN_S"
-    echo -e "${NORM}🏁 Task ${BOLD}$TASK_NAME${NORM} completed with exit code $EXIT_CODE in ${TIME_TAKEN_MS}ms (${TIME_TAKEN_S}s)"
-    exit $EXIT_CODE
+    task_file=$(taskfile $task_name)
+    [ -z "$task_file" ] && echo -e "Task ${BOLD}$task_name${NORM} not found" && exit 1
+    chmod +x "$task_file"
+    echo -e "${NORM}⚡️ Task ${BOLD}$task_name${NORM} started" # Source: $task_file"
+    time_before=$(now)
+    "$task_file" "${@:2}"
+    exit_code=$?
+    time_after=$(now)
+    time_taken_ms=$((time_after-time_before))
+    time_taken_s=$(echo "scale=1;${time_taken_ms}/1000" | bc)
+    [[ $time_taken_s == .* ]] && time_taken_s="0$time_taken_s"
+    [ $exit_code = 0 ] && icon="✅" || icon="❌"
+    echo -e "${NORM}${icon} Task ${BOLD}$task_name${NORM} completed with exit code $exit_code in ${TIME_TAKEN_MS}ms (${TIME_TAKEN_S}s)"
+    exit $exit_code
 }
 
 function load_vars() {
     export STAGE="$1"
-    printf "   Stage is ${BOLD}${STAGE:=(unset)}${NORM}. Loading task vars..."
-    ENV_BEFORE=$(env)
+    echo "⚙️  Loading task vars..."
+    warn_unset "STAGE"
+    [ "$STAGE" ] && echo "Stage is ${BOLD}${STAGE}${NORM}"
+    env_before=$(env)
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
     export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
     export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
@@ -38,17 +43,22 @@ function load_vars() {
     [ -f "$TASK_VARS" ] && source "$TASK_VARS"
     source "$TASK_LIBRARY_SRC/post-load-task-vars"
 
-    ENV_AFTER=$(env)
-    export VARS=$(sort <(echo "$ENV_BEFORE" ) <(echo "$ENV_AFTER") | uniq -u)
-    echo " done"
+    env_after=$(env)
+    export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
+    echo "🏁 Finished loading task vars"
+    echo
 }
 
 function taskfile() {
-    TASK_NAME="$1"
-    [ -z $TASK_NAME ] && echo "Task name is required" && exit 1
-    TASK_PATHS=("$TASKS" "$TASK_LIBRARY_TASKS")
-    for TASK_PATH in ${TASK_PATHS[@]}; do [ -f "$TASK_PATH/$1" ] && TASK_FILE="$TASK_PATH/$1" && break; done
-    echo "$TASK_FILE"
+    task_name="$1"
+    [ -z $task_name ] && echo "Task name is required" && exit 1
+    task_paths=("$TASKS" "$TASK_LIBRARY_TASKS")
+    for task_path in ${task_paths[@]}; do [ -f "$task_path/$task_name" ] && task_file="$task_path/$task_name" && break; done
+    echo "$task_file"
+}
+
+function warn_unset() {
+    [ -z "${!1}" ] && echo "⚠️  $1 is unset"
 }
 
 function package() {
@@ -65,6 +75,7 @@ function ssm {
 
 export -f load_vars
 export -f taskfile
+export -f warn_unset
 export -f package 
 export -f now
 export -f ssm

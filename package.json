@@ -1,16 +1,20 @@
 {
     "name": "task-library",
-    "version": "0.5.15",
+    "version": "0.5.16",
     "description": "",
-    "author": "Matt Riley",
-    "license": "ISC",
     "homepage": "https://github.com/mattriley/node-task-library",
+    "license": "ISC",
+    "author": {
+        "name": "Matt Riley",
+        "email": "m@ttriley.dev",
+        "url": "https://github.com/mattriley"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/mattriley/node-task-library.git"
     },
     "bugs": {
-        "url": "https://github.com/mattriley/node-task-library/issues"
+        "email": "m@ttriley.dev"
     },
     "bin": {
         "task": "./bin/task"
@@ -19,6 +23,10 @@
         "src/**/*",
         "bin/**/*"
     ],
+    "scripts": {
+        "test": "npx task test",
+        "start": "npx task start"
+    },
     "dependencies": {
         "c8": "^7.11.3",
         "chokidar-cli": "^3.0.0",

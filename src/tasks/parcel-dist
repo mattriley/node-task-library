@@ -1,7 +1,8 @@
 #!/bin/bash
   
 PARCEL_COMMAND="${1:-build}"
-[[ $PARCEL_COMMAND = 'build' ]] && BASE_PATH="$WEB_BASE_PATH" || BASE_PATH="/"
+[ "$PARCEL_COMMAND" = "build" ] && BASE_PATH="$WEB_BASE_PATH"
+[ -z "$BASE_PATH" ] && BASE_PATH="/"
 
 npx task code-gen
 npx task index-html-gen

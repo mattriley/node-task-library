@@ -23,7 +23,7 @@ function task() {
     time_taken_s=$(echo "scale=1;${time_taken_ms}/1000" | bc)
     [[ $time_taken_s == .* ]] && time_taken_s="0$time_taken_s"
     [ $exit_code = 0 ] && icon="✅" || icon="❌"
-    echo -e "${NORM}${icon} Task ${BOLD}$task_name${NORM} completed with exit code $exit_code in ${TIME_TAKEN_MS}ms (${TIME_TAKEN_S}s)"
+    echo -e "${NORM}${icon} Task ${BOLD}$task_name${NORM} completed with exit code $exit_code in ${time_taken_ms}ms (${time_taken_s}s)"
     exit $exit_code
 }
 

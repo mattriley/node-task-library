@@ -2,8 +2,7 @@
 
 [ -z "$DISPLAY_NAME" ] && [ "$PACKAGE_NAME" ] && DISPLAY_NAME="$PACKAGE_NAME"
 
-[ -z "$WEB_BASE_PATH" ] && WEB_BASE_PATH="/"
-[ -z "$WEB_URL" ] && [ "$WEB_HOST_NAME" ] && [ "$WEB_BASE_PATH" ] && WEB_URL="https://$WEB_HOST_NAME$WEB_BASE_PATH"
+[ -z "$WEB_URL" ] && [ "$WEB_HOST_NAME" ] && [ "$WEB_BASE_PATH" ] && WEB_URL="https://$WEB_HOST_NAME/$WEB_BASE_PATH"
 
 [ -z "$ITERMOCIL_TASKS" ] && ITERMOCIL_TASKS="edit | test-watch | barrel-gen-watch | start"
 [ -z "$TEST_WATCH_PATHS" ] && TEST_WATCH_PATHS="$SRC | $TESTS | $TEST_HELPERS"

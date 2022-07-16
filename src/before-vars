@@ -8,34 +8,21 @@ export TASKS="./tasks"
 export TASK_VARS="./task-vars"
 
 export ITERMOCIL_CONFIG="./itermocil.yml"
-export ITERMOCIL_TASKS="edit | test-watch | barrel-gen-watch | start"
+export ITERMOCIL_TASKS=
 
 export PACKAGE_NAME=$(package "name.split('/').pop()")
 export DISPLAY_NAME=
 
 package_description=$(package description)
-package_author_name=$(package author.name)$(package author)
-package_author_email=$(package author.email)
-package_author_url=$(package author.url)
-package_source_url=$(node "$TASK_LIBRARY_NODE_TASKS/source-url.js")
 
-export GITHUB_REPO_USER_NAME="$AUTHOR_GITHUB_USER_NAME"
-
-export AUTHOR_GITHUB_URL="https://github.com/$GITHUB_REPO_USER_NAME"
-export AUTHOR_NAME=${AUTHOR_NAME:=$package_author_name}
-export AUTHOR_EMAIL=${AUTHOR_EMAIL:=$package_author_email}
-export AUTHOR_URL=${AUTHOR_GITHUB_URL:=$package_author_url}
-
+export GITHUB_USER_NAME=
+export GITHUB_USER_URL=
 export GITHUB_REPO_URL=
-[ $GITHUB_REPO_NAME ] && GITHUB_REPO_URL="$AUTHOR_GITHUB_URL/$GITHUB_REPO_NAME"
+export GITHUB_ISSUES_URL=
+export ISSUES_URL=
+export ISSUES_EMAIL=
 
-export GITHUB_REPO_ISSUES_URL=
-[ "$GITHUB_REPO_URL" ] && GITHUB_REPO_ISSUES_URL="$GITHUB_REPO_URL/issues"
-
-export ISSUES_URL=${GITHUB_REPO_ISSUES_URL}
-export ISSUES_EMAIL=${AUTHOR_EMAIL}
-
-export SOURCE_CODE_URL=${GITHUB_REPO_URL:=$package_source_url}
+export SOURCE_CODE_URL=
 
 export GIT_IGNORE="./.gitignore"
 export GIT_BRANCH=$(git branch --show-current)
@@ -47,7 +34,7 @@ export BARREL_PATHS="$MODULES"
 export TESTS="./tests"
 export TEST_PATTERN="$TESTS/**/*.test.js"
 export TEST_HELPERS="./test-helpers"
-export TEST_WATCH_PATHS="$SRC | $TESTS | $TEST_HELPERS"
+export TEST_WATCH_PATHS=
 
 export COVERAGE="./coverage"
 export COVERAGE_JSON_SUMMARY="$COVERAGE/coverage-summary.json"
@@ -58,22 +45,22 @@ export METRICS_LOC="$METRICS/loc.json"
 export METRICS_SUMMARY="$METRICS/metrics-summary.json"
 
 export ESLINT_CONFIG="./.eslintrc"
-export ESLINT_PATHS="$SRC"
+export ESLINT_PATHS=
 
 export README="./README.md"
 export README_TEMPLATE="./README-TEMPLATE.md"
-export README_BASE_URL=$(package homepage)
-export README_GEN="$TASK_LIBRARY_NODE_TASKS/readme-gen.js"
+export README_BASE_URL=
+export README_GEN=
 
 export INDEX_HTML="$SRC/index.html"
 export INDEX_HTML_URL=
 export INDEX_HTML_TITLE=
 export INDEX_HTML_DESCRIPTION="$package_description"
-export INDEX_HTML_AUTHOR="$AUTHOR_NAME"
+export INDEX_HTML_AUTHOR=
 export INDEX_HTML_HEAD=
 
 export WEB_HOST_NAME=
-export WEB_BASE_PATH="/"
+export WEB_BASE_PATH=
 export WEB_URL=
 
 export STATIC="./static"

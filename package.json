@@ -1,8 +1,7 @@
 {
     "name": "task-library",
-    "version": "0.5.16",
+    "version": "0.6.0",
     "description": "",
-    "homepage": "https://github.com/mattriley/node-task-library",
     "license": "ISC",
     "author": {
         "name": "Matt Riley",

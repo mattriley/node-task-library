@@ -39,9 +39,9 @@ function load_vars() {
     export TASK_LIBRARY_NODE_TASKS="$TASK_LIBRARY_SRC/node-tasks"
     export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
 
-    source "$TASK_LIBRARY_SRC/default-task-vars"
+    source "$TASK_LIBRARY_SRC/before-vars"
     [ -f "$TASK_VARS" ] && source "$TASK_VARS"
-    source "$TASK_LIBRARY_SRC/post-load-task-vars"
+    source "$TASK_LIBRARY_SRC/after-vars"
 
     env_after=$(env)
     export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)

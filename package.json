@@ -1,6 +1,6 @@
 {
     "name": "task-library",
-    "version": "0.6.1",
+    "version": "0.6.2",
     "description": "",
     "homepage": "https://github.com/mattriley/node-task-library",
     "license": "ISC",
@@ -9,10 +9,7 @@
         "email": "m@ttriley.dev",
         "url": "https://github.com/mattriley"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/mattriley/node-task-library.git"
-    },
+    "repository": "github:mattriley/node-task-library",
     "bugs": {
         "url": "https://github.com/mattriley/node-task-library/issues",
         "email": "m@ttriley.dev"

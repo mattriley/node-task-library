@@ -2,23 +2,22 @@
 
 export VERSION_DATE=$(date)
 
+# origin_url=$(git config --get remote.origin.url)
+
+# export GITHUB_USER_NAME=$(node )
+
 export PACKAGE_NAME=$(package "name.split('/').pop()")
 export DISPLAY_NAME
+
+export WEB_HOST_NAME
+export WEB_BASE_PATH
+export WEB_URL
 
 export TASKS="./tasks"
 export TASK_VARS="./task-vars"
 
 export ITERMOCIL_CONFIG="./itermocil.yml"
 export ITERMOCIL_TASKS
-
-export GITHUB_USER_NAME
-export GITHUB_USER_URL
-export GITHUB_REPO_URL
-export GITHUB_ISSUES_URL
-export ISSUES_URL
-export ISSUES_EMAIL
-
-export SOURCE_CODE_URL
 
 export GIT_IGNORE="./.gitignore"
 export GIT_BRANCH=$(git branch --show-current)
@@ -43,6 +42,21 @@ export METRICS_SUMMARY="$METRICS/metrics-summary.json"
 export ESLINT_CONFIG="./.eslintrc"
 export ESLINT_PATHS
 
+export NPM_URL
+
+export GITHUB_USER_NAME
+export GITHUB_REPO_PATH 
+export GITHUB_USER_URL
+export GITHUB_REPO_URL
+export GITHUB_ISSUES_URL
+export GITHUB_PAGES_URL 
+export GITHUB_PAGES_CNAME
+export GITHUB_PAGES_PATH="./docs"
+
+export ISSUES_URL
+export ISSUES_EMAIL
+export SOURCE_CODE_URL
+
 export README="./README.md"
 export README_TEMPLATE="./README-TEMPLATE.md"
 export README_BASE_URL
@@ -55,22 +69,11 @@ export INDEX_HTML_DESCRIPTION
 export INDEX_HTML_AUTHOR
 export INDEX_HTML_HEAD
 
-export WEB_HOST_NAME
-export WEB_BASE_PATH
-export WEB_URL
-
 export STATIC="./static"
 export DIST="./dist"
 export DATA="./data"
-
-export GITHUB_PAGES_PATH="./docs"
-export GITHUB_PAGES_CNAME
 
 export COV_BRANCHES=100
 export COV_LINES=100
 export COV_FUNCTIONS=100
 export COV_STATEMENTS=100
-
-export IS_ON_NPM
-export IS_ON_GHP
-export IS_ON_SLS

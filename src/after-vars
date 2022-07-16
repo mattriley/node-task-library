@@ -1,49 +1,35 @@
 #!/bin/bash
 
-package_description=$(package description)
-
 [ -z "$DISPLAY_NAME" ] && [ "$PACKAGE_NAME" ] && DISPLAY_NAME="$PACKAGE_NAME"
 
 [ -z "$WEB_BASE_PATH" ] && WEB_BASE_PATH="/"
 [ -z "$WEB_URL" ] && [ "$WEB_HOST_NAME" ] && [ "$WEB_BASE_PATH" ] && WEB_URL="https://$WEB_HOST_NAME$WEB_BASE_PATH"
 
-if [[ ! "$WEB_HOST_NAME" == *".github.io" ]]; then
-    export GITHUB_PAGES_CNAME=${GITHUB_PAGES_CNAME:=$WEB_HOST_NAME}
-fi
-
 [ -z "$ITERMOCIL_TASKS" ] && ITERMOCIL_TASKS="edit | test-watch | barrel-gen-watch | start"
 [ -z "$TEST_WATCH_PATHS" ] && TEST_WATCH_PATHS="$SRC | $TESTS | $TEST_HELPERS"
 [ -z "$ESLINT_PATHS" ] && ESLINT_PATHS="$SRC"
 
-[ -z "$GITHUB_USER_NAME" ] && GITHUB_USER_NAME="$AUTHOR_GITHUB_USER_NAME"
-[ -z "$GITHUB_USER_URL" ] && [ "$GITHUB_USER_NAME" ] && GITHUB_USER_URL="https://github.com/$GITHUB_USER_NAME"
-[ -z "$GITHUB_REPO_URL" ] && [ $GITHUB_REPO_NAME ] && GITHUB_REPO_URL="$GITHUB_USER_URL/$GITHUB_REPO_NAME"
-[ -z "$GITHUB_ISSUES_URL" ] && [ "$GITHUB_REPO_URL" ] && GITHUB_ISSUES_URL="$GITHUB_REPO_URL/issues"
-[ -z "$GITHUB_REPO_ISSUES_URL" ] && ISSUES_URL="$GITHUB_REPO_ISSUES_URL"
+[ -z "$NPM_URL" ] && NPM_URL="https://www.npmjs.com/package/$PACKAGE_NAME"
 
-[ -z "$ISSUES_URL" ] && [ "$GITHUB_ISSUES_URL" ] && ISSUES_URL="$GITHUB_ISSUES_URL"
-[ -z "$ISSUES_EMAIL" ] && [ "$AUTHOR_EMAIL" ] && ISSUES_EMAIL="$AUTHOR_EMAIL"
-[ -z "$SOURCE_CODE_URL" ] && [ "$GITHUB_REPO_URL" ] && SOURCE_CODE_URL="$GITHUB_REPO_URL"
+[[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]
 
-[ -z "$INDEX_HTML_TITLE" ] && [ "$DISPLAY_NAME" ] && INDEX_HTML_TITLE="$DISPLAY_NAME"
-[ -z "$INDEX_HTML_DESCRIPTION" ] && [ "$package_description" ] && INDEX_HTML_DESCRIPTION="$package_description"
-[ -z "$INDEX_HTML_AUTHOR" ] && [ "$AUTHOR_NAME" ] && INDEX_HTML_AUTHOR="$AUTHOR_NAME"
+[ -z "$GITHUB_USER_NAME" ] && [ ${BASH_REMATCH[1]} ] && GITHUB_USER_NAME=${BASH_REMATCH[1]}
+[ -z "$GITHUB_REPO_NAME" ] && [ ${BASH_REMATCH[2]} ] && GITHUB_REPO_NAME=${BASH_REMATCH[2]}
+[ -z "$GITHUB_REPO_PATH" ] && GITHUB_REPO_PATH="$GITHUB_USER_NAME/$GITHUB_REPO_NAME"
+[ -z "$GITHUB_USER_URL" ] && GITHUB_USER_URL="https://github.com/$GITHUB_USER_NAME"
+[ -z "$GITHUB_REPO_URL" ] && GITHUB_REPO_URL="$GITHUB_USER_URL/$GITHUB_REPO_NAME"
+[ -z "$GITHUB_ISSUES_URL" ] && GITHUB_ISSUES_URL="$GITHUB_REPO_URL/issues"
+[ -z "$GITHUB_PAGES_URL" ] && GITHUB_PAGES_URL="https://$GITHUB_USER_NAME.github.io/$GITHUB_REPO_NAME"
+[ -z "$GITHUB_PAGES_CNAME" ] && [[ ! "$WEB_HOST_NAME" == *".github.io" ]] && GITHUB_PAGES_CNAME="$WEB_HOST_NAME"
+
+[ -z "$ISSUES_URL" ] && ISSUES_URL="$GITHUB_ISSUES_URL"
+[ -z "$ISSUES_EMAIL" ] && ISSUES_EMAIL="$AUTHOR_EMAIL"
+[ -z "$SOURCE_CODE_URL" ] && SOURCE_CODE_URL="$GITHUB_REPO_URL"
+
+[ -z "$INDEX_HTML_TITLE" ] && INDEX_HTML_TITLE="$DISPLAY_NAME"
+[ -z "$INDEX_HTML_DESCRIPTION" ] && INDEX_HTML_DESCRIPTION="$(package description)"
+[ -z "$INDEX_HTML_AUTHOR" ] && INDEX_HTML_AUTHOR="$AUTHOR_NAME"
 [ -z "$INDEX_HTML_URL" ] && [ "$WEB_URL" ] && INDEX_HTML_URL="$WEB_URL"
 
-[ -z "$README_BASE_URL" ] && [ "$GITHUB_REPO_URL" ] && README_BASE_URL="$GITHUB_REPO_URL"
+[ -z "$README_BASE_URL" ] && README_BASE_URL="$GITHUB_REPO_URL"
 [ -z "$README_GEN" ] && README_GEN="$TASK_LIBRARY_NODE_TASKS/readme-gen.js"
-
-if [ -z "$IS_ON_NPM" ]; then
-    npm_status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "https://www.npmjs.com/package/$PACKAGE_NAME")
-    [ $npm_status_code = "200" ] && IS_ON_NPM="true" || IS_ON_NPM="false"
-fi
-
-if [ -z "$IS_ON_GHP" ]; then
-    # trailing slash is needed
-    npm_status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "https://$GITHUB_USER_NAME.github.io/$GITHUB_REPO_NAME/")
-    [ $npm_status_code = "200" ] && IS_ON_GHP="true" || IS_ON_GHP="false"
-fi
-
-if [ -z "$IS_ON_SLS" ]; then
-    [ -f "./serverless.yml" ] && IS_ON_SLS="true" || IS_ON_SLS="false"
-fi

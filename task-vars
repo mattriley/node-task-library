@@ -1,7 +1,5 @@
 #!/bin/bash
 
-export GITHUB_REPO_NAME="node-task-library"
-
 export COV_BRANCHES=0
 export COV_LINES=0
 export COV_FUNCTIONS=0

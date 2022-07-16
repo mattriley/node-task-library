@@ -73,9 +73,27 @@ function ssm {
     echo $(aws ssm get-parameter --region $AWS_REGION --name "$1" --with-decryption | jq -r '.Parameter.Value')
 }
 
+function is_on_npm() {
+    echo "$NPM_URL"
+    npm_status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "$NPM_URL")
+    [ $npm_status_code = "200" ] && exit 0 || exit 1
+}
+
+function is_on_ghp() {    
+    npm_status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "$GITHUB_PAGES_URL/") # trailing slash is needed
+    [ $npm_status_code = "200" ] && exit 0 || exit 1
+}
+
+function is_on_sls() {
+    [ -f "./serverless.yml" ] && exit 0 || exit 1
+}
+
 export -f load_vars
 export -f taskfile
 export -f warn_unset
 export -f package 
 export -f now
 export -f ssm
+export -f is_on_npm
+export -f is_on_ghp
+export -f is_on_sls

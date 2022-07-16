@@ -24,6 +24,8 @@ if (process.env.ISSUES_EMAIL) p.bugs.email = process.env.ISSUES_EMAIL;
 if (p.homepage) delete p.homepage;
 if (process.env.GITHUB_REPO_URL) p.homepage = process.env.GITHUB_REPO_URL;
 
+p.repository = `github:${process.env.GITHUB_REPO_PATH}`;
+
 if (!p.scripts) p.scripts = {};
 p.scripts.test = 'npx task test';
 p.scripts.start = 'npx task start';

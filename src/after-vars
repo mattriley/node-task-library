@@ -2,6 +2,15 @@
 
 [ -z "$DISPLAY_NAME" ] && [ "$PACKAGE_NAME" ] && DISPLAY_NAME="$PACKAGE_NAME"
 
+[ -z "$AUTHOR_NAME" ] && AUTHOR_NAME=$(package author.name)
+[ -z "$AUTHOR_NAME" ] && AUTHOR_NAME="$DEFAULT_AUTHOR_NAME"
+
+[ -z "$AUTHOR_EMAIL" ] && AUTHOR_EMAIL=$(package author.email)
+[ -z "$AUTHOR_EMAIL" ] && AUTHOR_EMAIL="$DEFAULT_AUTHOR_EMAIL"
+
+[ -z "$AUTHOR_URL" ] && AUTHOR_URL=$(package author.url)
+[ -z "$AUTHOR_URL" ] && AUTHOR_URL="$DEFAULT_AUTHOR_URL"
+
 [ -z "$WEB_URL" ] && [ "$WEB_HOST_NAME" ] && [ "$WEB_BASE_PATH" ] && WEB_URL="https://$WEB_HOST_NAME/$WEB_BASE_PATH"
 [ -z "$WEB_URL" ] && [ "$WEB_HOST_NAME" ] && WEB_URL="https://$WEB_HOST_NAME"
 

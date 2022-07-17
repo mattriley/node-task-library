@@ -2,9 +2,11 @@
 
 export VERSION_DATE=$(date)
 
-export PACKAGE_NAME && [ -z "$PACKAGE_NAME" ] && PACKAGE_NAME=$(npm run env | grep "npm_package_name" | awk -F "=" '{print $2}')
-
+export PACKAGE_NAME=$(package name)
 export DISPLAY_NAME
+export AUTHOR_NAME
+export AUTHOR_EMAIL
+export AUTHOR_URL
 
 export WEB_HOST_NAME
 export WEB_BASE_PATH

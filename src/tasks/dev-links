@@ -6,7 +6,7 @@ rm -rf "$NODE_MODULES_LINKS"
 mkdir -p "$NODE_MODULES_LINKS"
 
 for n in "${package_names[@]}"; do
-    target="$NODE_MODULES/$n"
-    link="$NODE_MODULES_LINKS/$n"
+    target="$(pwd)/$NODE_MODULES/$n"
+    link="$(pwd)/$NODE_MODULES_LINKS/$n"
     [ -d "$target" ] && ln -s "$target" "$link"
 done

@@ -61,7 +61,7 @@ function warn_unset() {
 }
 
 function package() {
-    echo $(cat ./package.json | jq -r ".$1")
+    echo $(cat ./package.json | jq -r ".$1 // empty")
 }
 
 function now() { 

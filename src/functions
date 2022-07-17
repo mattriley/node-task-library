@@ -61,7 +61,7 @@ function warn_unset() {
 }
 
 function package() {
-    node -p "require('./package.json').$1 || ''"
+    echo $(cat ./package.json | jq -r ".$1")
 }
 
 function now() { 

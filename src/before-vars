@@ -15,6 +15,10 @@ export WEB_URL
 export TASKS="./tasks"
 export TASK_VARS="./task-vars"
 
+export NODE_MODULES="./node_modules"
+export NODE_MODULES_LINKS="./node_modules_links"
+export NODE_MODULES_LINK_PACKAGES="module-composer | module-indexgen | task-library"
+
 export ITERMOCIL_CONFIG="./itermocil.yml"
 export ITERMOCIL_TASKS
 

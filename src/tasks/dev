@@ -1,3 +1,4 @@
 #!/bin/bash
-  
+
+npx task dev-links
 npx task itermocil

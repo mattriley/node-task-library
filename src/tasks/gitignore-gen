@@ -16,6 +16,7 @@ cat <<END >> $GIT_IGNORE
 /task-library
 /temp
 /node_modules
+/node_modules*
 /npm-debug.log
 END
 

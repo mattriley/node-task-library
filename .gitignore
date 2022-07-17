@@ -11,6 +11,7 @@
 /itermocil.yml
 /metrics
 /node_modules
+/node_modules*
 /npm-debug.log
 /task-library
 /temp

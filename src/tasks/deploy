@@ -5,3 +5,5 @@
 [ "$(is_on_ghp)" = "0" ] && npx task dist-github-pages
 
 [ "$(is_on_sls)" = "0" ] && sls deploy
+
+(exit 0)

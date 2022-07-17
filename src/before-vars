@@ -20,7 +20,7 @@ export NODE_MODULES_LINKS="./node_modules_links"
 export NODE_MODULES_LINK_PACKAGES="module-composer | module-indexgen | task-library"
 
 export ITERMOCIL_CONFIG="./itermocil.yml"
-export ITERMOCIL_TASKS
+export ITERMOCIL_TASKS="edit | test-watch | barrel-gen-watch | start"
 
 export GIT_IGNORE="./.gitignore"
 export GIT_BRANCH=$(git branch --show-current)

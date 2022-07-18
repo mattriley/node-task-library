@@ -27,9 +27,10 @@ function task() {
 }
 
 function load_vars() {
-    export STAGE="${1:local}"
+    export STAGE=${1:-local}
+    echo "Stage is ${BOLD}${STAGE}${NORM}"
     echo "⚙️  Loading task vars..."
-    [ "$STAGE" ] && echo "Stage is ${BOLD}${STAGE}${NORM}"
+
     env_before=$(env)
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
     export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"

@@ -10,7 +10,7 @@ cat <<END >> $GIT_IGNORE
 /build
 /config.*
 /coverage
-/dist
+/dist*
 /itermocil.yml
 /metrics
 /task-library

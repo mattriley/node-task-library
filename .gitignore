@@ -8,6 +8,7 @@
 /config.*
 /coverage
 /dist
+/dist*
 /itermocil.yml
 /metrics
 /node_modules

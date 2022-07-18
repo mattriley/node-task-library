@@ -30,5 +30,3 @@
 
 [ -z "$README_BASE_URL" ] && README_BASE_URL="$GITHUB_REPO_URL"
 [ -z "$README_GEN" ] && README_GEN="$TASK_LIBRARY_NODE_TASKS/readme-gen.js"
-
-[ -z "$DIST" ] && DIST="./dist-$STAGE"

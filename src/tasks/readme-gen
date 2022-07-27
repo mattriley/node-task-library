@@ -10,7 +10,7 @@ if grep -q "@node-loader/babel" "./package.json"; then
     OPTIONS+=" --experimental-loader @node-loader/babel"
 fi
 
-node ${OPTIONS[@]} "$README_GEN" > "$README"
+BABEL_ENV="task" node ${OPTIONS[@]} "$README_GEN" > "$README"
 
 npx task doctoc
 

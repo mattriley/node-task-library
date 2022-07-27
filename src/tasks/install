@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if grep -q "react" "./package.json"; then
+    
+    npm -D i \
+        "@babel/core" \
+        "@babel/preset-env" \
+        "@babel/preset-react" \
+        "@node-loader/babel" \
+        "eslint-plugin-react"
+
+fi
+
+if grep -q "jest" "./package.json"; then
+
+    npm -D i \
+        "jest-environment-jsdom"
+
+fi

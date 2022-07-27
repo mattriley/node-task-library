@@ -1,0 +1,11 @@
+{
+    "testEnvironment": "jsdom",
+    "transform": {
+        "^.+\\.*js?$": "babel-jest"
+    },
+    "coverageReporters": [
+        "text-summary",
+        "json-summary",
+        "lcov"
+    ]
+}

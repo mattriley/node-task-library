@@ -2,8 +2,10 @@
 
 set -e
 
-npx task code-gen
+npx task babel-config-gen
+npx task jest-config-gen
 npx task lint-config-gen
+npx task code-gen
 npx task lint
 npx task cov-check
 npx task sloc

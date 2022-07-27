@@ -1,0 +1,8 @@
+#!/bin/bash
+  
+if grep -q "jest" "./package.json"; then
+    
+    cp "$TASK_LIBRARY_LIB/jest.config.json" "$JEST_CONFIG"
+    git add "$JEST_CONFIG"
+
+fi

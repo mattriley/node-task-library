@@ -5,9 +5,9 @@ set -e
 npx task package-gen
 npx task gitignore-gen
 
-[ grep -q "react" "$PACKAGE" ] && npx task babel-config-gen
-[ grep -q "jest" "$PACKAGE" ] && npx task jest-config-gen
-[ grep -q "eslint" "$PACKAGE" ] && npx task eslint-config-gen
+[ $(grep -q "react" "$PACKAGE") ] && npx task babel-config-gen
+[ $(grep -q "jest" "$PACKAGE") ] && npx task jest-config-gen
+[ $(grep -q "eslint" "$PACKAGE") ] && npx task eslint-config-gen
 
 npx task code-gen
 npx task lint

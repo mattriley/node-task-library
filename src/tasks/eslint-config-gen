@@ -1,5 +1,4 @@
 #!/bin/bash
   
 echo "$(node $TASK_LIBRARY_NODE_TASKS/eslint-config-generator.js)" > "$ESLINT_CONFIG"
-
 git add "$ESLINT_CONFIG"

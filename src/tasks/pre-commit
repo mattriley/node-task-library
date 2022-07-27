@@ -2,14 +2,17 @@
 
 set -e
 
-npx task babel-config-gen
-npx task jest-config-gen
-npx task lint-config-gen
+npx task package-gen
+npx task gitignore-gen
+
+[ grep -q "react" "$PACKAGE" ] && npx task babel-config-gen
+[ grep -q "jest" "$PACKAGE" ] && npx task jest-config-gen
+[ grep -q "eslint" "$PACKAGE" ] && npx task eslint-config-gen
+
 npx task code-gen
 npx task lint
 npx task cov-check
 npx task sloc
 npx task metrics-summary
-npx task readme-gen
-npx task gitignore-gen
-npx task package-gen
+
+[ -f "$README_TEMPLATE" ] && npx task readme-gen

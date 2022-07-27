@@ -2,6 +2,7 @@
 
 export VERSION_DATE=$(date)
 
+export PACKAGE="./package.json"
 export PACKAGE_NAME=$(package name)
 export DISPLAY_NAME
 export AUTHOR_NAME
@@ -30,7 +31,7 @@ export MODULES="$SRC/modules"
 export BARREL_PATHS="$MODULES"
 
 export TESTS="./tests"
-export TEST_PATTERN="$TESTS/**/*.test.js"
+export TEST_PATTERN="$TESTS/**/*.test.{js,mjs}"
 export TEST_HELPERS="./test-helpers"
 export TEST_WATCH_PATHS
 

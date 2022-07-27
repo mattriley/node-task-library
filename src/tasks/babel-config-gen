@@ -1,8 +1,4 @@
 #!/bin/bash
   
-if grep -q "react" "./package.json"; then
-    
-    cp "$TASK_LIBRARY_LIB/babel.config.json" "$BABEL_CONFIG"
-    git add "$BABEL_CONFIG"
-
-fi
+cp "$TASK_LIBRARY_LIB/babel.config.json" "$BABEL_CONFIG"
+git add "$BABEL_CONFIG"

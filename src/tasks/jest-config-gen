@@ -1,8 +1,4 @@
 #!/bin/bash
   
-if grep -q "jest" "./package.json"; then
-    
-    echo "$(node $TASK_LIBRARY_NODE_TASKS/jest-config-generator.js)" > "$JEST_CONFIG"
-    git add "$JEST_CONFIG"
-
-fi
+echo "$(node $TASK_LIBRARY_NODE_TASKS/jest-config-generator.js)" > "$JEST_CONFIG"
+git add "$JEST_CONFIG"

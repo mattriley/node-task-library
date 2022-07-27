@@ -7,5 +7,5 @@ mkdir -p "$TASKS"
 
 echo -e "${shebang}npx task jest-test $args" > "$TASKS/test"
 echo -e "${shebang}npx task jest-test-watch $args" > "$TASKS/test-watch"
-echo -e "${shebang}npx task jest-cov $args" > "$TASKS/test-cov"
-echo -e "${shebang}npx task jest-cov-check $args" > "$TASKS/test-cov-check"
+echo -e "${shebang}npx task jest-cov $args" > "$TASKS/cov"
+echo -e "${shebang}npx task jest-cov-check $args" > "$TASKS/cov-check"

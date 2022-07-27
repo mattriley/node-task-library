@@ -1,3 +1,0 @@
-#!/bin/bash
-
-[ -d ./task-library ] && unlink ./task-library

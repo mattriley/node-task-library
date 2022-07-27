@@ -43,7 +43,7 @@ export METRICS_COV="$METRICS/cov.json"
 export METRICS_LOC="$METRICS/loc.json"
 export METRICS_SUMMARY="$METRICS/metrics-summary.json"
 
-export ESLINT_CONFIG="./.eslintrc"
+export ESLINT_CONFIG="./.eslintrc.json"
 export ESLINT_PATHS
 
 [[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]

@@ -1,4 +1,4 @@
 #!/bin/bash
-  
-cp "$TASK_LIBRARY_LIB/babel.config.json" "$BABEL_CONFIG"
+
+echo "$(node $TASK_LIBRARY_NODE_TASKS/babel-config-generator.js)" > "$BABEL_CONFIG"
 git add "$BABEL_CONFIG"

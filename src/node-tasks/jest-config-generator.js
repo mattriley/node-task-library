@@ -1,6 +1,6 @@
 const process = require('process');
 const logJson = require('../lib/log-json');
-const jestConfig = require('../lib/jest.config.json');
+const jestConfig = require('../configs/jest.config.json');
 
 jestConfig.coverageThreshold = {
     global: {

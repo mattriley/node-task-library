@@ -1,6 +1,6 @@
 const p = require('../lib/package');
 const logJson = require('../lib/log-json');
-const eslintConfig = require('../lib/eslintrc.json');
+const eslintConfig = require('../configs/eslintrc.json');
 
 if (p.type === 'module') {
     eslintConfig.parserOptions.sourceType = 'module';

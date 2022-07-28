@@ -75,8 +75,8 @@ export INDEX_HTML_DESCRIPTION
 export INDEX_HTML_AUTHOR
 export INDEX_HTML_HEAD
 
-export STATIC="./static"
-export DATA="./data"
+export STATIC=
+export DATA=
 export DIST="./dist-$STAGE"
 
 export BABEL_CONFIG="./babel.config.json"

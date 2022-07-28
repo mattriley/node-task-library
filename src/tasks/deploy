@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ "$(is_on_npm)" = "0" ] && npm publish
+[ "$(is_on_npm)" = "0" ] && npx task publish
 
 [ "$(is_on_ghp)" = "0" ] && npx task dist-github-pages
 

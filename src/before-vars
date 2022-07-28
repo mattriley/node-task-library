@@ -65,6 +65,7 @@ export SOURCE_CODE_URL
 
 export README="./README.md"
 export README_TEMPLATE="./README-TEMPLATE.md"
+export README_TITLE
 export README_BASE_URL
 export README_GEN
 

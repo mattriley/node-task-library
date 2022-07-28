@@ -7,7 +7,7 @@ const p = require('../lib/package');
 
 const defaultConfig = {
     template: process.env.README_TEMPLATE,
-    title: process.env.DISPLAY_NAME,
+    title: process.env.README_TITLE,
     baseUrl: process.env.README_BASE_URL,
     gitBranch: process.env.GIT_BRANCH,
     metricsSummary: process.env.METRICS_SUMMARY

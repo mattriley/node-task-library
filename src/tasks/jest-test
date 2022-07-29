@@ -1,8 +1,7 @@
 #!/bin/bash
-  
-npx 
-    --node-options "--experimental-vm-modules" \
-    jest test \
+
+NODE_OPTIONS="--experimental-vm-modules" \
+npx jest test \
     --roots "$TESTS" \
     --testMatch "<rootDir>/$TEST_PATTERN" \
     --passWithNoTests \

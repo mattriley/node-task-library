@@ -1,3 +1,13 @@
 #!/bin/bash
   
-npx -p npm-check-updates ncu -u && npm i
+npx -p npm-check-updates ncu -u
+
+echo "Installing..."
+
+npm i
+
+task_link="./node_modules/.bin/task"
+
+[ ! -L ${task_link} ] && npm i
+
+[ ! -L ${task_link} ] && echo "Warning: ${task_link} not found"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if grep -q "react" "./package.json"; then
+if $(has_dev_dependency "react") = "true"; then
     
     npm -D i \
         "@babel/core" \
@@ -11,7 +11,7 @@ if grep -q "react" "./package.json"; then
 
 fi
 
-if grep -q "jest" "./package.json"; then
+if $(has_dev_dependency "jest") = "true"; then
 
     npm -D i \
         "jest-environment-jsdom" \

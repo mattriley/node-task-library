@@ -65,6 +65,14 @@ function package() {
     echo $(cat ./package.json | jq -r ".$1 // empty")
 }
 
+function has_dependency() {
+    jq ".dependencies | has(\"$1\")" "$PACKAGE"
+}
+
+function has_dev_dependency() {
+    jq ".devDependencies | has(\"$1\")" "$PACKAGE"
+}
+
 function now() { 
     node -p "Date.now()" 
 }
@@ -75,24 +83,26 @@ function ssm {
 
 function is_on_npm() {
     npm view > /dev/null 2>&1
-    echo "$?"
+    [ "$?" = 0 ] && echo "true" || echo "false"
 }
 
 function is_on_ghp() {    
     status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "$GITHUB_PAGES_URL/") # trailing slash is needed
     [[ $status_code = "200" || $status_code = "301" ]]
-    echo "$?"
+    [ "$?" = 0 ] && echo "true" || echo "false"
 }
 
 function is_on_sls() {
     [ -f "./serverless.yml" ]
-    echo "$?"
+    [ "$?" = 0 ] && echo "true" || echo "false"
 }
 
 export -f load_vars
 export -f taskfile
 export -f warn_unset
 export -f package 
+export -f has_dependency
+export -f has_dev_dependency
 export -f now
 export -f ssm
 export -f is_on_npm

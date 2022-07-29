@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[ $STAGE != "local" ] && load_vars "$1"
+
 [ $(is_on_npm) = "true" ] && npx task publish
 
 [ $(is_on_ghp) = "true" ] && npx task dist-github-pages

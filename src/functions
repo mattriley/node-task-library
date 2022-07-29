@@ -56,7 +56,7 @@ function taskfile() {
 }
 
 function warn_unset() {
-    [ -z "${!1}" ] && echo -n "⚠️  $1 is unset"
+    [ ! -z ${!1} ] && echo -n "⚠️  $1 is unset"
     [ ! -z "$2" ] && echo -n ". Defaulting to ${BOLD}$2${NORM}"
     echo
 }

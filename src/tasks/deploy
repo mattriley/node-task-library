@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ $STAGE != "local" ] && load_vars "$1"
+[ "$1" != "$STAGE" ] && load_vars "$1"
 
 [ $(is_on_npm) = "true" ] && npx task publish
 

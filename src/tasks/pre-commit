@@ -10,9 +10,11 @@ npx task gitignore-gen
 [ $(grep -q "eslint" "$PACKAGE") ] && npx task eslint-config-gen
 
 npx task code-gen
-npx task lint
+npx task lint --fix
 npx task cov-check
 npx task sloc
 npx task metrics-summary
 
 [ -f "$README_TEMPLATE" ] && npx task readme-gen
+
+git add .

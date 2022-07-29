@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export STAGE
 export VERSION_DATE=$(date)
 
 export PACKAGE="./package.json"

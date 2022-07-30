@@ -4,7 +4,7 @@ set -e
 
 [ ! -f "$README_TEMPLATE" ] && echo "README template not found"
 
-if $(has_dev_dependency "@node-loader/babel") = "true"; then
+if has_dev_dependency "@node-loader/babel"; then
     export NODE_OPTIONS="--experimental-loader @node-loader/babel"
 fi
 

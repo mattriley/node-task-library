@@ -1,7 +1,5 @@
 #!/bin/bash
 
-[ ! -z "$1" ] && [ "$1" != "$STAGE" ] && load_vars "$1"
-
 read -p "❓ Are you sure? " choice
 case "$choice" in 
   y|Y ) ;;

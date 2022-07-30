@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[ -z "$STAGE" ] && STAGE="local"
+
 [ -z "$DISPLAY_NAME" ] && [ "$PACKAGE_NAME" ] && DISPLAY_NAME="$PACKAGE_NAME"
 
 [ -z "$AUTHOR_NAME" ] && AUTHOR_NAME=$(package author.name)

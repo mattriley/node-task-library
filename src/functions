@@ -27,9 +27,6 @@ function task() {
 }
 
 function load_vars() {
-    export STAGE=${1:-local}
-    echo "⚙️  Stage is ${BOLD}${STAGE}${NORM}. Loading task vars..."
-
     env_before=$(env)
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
     export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
@@ -43,7 +40,6 @@ function load_vars() {
 
     env_after=$(env)
     export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
-    echo "🏁 Finished loading task vars"
     echo
     npx task print-vars
 }

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# All
+
+[ "$1" = "--all" ] && echo "$VARS" && exit 0
+
+# Selected
+
+IFS=' | '; var_names=($PRINT_VARS); unset IFS
+
+echo
+
+for var_name in "${var_names[@]}"; do
+    echo "$var_name=${BOLD}${!var_name}${NORM}"
+done
+
+vars_printed=${#var_names[@]}
+vars_total=$(echo -n "$VARS" | grep -c '^')
+
+echo
+echo "${vars_printed} of ${vars_total} task vars displayed"
+echo

@@ -9,7 +9,7 @@ export GRE=$(tput setaf 2)
 
 function task() {
     task_name=${1:-default}
-    [ -z "$VARS" ] && load_vars
+    [ -z "$VARS" ] && load_vars    
     task_file=$(taskfile $task_name)
     [ -z "$task_file" ] && echo -e "Task ${BOLD}$task_name${NORM} not found" && exit 1
     chmod +x "$task_file"
@@ -45,6 +45,7 @@ function load_vars() {
     export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
     echo "🏁 Finished loading task vars"
     echo
+    npx task print-vars
 }
 
 function taskfile() {

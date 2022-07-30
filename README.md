@@ -3,8 +3,8 @@
 
 <p align="right">
     <code>0% cov</code>&nbsp;
-    <code>908 sloc</code>&nbsp;
-    <code>83 files</code>&nbsp;
+    <code>924 sloc</code>&nbsp;
+    <code>84 files</code>&nbsp;
     <code>12 deps</code>&nbsp;
     <code>0 dev deps</code>
 </p>

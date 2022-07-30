@@ -1,0 +1,6 @@
+#!/bin/bash
+
+cd "$GITHUB_PAGES_PATH" \
+    && git add "$GITHUB_PAGES_PATH/*" \
+    && git commit -m"Deploy to GitHub Pages" \
+    && git push

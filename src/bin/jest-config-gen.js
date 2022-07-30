@@ -2,7 +2,7 @@ const process = require('process');
 const logJson = require('../lib/log-json');
 const jestConfig = require('../configs/jest.config.json');
 
-jestConfig.testMatch = [process.env.TEST_PATTERN];
+jestConfig.testMatch = ['<rootDir>' + process.env.TEST_PATTERN];
 
 jestConfig.coverageThreshold = {
     global: {

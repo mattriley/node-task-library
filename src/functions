@@ -73,11 +73,15 @@ function package() {
 }
 
 function has_dependency() {
-    jq ".dependencies | has(\"$1\")" "$PACKAGE"
+    found=$(jq ".dependencies | has(\"$1\")" "$PACKAGE")
+    [ $found = "true" ]
+    return "$?"
 }
 
 function has_dev_dependency() {
-    jq ".devDependencies | has(\"$1\")" "$PACKAGE"
+    found=$(jq ".devDependencies | has(\"$1\")" "$PACKAGE")
+    [ $found = "true" ]
+    return "$?"
 }
 
 function now() { 

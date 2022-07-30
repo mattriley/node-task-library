@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PRINT_VARS="STAGE | TARGET | NODE_ENV | BABEL_ENV"
+export PRINT_VARS="DISPLAY_NAME | STAGE"
 
 export STAGE
 export TARGET

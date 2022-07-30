@@ -21,13 +21,12 @@
         "bin/**/*"
     ],
     "scripts": {
-        "test": "npx task test",
-        "start": "npx task start",
-        "deploy": "npx task deploy",
-        "pre": "npx task pre",
         "cov": "npx task cov",
-        "cov-check": "npx task cov-check",
-        "lint": "npx task lint"
+        "deploy": "npx task deploy",
+        "lint": "npx task lint",
+        "pre": "npx task pre",
+        "start": "npx task start",
+        "test": "npx task test"
     },
     "dependencies": {
         "c8": "^7.11.3",

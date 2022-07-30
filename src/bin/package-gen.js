@@ -26,11 +26,20 @@ if (process.env.GITHUB_REPO_URL) p.homepage = process.env.GITHUB_REPO_URL;
 
 p.repository = `github:${process.env.GITHUB_REPO_PATH}`;
 
-const tasks = 'pre test cov lint start deploy'.split(' ').sort();
+const tasks = 'pre test cov lint start deploy'.split(' ');
 
 if (!p.scripts) p.scripts = {};
-
 tasks.forEach(t => p.scripts[t] = `npx task ${t}`);
+
+const sortObj = (obj = {}) => {
+    const sortedKeys = Object.keys(obj).sort();
+    const sortedEntries = sortedKeys.map(k => [k, obj[k]]);
+    return Object.fromEntries(sortedEntries);
+};
+
+p.scripts = sortObj(p.scripts);
+p.dependencies = sortObj(p.dependencies);
+p.devDependencies = sortObj(p.devDependencies);
 
 const seq = ['name', 'version', 'description', 'license', 'homepage', 'repository', 'author', 'bugs', 'bin', 'files', 'main', 'type', 'private', 'scripts', 'dependencies', 'devDependencies', 'keywords'];
 const unk = Object.keys(p).filter(key => !seq.includes(key));

@@ -6,6 +6,6 @@ echo "${BOLD}$NPM_BUMP_VERSION${NORM} version will be bumped"
 ask_continue
 
 npm version $NPM_BUMP_VERSION \
-    && npm publish
-    && git push
+    && npm publish \
+    && git push \
     && git push --tags

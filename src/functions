@@ -58,6 +58,16 @@ function warn_unset() {
     echo
 }
 
+function ask_continue() {
+    echo
+    read -p "👀 Continue? " choice
+    case "$choice" in 
+        y|Y ) echo;;
+        n|N ) echo "Aborting..."; echo; exit 1;;
+        * ) echo "Invalid input. Aborting..."; echo; exit 1;;
+    esac
+}
+
 function package() {
     echo $(cat ./package.json | jq -r ".$1 // empty")
 }
@@ -96,6 +106,7 @@ function is_on_sls() {
 
 export -f load_vars
 export -f taskfile
+export -f ask_continue
 export -f warn_unset
 export -f package 
 export -f has_dependency

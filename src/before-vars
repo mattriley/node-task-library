@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export PRINT_VARS="DISPLAY_NAME | STAGE"
+export PRINT_VARS="PACKAGE_NAME | DISPLAY_NAME | STAGE"
 
 export STAGE
 export TARGET
@@ -86,7 +86,8 @@ export INDEX_HTML_HEAD
 
 export STATIC
 export DATA
-export DIST="./dist-$STAGE"
+export DIST_BASE
+export DIST
 
 export NPM_BUMP_VERSION
 

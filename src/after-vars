@@ -47,5 +47,7 @@
 
 [ -z "$STATIC" ] && STATIC="./static"
 [ -z "$DATA" ] && DATA="./data"
+[ -z "$DIST_BASE" ] && DIST_BASE="./dist"
+[ -z "$DIST" ] && DIST="$DIST_BASE-$STAGE"
 
 [ -z "$NPM_BUMP_VERSION" ] && NPM_BUMP_VERSION="minor"

@@ -27,15 +27,13 @@ if (process.env.GITHUB_REPO_URL) p.homepage = process.env.GITHUB_REPO_URL;
 p.repository = `github:${process.env.GITHUB_REPO_PATH}`;
 
 if (!p.scripts) p.scripts = {};
+p.scripts.pre = 'npx task pre';
 p.scripts.test = 'npx task test';
+p.scripts.cov = 'npx task cov';
+p.scripts['cov-check'] = 'npx task cov-check';
+p.scripts.lint = 'npx task lint';
 p.scripts.start = 'npx task start';
 p.scripts.deploy = 'npx task deploy';
-
-// if (!p.private) {
-//     p.scripts.preversion = 'npx task pre-commit';
-//     p.scripts.postversion = 'git push && git push --tags';
-// }
-
 
 const seq = ['name', 'version', 'description', 'license', 'homepage', 'repository', 'author', 'bugs', 'bin', 'files', 'main', 'type', 'private', 'scripts', 'dependencies', 'devDependencies', 'keywords'];
 const unk = Object.keys(p).filter(key => !seq.includes(key));

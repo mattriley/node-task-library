@@ -47,3 +47,5 @@
 
 [ -z "$STATIC" ] && STATIC="./static"
 [ -z "$DATA" ] && DATA="./data"
+
+[ -z "$NPM_BUMP_VERSION" ] && NPM_BUMP_VERSION="minor"

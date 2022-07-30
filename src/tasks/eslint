@@ -1,7 +1,5 @@
 #!/bin/bash
 
-npx task eslint-config-gen
-
 IFS=' | '; ESLINT_PATHS_ARR=($ESLINT_PATHS); unset IFS
 
 npx eslint \

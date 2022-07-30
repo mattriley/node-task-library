@@ -1,8 +1,5 @@
 #!/bin/bash
 
-npx task babel-config-gen
-npx task jest-config-gen
-
 npx jest test \
     --passWithNoTests \
     "$@"

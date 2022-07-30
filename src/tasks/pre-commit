@@ -4,17 +4,12 @@ set -e
 
 npx task package-gen
 npx task gitignore-gen
-
-# [ $(has_dev_dependency "react") = "true" ] && npx task babel-config-gen
-# [ $(has_dev_dependency "jest") = "true" ] && npx task jest-config-gen
-# [ $(has_dev_dependency "eslint") = "true" ] && npx task eslint-config-gen
-
+npx task config-gen
 npx task code-gen
 npx task lint --fix
 npx task cov-check
 npx task sloc
 npx task metrics-summary
-
-[ -f "$README_TEMPLATE" ] && npx task readme-gen
+npx task readme-gen
 
 git add .

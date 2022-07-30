@@ -1,11 +1,22 @@
 #!/bin/bash
 
+tasks=()
+
+is_on_npm && tasks+=("publish-npm-package")
+is_on_ghp && tasks+=("dist-github-pages")
+is_on_sls && tasks+=("sls-deploy")
+
+[ ${#tasks[@]} = 0 ] && echo "Couldn't infer what to deploy" && exit 1
+
+echo
+echo "The following tasks will be run:"
+
+for task_name in "${tasks[@]}"; do
+    echo "• ${task_name}"
+done
+
 ask_continue
 
-[ $(is_on_npm) = "true" ] && npx task publish
-
-[ $(is_on_ghp) = "true" ] && npx task dist-github-pages
-
-[ $(is_on_sls) = "true" ] && sls deploy
-
-exit 0
+for task_name in "${tasks[@]}"; do
+    npx task "$task_name"
+done

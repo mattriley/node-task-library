@@ -90,18 +90,18 @@ function ssm {
 
 function is_on_npm() {
     npm view > /dev/null 2>&1
-    [ "$?" = 0 ] && echo "true" || echo "false"
+    return "$?"
 }
 
 function is_on_ghp() {    
     status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "$GITHUB_PAGES_URL/") # trailing slash is needed
     [[ $status_code = "200" || $status_code = "301" ]]
-    [ "$?" = 0 ] && echo "true" || echo "false"
+    return "$?"
 }
 
 function is_on_sls() {
     [ -f "./serverless.yml" ]
-    [ "$?" = 0 ] && echo "true" || echo "false"
+    return "$?"
 }
 
 export -f load_vars

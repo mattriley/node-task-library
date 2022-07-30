@@ -1,4 +1,5 @@
 #!/bin/bash
   
-echo "$(node $TASK_LIBRARY_NODE_TASKS/jest-config-generator.js)" > "$JEST_CONFIG"
+echo "$(node $TASK_LIBRARY_NODE_BIN/jest-config-gen.js)" > "$JEST_CONFIG"
+
 git add "$JEST_CONFIG"

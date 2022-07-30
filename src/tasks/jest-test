@@ -1,5 +1,8 @@
 #!/bin/bash
 
+npx task babel-config-gen
+npx task jest-config-gen
+
 NODE_OPTIONS="--experimental-vm-modules" \
 npx jest test \
     --roots "$TESTS" \

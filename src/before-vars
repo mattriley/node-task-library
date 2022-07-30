@@ -81,6 +81,7 @@ export STATIC=
 export DATA=
 export DIST="./dist-$STAGE"
 
+export BABEL_ENV
 export BABEL_CONFIG="./babel.config.json"
 export JEST_CONFIG="./jest.config.json"
 

@@ -26,7 +26,7 @@ if (process.env.GITHUB_REPO_URL) p.homepage = process.env.GITHUB_REPO_URL;
 
 p.repository = `github:${process.env.GITHUB_REPO_PATH}`;
 
-const tasks = 'pre test cov lint start deploy'.split(' ');
+const tasks = 'pre test cov lint start deploy'.split(' ').sort();
 
 if (!p.scripts) p.scripts = {};
 

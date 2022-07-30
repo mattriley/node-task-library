@@ -24,8 +24,6 @@
         "test": "npx task test",
         "start": "npx task start",
         "deploy": "npx task deploy",
-        "preversion": "npx task pre-commit",
-        "postversion": "git push && git push --tags",
         "pre": "npx task pre",
         "cov": "npx task cov",
         "cov-check": "npx task cov-check",

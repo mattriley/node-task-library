@@ -1,0 +1,7 @@
+#!/bin/bash
+
+task="$TEST_RUNNER-cov-report"
+task_file=$(taskfile "$task")
+[ -z "$task_file" ] && task="c8-cov-report"
+
+npx task "$task"

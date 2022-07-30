@@ -1,8 +1,9 @@
 #!/bin/bash
   
-npx task tap-test \
+npx task tap-cov-report \
     --no-browser \
-    --no-check-coverage \
-    --coverage \
-    --coverage-report=html \
-    "$@"
+    --check-coverage \
+    --branches $COV_BRANCHES \
+    --lines $COV_LINES \
+    --functions $COV_FUNCTIONS \
+    --statements $COV_STATEMENTS

@@ -1,7 +1,6 @@
 #!/bin/bash
   
-echo "$(node $TASK_LIBRARY_LIB/configure-jest-coverage-reporters.js)" > ./package.json
-
-npx task react-scripts-test \
-    --coverage \
-    "$@"
+npx task react-scripts-cov-report \
+    --roots "$SRC" \
+    --collectCoverageFrom "<rootDir>/$SRC/**" \
+    --coverageThreshold="{\"global\":{\"branches\":$COV_BRANCHES,\"functions\":$COV_FUNCTIONS,\"lines\":$COV_LINES,\"statements\":$COV_STATEMENTS}}"

@@ -1,7 +1,0 @@
-#!/bin/bash
-  
-task="$TEST_RUNNER-cov-check"
-task_file=$(taskfile "$task")
-[ -z "$task_file" ] && task="c8-cov-check"
-
-npx task "$task"

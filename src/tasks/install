@@ -26,6 +26,6 @@ if has_dev_dependency "jest" && has_dev_dependency "eslint"; then
     npm -D i "eslint-plugin-jest"
 fi
 
-if -f "$README_TEMPLATE"; then
+if [ -f "$README_TEMPLATE" ]; then
     npm -D i "doctoc" "cloc"
 fi

@@ -1,32 +1,31 @@
 #!/bin/bash
 
+npm i -D "eslint" "husky"
+
+if [ ! -z $TEST_RUNNER ]; then
+    npm -D i "$TEST_RUNNER"
+fi
+
 if has_dev_dependency "react"; then
-    
     npm -D i \
         "@babel/core" \
         "@babel/preset-env" \
         "@babel/preset-react" \
         "@node-loader/babel"
-
 fi
 
 if has_dev_dependency "react" && has_dev_dependency "eslint"; then
-    
-    npm -D i \
-        "eslint-plugin-react"
-
+    npm -D i "eslint-plugin-react"
 fi
 
 if has_dev_dependency "jest"; then
-
-    npm -D i \
-        "jest-environment-jsdom"
-
+    npm -D i "jest-environment-jsdom"
 fi
 
 if has_dev_dependency "jest" && has_dev_dependency "eslint"; then
+    npm -D i "eslint-plugin-jest"
+fi
 
-    npm -D i \
-        "eslint-plugin-jest"
-
+if -f "$README_TEMPLATE"; then
+    npm -D i "doctoc" "cloc"
 fi

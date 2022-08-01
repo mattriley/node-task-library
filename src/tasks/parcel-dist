@@ -1,8 +1,8 @@
 #!/bin/bash
   
-PARCEL_COMMAND="${1:-build}"
-[ "$PARCEL_COMMAND" = "build" ] && BASE_PATH="$WEB_BASE_PATH"
-[ -z "$BASE_PATH" ] && BASE_PATH="/"
+parcel_command="${1:-build}"
+[ "$parcel_command" = "build" ] && base_path="$WEB_BASE_PATH"
+[ -z "$base_path" ] && base_path="/"
 
 npx task code-gen
 npx task index-html-gen
@@ -11,7 +11,12 @@ rm -rf "$DIST"
 mkdir -p "$DIST"
 cp -a "$STATIC/" "$DIST"
 
-npx parcel "$PARCEL_COMMAND" \
-    "$INDEX_HTML" \
-    --public-url "$BASE_PATH" \
+package_source=$(package "source")
+package_targets=$(package "targets")
+
+[ -z "$package_source" ] && [ -z "$package_targets" ] && source="$INDEX_HTML" || source=""
+
+npx parcel "$parcel_command" \
+    "$source" \
+    --public-url "$base_path" \
     --dist-dir "$DIST"

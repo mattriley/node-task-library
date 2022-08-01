@@ -2,7 +2,8 @@
     "name": "task-library",
     "version": "0.44.0",
     "description": "",
-    "repository": "github:undefined",
+    "homepage": "https://github.com/mattriley/node-task-library",
+    "repository": "github:mattriley/node-task-library",
     "author": {
         "name": "Matt Riley",
         "email": "m@ttriley.dev",

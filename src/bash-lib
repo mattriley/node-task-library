@@ -36,11 +36,15 @@ function load_vars() {
     task_vars="./task-vars"
     var_definitions="$TASK_LIBRARY_SRC/var-definitions"
 
-    env_before="$(env)"
-    [ -f "$task_vars" ] && source "$task_vars"
-
     funcs=$(extract_function_names "$var_definitions")
     source "$var_definitions"
+
+    while IFS= read -r name; do
+        export -f "$name"
+    done <<< "$funcs"
+
+    env_before="$(env)"
+    [ -f "$task_vars" ] && source "$task_vars"
 
     while IFS= read -r name; do
         [ -z "${!name}" ] && export $name="$($name)"

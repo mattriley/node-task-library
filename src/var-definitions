@@ -13,11 +13,11 @@ function TARGET {
 }
 
 function NODE_ENV {
-    echo "test"
+    echo ""
 }
 
 function BABEL_ENV {
-    echo "test"
+    echo ""
 }
 
 function VERSION_DATE {

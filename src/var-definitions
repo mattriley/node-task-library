@@ -67,10 +67,6 @@ function WEB_URL {
     [ "$WEB_HOST_NAME" ] && echo "https://$WEB_HOST_NAME"
 }
 
-function TEST_WATCH_PATHS {
-    echo "$SRC | $TESTS | $TEST_HELPERS"
-}
-
 function TASKS {
     echo "./tasks"
 }

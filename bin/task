@@ -1,4 +1,4 @@
 #!/bin/bash
 
-source ./node_modules/task-library/src/functions
+source ./node_modules/task-library/src/bash-lib
 task "$@"

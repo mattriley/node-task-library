@@ -26,23 +26,69 @@ function task() {
     exit $exit_code
 }
 
+# compgen -A function
+
 function load_vars() {
-    env_before=$(env)
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
     export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
     export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
     export TASK_LIBRARY_NODE_BIN="$TASK_LIBRARY_SRC/bin"
     export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
 
-    source "$TASK_LIBRARY_SRC/before-vars"
-    [ -f "$TASK_VARS" ] && source "$TASK_VARS"
-    source "$TASK_LIBRARY_SRC/after-vars"
+    env_before="$(env)"
+    [ -f "./task-vars" ] && source "./task-vars"
 
-    env_after=$(env)
-    export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
+    funcs=$(extract_function_names "$TASK_LIBRARY_SRC/variable-default-functions")
+    source "$TASK_LIBRARY_SRC/variable-default-functions"
+
+    while IFS= read -r name; do
+        [ -z "${!name}" ] && export $name="$($name)"
+    done <<< "$funcs"
+
+    env_after="$(env)"
+    vars=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
+
+    echo "$vars"
+    exit 0
+
+    # while IFS= read -r name; do
+    #     echo "$name=${!name}"
+    # done <<< "$funcs"
+
+
+    # for task_path in ${task_paths[@]}; do [ -f "$task_path/$task_name" ] && task_file="$task_path/$task_name" && break; done
+
+
+    # export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
     echo
     npx task print-vars
 }
+
+function extract_function_names {
+    pattern="function (.+) "
+    while IFS= read -r line
+    do
+        [[ $line =~ $pattern ]] && echo "${BASH_REMATCH[1]}"
+    done < "$1"
+}
+
+# function load_vars() {
+#     env_before=$(env)
+#     export TASK_LIBRARY_ROOT="./node_modules/task-library"
+#     export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
+#     export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
+#     export TASK_LIBRARY_NODE_BIN="$TASK_LIBRARY_SRC/bin"
+#     export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
+
+#     source "$TASK_LIBRARY_SRC/before-vars"
+#     [ -f "$TASK_VARS" ] && source "$TASK_VARS"
+#     source "$TASK_LIBRARY_SRC/after-vars"
+
+#     env_after=$(env)
+#     export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
+#     echo
+#     npx task print-vars
+# }
 
 function taskfile() {
     task_name="$1"

@@ -17,7 +17,7 @@ function NODE_ENV {
 }
 
 function BABEL_ENV {
-    echo "test"
+    echo ""
 }
 
 function VERSION_DATE {

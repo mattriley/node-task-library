@@ -80,9 +80,10 @@ module.exports = (userConfig = {}) => {
 
     lib.renderMetrics = () => {
         const { cov, sloc, files, deps, devdeps } = lib.metrics();
+        const covLine = cov > 0 ? '<code>${cov}% cov</code>&nbsp;' : '';
         return `
 <p align="right">
-    <code>${cov}% cov</code>&nbsp;
+    ${covLine}
     <code>${sloc} sloc</code>&nbsp;
     <code>${files} files</code>&nbsp;
     <code>${deps} deps</code>&nbsp;

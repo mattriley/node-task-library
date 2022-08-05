@@ -6,12 +6,18 @@ if [ ! -z $TEST_RUNNER ]; then
     npm -D i "$TEST_RUNNER"
 fi
 
+# "@node-loader/babel"
+
 if has_dev_dependency "react"; then
     npm -D i \
         "@babel/core" \
+        "@babel/preset-react"
+fi
+
+if has_dev_dependency "@babel/core"; then
+    npm -D i \
         "@babel/preset-env" \
-        "@babel/preset-react" \
-        "@node-loader/babel"
+        "@babel/node"
 fi
 
 if has_dev_dependency "react" && has_dev_dependency "eslint"; then

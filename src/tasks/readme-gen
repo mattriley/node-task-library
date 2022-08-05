@@ -4,13 +4,18 @@ set -e
 
 [ ! -f "$README_TEMPLATE" ] && echo "README template not found"
 
+ node_command="node"
+ node_options=""
+
 if has_dev_dependency "@node-loader/babel"; then
     node_options="--experimental-loader @node-loader/babel"
+elif has_dev_dependency "@babel/core"; then
+    node_command="babel-node"
 fi
 
 BABEL_ENV="task" \
 NODE_OPTIONS="$node_options" \
-node "$README_GEN" > "$README"
+$node_command "$README_GEN" > "$README"
 
 npx task doctoc
 

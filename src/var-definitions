@@ -96,6 +96,10 @@ function SRC {
     echo "./src"
 }
 
+function SERVER {
+    echo $(ls "$SRC/server.*js")
+}
+
 function MODULES {
     echo "$SRC/modules"
 }
@@ -146,6 +150,10 @@ function METRICS_LOC {
 
 function METRICS_SUMMARY {
     echo "$METRICS/metrics-summary.json"
+}
+
+function SERVERLESS_CONFIG {
+    echo "serverless.yml"
 }
 
 function BABEL_CONFIG {

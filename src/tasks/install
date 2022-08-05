@@ -1,23 +1,32 @@
 #!/bin/bash
 
+# Not yet sure how I could infer these:
+# @node-loader/babel
+
 npm i -D "eslint" "husky"
 
-if [ ! -z $TEST_RUNNER ]; then
+if [ ! -z "$TEST_RUNNER" ]; then
     npm -D i "$TEST_RUNNER"
 fi
 
-# "@node-loader/babel"
+if [ -f "$README_TEMPLATE" ]; then
+    npm -D i "doctoc" "cloc"
+fi
+
+if [ -f "$SERVER" ]; then
+    npm -D i "nodemon"
+fi
+
+if [ -f "$SERVERLESS_CONFIG" ]; then
+    npm -D i "serverless" "aws-sdk"
+fi
 
 if has_any_dependency "react"; then
-    npm -D i \
-        "@babel/core" \
-        "@babel/preset-react"
+    npm -D i "@babel/core" "@babel/preset-react"
 fi
 
 if has_any_dependency "@babel/core"; then
-    npm -D i \
-        "@babel/preset-env" \
-        "@babel/node"
+    npm -D i "@babel/preset-env" "@babel/node"
 fi
 
 if has_any_dependency "react" && has_any_dependency "eslint"; then
@@ -30,8 +39,4 @@ fi
 
 if has_any_dependency "jest" && has_any_dependency "eslint"; then
     npm -D i "eslint-plugin-jest"
-fi
-
-if [ -f "$README_TEMPLATE" ]; then
-    npm -D i "doctoc" "cloc"
 fi

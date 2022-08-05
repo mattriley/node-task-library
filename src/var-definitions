@@ -105,7 +105,7 @@ function SERVER_PORT {
 }
 
 function PORT {
-    echo $SERVER_PORT
+    echo "$SERVER_PORT"
 }
 
 function MODULES {

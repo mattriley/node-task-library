@@ -41,6 +41,17 @@ module.exports = (userConfig = {}) => {
         return callback(composition);
     };
 
+    lib.renderModuleDiagram = composeFile => {
+        const link = lib.renderLink('https://github.com/mattriley/node-module-composer', 'Module Composer');
+        return [
+            lib.compose(c => lib.renderCode(c.mermaid(), 'mermaid'), composeFile),
+            '<p align="center">',
+            `  <em>This diagram was generated with ${link}</em>`,
+            '</p>',
+            '<br>'
+        ].join('\n');
+    };
+
     lib.renderCode = async (codePromise, lang, source) => {
         if (typeof codePromise === 'string') codePromise = { code: codePromise, lang };
         const { code, lang: defaultLang, source: defaultSource, webroot } = await codePromise;
@@ -74,7 +85,7 @@ module.exports = (userConfig = {}) => {
             '  <br />',
             `  <em>${caption}</em>`,
             '</p>',
-            '<br>'
+            '<br />'
         ].join('\n');
     };
 
@@ -97,6 +108,8 @@ module.exports = (userConfig = {}) => {
             lib.renderMetrics(),
             '',
             p.description,
+            '',
+            '<br />',
             '',
             '<!-- START doctoc -->',
             '<!-- END doctoc -->'

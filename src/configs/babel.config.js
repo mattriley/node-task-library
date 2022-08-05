@@ -1,9 +1,9 @@
 const process = require('process');
-const noBabelConfig = process.env.NO_BABEL_CONFIG === 'true';
+const omit = (process.env.BABEL_OMIT_PRESETS ?? '').split(' | ');
 
 const presets = [
     ['@babel/preset-env', { 'targets': 'defaults' }],
     ['@babel/preset-react', { 'runtime': 'automatic' }]
-];
+].filter(([name]) => !omit.includes(name));
 
-module.exports = noBabelConfig ? {} : { presets };
+module.exports = { presets };

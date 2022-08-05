@@ -13,7 +13,6 @@ elif has_any_dependency "@babel/core"; then
     node_command="babel-node"
 fi
 
-BABEL_ENV="task" \
 NODE_OPTIONS="$node_options" \
 $node_command "$README_GEN" > "$README"
 

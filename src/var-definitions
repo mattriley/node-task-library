@@ -12,14 +12,6 @@ function TARGET {
     echo ""
 }
 
-function NODE_ENV {
-    echo ""
-}
-
-function BABEL_ENV {
-    echo ""
-}
-
 function VERSION_DATE {
     echo $(date)
 }

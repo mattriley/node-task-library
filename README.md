@@ -3,7 +3,7 @@
 
 <p align="right">
     
-    <code>1098 sloc</code>&nbsp;
+    <code>1099 sloc</code>&nbsp;
     <code>83 files</code>&nbsp;
     <code>8 deps</code>&nbsp;
     <code>4 dev deps</code>

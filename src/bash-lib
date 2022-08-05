@@ -27,6 +27,7 @@ function task {
 }
 
 function load_vars {
+    export STAGE=${STAGE:-"local"}
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
     export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
     export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"

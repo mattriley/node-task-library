@@ -97,7 +97,7 @@ function SRC {
 }
 
 function SERVER {
-    echo $(ls "$SRC/server.*js")
+    echo $(ls "$SRC/server.*js" 2>/dev/null)
 }
 
 function MODULES {

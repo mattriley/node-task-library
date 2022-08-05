@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function PRINT_VARS {
-    echo "PACKAGE_NAME | DISPLAY_NAME | STAGE"
+    echo "DISPLAY_NAME | PACKAGE_NAME | STAGE | PORT"
 }
 
 function STAGE {

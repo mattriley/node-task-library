@@ -157,7 +157,7 @@ function METRICS_SUMMARY {
 }
 
 function BABEL_CONFIG {
-    echo "./babel.config.json"
+    echo "./babel.config.js"
 }
 
 function JEST_CONFIG {

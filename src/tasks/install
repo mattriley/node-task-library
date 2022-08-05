@@ -8,27 +8,27 @@ fi
 
 # "@node-loader/babel"
 
-if has_dev_dependency "react"; then
+if has_any_dependency "react"; then
     npm -D i \
         "@babel/core" \
         "@babel/preset-react"
 fi
 
-if has_dev_dependency "@babel/core"; then
+if has_any_dependency "@babel/core"; then
     npm -D i \
         "@babel/preset-env" \
         "@babel/node"
 fi
 
-if has_dev_dependency "react" && has_dev_dependency "eslint"; then
+if has_any_dependency "react" && has_any_dependency "eslint"; then
     npm -D i "eslint-plugin-react"
 fi
 
-if has_dev_dependency "jest"; then
+if has_any_dependency "jest"; then
     npm -D i "jest-environment-jsdom"
 fi
 
-if has_dev_dependency "jest" && has_dev_dependency "eslint"; then
+if has_any_dependency "jest" && has_any_dependency "eslint"; then
     npm -D i "eslint-plugin-jest"
 fi
 

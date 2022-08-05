@@ -7,9 +7,9 @@ set -e
  node_command="node"
  node_options=""
 
-if has_dev_dependency "@node-loader/babel"; then
+if has_any_dependency "@node-loader/babel"; then
     node_options="--experimental-loader @node-loader/babel"
-elif has_dev_dependency "@babel/core"; then
+elif has_any_dependency "@babel/core"; then
     node_command="babel-node"
 fi
 

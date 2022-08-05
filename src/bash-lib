@@ -7,7 +7,7 @@ export BOLD=$(tput bold)
 export RED=$(tput setaf 1)
 export GRE=$(tput setaf 2)
 
-function task() {
+function task {
     task_name=${1:-default}
     [[ $task_name =~ test ]] && export BABEL_ENV="test"
     [ -z "$VARS" ] && load_vars
@@ -27,7 +27,7 @@ function task() {
     exit $exit_code
 }
 
-function load_vars() {
+function load_vars {
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
     export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
     export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
@@ -65,7 +65,7 @@ function extract_function_names {
     done < "$1"
 }
 
-function taskfile() {
+function taskfile {
     task_name="$1"
     [ -z $task_name ] && echo "Task name is required" && exit 1
     task_paths=("$TASKS" "$TASK_LIBRARY_TASKS")
@@ -73,13 +73,13 @@ function taskfile() {
     echo "$task_file"
 }
 
-function warn_unset() {
+function warn_unset {
     [ ! -z ${!1} ] && echo -n "⚠️  $1 is unset"
     [ ! -z "$2" ] && echo -n ". Defaulting to ${BOLD}$2${NORM}"
     echo
 }
 
-function ask_continue() {
+function ask_continue {
     echo
     read -p "👀 Continue? " choice
     case "$choice" in 
@@ -89,23 +89,28 @@ function ask_continue() {
     esac
 }
 
-function package() {
+function package {
     echo $(cat ./package.json | jq -r ".$1 // empty")
 }
 
-function has_dependency() {
+function has_dependency {
     found=$(jq ".dependencies | has(\"$1\")" "$PACKAGE")
     [ $found = "true" ]
     return "$?"
 }
 
-function has_dev_dependency() {
+function has_dev_dependency {
     found=$(jq ".devDependencies | has(\"$1\")" "$PACKAGE")
     [ $found = "true" ]
     return "$?"
 }
 
-function now() { 
+function has_any_dependency {
+    has_dependency "$1" || has_dev_dependency "$1"
+    return "$?"
+}
+
+function now { 
     node -p "Date.now()" 
 }
 
@@ -113,18 +118,18 @@ function ssm {
     echo $(aws ssm get-parameter --region $AWS_REGION --name "$1" --with-decryption | jq -r '.Parameter.Value')
 }
 
-function is_on_npm() {
+function is_on_npm {
     npm view > /dev/null 2>&1
     return "$?"
 }
 
-function is_on_ghp() {    
+function is_on_ghp {    
     status_code=$(curl -s -o /dev/null -I -w "%{http_code}" "$GITHUB_PAGES_URL/") # trailing slash is needed
     [[ $status_code = "200" || $status_code = "301" ]]
     return "$?"
 }
 
-function is_on_sls() {
+function is_on_sls {
     [ -f "./serverless.yml" ]
     return "$?"
 }
@@ -136,6 +141,7 @@ export -f warn_unset
 export -f package 
 export -f has_dependency
 export -f has_dev_dependency
+export -f has_any_dependency
 export -f now
 export -f ssm
 export -f is_on_npm

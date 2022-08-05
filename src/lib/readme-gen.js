@@ -80,15 +80,14 @@ module.exports = (userConfig = {}) => {
 
     lib.renderMetrics = () => {
         const { cov, sloc, files, deps, devdeps } = lib.metrics();
-        const covLine = cov > 0 ? '<code>${cov}% cov</code>&nbsp;' : '';
-        return `
-<p align="right">
-    ${covLine}
-    <code>${sloc} sloc</code>&nbsp;
-    <code>${files} files</code>&nbsp;
-    <code>${deps} deps</code>&nbsp;
-    <code>${devdeps} dev deps</code>
-</p>`;
+        const items = [];
+        if (cov > 0) items.push(`${cov}% cov`);
+        items.push(`${sloc} sloc`);
+        items.push(`${files} files`);
+        items.push(`${deps} deps`);
+        items.push(`${devdeps} dev deps`);
+        const markup = items.map(item => `<code>${item}</code>`).join('&nbsp;');
+        return `<p align="right">${markup}</p>`;
     };
 
     lib.renderOpening = () => {

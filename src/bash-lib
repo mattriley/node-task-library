@@ -110,6 +110,10 @@ function has_any_dependency {
     return "$?"
 }
 
+function port {
+    node "$TASK_LIBRARY_NODE_BIN/port-gen" "$1"
+}
+
 function now { 
     node -p "Date.now()" 
 }
@@ -130,7 +134,7 @@ function is_on_ghp {
 }
 
 function is_on_sls {
-    [ -f "./serverless.yml" ]
+    [ -f "$SERVERLESS_CONFIG" ]
     return "$?"
 }
 
@@ -142,6 +146,7 @@ export -f package
 export -f has_dependency
 export -f has_dev_dependency
 export -f has_any_dependency
+export -f port
 export -f now
 export -f ssm
 export -f is_on_npm

@@ -101,7 +101,7 @@ function SERVER {
 }
 
 function SERVER_PORT {
-    node "$TASK_LIBRARY_NODE_BIN/port-gen" "$PACKAGE_NAME"
+    port "$PACKAGE_NAME"
 }
 
 function PORT {

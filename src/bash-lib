@@ -110,6 +110,11 @@ function has_any_dependency {
     return "$?"
 }
 
+function staged {
+    var_name="$1_$STAGE"
+    echo ${!var_name}
+}
+
 function flat {
     find "$1/" -mindepth 2 -type f -exec mv -i '{}' "$1/" ';'
     find "$1/" -type d -empty -delete
@@ -151,6 +156,7 @@ export -f package
 export -f has_dependency
 export -f has_dev_dependency
 export -f has_any_dependency
+export -f staged
 export -f flat
 export -f port
 export -f now

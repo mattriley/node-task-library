@@ -250,6 +250,10 @@ function README_GEN {
     echo "$TASK_LIBRARY_NODE_BIN/readme-gen.js"
 }
 
+function INDEX_HTML_TEMPLATE {
+    echo "$SRC/index.template.html"
+}
+
 function INDEX_HTML {
     echo "$SRC/index.html"
 }

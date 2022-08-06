@@ -6,6 +6,7 @@ parcel_command="${1:-build}"
 
 npx task code-gen
 npx task index-html-gen
+npx task index-html-render-template
 
 rm -rf "$DIST"
 mkdir -p "$DIST"

@@ -14,6 +14,6 @@ cp -a "$STATIC/" "$DIST"
 export BABEL_OMIT_PRESETS="@babel/preset-env | @babel/preset-react"
 
 npx parcel "$parcel_command" \
-    $parcel_options \
+    $PARCEL_OPTIONS \
     --public-url "$base_path" \
     --dist-dir "$DIST"    

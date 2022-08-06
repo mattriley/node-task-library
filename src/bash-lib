@@ -110,6 +110,11 @@ function has_any_dependency {
     return "$?"
 }
 
+function flat {
+    find "$1/" -mindepth 2 -type f -exec mv -i '{}' "$1/" ';'
+    find "$1/" -type d -empty -delete
+}
+
 function port {
     node "$TASK_LIBRARY_NODE_BIN/port-gen" "$1"
 }
@@ -146,6 +151,7 @@ export -f package
 export -f has_dependency
 export -f has_dev_dependency
 export -f has_any_dependency
+export -f flat
 export -f port
 export -f now
 export -f ssm

@@ -286,6 +286,10 @@ function DIST {
     [ "$STAGE" ] && echo "$DIST_BASE-$STAGE" || echo "$DIST_BASE"
 }
 
+function DIST_FLATTEN {
+    echo "false"
+}
+
 function PARCEL_OPTIONS {
     echo "$INDEX_HTML"
 }

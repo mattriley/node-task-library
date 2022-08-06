@@ -16,4 +16,5 @@ export BABEL_OMIT_PRESETS="@babel/preset-env | @babel/preset-react"
 npx parcel "$parcel_command" \
     $PARCEL_OPTIONS \
     --public-url "$base_path" \
-    --dist-dir "$DIST"    
+    --dist-dir "$DIST" \
+    "${@:2}"

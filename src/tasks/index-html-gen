@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[ -f "$INDEX_HTML" ] && exit 0
+
 cat > "$INDEX_HTML" <<EOF
 <!DOCTYPE html>
 <html lang="en">

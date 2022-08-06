@@ -5,8 +5,8 @@ parcel_command="${1:-build}"
 [ -z "$base_path" ] && base_path="/"
 
 npx task code-gen
-npx task index-html-gen
 npx task index-html-render-template
+npx task index-html-gen
 
 rm -rf "$DIST"
 mkdir -p "$DIST"

@@ -286,6 +286,10 @@ function DIST {
     [ "$STAGE" ] && echo "$DIST_BASE-$STAGE" || echo "$DIST_BASE"
 }
 
+function PARCEL_OPTIONS {
+    echo "$INDEX_HTML"
+}
+
 function NPM_BUMP_VERSION {
     echo "minor"
 }

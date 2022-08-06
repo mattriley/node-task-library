@@ -110,9 +110,11 @@ function has_any_dependency {
     return "$?"
 }
 
-function staged {
-    var_name="$1_$STAGE"
-    echo ${!var_name}
+function export_staged {
+    source_name=$(echo "$1_$STAGE" | tr '[:lower:]' '[:upper:]')
+    val=${!source_name}
+    dest_name=$(echo "$1" | tr '[:lower:]' '[:upper:]')
+    export $dest_name=$val
 }
 
 function flat {
@@ -156,7 +158,7 @@ export -f package
 export -f has_dependency
 export -f has_dev_dependency
 export -f has_any_dependency
-export -f staged
+export -f export_staged
 export -f flat
 export -f port
 export -f now

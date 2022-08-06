@@ -2,4 +2,4 @@
 
 has_any_dependency "parcel" && npx task parcel-dist "$@"
 
-[ $DIST_FLATTEN = "true" ] && flat "$DIST"
+[ $DIST_FLATTEN = "true" ] && npx task dist-flatten

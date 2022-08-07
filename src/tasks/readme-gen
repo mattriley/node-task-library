@@ -2,20 +2,18 @@
   
 set -e
 
-[ ! -f "$README_TEMPLATE" ] && echo "README template not found"
+[ ! -f "$README_TEMPLATE" ] && echo "$README_TEMPLATE not found" && exit 0
 
  node_command="node"
  node_options=""
 
-if has_any_dependency "@node-loader/babel"; then
-
+if has_any_dependency "@node-loader/babel"
+then
     node_options="--experimental-loader @node-loader/babel"
     export BABEL_OMIT_PRESETS="@babel/preset-env"
-
-elif has_any_dependency "@babel/core"; then
-
+elif has_any_dependency "@babel/core"
+then
     node_command="babel-node"
-    
 fi
 
 NODE_OPTIONS="$node_options" \

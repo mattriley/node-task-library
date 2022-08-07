@@ -2,7 +2,7 @@
   
 set -e
 
-[ ! -f "$README_TEMPLATE" ] && echo "$README_TEMPLATE not found" && exit 0
+[ ! -f "$README_TEMPLATE" ] && exit 0
 
  node_command="node"
  node_options=""

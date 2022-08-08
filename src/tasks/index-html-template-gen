@@ -2,7 +2,7 @@
 
 [ -f "$INDEX_HTML_TEMPLATE" ] && exit 0
 
-cat > "$INDEX_HTML" <<'EOF'
+cat > "$INDEX_HTML_TEMPLATE" <<'EOF'
 <!DOCTYPE html>
 <html lang="en">
 

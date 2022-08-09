@@ -1,12 +1,11 @@
 #!/bin/bash
 
-set -e
+test_runners=(jest tape tap zora)
 
-[ has_dev_dependency "jest" ] && test_runner="jest"
-[ has_dev_dependency "tape" ] && test_runner="tape"
-[ has_dev_dependency "tap" ]  && test_runner="tap"
-[ has_dev_dependency "zora" ] && test_runner="zora"
+for test_runner in "${test_runners[@]}"; do
+    has_dev_dependency "$test_runner" && selected_test_runner="$test_runner" && break
+done
 
-[ -z "$test_runner" ] && echo "No test runner found" && exit 0
+[ -z "$selected_test_runner" ] && echo "No test runner found" && exit 0
 
-npx task "$TEST_RUNNER-test"
+npx task "$selected_test_runner-test"

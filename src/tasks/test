@@ -1,5 +1,10 @@
 #!/bin/bash
 
-[ -z "$TEST_RUNNER" ] && warn_unset "TEST_RUNNER" && exit 0
+[ has_dev_dependency "jest" ] && test_runner="jest"
+[ has_dev_dependency "tape" ] && test_runner="tape"
+[ has_dev_dependency "tap" ]  && test_runner="tap"
+[ has_dev_dependency "zora" ] && test_runner="zora"
+
+[ -z "$test_runner" ] && echo "No test runner found" && exit 0
 
 npx task "$TEST_RUNNER-test"

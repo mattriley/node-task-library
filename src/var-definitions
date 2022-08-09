@@ -132,10 +132,6 @@ function TEST_WATCH_PATHS {
     echo "$SRC | $TESTS | $TEST_HELPERS"
 }
 
-function TEST_RUNNER {
-    echo ""
-}
-
 function COVERAGE {
     echo "./coverage"
 }

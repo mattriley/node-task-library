@@ -1,5 +1,7 @@
 #!/bin/bash
-  
+
+[ -z "$TEST_RUNNER" ] && echo "No test runner found" && exit 0
+
 task="$TEST_RUNNER-cov"
 task_file=$(taskfile "$task")
 [ -z "$task_file" ] && task="c8-cov"

@@ -132,6 +132,18 @@ function TEST_WATCH_PATHS {
     echo "$SRC | $TESTS | $TEST_HELPERS"
 }
 
+function SUPPORTED_TEST_RUNNERS {
+    echo "jest | mocha | tap | tape | zora"
+}
+
+function TEST_RUNNER {
+    IFS=' | '; supported_test_runners=($SUPPORTED_TEST_RUNNERS); unset IFS
+
+    for supported_test_runner in "${supported_test_runners[@]}"; do
+        has_dev_dependency "$supported_test_runner" && echo "$supported_test_runner" && break
+    done
+}
+
 function COVERAGE {
     echo "./coverage"
 }

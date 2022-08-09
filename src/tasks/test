@@ -1,11 +1,5 @@
 #!/bin/bash
 
-test_runners=(jest tape tap zora)
+[ -z "$TEST_RUNNER" ] && echo "No test runner found" && exit 0
 
-for test_runner in "${test_runners[@]}"; do
-    has_dev_dependency "$test_runner" && selected_test_runner="$test_runner" && break
-done
-
-[ -z "$selected_test_runner" ] && echo "No test runner found" && exit 0
-
-npx task "$selected_test_runner-test"
+npx task "$TEST_RUNNER-test"

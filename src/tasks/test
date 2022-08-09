@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 [ has_dev_dependency "jest" ] && test_runner="jest"
 [ has_dev_dependency "tape" ] && test_runner="tape"
 [ has_dev_dependency "tap" ]  && test_runner="tap"

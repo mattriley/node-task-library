@@ -1,4 +1,22 @@
 #!/bin/bash
 
-source ./node_modules/task-library/src/bash-lib
+function export_functions {
+    script="$1"
+    funcs=$(extract_function_names "$script")
+    source "$script"
+    while IFS= read -r name; do
+        export -f "$name"
+    done <<< "$funcs"
+    echo "$funcs"
+}
+
+function extract_function_names {
+    script="$1"
+    pattern="function (.+) "
+    while IFS= read -r line; do
+        [[ $line =~ $pattern ]] && echo "${BASH_REMATCH[1]}"
+    done < "$script"
+}
+
+export_functions "./node_modules/task-library/src/bash-lib" > /dev/null
 task "$@"

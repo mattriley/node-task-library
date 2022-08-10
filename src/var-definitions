@@ -20,7 +20,7 @@ function VERSION_DATE {
     echo $(date)
 }
 
-function PACKAGE {
+function PACKAGE_JSON {
     echo "./package.json"
 }
 
@@ -274,7 +274,7 @@ function README_BASE_URL {
 }
 
 function README_GEN {
-    echo "$TASK_LIBRARY_NODE_BIN/readme-gen.js"
+    echo "$TASK_LIBRARY_ROOT/src/bin/readme-gen.js"
 }
 
 function INDEX_HTML_TEMPLATE {

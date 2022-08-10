@@ -1,7 +1,5 @@
 #!/bin/bash
   
-PACKAGE_JSON="./package.json"
-
-echo "$(node $TASK_LIBRARY_NODE_BIN/package-gen.js)" > "$PACKAGE_JSON"
+echo "$(node_script "package-gen.js")" > "$PACKAGE_JSON"
 
 git add "$PACKAGE_JSON"

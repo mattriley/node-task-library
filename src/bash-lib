@@ -29,7 +29,6 @@ function task {
 function load_vars {
     export STAGE=${STAGE:-"local"}
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
-    export TASK_LIBRARY_NODE_BIN="$TASK_LIBRARY_ROOT/src/bin"
 
     var_definitions="$TASK_LIBRARY_ROOT/src/var-definitions"
     funcs=$(export_functions "$var_definitions")
@@ -57,6 +56,17 @@ function taskfile {
     echo "$task_file"
 }
 
+function node_script {
+    node "$TASK_LIBRARY_ROOT/src/bin/$1" "${@:2}"
+}
+
+function node_module {
+    node \
+        --experimental-specifier-resolution="node" \
+        --input-type="module" \
+        - < "$TASK_LIBRARY_ROOT/src/bin/$1" "${@:2}"
+}
+
 function warn_unset {
     [ ! -z ${!1} ] && echo -n "⚠️  $1 is unset"
     [ ! -z "$2" ] && echo -n ". Defaulting to ${BOLD}$2${NORM}"
@@ -78,13 +88,13 @@ function package {
 }
 
 function has_dependency {
-    found=$(jq ".dependencies | has(\"$1\")" "$PACKAGE")
+    found=$(jq ".dependencies | has(\"$1\")" "$PACKAGE_JSON")
     [ $found = "true" ]
     return "$?"
 }
 
 function has_dev_dependency {
-    found=$(jq ".devDependencies | has(\"$1\")" "$PACKAGE")
+    found=$(jq ".devDependencies | has(\"$1\")" "$PACKAGE_JSON")
     [ $found = "true" ]
     return "$?"
 }
@@ -118,7 +128,7 @@ function flat {
 }
 
 function port {
-    node "$TASK_LIBRARY_NODE_BIN/port-gen" "$1"
+    node "$TASK_LIBRARY_ROOT/src/bin/port-gen" "$1"
 }
 
 function now {

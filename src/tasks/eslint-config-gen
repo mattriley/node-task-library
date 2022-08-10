@@ -1,5 +1,5 @@
 #!/bin/bash
   
-echo "$(node $TASK_LIBRARY_NODE_BIN/eslint-config-gen.js)" > "$ESLINT_CONFIG"
+node_script "eslint-config-gen.js" > "$ESLINT_CONFIG"
 
 git add "$ESLINT_CONFIG"

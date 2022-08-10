@@ -3,4 +3,4 @@
 mkdir -p "$METRICS"
 cp "$COVERAGE_JSON_SUMMARY" "$METRICS_COV"
 
-echo "$(node $TASK_LIBRARY_NODE_BIN/metrics-summary.js)" > "$METRICS_SUMMARY"
+node_script "metrics-summary.js" > "$METRICS_SUMMARY"

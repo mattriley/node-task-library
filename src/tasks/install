@@ -31,7 +31,7 @@ if has_dev_dependency "jest"; then
 fi
 
 if has_dev_dependency "eslint"; then
-    IFS=' | '; plugins=($ESLINT_PLUGINS); unset IFS
+    IFS="$SEP"; plugins=($ESLINT_PLUGINS); unset IFS
     install_list=()
 
     for name in "${plugins[@]}"; do

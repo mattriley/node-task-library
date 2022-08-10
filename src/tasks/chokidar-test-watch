@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IFS=' | '; TEST_WATCH_PATHS_ARR=($TEST_WATCH_PATHS); unset IFS
+IFS="$SEP"; TEST_WATCH_PATHS_ARR=($TEST_WATCH_PATHS); unset IFS
 
 npx chokidar \
     "${TEST_WATCH_PATHS_ARR[@]}" \

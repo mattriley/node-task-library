@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function SEP {
+    echo " | "
+}
+
 function PRINT_VARS {
     echo "DISPLAY_NAME | PACKAGE_NAME | STAGE | PORT"
 }
@@ -137,7 +141,7 @@ function SUPPORTED_TEST_RUNNERS {
 }
 
 function TEST_RUNNER {
-    IFS=' | '; supported_test_runners=($SUPPORTED_TEST_RUNNERS); unset IFS
+    IFS="$SEP"; supported_test_runners=($SUPPORTED_TEST_RUNNERS); unset IFS
 
     for supported_test_runner in "${supported_test_runners[@]}"; do
         has_dev_dependency "$supported_test_runner" && echo "$supported_test_runner" && break
@@ -194,13 +198,13 @@ function CONDITIONAL_ESLINT_PLUGINS {
 
 function ESLINT_PLUGINS {
     plugins=("import")
-    IFS=' | '; conditional_plugins=($CONDITIONAL_ESLINT_PLUGINS); unset IFS
+    IFS="$SEP"; conditional_plugins=($CONDITIONAL_ESLINT_PLUGINS); unset IFS
 
     for name in "${conditional_plugins[@]}"; do
         has_dev_dependency "$name" && plugins+=("$name")
     done
 
-    echo $(IFS=' | ' ; echo "${plugins[*]}")
+    echo $(IFS="$SEP"; echo "${plugins[*]}")
 }
 
 [[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]

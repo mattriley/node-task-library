@@ -2,26 +2,6 @@
   
 npx task itermocil-install   
 
-cat > "$ITERMOCIL_CONFIG" <<EOF
-windows:
-  - name: $PACKAGE_NAME
-    root: $(pwd)
-    layout: main-vertical
-    panes:
-EOF
-
-IFS=' | '; ITERMOCIL_TASKS_ARR=($ITERMOCIL_TASKS); unset IFS
-
-for TASK_NAME in "${ITERMOCIL_TASKS_ARR[@]}"
-do
-TASK_FILE=$(taskfile $TASK_NAME)
-if [[ ! -z "$TASK_FILE" ]]; then
-  cat >> "$ITERMOCIL_CONFIG" <<EOF
-      - commands:
-        - nvm use
-        - npx task $TASK_NAME
-EOF
-  fi
-done
+npx task itermocil-config-gen
 
 itermocil

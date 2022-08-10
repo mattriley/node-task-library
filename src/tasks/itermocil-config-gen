@@ -1,0 +1,19 @@
+#!/bin/bash
+  
+cat << EOF > "$ITERMOCIL_CONFIG" 
+windows:
+  - name: $PACKAGE_NAME
+    root: $(pwd)
+    layout: main-vertical
+    panes:
+EOF
+
+IFS="$SEP"; tasks=($ITERMOCIL_TASKS); unset IFS
+
+for task_name in "${tasks[@]}"; do
+    cat << EOF >> "$ITERMOCIL_CONFIG" 
+        - commands:
+            - nvm use
+            - npx task $task_name
+EOF
+done

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IFS=' | '; package_names=($NODE_MODULES_LINK_PACKAGES); unset IFS
+IFS="$SEP"; package_names=($NODE_MODULES_LINK_PACKAGES); unset IFS
 
 rm -rf "$NODE_MODULES_LINKS"
 mkdir -p "$NODE_MODULES_LINKS"

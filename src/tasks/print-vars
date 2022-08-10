@@ -6,7 +6,7 @@
 
 # Selected
 
-IFS=' | '; var_names=($PRINT_VARS); unset IFS
+IFS="$SEP"; var_names=($PRINT_VARS); unset IFS
 
 echo
 

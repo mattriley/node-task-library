@@ -1,6 +1,6 @@
 #!/bin/bash
 
-IFS=' | '; BARREL_PATHS_ARR=($BARREL_PATHS); unset IFS
+IFS="$SEP"; BARREL_PATHS_ARR=($BARREL_PATHS); unset IFS
 
 npx indexgen \
     "${BARREL_PATHS_ARR[@]}" \

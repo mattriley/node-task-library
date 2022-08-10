@@ -9,14 +9,8 @@
         "eslint:recommended",
         "plugin:import/recommended"
     ],
-    "settings": {
-        "react": {
-            "version": "detect"
-        }
-    },
     "parserOptions": {
         "ecmaVersion": "latest",
-        "ecmaFeatures": {},
         "allowImportExportEverywhere": true
     },
     "rules": {
@@ -45,12 +39,6 @@
             "as-needed"
         ],
         "sort-vars": [
-            "off"
-        ],
-        "react/display-name": [
-            "off"
-        ],
-        "react/prop-types": [
             "off"
         ]
     }

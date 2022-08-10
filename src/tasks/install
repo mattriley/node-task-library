@@ -3,52 +3,60 @@
 # Not yet sure how I could infer these:
 # @node-loader/babel
 
-npm i -D "eslint" "husky"
+function install {
+    echo -n "Installing ${BOLD}$1${NORM}..."
+    output=$(npm -D i $@ 2>&1)
+    [ $? ] && echo " done" && return 0
+    echo " error"
+    echo "$output"
+}
+
+install "eslint" "husky"
 
 if [ ! -z "$TEST_RUNNER" ]; then
-    npm -D i "$TEST_RUNNER"
+    install "$TEST_RUNNER"
 fi
 
 if [ -f "$README_TEMPLATE" ]; then
-    npm -D i "doctoc" "cloc"
+    install "doctoc" "cloc"
 fi
 
 if [ -f "$SERVER" ]; then
-    npm -D i "nodemon"
+    install "nodemon"
 fi
 
 if [ -f "$SERVERLESS_CONFIG" ]; then
-    npm -D i "serverless" "aws-sdk"
+    install "serverless" "aws-sdk"
 fi
 
 if has_any_dependency "react"; then
-    npm -D i "@babel/core" "@babel/preset-react"
+    install "@babel/core" "@babel/preset-react"
 fi
 
 if has_any_dependency "@babel/core"; then
-    npm -D i "@babel/preset-env" "@babel/node"
+    install "@babel/preset-env" "@babel/node"
 fi
 
 if has_any_dependency "react" && has_any_dependency "eslint"; then
-    npm -D i "eslint-plugin-react"
+    install "eslint-plugin-react"
 fi
 
 if has_any_dependency "jest"; then
-    npm -D i "jest-environment-jsdom"
+    install "jest-environment-jsdom"
 fi
 
 if has_any_dependency "jest" && has_any_dependency "eslint"; then
-    npm -D i "eslint-plugin-jest"
+    install "eslint-plugin-jest"
 fi
 
 if has_any_dependency "mocha" && has_any_dependency "eslint"; then
-    npm -D i "eslint-plugin-mocha"
+    install "eslint-plugin-mocha"
 fi
 
 if has_any_dependency "tap" && has_any_dependency "eslint"; then
-    npm -D i "eslint-plugin-tap"
+    install "eslint-plugin-tap"
 fi
 
 if has_any_dependency "tape" && has_any_dependency "eslint"; then
-    npm -D i "eslint-plugin-tape"
+    install "eslint-plugin-tape"
 fi

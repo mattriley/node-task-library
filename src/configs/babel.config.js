@@ -1,5 +1,5 @@
 const process = require('process');
-const omit = (process.env.BABEL_OMIT_PRESETS ?? '').split(' | ');
+const omit = (process.env.BABEL_OMIT_PRESETS ?? '').split(process.env.SEP);
 
 const presets = [
     ['@babel/preset-env', { 'targets': 'defaults' }],

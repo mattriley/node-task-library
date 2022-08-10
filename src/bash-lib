@@ -29,12 +29,9 @@ function task {
 function load_vars {
     export STAGE=${STAGE:-"local"}
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
-    export TASK_LIBRARY_SRC="$TASK_LIBRARY_ROOT/src"
-    export TASK_LIBRARY_LIB="$TASK_LIBRARY_SRC/lib"
-    export TASK_LIBRARY_NODE_BIN="$TASK_LIBRARY_SRC/bin"
-    export TASK_LIBRARY_TASKS="$TASK_LIBRARY_SRC/tasks"
+    export TASK_LIBRARY_NODE_BIN="$TASK_LIBRARY_ROOT/src/bin"
 
-    var_definitions="$TASK_LIBRARY_SRC/var-definitions"
+    var_definitions="$TASK_LIBRARY_ROOT/src/var-definitions"
     funcs=$(export_functions "$var_definitions")
     source "$var_definitions"
 
@@ -55,7 +52,7 @@ function load_vars {
 function taskfile {
     task_name="$1"
     [ -z $task_name ] && echo "Task name is required" && exit 1
-    task_paths=("$TASKS" "$TASK_LIBRARY_TASKS")
+    task_paths=("$TASKS" "$TASK_LIBRARY_ROOT/src/tasks")
     for task_path in ${task_paths[@]}; do [ -f "$task_path/$task_name" ] && task_file="$task_path/$task_name" && break; done
     echo "$task_file"
 }

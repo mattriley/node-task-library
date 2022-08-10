@@ -1,6 +1,6 @@
 #!/bin/bash
   
-echo "$(node $TASK_LIBRARY_LIB/configure-jest-coverage-reporters.js)" > ./package.json
+# echo "$(node $TASK_LIBRARY_ROOT/bin/configure-jest-coverage-reporters.js)" > ./package.json
 
 npx task react-scripts-test \
     --coverage \

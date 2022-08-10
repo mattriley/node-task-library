@@ -1,5 +1,8 @@
 #!/bin/bash
 
+npx task gitignore-gen
+npx task package-gen
+
 has_any_dependency "react" && npx task babel-config-gen
 has_any_dependency "jest" && npx task jest-config-gen
 has_any_dependency "eslint" && npx task eslint-config-gen

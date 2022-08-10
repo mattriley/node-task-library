@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# set -a # to export functions # unintended side-effects; using export -f instead
-
 export NORM=$(tput sgr0)
 export BOLD=$(tput bold)
 export RED=$(tput setaf 1)
@@ -27,17 +25,13 @@ function task {
 }
 
 function load_vars {
-    var_definitions="$TASK_LIBRARY_ROOT/src/var-definitions"
-    funcs=$(export_functions "$var_definitions")
-    source "$var_definitions"
-
     env_before="$(env)"
-    task_vars="./task-vars"
-    [ -f "$task_vars" ] && source "$task_vars"
+    source "./task-vars" 2> /dev/null
+    vars=$(extract_function_names "$TASK_LIBRARY_ROOT/src/var-functions")
 
     while IFS= read -r name; do
         [ -z "${!name}" ] && export $name="$($name)"
-    done <<< "$funcs"
+    done <<< "$vars"
 
     env_after="$(env)"
     export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)

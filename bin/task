@@ -10,7 +10,6 @@ function export_functions {
     while IFS= read -r name; do
         export -f "$name"
     done <<< "$funcs"
-    echo "$funcs"
 }
 
 function extract_function_names {
@@ -21,5 +20,6 @@ function extract_function_names {
     done < "$script"
 }
 
-export_functions "$TASK_LIBRARY_ROOT/src/bash-lib" > /dev/null
+export_functions "$TASK_LIBRARY_ROOT/src/lib-functions"
+export_functions "$TASK_LIBRARY_ROOT/src/var-functions"
 task "$@"

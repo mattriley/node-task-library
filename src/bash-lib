@@ -110,6 +110,17 @@ function has_any_dependency {
     return "$?"
 }
 
+function npm_install {
+    options="$1"
+    packages="${@:2}"
+    [ "$packages" ] && message=" ${BOLD}$packages${NORM}"
+    echo -n "Installing$message..."
+    output=$(npm i $options $packages 2>&1)
+    [ $? ] && echo " done" && return 0
+    echo " done with errors"
+    echo "$output"
+}
+
 function export_staged {
     source_name=$(echo "$1_$STAGE" | tr '[:lower:]' '[:upper:]')
     val=${!source_name}
@@ -158,6 +169,7 @@ export -f package
 export -f has_dependency
 export -f has_dev_dependency
 export -f has_any_dependency
+export -f npm_install
 export -f export_staged
 export -f flat
 export -f port

@@ -188,6 +188,21 @@ function ESLINT_PATHS {
     echo "$SRC"
 }
 
+function CONDITIONAL_ESLINT_PLUGINS {
+    echo "react | jest | mocha | tap | tape"
+}
+
+function ESLINT_PLUGINS {
+    plugins=("import")
+    IFS=' | '; conditional_plugins=($CONDITIONAL_ESLINT_PLUGINS); unset IFS
+
+    for name in "${conditional_plugins[@]}"; do
+        has_dev_dependency "$name" && plugins+=("$name")
+    done
+
+    echo $(IFS=' | ' ; echo "${plugins[*]}")
+}
+
 [[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]
 
 function GITHUB_USER_NAME {

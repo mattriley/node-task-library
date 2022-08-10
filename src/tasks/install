@@ -3,60 +3,42 @@
 # Not yet sure how I could infer these:
 # @node-loader/babel
 
-function install {
-    echo -n "Installing ${BOLD}$1${NORM}..."
-    output=$(npm -D i $@ 2>&1)
-    [ $? ] && echo " done" && return 0
-    echo " error"
-    echo "$output"
-}
-
-install "eslint" "husky"
-
-if [ ! -z "$TEST_RUNNER" ]; then
-    install "$TEST_RUNNER"
-fi
+npm_install "" module-composer
+npm_install -D module-indexgen npm-check-updates eslint husky
 
 if [ -f "$README_TEMPLATE" ]; then
-    install "doctoc" "cloc"
+    npm_install -D ejs doctoc cloc
 fi
 
 if [ -f "$SERVER" ]; then
-    install "nodemon"
+    npm_install -D nodemon
 fi
 
 if [ -f "$SERVERLESS_CONFIG" ]; then
-    install "serverless" "aws-sdk"
+    npm_install -D serverless aws-sdk
 fi
 
-if has_any_dependency "react"; then
-    install "@babel/core" "@babel/preset-react"
+if has_dev_dependency "react"; then
+    npm_install -D @babel/core @babel/preset-react
 fi
 
-if has_any_dependency "@babel/core"; then
-    install "@babel/preset-env" "@babel/node"
+if has_dev_dependency "@babel/core"; then
+    npm_install -D @babel/preset-env @babel/node
 fi
 
-if has_any_dependency "react" && has_any_dependency "eslint"; then
-    install "eslint-plugin-react"
+if has_dev_dependency "jest"; then
+    npm_install -D jest-environment-jsdom
 fi
 
-if has_any_dependency "jest"; then
-    install "jest-environment-jsdom"
+if has_dev_dependency "eslint"; then
+    IFS=' | '; plugins=($ESLINT_PLUGINS); unset IFS
+    install_list=()
+
+    for name in "${plugins[@]}"; do
+        install_list+=("eslint-plugin-$name")
+    done
+
+    [[ ${#install_list[@]} -gt 0 ]] && npm_install -D "${install_list[@]}"
 fi
 
-if has_any_dependency "jest" && has_any_dependency "eslint"; then
-    install "eslint-plugin-jest"
-fi
-
-if has_any_dependency "mocha" && has_any_dependency "eslint"; then
-    install "eslint-plugin-mocha"
-fi
-
-if has_any_dependency "tap" && has_any_dependency "eslint"; then
-    install "eslint-plugin-tap"
-fi
-
-if has_any_dependency "tape" && has_any_dependency "eslint"; then
-    install "eslint-plugin-tape"
-fi
+exit 0

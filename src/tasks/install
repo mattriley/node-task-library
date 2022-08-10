@@ -40,3 +40,15 @@ fi
 if has_any_dependency "jest" && has_any_dependency "eslint"; then
     npm -D i "eslint-plugin-jest"
 fi
+
+if has_any_dependency "mocha" && has_any_dependency "eslint"; then
+    npm -D i "eslint-plugin-mocha"
+fi
+
+if has_any_dependency "tap" && has_any_dependency "eslint"; then
+    npm -D i "eslint-plugin-tap"
+fi
+
+if has_any_dependency "tape" && has_any_dependency "eslint"; then
+    npm -D i "eslint-plugin-tape"
+fi

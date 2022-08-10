@@ -10,8 +10,17 @@ if (p.type === 'module') {
 }
 
 if (dependsOn('react')) {
-    eslintConfig.extends.push('plugin:react/recommended');
-    eslintConfig.extends.push('plugin:react/jsx-runtime');
+    if (!eslintConfig.overrides) eslintConfig.overrides = [];
+
+    eslintConfig.overrides.push(
+        {
+            files: [process.env.SRC],
+            plugins: ['react'],
+            extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime']
+        }
+    );
+
+    eslintConfig.ecmaFeatures.jsx = true;
 }
 
 if (dependsOn('jest')) {
@@ -26,6 +35,42 @@ if (dependsOn('jest')) {
                 'jest/require-top-level-describe': 'off',
                 'jest/prefer-expect-assertions': 'off'
             }
+        }
+    );
+}
+
+if (dependsOn('mocha')) {
+    if (!eslintConfig.overrides) eslintConfig.overrides = [];
+
+    eslintConfig.overrides.push(
+        {
+            files: [process.env.TEST_PATTERN],
+            plugins: ['mocha'],
+            extends: ['plugin:mocha/recommended']
+        }
+    );
+}
+
+if (dependsOn('tape')) {
+    if (!eslintConfig.overrides) eslintConfig.overrides = [];
+
+    eslintConfig.overrides.push(
+        {
+            files: [process.env.TEST_PATTERN],
+            plugins: ['tape'],
+            extends: ['plugin:tape/recommended']
+        }
+    );
+}
+
+if (dependsOn('tap')) {
+    if (!eslintConfig.overrides) eslintConfig.overrides = [];
+
+    eslintConfig.overrides.push(
+        {
+            files: [process.env.TEST_PATTERN],
+            plugins: ['tap'],
+            extends: ['plugin:tap/recommended']
         }
     );
 }

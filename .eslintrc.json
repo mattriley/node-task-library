@@ -16,9 +16,7 @@
     },
     "parserOptions": {
         "ecmaVersion": "latest",
-        "ecmaFeatures": {
-            "jsx": true
-        },
+        "ecmaFeatures": {},
         "allowImportExportEverywhere": true
     },
     "rules": {

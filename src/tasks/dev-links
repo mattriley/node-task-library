@@ -5,8 +5,10 @@ IFS="$SEP"; package_names=($NODE_MODULES_LINK_PACKAGES); unset IFS
 rm -rf "$NODE_MODULES_LINKS"
 mkdir -p "$NODE_MODULES_LINKS"
 
-for n in "${package_names[@]}"; do
-    target="$(pwd)/$NODE_MODULES/$n"
-    link="$(pwd)/$NODE_MODULES_LINKS/$n"
+function action {
+    target="$(pwd)/$NODE_MODULES/$1"
+    link="$(pwd)/$NODE_MODULES_LINKS/$1"
     [ -d "$target" ] && ln -s "$target" "$link"
-done
+}
+
+for_each "$NODE_MODULES_LINK_PACKAGES" action

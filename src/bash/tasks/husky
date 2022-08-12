@@ -1,9 +1,8 @@
 #!/bin/bash
-  
+
+command="npx task pre-commit"
+file="./.husky/pre-commit"
+[ -f "$file" ] && grep -q "$command" "$file" && exit 0
+
 npx husky install
-
-precommit="npx task pre-commit"
-
-if ! grep -q "$precommit" "./husky/pre-commit"; then
-    npx husky add .husky/pre-commit "$precommit"
-fi
+npx husky add "$file" "$command"

@@ -10,7 +10,7 @@ npx task index-html-render-template
 
 rm -rf "$DIST"
 mkdir -p "$DIST"
-cp -a "$STATIC/" "$DIST"
+[ -d "$STATIC" ] && cp -a "$STATIC/" "$DIST"
 
 export BABEL_OMIT_PRESETS="@babel/preset-env | @babel/preset-react"
 

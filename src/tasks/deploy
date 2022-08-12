@@ -21,6 +21,5 @@ for_each "${tasks[@]}" action
 
 ask_continue
 
-for task_name in "${tasks[@]}"; do
-    npx task "$task_name"
-done
+function action { npx task "$1"; }
+for_each "${tasks[@]}" action

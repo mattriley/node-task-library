@@ -146,21 +146,14 @@ function is_on_sls {
     return "$?"
 }
 
-
 function join {
-    echo "${1// /$SEP}"
+    echo "${1//${IFS:0:1}/$SEP}"
 }
 
 function filter {
-    local IFS="$SEP"
-    local arr=($1)
-    local predicate=$2
-    local results=()
-
-    for item in "${arr[@]}"; do
-        $predicate "$item"
-        [ $? -eq 0 ] && results+=("$item")
-    done
-
-    join "${results[*]}"
+    local arr=($1) # splits on each character of $IFS (space or pipe)
+    local fun=$2
+    local res=()
+    for el in "${arr[@]}"; do $fun "$el" && res+=("$el"); done
+    join "${res[*]}" # joins on first character of $IFS (space)
 }

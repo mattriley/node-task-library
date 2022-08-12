@@ -146,20 +146,21 @@ function is_on_sls {
     return "$?"
 }
 
-# export -f load_vars
-# export -f taskfile
-# export -f ask_continue
-# export -f warn_unset
-# export -f package 
-# export -f has_dependency
-# export -f has_dev_dependency
-# export -f has_any_dependency
-# export -f npm_install
-# export -f export_staged
-# export -f flat
-# export -f port
-# export -f now
-# export -f ssm
-# export -f is_on_npm
-# export -f is_on_ghp
-# export -f is_on_sls
+
+function join {
+    echo "${1// /$SEP}"
+}
+
+function filter {
+    local IFS="$SEP"
+    local arr=($1)
+    local predicate=$2
+    local results=()
+
+    for item in "${arr[@]}"; do
+        $predicate "$item"
+        [ $? -eq 0 ] && results+=("$item")
+    done
+
+    join "${results[*]}"
+}

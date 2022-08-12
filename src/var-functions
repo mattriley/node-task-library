@@ -116,10 +116,6 @@ function MODULES {
     echo "$SRC/modules"
 }
 
-function BARREL_PATHS {
-    echo "$MODULES"
-}
-
 function TESTS {
     echo "./tests"
 }
@@ -128,12 +124,14 @@ function TEST_PATTERN {
     echo "$TESTS/**/*.test.{js,mjs}"
 }
 
-function TEST_HELPERS {
-    echo "./test-helpers"
+function TESTING {
+    echo "./testing"
 }
 
 function TEST_WATCH_PATHS {
-    echo "$SRC | $TESTS | $TEST_HELPERS"
+    function predicate { [ -d "$1" ]; }
+    filter "$SRC | $TESTS | $TESTING" predicate
+    unset predicate
 }
 
 function SUPPORTED_TEST_RUNNERS {
@@ -146,6 +144,10 @@ function TEST_RUNNER {
     for supported_test_runner in "${supported_test_runners[@]}"; do
         has_dev_dependency "$supported_test_runner" && echo "$supported_test_runner" && break
     done
+}
+
+function BARREL_PATHS {
+    echo "$MODULES"
 }
 
 function COVERAGE {

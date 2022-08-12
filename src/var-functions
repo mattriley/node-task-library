@@ -204,14 +204,10 @@ function CONDITIONAL_ESLINT_PLUGINS {
 }
 
 function ESLINT_PLUGINS {
-    plugins=("import")
-    IFS="$SEP"; conditional_plugins=($CONDITIONAL_ESLINT_PLUGINS); unset IFS
-
-    for name in "${conditional_plugins[@]}"; do
-        has_dev_dependency "$name" && plugins+=("$name")
-    done
-
-    echo $(IFS="$SEP"; echo "${plugins[*]}")
+    echo -n "import | "
+    function predicate { has_dev_dependency "$1"; }
+    filter "$CONDITIONAL_ESLINT_PLUGINS" predicate
+    unset predicate
 }
 
 [[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]

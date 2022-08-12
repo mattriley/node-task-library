@@ -4,6 +4,7 @@ export NORM=$(tput sgr0)
 export BOLD=$(tput bold)
 export RED=$(tput setaf 1)
 export GRE=$(tput setaf 2)
+export YEL=$(tput setaf 3)
 
 function task {
     task_name=${1:-default}
@@ -48,21 +49,8 @@ function taskfile {
     find "$paths" predicate
 }
 
-function node_script {
-    node "$TASK_LIBRARY_ROOT/src/bin/$1" "${@:2}"
-}
-
-function node_module {
-    node \
-        --experimental-specifier-resolution="node" \
-        --input-type="module" \
-        - < "$TASK_LIBRARY_ROOT/src/bin/$1" "${@:2}"
-}
-
-function warn_unset {
-    [ ! -z ${!1} ] && echo -n "⚠️  $1 is unset"
-    [ ! -z "$2" ] && echo -n ". Defaulting to ${BOLD}$2${NORM}"
-    echo
+function warn {
+    echo "   ${YEL}$1${NORM}" >&2
 }
 
 function ask_continue {
@@ -105,6 +93,17 @@ function npm_install {
     [ $? ] && echo " done" && return 0
     echo " done with errors"
     echo "$output"
+}
+
+function node_script {
+    node "$TASK_LIBRARY_ROOT/src/bin/$1" "${@:2}"
+}
+
+function node_module {
+    node \
+        --experimental-specifier-resolution="node" \
+        --input-type="module" \
+        - < "$TASK_LIBRARY_ROOT/src/bin/$1" "${@:2}"
 }
 
 function export_staged {

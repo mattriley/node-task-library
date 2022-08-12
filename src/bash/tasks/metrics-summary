@@ -1,6 +1,7 @@
 #!/bin/bash
 
+[ ! -f "$COVERAGE_JSON_SUMMARY" ] && warn "$COVERAGE_JSON_SUMMARY not found" && exit 0
+
 mkdir -p "$METRICS"
 cp "$COVERAGE_JSON_SUMMARY" "$METRICS_COV"
-
 node_script "metrics-summary.js" > "$METRICS_SUMMARY"

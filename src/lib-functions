@@ -150,6 +150,13 @@ function join {
     echo "${1//${IFS:0:1}/$SEP}"
 }
 
+function find {
+    local IFS="$SEP"
+    local arr=($1) # splits on each character of $IFS (space or pipe)
+    local fun=$2
+    for el in "${arr[@]}"; do $fun "$el" && echo "$el" && break; done
+}
+
 function filter {
     local IFS="$SEP"
     local arr=($1) # splits on each character of $IFS (space or pipe)
@@ -159,9 +166,18 @@ function filter {
     join "${res[*]}" # joins on first character of $IFS (space)
 }
 
-function find {
+function map {
     local IFS="$SEP"
     local arr=($1) # splits on each character of $IFS (space or pipe)
     local fun=$2
-    for el in "${arr[@]}"; do $fun "$el" && echo "$el" && break; done
+    local res=()
+    for el in "${arr[@]}"; do res+=($(fun "$el")); done
+    join "${res[*]}" # joins on first character of $IFS (space)
+}
+
+function for_each {
+    local IFS="$SEP"
+    local arr=($1) # splits on each character of $IFS (space or pipe)
+    local fun=$2
+    for el in "${arr[@]}"; do $fun "$el"; done
 }

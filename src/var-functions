@@ -72,6 +72,10 @@ function TASKS {
     echo "./tasks"
 }
 
+function TASK_PATHS {
+    echo "$TASKS | $TASK_LIBRARY_ROOT/src/tasks"
+}
+
 function NODE_MODULES {
     echo "./node_modules"
 }

@@ -4,12 +4,11 @@ export STAGE=${STAGE:-"local"}
 export TASK_LIBRARY_ROOT="./node_modules/task-library"
 
 function export_functions {
-    script="$1"
-    funcs=$(extract_function_names "$script")
-    source "$script"
-    while IFS= read -r name; do
-        export -f "$name"
-    done <<< "$funcs"
+    for script in $1/*.sh; do
+        funcs=$(extract_function_names "$script")
+        source "$script"
+        while IFS= read -r name; do export -f "$name"; done <<< "$funcs"
+    done
 }
 
 function extract_function_names {
@@ -20,6 +19,6 @@ function extract_function_names {
     done < "$script"
 }
 
-export_functions "$TASK_LIBRARY_ROOT/src/bash/lib-functions"
-export_functions "$TASK_LIBRARY_ROOT/src/bash/var-functions"
+export_functions "$TASK_LIBRARY_ROOT/src/bash/lib"
+# export_functions "$TASK_LIBRARY_ROOT/src/bash/var-functions"
 task "$@"

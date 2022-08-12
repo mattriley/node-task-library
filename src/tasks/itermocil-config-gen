@@ -10,10 +10,12 @@ EOF
 
 IFS="$SEP"; tasks=($ITERMOCIL_TASKS); unset IFS
 
-for task_name in "${tasks[@]}"; do
+function action {
     cat << EOF >> "$ITERMOCIL_CONFIG" 
         - commands:
             - nvm use
-            - npx task $task_name
+            - npx task $1
 EOF
-done
+}
+
+for_each "$ITERMOCIL_TASKS" action

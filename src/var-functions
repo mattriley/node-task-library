@@ -143,15 +143,13 @@ function SUPPORTED_TEST_RUNNERS {
 }
 
 function TEST_RUNNER {
-    IFS="$SEP"; supported_test_runners=($SUPPORTED_TEST_RUNNERS); unset IFS
-
-    for supported_test_runner in "${supported_test_runners[@]}"; do
-        has_dev_dependency "$supported_test_runner" && echo "$supported_test_runner" && break
-    done
+    function predicate { has_dev_dependency "$1"; } 
+    find "$SUPPORTED_TEST_RUNNERS" predicate
+    unset predicate
 }
 
 function BARREL_PATHS {
-    echo "$MODULES"
+    echo "$TEST_WATCH_PATHS"
 }
 
 function COVERAGE {
@@ -179,7 +177,7 @@ function METRICS_SUMMARY {
 }
 
 function SERVERLESS_CONFIG {
-    echo "serverless.yml"
+    echo "./serverless.yml"
 }
 
 function BABEL_CONFIG {
@@ -195,7 +193,10 @@ function ESLINT_CONFIG {
 }
 
 function ESLINT_PATHS {
-    echo "$SRC"
+    # eslint doesn't like empty directories
+    function predicate { [ "$(ls -A $1)" ]; } 
+    filter "$TEST_WATCH_PATHS" predicate
+    unset predicate
 }
 
 function CONDITIONAL_ESLINT_PLUGINS {

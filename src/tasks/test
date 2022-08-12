@@ -2,4 +2,6 @@
 
 [ -z "$TEST_RUNNER" ] && echo "No test runner found" && exit 0
 
+[ ! $(ls -A "$TESTS") ] && echo "No tests found" && exit 0
+
 npx task "$TEST_RUNNER-test"

@@ -29,16 +29,12 @@ fi
 if has_dev_dependency "jest"; then
     npm_install -D jest-environment-jsdom
 fi
-
 if has_dev_dependency "eslint"; then
-    IFS="$SEP"; plugins=($ESLINT_PLUGINS); unset IFS
-    install_list=()
+    function mapper { echo "eslint-plugin-$1"; }
+    packages=$(map "$ESLINT_PLUGINS" mapper " ")
+    npm_install -D "$packages"
 
-    for name in "${plugins[@]}"; do
-        install_list+=("eslint-plugin-$name")
-    done
-
-    [[ ${#install_list[@]} -gt 0 ]] && npm_install -D "${install_list[@]}"
+    # SEP=" " map "$ESLINT_PLUGINS" mapper | ( read packages; npm_install -D $packages )
 fi
 
 exit 0

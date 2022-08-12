@@ -147,7 +147,8 @@ function is_on_sls {
 }
 
 function join {
-    echo "${1//${IFS:0:1}/$SEP}"
+    local sep=${2:-$SEP}
+    echo "${1//${IFS:0:1}/$sep}"
 }
 
 function find {
@@ -161,18 +162,20 @@ function filter {
     local IFS="$SEP"
     local arr=($1) # splits on each character of $IFS (space or pipe)
     local fun=$2
+    local out_sep="$3"
     local res=()
     for el in "${arr[@]}"; do $fun "$el" && res+=("$el"); done
-    join "${res[*]}" # joins on first character of $IFS (space)
+    join "${res[*]}" "$out_sep" # joins on first character of $IFS (space)
 }
 
 function map {
     local IFS="$SEP"
     local arr=($1) # splits on each character of $IFS (space or pipe)
     local fun=$2
+    local out_sep="$3"
     local res=()
-    for el in "${arr[@]}"; do res+=($(fun "$el")); done
-    join "${res[*]}" # joins on first character of $IFS (space)
+    for el in "${arr[@]}"; do res+=($($fun "$el")); done
+    join "${res[*]}" "$out_sep" # joins on first character of $IFS (space)
 }
 
 function for_each {

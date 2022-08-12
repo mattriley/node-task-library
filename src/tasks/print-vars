@@ -10,10 +10,12 @@ IFS="$SEP"; var_names=($PRINT_VARS); unset IFS
 
 echo
 
-for var_name in "${var_names[@]}"; do
-    [ $var_name = "STAGE" ] && [ ${!var_name} = 'prod' ] && style="$RED" || style="$BOLD"
-    echo "$var_name=${style}${!var_name}${NORM}"
-done
+function action {
+    [ $1 = "STAGE" ] && [ ${!1} = 'prod' ] && style="$RED" || style="$BOLD"
+    echo "$1=${style}${!1}${NORM}"
+}
+
+for_each "$PRINT_VARS" action
 
 vars_printed=${#var_names[@]}
 vars_total=$(echo -n "$VARS" | grep -c '^')

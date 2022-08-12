@@ -1,6 +1,7 @@
 #!/bin/bash
 
 npx task dev-links
+npx task husky
 npx task install
 npx task config-gen
 npx task npm-latest

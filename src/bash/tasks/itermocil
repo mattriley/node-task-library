@@ -1,7 +1,5 @@
 #!/bin/bash
   
-npx task itermocil-install   
-
 npx task itermocil-config-gen
-
+mkdir -p ~/.itermocil
 itermocil

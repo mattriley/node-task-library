@@ -1,7 +1,0 @@
-#!/bin/bash
-  
-formula="TomAnthony/brews/itermocil"
-brew list $formula > /dev/null && exit 0
-brew update
-brew install $formula
-mkdir -p ~/.itermocil

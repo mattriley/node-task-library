@@ -3,6 +3,9 @@
 # Not yet sure how I could infer these:
 # @node-loader/babel
 
+which -s "jq" || brew install "jq"
+which -s "itermocil" || brew install "TomAnthony/brews/itermocil"
+
 npm_install "" module-composer
 
 npm_install -D module-indexgen npm-check-updates eslint husky

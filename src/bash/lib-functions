@@ -28,7 +28,7 @@ function task {
 function load_vars {
     env_before="$(env)"
     source "./task-vars" 2> /dev/null
-    vars=$(extract_function_names "$TASK_LIBRARY_ROOT/src/var-functions")
+    vars=$(extract_function_names "$TASK_LIBRARY_ROOT/src/bash/var-functions")
 
     while IFS= read -r name; do
         [ -z "${!name}" ] && export $name="$($name)"
@@ -96,14 +96,14 @@ function npm_install {
 }
 
 function node_script {
-    node "$TASK_LIBRARY_ROOT/src/bin/$1" "${@:2}"
+    node "$TASK_LIBRARY_ROOT/src/node/bin/$1" "${@:2}"
 }
 
 function node_module {
     node \
         --experimental-specifier-resolution="node" \
         --input-type="module" \
-        - < "$TASK_LIBRARY_ROOT/src/bin/$1" "${@:2}"
+        - < "$TASK_LIBRARY_ROOT/src/node/bin/$1" "${@:2}"
 }
 
 function export_staged {
@@ -119,7 +119,7 @@ function flat {
 }
 
 function port {
-    node "$TASK_LIBRARY_ROOT/src/bin/port-gen" "$1"
+    node "$TASK_LIBRARY_ROOT/src/node/bin/port-gen" "$1"
 }
 
 function now {

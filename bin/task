@@ -20,6 +20,6 @@ function extract_function_names {
     done < "$script"
 }
 
-export_functions "$TASK_LIBRARY_ROOT/src/lib-functions"
-export_functions "$TASK_LIBRARY_ROOT/src/var-functions"
+export_functions "$TASK_LIBRARY_ROOT/src/bash/lib-functions"
+export_functions "$TASK_LIBRARY_ROOT/src/bash/var-functions"
 task "$@"

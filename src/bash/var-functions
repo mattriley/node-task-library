@@ -73,7 +73,7 @@ function TASKS {
 }
 
 function TASK_PATHS {
-    echo "$TASKS | $TASK_LIBRARY_ROOT/src/tasks"
+    echo "$TASKS | $TASK_LIBRARY_ROOT/src/bash/tasks"
 }
 
 function NODE_MODULES {
@@ -281,7 +281,7 @@ function README_BASE_URL {
 }
 
 function README_GEN {
-    echo "$TASK_LIBRARY_ROOT/src/bin/readme-gen.js"
+    echo "$TASK_LIBRARY_ROOT/src/node/bin/readme-gen.js"
 }
 
 function INDEX_HTML_TEMPLATE {

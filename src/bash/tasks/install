@@ -13,7 +13,7 @@ fi
 
 if [ -f "$SERVER" ]; then
     npm_install -D nodemon
-    npm_install "" express cors
+    npm_install "" express cors ajv ajv-formats
 fi
 
 if [ -f "$SERVERLESS_CONFIG" ]; then

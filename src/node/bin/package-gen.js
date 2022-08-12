@@ -38,6 +38,9 @@ const sortObj = (obj = {}) => {
 };
 
 p.scripts = sortObj(p.scripts);
+
+p.devDependencies.testing = `file:${process.env.TESTING}`;
+
 p.dependencies = sortObj(p.dependencies);
 p.devDependencies = sortObj(p.devDependencies);
 

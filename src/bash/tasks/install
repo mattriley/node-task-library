@@ -4,6 +4,7 @@
 # @node-loader/babel
 
 npm_install "" module-composer
+
 npm_install -D module-indexgen npm-check-updates eslint husky
 
 if [ -f "$README_TEMPLATE" ]; then
@@ -12,6 +13,7 @@ fi
 
 if [ -f "$SERVER" ]; then
     npm_install -D nodemon
+    npm_install "" express cors
 fi
 
 if [ -f "$SERVERLESS_CONFIG" ]; then
@@ -29,12 +31,11 @@ fi
 if has_dev_dependency "jest"; then
     npm_install -D jest-environment-jsdom
 fi
+
 if has_dev_dependency "eslint"; then
     function mapper { echo "eslint-plugin-$1"; }
     packages=$(map "$ESLINT_PLUGINS" mapper " ")
     npm_install -D "$packages"
-
-    # SEP=" " map "$ESLINT_PLUGINS" mapper | ( read packages; npm_install -D $packages )
 fi
 
 exit 0

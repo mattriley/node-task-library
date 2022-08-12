@@ -3,7 +3,7 @@
 [ -z "$TEST_RUNNER" ] && warn "No test runner found" && exit 0
 
 task="$TEST_RUNNER-cov"
-task_file=$(taskfile "$task")
+task_file=$(find_task_file "$task")
 [ -z "$task_file" ] && task="c8-cov"
 
 npx task "$task"

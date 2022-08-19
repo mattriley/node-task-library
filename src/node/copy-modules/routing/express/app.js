@@ -4,9 +4,9 @@ module.exports = ({ routing }) => () => {
     const express = require('express');
     const app = express();
 
-    app.all('/*', express.raw(), cors(), async (req, res) => {
+    app.all('/*', express.text({ type: 'application/json' }), cors(), async (req, res) => {
         const event = {
-            body: req.body ?? undefined,
+            body: req.body,
             requestContext: {
                 http: {
                     method: req.method.toUpperCase(),

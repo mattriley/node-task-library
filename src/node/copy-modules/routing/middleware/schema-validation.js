@@ -9,7 +9,7 @@ module.exports = ({ schemas }) => {
 
     return ({ req }) => {
         const schemaName = _.camelCase(`${req.method} ${req.path}`);
-        const schema = schemas[schemaName];
+        const schema = schemas && schemas[schemaName];
         if (!schema) { console.warn(`No matching schema for ${schemaName}`); return []; }
         const validate = ajv.compile(schema);
         validate(req.body);

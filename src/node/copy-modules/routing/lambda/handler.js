@@ -10,7 +10,7 @@ const response = data => {
 
 module.exports = ({ routing }) => async event => {
     const { method, path } = event.requestContext.http;
-    const body = event.body ?? {};
+    const body = event.body ? JSON.parse(event.body) : {};
     const req = { method, path, body };
     const result = await routing.handle(req);
     return response(result);

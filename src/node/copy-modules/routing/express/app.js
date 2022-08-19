@@ -4,7 +4,7 @@ module.exports = ({ routing }) => () => {
     const express = require('express');
     const app = express();
 
-    app.all('/*', express.json(), cors(), async (req, res) => {
+    app.all('/*', express.raw(), cors(), async (req, res) => {
         const event = {
             body: req.body ?? undefined,
             requestContext: {

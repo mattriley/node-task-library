@@ -1,7 +1,7 @@
 const response = data => {
     return {
         statusCode: data.statusCode ?? 200,
-        body: data.body ? JSON.stringify(data.body) : undefined,
+        body: JSON.stringify(data.body ?? {}),
         headers: {
             'content-type': 'application/json'
         }
@@ -9,8 +9,9 @@ const response = data => {
 };
 
 module.exports = ({ routing }) => async event => {
-    const req = event.requestContext.http;
-    req.body = event.body ? JSON.parse(event.body) : {};
+    const { method, path } = event.requestContext.http;
+    const body = event.body ?? {};
+    const req = { method, path, body };
     const result = await routing.handle(req);
     return response(result);
 };

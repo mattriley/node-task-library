@@ -4,9 +4,9 @@ module.exports = ({ routing }) => () => {
     const express = require('express');
     const app = express();
 
-    app.all('/*', cors(), async (req, res) => {
+    app.all('/*', express.json(), cors(), async (req, res) => {
         const event = {
-            body: req.body ? JSON.parse(req.body) : undefined,
+            body: req.body ?? undefined,
             requestContext: {
                 http: {
                     method: req.method.toUpperCase(),
@@ -15,8 +15,7 @@ module.exports = ({ routing }) => () => {
             }
         };
         const result = await routing.lambda.handler(event);
-        res.status(result.statusCode);
-        res.send(result.body);
+        res.status(result.statusCode).send(result.body);
     });
 
     return app;

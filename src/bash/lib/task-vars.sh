@@ -124,6 +124,10 @@ function MODULES {
     echo "$SRC/modules"
 }
 
+function COPY_MODULES {
+    echo ""
+}
+
 function TESTS {
     echo "./tests"
 }

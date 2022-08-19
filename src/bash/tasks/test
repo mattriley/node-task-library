@@ -1,7 +1,7 @@
 #!/bin/bash
 
-[ -z "$TEST_RUNNER" ] && warn "No test runner found" && exit 0
-
 [ ! $(ls -A "$TESTS") ] && warn "No tests found" && exit 0
+
+[ -z "$TEST_RUNNER" ] && warn "No test runner found" && exit 0
 
 npx task "$TEST_RUNNER-test"

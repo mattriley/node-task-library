@@ -1,0 +1,8 @@
+#!/bin/bash
+  
+function action { 
+    rm -rf "$MODULES/$1"
+    cp -r "$TASK_LIBRARY_SRC/node/copy-modules/$1" "$MODULES"    
+}
+
+for_each "$COPY_MODULES" action

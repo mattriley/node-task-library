@@ -1,8 +1,15 @@
 #!/bin/bash
   
+copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
+
 function action { 
     rm -rf "$MODULES/$1"
-    cp -r "$TASK_LIBRARY_ROOT/src/node/copy-modules/$1" "$MODULES"    
+    cp -r "$copy_modules_root/$1" "$MODULES"
+
+    if "$1" = "routing"; then
+        cp "$copy_modules_root/lambda.js" "$MODULES"
+        cp "$copy_modules_root/server.js" "$MODULES"
+    fi
 }
 
 for_each "$COPY_MODULES" action

@@ -16,8 +16,8 @@ if (p.type === 'module') {
 if (dependsOn('react')) {
     eslintConfig.extends.push('plugin:react/recommended', 'plugin:react/jsx-runtime');
     eslintConfig.plugins.push('react');
-    eslintConfig.rules['react/display-name'] = 'off';
-    eslintConfig.rules['react/prop-types'] = 'off';
+    eslintConfig.rules['react/display-name'] = ['off'];
+    eslintConfig.rules['react/prop-types'] = ['off'];
     _.set(eslintConfig, 'settings.react.version', 'detect');
     _.set(eslintConfig, 'parserOptions.ecmaFeatures.jsx', true);
 }

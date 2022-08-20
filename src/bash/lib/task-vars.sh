@@ -312,6 +312,14 @@ function INDEX_HTML_URL {
     [ "$WEB_URL" ] && echo "$WEB_URL"
 }
 
+function BFF_URL_LOCAL {
+    echo "http://localhost:$(port "$PACKAGE_NAME-bff")"
+}
+
+function BFF_URL {
+    echo "$BFF_URL_LOCAL"
+}
+
 function STATIC {
     echo "./static"
 }

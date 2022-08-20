@@ -1,12 +1,14 @@
+const { Buffer } = require('buffer');
+
 module.exports = ({ routing }) => () => {
 
     const cors = require('cors');
     const express = require('express');
     const app = express();
 
-    app.all('/*', express.text({ type: 'application/json' }), cors(), async (req, res) => {
+    app.all('/*', express.raw({ type: 'application/json' }), cors(), async (req, res) => {
         const event = {
-            body: req.body,
+            body: Buffer.isBuffer(req.body) ? req.body.toString() : undefined,
             requestContext: {
                 http: {
                     method: req.method.toUpperCase(),

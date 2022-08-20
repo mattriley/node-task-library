@@ -7,24 +7,17 @@ const eslintConfig = require('../configs/eslintrc.json');
 const dependsOn = dep => p.devDependencies?.[dep] || p.dependencies?.[dep];
 
 if (!eslintConfig.overrides) eslintConfig.overrides = [];
+if (!eslintConfig.plugins) eslintConfig.plugins = [];
 
 if (p.type === 'module') {
     _.set(eslintConfig, 'parserOptions.sourceType', 'module');
 }
 
 if (dependsOn('react')) {
-    eslintConfig.overrides.push(
-        {
-            files: [process.env.SRC],
-            plugins: ['react'],
-            extends: ['plugin:react/recommended', 'plugin:react/jsx-runtime'],
-            rules: {
-                'react/display-name': 'off',
-                'react/prop-types': 'off'
-            }
-        }
-    );
-
+    eslintConfig.extends.push('plugin:react/recommended', 'plugin:react/jsx-runtime');
+    eslintConfig.plugins.push('react');
+    eslintConfig.rules['react/display-name'] = 'off';
+    eslintConfig.rules['react/prop-types'] = 'off';
     _.set(eslintConfig, 'settings.react.version', 'detect');
     _.set(eslintConfig, 'parserOptions.ecmaFeatures.jsx', true);
 }

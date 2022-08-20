@@ -1,3 +1,3 @@
 function package {
-    echo $(cat ./package.json | jq -r ".$1 // empty")
+    echo $(cat "$PACKAGE_JSON" | jq -r ".$1 // empty")
 }

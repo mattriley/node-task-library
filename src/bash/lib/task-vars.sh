@@ -24,8 +24,12 @@ function VERSION_DATE {
     echo $(date)
 }
 
+function ROOT {
+    echo "."
+}
+
 function PACKAGE_JSON {
-    echo "./package.json"
+    echo "$ROOT/package.json"
 }
 
 function PACKAGE_NAME {
@@ -69,7 +73,7 @@ function WEB_URL {
 }
 
 function TASKS {
-    echo "./tasks"
+    echo "$ROOT/tasks"
 }
 
 function TASK_PATHS {
@@ -77,11 +81,11 @@ function TASK_PATHS {
 }
 
 function NODE_MODULES {
-    echo "./node_modules"
+    echo "$ROOT/node_modules"
 }
 
 function NODE_MODULES_LINKS {
-    echo "./node_modules_links"
+    echo "$ROOT/node_modules_links"
 }
 
 function NODE_MODULES_LINK_PACKAGES {
@@ -89,7 +93,7 @@ function NODE_MODULES_LINK_PACKAGES {
 }
 
 function ITERMOCIL_CONFIG {
-    echo "./itermocil.yml"
+    echo "$ROOT/itermocil.yml"
 }
 
 function ITERMOCIL_TASKS {
@@ -97,7 +101,7 @@ function ITERMOCIL_TASKS {
 }
 
 function GIT_IGNORE {
-    echo "./.gitignore"
+    echo "$ROOT/.gitignore"
 }
 
 function GIT_BRANCH {
@@ -105,7 +109,7 @@ function GIT_BRANCH {
 }
 
 function SRC {
-    echo "./src"
+    echo "$ROOT/src"
 }
 
 function SERVER {
@@ -129,7 +133,7 @@ function COPY_MODULES {
 }
 
 function TESTS {
-    echo "./tests"
+    echo "$ROOT/tests"
 }
 
 function TEST_PATTERN {
@@ -137,7 +141,7 @@ function TEST_PATTERN {
 }
 
 function TESTING {
-    echo "./testing"
+    echo "$ROOT/testing"
 }
 
 function TEST_WATCH_PATHS {
@@ -161,7 +165,7 @@ function BARREL_PATHS {
 }
 
 function COVERAGE {
-    echo "./coverage"
+    echo "$ROOT/coverage"
 }
 
 function COVERAGE_JSON_SUMMARY {
@@ -169,7 +173,7 @@ function COVERAGE_JSON_SUMMARY {
 }
 
 function METRICS {
-    echo "./metrics"
+    echo "$ROOT/metrics"
 }
 
 function METRICS_COV {
@@ -185,19 +189,19 @@ function METRICS_SUMMARY {
 }
 
 function SERVERLESS_CONFIG {
-    echo "./serverless.yml"
+    echo "$ROOT/serverless.yml"
 }
 
 function BABEL_CONFIG {
-    echo "./babel.config.js"
+    echo "$ROOT/babel.config.js"
 }
 
 function JEST_CONFIG {
-    echo "./jest.config.json"
+    echo "$ROOT/jest.config.json"
 }
 
 function ESLINT_CONFIG {
-    echo "./.eslintrc.json"
+    echo "$ROOT/.eslintrc.json"
 }
 
 function ESLINT_PATHS {
@@ -249,7 +253,7 @@ function GITHUB_PAGES_URL {
 }
 
 function GITHUB_PAGES_PATH {
-    echo "./docs"
+    echo "$ROOT/docs"
 }
 
 function GITHUB_PAGES_CNAME {
@@ -269,11 +273,11 @@ function SOURCE_CODE_URL {
 }
 
 function README {
-    echo "./README.md"
+    echo "$ROOT/README.md"
 }
 
 function README_TEMPLATE {
-    echo "./README-TEMPLATE.md"
+    echo "$ROOT/README-TEMPLATE.md"
 }
 
 function README_TITLE {
@@ -321,15 +325,15 @@ function BFF_URL {
 }
 
 function STATIC {
-    echo "./static"
+    echo "$ROOT/static"
 }
 
 function DATA {
-    echo "./data"
+    echo "$ROOT/data"
 }
 
 function DIST_BASE {
-    echo "./dist"
+    echo "$ROOT/dist"
 }
 
 function DIST {

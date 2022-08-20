@@ -1,2 +1,4 @@
+const process = require('process');
 const path = require('path');
-module.exports = require(path.resolve('./package.json'));
+const packageJson = path.resolve(process.env.PACKAGE_JSON);
+module.exports = require(packageJson);

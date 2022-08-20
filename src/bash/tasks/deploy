@@ -19,7 +19,7 @@ echo "The following tasks will be run:"
 function action { echo "• $1"; }
 for_each "${tasks[@]}" action
 
-ask_continue
+ask_ok
 
 function action { npx task "$1"; }
 for_each "${tasks[@]}" action

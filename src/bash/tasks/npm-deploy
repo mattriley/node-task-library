@@ -3,7 +3,7 @@
 echo
 echo "${BOLD}$NPM_BUMP_VERSION${NORM} version will be bumped"
 
-ask_continue
+ask_ok
 
 npm version $NPM_BUMP_VERSION \
     && npm publish \

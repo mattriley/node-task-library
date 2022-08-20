@@ -1,6 +1,11 @@
-function ask_continue {
+function ask_ok {
+
     echo
-    read -p "👀 Continue? " choice
+    echo -n "👀 OK? "
+    choice="$OK"
+
+    [ -z "$choice" ] && read choice || echo "$choice"
+
     case "$choice" in 
         y|Y ) echo;;
         n|N ) echo "Aborting..."; echo; exit 1;;

@@ -2,4 +2,4 @@
   
 npx task itermocil-config-gen
 mkdir -p ~/.itermocil
-itermocil
+itermocil --here

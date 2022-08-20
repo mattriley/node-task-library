@@ -93,7 +93,7 @@ function ITERMOCIL_CONFIG {
 }
 
 function ITERMOCIL_TASKS {
-    echo "edit | test-watch | barrel-gen-watch | start"
+    echo "edit | test-watch | start | barrel-gen-watch"
 }
 
 function GIT_IGNORE {

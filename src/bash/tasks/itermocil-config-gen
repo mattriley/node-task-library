@@ -4,7 +4,7 @@ cat << EOF > "$ITERMOCIL_CONFIG"
 windows:
   - name: $PACKAGE_NAME
     root: $(pwd)
-    layout: main-vertical
+    layout: tiled
     panes:
 EOF
 

@@ -26,7 +26,7 @@ if (dependsOn('react')) {
     );
 
     _.set(eslintConfig, 'settings.react.version', 'detect');
-    _.set(eslintConfig, 'ecmaFeatures.jsx', true);
+    _.set(eslintConfig, 'parserOptions.ecmaFeatures.jsx', true);
 }
 
 if (dependsOn('jest')) {

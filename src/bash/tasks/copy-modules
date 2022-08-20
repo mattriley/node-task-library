@@ -7,8 +7,8 @@ function action {
     cp -r "$copy_modules_root/$1" "$MODULES"
 
     if "$1" = "routing"; then
-        cp "$copy_modules_root/lambda.js" "$MODULES"
-        cp "$copy_modules_root/server.js" "$MODULES"
+        cp "$copy_modules_root/lambda.js" "$SRC"
+        cp "$copy_modules_root/server.js" "$SRC"
     fi
 }
 

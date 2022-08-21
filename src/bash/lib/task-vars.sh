@@ -222,14 +222,24 @@ function ESLINT_PLUGINS {
     unset predicate
 }
 
-[[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]
+function GIT_ROOT {
+    echo "$ROOT"
+}
 
 function GITHUB_USER_NAME {
-    echo ${BASH_REMATCH[1]}
+    (
+        cd "$GIT_ROOT"
+        [[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]
+        echo ${BASH_REMATCH[1]}
+    )
 }
 
 function GITHUB_REPO_NAME {
-    echo ${BASH_REMATCH[2]}
+    (
+        cd "$GIT_ROOT"
+        [[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]
+        echo ${BASH_REMATCH[2]}
+    )
 }
 
 function GITHUB_REPO_PATH {

@@ -1,7 +1,7 @@
 function load_vars {
     env_before="$(env)"
     source "./task-vars" 2> /dev/null
-    [ $ROOT ] && source "$ROOT/task-vars" 2> /dev/null
+    [ "$ROOT" ] && source "$ROOT/task-vars" 2> /dev/null
     vars=$(extract_function_names "$TASK_LIBRARY_ROOT/src/bash/lib/task-vars.sh")
 
     while IFS= read -r name; do

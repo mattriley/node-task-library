@@ -9,7 +9,7 @@ function IFS {
 }
 
 function PRINT_VARS {
-    echo "DISPLAY_NAME | PACKAGE_NAME | STAGE | PORT"
+    echo "ROOT | DISPLAY_NAME | PACKAGE_NAME | STAGE | PORT"
 }
 
 function STAGE {

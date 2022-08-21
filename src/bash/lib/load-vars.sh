@@ -5,6 +5,8 @@ function load_vars {
     vars=$(extract_function_names "$TASK_LIBRARY_ROOT/src/bash/lib/task-vars.sh")
 
     while IFS= read -r name; do
+        override_name="${name}_OVERRIDE"
+        [ "${!override_name}" ] && export $name="${!override_name}"
         [ -z "${!name}" ] && export $name="$($name)"
     done <<< "$vars"
 

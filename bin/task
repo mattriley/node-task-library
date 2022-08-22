@@ -30,4 +30,5 @@ function extract_function_names {
 
 export_functions "$TASK_LIBRARY_ROOT/src/bash/lib" > /dev/null
 export_functions "$TASK_LIBRARY_ROOT/src/bash/vars" > /dev/null
+export VAR_NAMES=$(export_functions "$TASK_LIBRARY_ROOT/src/bash/vars")
 task "$@"

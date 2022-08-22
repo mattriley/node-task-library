@@ -16,13 +16,11 @@ function STAGE {
     echo "local"
 }
 
-function TARGET {
-    echo ""
-}
-
 function VERSION_DATE {
     echo $(date)
 }
+
+# BEGIN Roots
 
 function ROOT {
     echo "."
@@ -32,13 +30,51 @@ function PACKAGE_ROOT {
     echo "$ROOT"
 }
 
+function GIT_ROOT {
+    echo "$PACKAGE_ROOT"
+}
+
 function OUTPUT_ROOT {
     echo "$PACKAGE_ROOT"
 }
 
+# END Roots
+
+# BEGIN Configs
+
 function PACKAGE_JSON {
     echo "$PACKAGE_ROOT/package.json"
 }
+
+function GIT_IGNORE {
+    echo "$PACKAGE_ROOT/.gitignore"
+}
+
+function ESLINT_CONFIG {
+    echo "$PACKAGE_ROOT/.eslintrc.json"
+}
+
+function BABEL_CONFIG {
+    echo "$PACKAGE_ROOT/babel.config.js"
+}
+
+function JEST_CONFIG {
+    echo "$PACKAGE_ROOT/jest.config.json"
+}
+
+function SERVERLESS_CONFIG {
+    echo "$PACKAGE_ROOT/serverless.yml"
+}
+
+function ITERMOCIL_CONFIG {
+    echo "$PACKAGE_ROOT/itermocil.yml"
+}
+
+# END Configs
+
+
+
+
 
 function PACKAGE_NAME {
     echo $(package name)
@@ -100,17 +136,13 @@ function NODE_MODULES_LINK_PACKAGES {
     echo "module-composer | module-indexgen | task-library"
 }
 
-function ITERMOCIL_CONFIG {
-    echo "$PACKAGE_ROOT/itermocil.yml"
-}
+
 
 function ITERMOCIL_TASKS {
     echo "edit | test-watch | start | barrel-gen-watch"
 }
 
-function GIT_IGNORE {
-    echo "$PACKAGE_ROOT/.gitignore"
-}
+
 
 function GIT_BRANCH {
     echo $(git branch --show-current)
@@ -196,21 +228,7 @@ function METRICS_SUMMARY {
     echo "$METRICS/metrics-summary.json"
 }
 
-function SERVERLESS_CONFIG {
-    echo "$PACKAGE_ROOT/serverless.yml"
-}
 
-function BABEL_CONFIG {
-    echo "$PACKAGE_ROOT/babel.config.js"
-}
-
-function JEST_CONFIG {
-    echo "$PACKAGE_ROOT/jest.config.json"
-}
-
-function ESLINT_CONFIG {
-    echo "$PACKAGE_ROOT/.eslintrc.json"
-}
 
 function ESLINT_PATHS {
     # eslint doesn't like empty directories
@@ -228,10 +246,6 @@ function ESLINT_PLUGINS {
     function predicate { has_dev_dependency "$1"; }
     filter "$CONDITIONAL_ESLINT_PLUGINS" predicate
     unset predicate
-}
-
-function GIT_ROOT {
-    echo "$PACKAGE_ROOT"
 }
 
 function GITHUB_USER_NAME {

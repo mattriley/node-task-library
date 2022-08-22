@@ -28,12 +28,12 @@ function ROOT {
     echo "."
 }
 
-function OUTPUT_ROOT {
+function PACKAGE_ROOT {
     echo "$ROOT"
 }
 
-function PACKAGE_ROOT {
-    echo "$ROOT"
+function OUTPUT_ROOT {
+    echo "$PACKAGE_ROOT"
 }
 
 function PACKAGE_JSON {
@@ -231,7 +231,7 @@ function ESLINT_PLUGINS {
 }
 
 function GIT_ROOT {
-    echo "$ROOT"
+    echo "$PACKAGE_ROOT"
 }
 
 function GITHUB_USER_NAME {

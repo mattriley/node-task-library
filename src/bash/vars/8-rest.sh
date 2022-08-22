@@ -87,44 +87,8 @@ function COPY_MODULES {
     echo ""
 }
 
-function TESTS {
-    echo "$PACKAGE_ROOT/tests"
-}
-
-function TEST_PATTERN {
-    echo "$TESTS/**/*.test.{js,mjs}"
-}
-
-function TESTING {
-    echo "$PACKAGE_ROOT/testing"
-}
-
-function TEST_WATCH_PATHS {
-    function predicate { [ -d "$1" ]; }
-    filter "$SRC | $TESTS | $TESTING" predicate
-    unset predicate
-}
-
-function SUPPORTED_TEST_RUNNERS {
-    echo "jest | mocha | tap | tape | zora"
-}
-
-function TEST_RUNNER {
-    function predicate { has_dev_dependency "$1"; } 
-    find "$SUPPORTED_TEST_RUNNERS" predicate
-    unset predicate
-}
-
 function BARREL_PATHS {
     echo "$TEST_WATCH_PATHS"
-}
-
-function COVERAGE {
-    echo "$OUTPUT_ROOT/coverage"
-}
-
-function COVERAGE_JSON_SUMMARY {
-    echo "$COVERAGE/coverage-summary.json"
 }
 
 function METRICS {
@@ -141,26 +105,6 @@ function METRICS_LOC {
 
 function METRICS_SUMMARY {
     echo "$METRICS/metrics-summary.json"
-}
-
-
-
-function ESLINT_PATHS {
-    # eslint doesn't like empty directories
-    function predicate { [ "$(ls -A $1)" ]; } 
-    filter "$TEST_WATCH_PATHS" predicate
-    unset predicate
-}
-
-function CONDITIONAL_ESLINT_PLUGINS {
-    echo "react | jest | mocha | tap | tape"
-}
-
-function ESLINT_PLUGINS {
-    echo -n "import | "
-    function predicate { has_dev_dependency "$1"; }
-    filter "$CONDITIONAL_ESLINT_PLUGINS" predicate
-    unset predicate
 }
 
 function ISSUES_URL {
@@ -253,20 +197,4 @@ function PARCEL_OPTIONS {
 
 function NPM_BUMP_VERSION {
     echo "minor"
-}
-
-function COV_BRANCHES {
-    echo "100"
-}
-
-function COV_LINES {
-    echo "100"
-}
-
-function COV_FUNCTIONS {
-    echo "100"
-}
-
-function COV_STATEMENTS {
-    echo "100"
 }

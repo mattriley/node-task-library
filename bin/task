@@ -1,13 +1,14 @@
 #!/bin/bash
 
+export SUPPORTED_TEST_RUNNERS="jest | mocha | tap | tape | zora"
+export STAGE=${STAGE:-"local"}
+export TASK_LIBRARY_ROOT="./node_modules/task-library"
+
 export NORM=$(tput sgr0)
 export BOLD=$(tput bold)
 export RED=$(tput setaf 1)
 export GRE=$(tput setaf 2)
 export YEL=$(tput setaf 3)
-
-export STAGE=${STAGE:-"local"}
-export TASK_LIBRARY_ROOT="./node_modules/task-library"
 
 function export_functions {
     for script in $1/*.sh; do

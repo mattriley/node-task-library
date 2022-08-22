@@ -57,7 +57,10 @@ function ITERMOCIL_TASKS {
 
 
 function GIT_BRANCH {
-    echo $(git branch --show-current)
+    (
+        cd "$GIT_ROOT"
+        git branch --show-current
+    )
 }
 
 function SRC {

@@ -8,10 +8,6 @@ function GIT_IGNORE {
     echo "$PACKAGE_ROOT/.gitignore"
 }
 
-function ESLINT_CONFIG {
-    echo "$PACKAGE_ROOT/.eslintrc.json"
-}
-
 function BABEL_CONFIG {
     echo "$PACKAGE_ROOT/babel.config.js"
 }

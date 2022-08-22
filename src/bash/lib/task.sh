@@ -1,6 +1,5 @@
 function task {
     task_name=${1:-"default"}
-    [ -z "$VARS" ] && load_vars
     task_file=$(find_task_file $task_name)
     [ -z "$task_file" ] && echo -e "Task ${BOLD}$task_name${NORM} not found" && exit 1
     chmod +x "$task_file"

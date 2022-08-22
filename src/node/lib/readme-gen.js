@@ -26,7 +26,7 @@ module.exports = (userConfig = {}) => {
     lib.renderLink = (href, text) => `<a href="${href}">${text}</a>`;
     lib.renderLinkWithId = (href, text) => `<a id="link-${++linkId}" href="${href}#user-content-link-${linkId}">${text}</a>`;
 
-    lib.fetchCode = async (source, root = './', webroot) => {
+    lib.fetchCode = async (source, root = process.env.PACKAGE_ROOT + '/', webroot) => {
         const fullSource = path.join(root, source);
         const getCode = fullSource.startsWith('http') ? lib.fetchText : lib.readText;
         const code = await getCode(fullSource);

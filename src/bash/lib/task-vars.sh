@@ -32,8 +32,12 @@ function OUTPUT_ROOT {
     echo "$ROOT"
 }
 
+function PACKAGE_ROOT {
+    echo "$ROOT"
+}
+
 function PACKAGE_JSON {
-    echo "./package.json"
+    echo "$PACKAGE_ROOT/package.json"
 }
 
 function PACKAGE_NAME {
@@ -77,7 +81,7 @@ function WEB_URL {
 }
 
 function TASKS {
-    echo "./tasks"
+    echo "$PACKAGE_ROOT/tasks"
 }
 
 function TASK_PATHS {
@@ -85,11 +89,11 @@ function TASK_PATHS {
 }
 
 function NODE_MODULES {
-    echo "./node_modules"
+    echo "$PACKAGE_ROOT/node_modules"
 }
 
 function NODE_MODULES_LINKS {
-    echo "./node_modules_links"
+    echo "$PACKAGE_ROOT/node_modules_links"
 }
 
 function NODE_MODULES_LINK_PACKAGES {
@@ -97,7 +101,7 @@ function NODE_MODULES_LINK_PACKAGES {
 }
 
 function ITERMOCIL_CONFIG {
-    echo "./itermocil.yml"
+    echo "$PACKAGE_ROOT/itermocil.yml"
 }
 
 function ITERMOCIL_TASKS {
@@ -105,7 +109,7 @@ function ITERMOCIL_TASKS {
 }
 
 function GIT_IGNORE {
-    echo "./.gitignore"
+    echo "$PACKAGE_ROOT/.gitignore"
 }
 
 function GIT_BRANCH {
@@ -113,7 +117,7 @@ function GIT_BRANCH {
 }
 
 function SRC {
-    echo "./src"
+    echo "$PACKAGE_ROOT/src"
 }
 
 function SERVER {
@@ -137,7 +141,7 @@ function COPY_MODULES {
 }
 
 function TESTS {
-    echo "./tests"
+    echo "$PACKAGE_ROOT/tests"
 }
 
 function TEST_PATTERN {
@@ -145,7 +149,7 @@ function TEST_PATTERN {
 }
 
 function TESTING {
-    echo "./testing"
+    echo "$PACKAGE_ROOT/testing"
 }
 
 function TEST_WATCH_PATHS {
@@ -193,19 +197,19 @@ function METRICS_SUMMARY {
 }
 
 function SERVERLESS_CONFIG {
-    echo "./serverless.yml"
+    echo "$PACKAGE_ROOT/serverless.yml"
 }
 
 function BABEL_CONFIG {
-    echo "./babel.config.js"
+    echo "$PACKAGE_ROOT/babel.config.js"
 }
 
 function JEST_CONFIG {
-    echo "./jest.config.json"
+    echo "$PACKAGE_ROOT/jest.config.json"
 }
 
 function ESLINT_CONFIG {
-    echo "./.eslintrc.json"
+    echo "$PACKAGE_ROOT/.eslintrc.json"
 }
 
 function ESLINT_PATHS {
@@ -287,11 +291,11 @@ function SOURCE_CODE_URL {
 }
 
 function README {
-    echo "./README.md"
+    echo "$PACKAGE_ROOT/README.md"
 }
 
 function README_TEMPLATE {
-    echo "./README-TEMPLATE.md"
+    echo "$PACKAGE_ROOT/README-TEMPLATE.md"
 }
 
 function README_TITLE {
@@ -339,11 +343,11 @@ function BFF_URL {
 }
 
 function STATIC {
-    echo "./static"
+    echo "$PACKAGE_ROOT/static"
 }
 
 function DATA {
-    echo "./data"
+    echo "$PACKAGE_ROOT/data"
 }
 
 function DIST_BASE {

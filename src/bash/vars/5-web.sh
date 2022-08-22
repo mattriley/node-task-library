@@ -1,5 +1,17 @@
 #!/bin/bash
 
+function SERVER {
+    echo "$SRC/server.js"
+}
+
+function SERVER_PORT {
+    port "$(package name)"
+}
+
+function PORT {
+    echo "$SERVER_PORT"
+}
+
 function WEB_HOST_NAME {
     echo ""
 }

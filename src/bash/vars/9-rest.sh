@@ -1,45 +1,5 @@
 #!/bin/bash
 
-function SEP {
-    echo " | "
-}
-
-function IFS {
-    echo "$SEP"
-}
-
-function PRINT_VARS {
-    echo "ROOT | DISPLAY_NAME | PACKAGE_NAME | STAGE | PORT"
-}
-
-function STAGE {
-    echo "local"
-}
-
-function VERSION_DATE {
-    echo $(date)
-}
-
-function PACKAGE_NAME {
-    echo $(package name)
-}
-
-function DISPLAY_NAME {
-    echo "$PACKAGE_NAME"
-}
-
-function TASKS {
-    echo "$PACKAGE_ROOT/tasks"
-}
-
-function TASK_PATHS {
-    echo "$TASKS | $TASK_LIBRARY_ROOT/src/bash/tasks"
-}
-
-function NODE_MODULES {
-    echo "$PACKAGE_ROOT/node_modules"
-}
-
 function NODE_MODULES_LINKS {
     echo "$PACKAGE_ROOT/node_modules_links"
 }
@@ -63,25 +23,7 @@ function GIT_BRANCH {
     )
 }
 
-function SRC {
-    echo "$PACKAGE_ROOT/src"
-}
 
-function SERVER {
-    echo "$SRC/server.js"
-}
-
-function SERVER_PORT {
-    port "$PACKAGE_NAME"
-}
-
-function PORT {
-    echo "$SERVER_PORT"
-}
-
-function MODULES {
-    echo "$SRC/modules"
-}
 
 function COPY_MODULES {
     echo ""

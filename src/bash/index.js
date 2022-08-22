@@ -1,4 +1,5 @@
 module.exports = {
     lib: require('./lib'),
-    tasks: require('./tasks')
+    tasks: require('./tasks'),
+    vars: require('./vars')
 };

@@ -20,26 +20,6 @@ function VERSION_DATE {
     echo $(date)
 }
 
-# BEGIN Roots
-
-function ROOT {
-    echo "."
-}
-
-function PACKAGE_ROOT {
-    echo "$ROOT"
-}
-
-function GIT_ROOT {
-    echo "$PACKAGE_ROOT"
-}
-
-function OUTPUT_ROOT {
-    echo "$PACKAGE_ROOT"
-}
-
-# END Roots
-
 # BEGIN Configs
 
 function PACKAGE_JSON {

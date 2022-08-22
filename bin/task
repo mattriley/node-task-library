@@ -13,7 +13,10 @@ function export_functions {
     for script in $1/*.sh; do
         funcs=$(extract_function_names "$script")
         source "$script"
-        while IFS= read -r name; do export -f "$name"; done <<< "$funcs"
+        while IFS= read -r name; do 
+            export -f "$name";
+            echo "$name"
+        done <<< "$funcs"
     done
 }
 
@@ -25,5 +28,6 @@ function extract_function_names {
     done < "$script"
 }
 
-export_functions "$TASK_LIBRARY_ROOT/src/bash/lib"
+export_functions "$TASK_LIBRARY_ROOT/src/bash/lib" > /dev/null
+export_functions "$TASK_LIBRARY_ROOT/src/bash/vars" > /dev/null
 task "$@"

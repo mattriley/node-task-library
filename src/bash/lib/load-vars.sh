@@ -3,7 +3,7 @@ function load_vars {
     source "./task-vars" 2> /dev/null
     root=${ROOT_OVERRIDE:-"$ROOT"}
     [ "$root" ] && source "$root/task-vars" 2> /dev/null
-    vars=$(extract_function_names "$TASK_LIBRARY_ROOT/src/bash/lib/task-vars.sh")
+    vars=$(export_functions "$TASK_LIBRARY_ROOT/src/bash/vars")
 
     while IFS= read -r name; do
         override_name="${name}_OVERRIDE"

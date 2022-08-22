@@ -28,6 +28,10 @@ function ROOT {
     echo "."
 }
 
+function OUTPUT_ROOT {
+    echo "$ROOT"
+}
+
 function PACKAGE_JSON {
     echo "./package.json"
 }
@@ -165,7 +169,7 @@ function BARREL_PATHS {
 }
 
 function COVERAGE {
-    echo "./coverage"
+    echo "$OUTPUT_ROOT/coverage"
 }
 
 function COVERAGE_JSON_SUMMARY {
@@ -173,7 +177,7 @@ function COVERAGE_JSON_SUMMARY {
 }
 
 function METRICS {
-    echo "./metrics"
+    echo "$OUTPUT_ROOT/metrics"
 }
 
 function METRICS_COV {
@@ -263,7 +267,7 @@ function GITHUB_PAGES_URL {
 }
 
 function GITHUB_PAGES_PATH {
-    echo "./docs"
+    echo "$OUTPUT_ROOT/docs"
 }
 
 function GITHUB_PAGES_CNAME {
@@ -343,7 +347,7 @@ function DATA {
 }
 
 function DIST_BASE {
-    echo "./dist"
+    echo "$OUTPUT_ROOT/dist"
 }
 
 function DIST {

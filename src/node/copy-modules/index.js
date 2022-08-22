@@ -1,3 +1,5 @@
 module.exports = {
-    routing: require('./routing')
+    lambda: require('./lambda'),
+    routing: require('./routing'),
+    server: require('./server')
 };

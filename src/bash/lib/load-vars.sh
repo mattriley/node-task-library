@@ -10,6 +10,7 @@ function load_vars {
     [ "$root" ] && source "$root/task-vars" 2> /dev/null
 
     while IFS= read -r name; do
+        # echo "$name"
         override_name="${name}_OVERRIDE"
         [ "${!override_name}" ] && export $name="${!override_name}"
         [ -z "${!name}" ] && export $name="$($name)"

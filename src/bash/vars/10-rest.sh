@@ -41,37 +41,6 @@ function README_GEN {
     echo "$TASK_LIBRARY_ROOT/src/node/bin/readme-gen.js"
 }
 
-function INDEX_HTML_TEMPLATE {
-    echo "$SRC/index.template.html"
-}
-
-function INDEX_HTML {
-    echo "$SRC/index.html"
-}
-
-function INDEX_HTML_TITLE {
-    echo "$DISPLAY_NAME"
-}
-
-function INDEX_HTML_DESCRIPTION {
-    echo $(package description)
-}
-
-function INDEX_HTML_AUTHOR {
-    echo "$AUTHOR_NAME"
-}
-
-function INDEX_HTML_URL {
-    [ "$WEB_URL" ] && echo "$WEB_URL"
-}
-
-function BFF_URL_LOCAL {
-    echo "http://localhost:$(port "$PACKAGE_NAME-bff")"
-}
-
-function BFF_URL {
-    echo "$BFF_URL_LOCAL"
-}
 
 function STATIC {
     echo "$PACKAGE_ROOT/static"

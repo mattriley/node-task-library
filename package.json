@@ -9,10 +9,6 @@
         "email": "m@ttriley.dev",
         "url": "https://github.com/mattriley"
     },
-    "bugs": {
-        "url": "https://github.com/mattriley/node-task-library/issues",
-        "email": "m@ttriley.dev"
-    },
     "bin": {
         "task": "./bin/task"
     },

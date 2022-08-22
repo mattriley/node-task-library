@@ -1,29 +1,5 @@
 #!/bin/bash
 
-function NODE_MODULES_LINKS {
-    echo "$PACKAGE_ROOT/node_modules_links"
-}
-
-function NODE_MODULES_LINK_PACKAGES {
-    echo "module-composer | module-indexgen | task-library"
-}
-
-
-
-function ITERMOCIL_TASKS {
-    echo "edit | test-watch | start | barrel-gen-watch"
-}
-
-
-
-function GIT_BRANCH {
-    (
-        cd "$GIT_ROOT"
-        git branch --show-current
-    )
-}
-
-
 
 function COPY_MODULES {
     echo ""
@@ -31,22 +7,6 @@ function COPY_MODULES {
 
 function BARREL_PATHS {
     echo "$TEST_WATCH_PATHS"
-}
-
-function METRICS {
-    echo "$OUTPUT_ROOT/metrics"
-}
-
-function METRICS_COV {
-    echo "$METRICS/cov.json"
-}
-
-function METRICS_LOC {
-    echo "$METRICS/loc.json"
-}
-
-function METRICS_SUMMARY {
-    echo "$METRICS/metrics-summary.json"
 }
 
 function ISSUES_URL {

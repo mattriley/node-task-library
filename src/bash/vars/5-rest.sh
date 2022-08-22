@@ -20,42 +20,6 @@ function VERSION_DATE {
     echo $(date)
 }
 
-# BEGIN Configs
-
-function PACKAGE_JSON {
-    echo "$PACKAGE_ROOT/package.json"
-}
-
-function GIT_IGNORE {
-    echo "$PACKAGE_ROOT/.gitignore"
-}
-
-function ESLINT_CONFIG {
-    echo "$PACKAGE_ROOT/.eslintrc.json"
-}
-
-function BABEL_CONFIG {
-    echo "$PACKAGE_ROOT/babel.config.js"
-}
-
-function JEST_CONFIG {
-    echo "$PACKAGE_ROOT/jest.config.json"
-}
-
-function SERVERLESS_CONFIG {
-    echo "$PACKAGE_ROOT/serverless.yml"
-}
-
-function ITERMOCIL_CONFIG {
-    echo "$PACKAGE_ROOT/itermocil.yml"
-}
-
-# END Configs
-
-
-
-
-
 function PACKAGE_NAME {
     echo $(package name)
 }
@@ -80,20 +44,6 @@ function AUTHOR_URL {
     package_author_url="$(package author.url)"
     [ "$package_author_url" ] && echo "$package_author_url" && return 0
     echo "$MY_AUTHOR_URL"
-}
-
-function WEB_HOST_NAME {
-    echo ""
-}
-
-function WEB_BASE_PATH {
-    echo ""
-}
-
-function WEB_URL {
-    [[ $WEB_BASE_PATH == /* ]] && web_base_path="$WEB_BASE_PATH" || web_base_path="/$WEB_BASE_PATH"
-    [ "$WEB_HOST_NAME" ] && [ "$WEB_BASE_PATH" ] && echo "https://$WEB_HOST_NAME$WEB_BASE_PATH" && return 0
-    [ "$WEB_HOST_NAME" ] && echo "https://$WEB_HOST_NAME"
 }
 
 function TASKS {
@@ -226,50 +176,6 @@ function ESLINT_PLUGINS {
     function predicate { has_dev_dependency "$1"; }
     filter "$CONDITIONAL_ESLINT_PLUGINS" predicate
     unset predicate
-}
-
-function GITHUB_USER_NAME {
-    (
-        cd "$GIT_ROOT"
-        [[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]
-        echo ${BASH_REMATCH[1]}
-    )
-}
-
-function GITHUB_REPO_NAME {
-    (
-        cd "$GIT_ROOT"
-        [[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]
-        echo ${BASH_REMATCH[2]}
-    )
-}
-
-function GITHUB_REPO_PATH {
-    echo "$GITHUB_USER_NAME/$GITHUB_REPO_NAME"
-}
-
-function GITHUB_USER_URL {
-    echo "https://github.com/$GITHUB_USER_NAME"
-}
-
-function GITHUB_REPO_URL {
-    echo "$GITHUB_USER_URL/$GITHUB_REPO_NAME"
-}
-
-function GITHUB_ISSUES_URL {
-    echo "$GITHUB_REPO_URL/issues"
-}
-
-function GITHUB_PAGES_URL {
-    echo "https://$GITHUB_USER_NAME.github.io/$GITHUB_REPO_NAME"
-}
-
-function GITHUB_PAGES_PATH {
-    echo "$OUTPUT_ROOT/docs"
-}
-
-function GITHUB_PAGES_CNAME {
-    [[ ! "$WEB_HOST_NAME" == *".github.io" ]] && echo "$WEB_HOST_NAME"
 }
 
 function ISSUES_URL {

@@ -1,6 +1,7 @@
 #!/bin/bash
 
 export DISPLAY_NAME="Task Library"
+export BARREL_PATHS="./src/node | ./tests"
 
 export COV_BRANCHES=0
 export COV_LINES=0

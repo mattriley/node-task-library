@@ -1,8 +1,9 @@
 #!/bin/bash
 
+export SEP=" | "
+export TASK_LIBRARY_ROOT="./node_modules/task-library"
 export SUPPORTED_TEST_RUNNERS="jest | mocha | tap | tape | zora"
 export STAGE=${STAGE:-"local"}
-export TASK_LIBRARY_ROOT="./node_modules/task-library"
 
 export NORM=$(tput sgr0)
 export BOLD=$(tput bold)

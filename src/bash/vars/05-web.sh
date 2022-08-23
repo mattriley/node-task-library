@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function STATIC {
+    echo "$PACKAGE_ROOT/static"
+}
+
 function SERVER {
     echo "$SRC/server.js"
 }
@@ -56,4 +60,20 @@ function INDEX_HTML_AUTHOR {
 
 function INDEX_HTML_URL {
     [ "$WEB_URL" ] && echo "$WEB_URL"
+}
+
+function DIST_BASE {
+    echo "$OUTPUT_ROOT/dist"
+}
+
+function DIST {
+    [ "$STAGE" ] && echo "$DIST_BASE-$STAGE" || echo "$DIST_BASE"
+}
+
+function DIST_FLATTEN {
+    echo "false"
+}
+
+function PARCEL_OPTIONS {
+    echo "$INDEX_HTML"
 }

@@ -25,7 +25,7 @@ function NODE_MODULES_LINK_PACKAGES {
     echo "module-composer | module-indexgen | task-library"
 }
 
-function ITERMOCIL_TASKS {
+function DEV_TASKS {
     echo "edit | test-watch | start | barrel-gen-watch"
 }
 

@@ -8,7 +8,7 @@ windows:
     panes:
 EOF
 
-IFS="$SEP"; tasks=($ITERMOCIL_TASKS); unset IFS
+IFS="$SEP"; tasks=($DEV_TASKS); unset IFS
 
 function action {
     cat << EOF >> "$ITERMOCIL_CONFIG" 
@@ -18,4 +18,4 @@ function action {
 EOF
 }
 
-for_each "$ITERMOCIL_TASKS" action
+for_each "$DEV_TASKS" action

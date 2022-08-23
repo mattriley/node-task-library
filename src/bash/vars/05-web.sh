@@ -30,12 +30,8 @@ function WEB_URL {
     [ "$WEB_HOST_NAME" ] && echo "https://$WEB_HOST_NAME"
 }
 
-function BFF_URL_LOCAL {
-    echo "http://localhost:$(port "$PACKAGE_NAME-bff")"
-}
-
 function BFF_URL {
-    echo "$BFF_URL_LOCAL"
+    echo "http://localhost:$(port "$PACKAGE_NAME-bff")"
 }
 
 function INDEX_HTML_TEMPLATE {

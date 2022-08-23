@@ -21,7 +21,7 @@ function PRINT_VARS {
     echo "ROOT | DISPLAY_NAME | PACKAGE_NAME | STAGE | PORT"
 }
 
-function NODE_MODULES_LINK_PACKAGES {
+function DEV_LINKS {
     echo "module-composer | module-indexgen | task-library"
 }
 

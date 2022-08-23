@@ -25,7 +25,7 @@ function PACKAGE_NAME {
 }
 
 function DISPLAY_NAME {
-    echo "$PACKAGE_NAME"
+    node -p "require('lodash').startCase('$PACKAGE_NAME')"
 }
 
 function COPY_MODULES {

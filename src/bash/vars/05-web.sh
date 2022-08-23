@@ -51,7 +51,7 @@ function INDEX_HTML_TITLE {
 }
 
 function INDEX_HTML_DESCRIPTION {
-    echo "$PACKAGE_DESCRIPTION"
+    echo "$(package description)"
 }
 
 function INDEX_HTML_AUTHOR {

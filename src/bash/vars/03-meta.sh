@@ -24,10 +24,6 @@ function PACKAGE_NAME {
     echo "$(package name)"
 }
 
-function PACKAGE_DESCRIPTION {
-    echo "$(package description)"
-}
-
 function DISPLAY_NAME {
     echo "$PACKAGE_NAME"
 }

@@ -4,10 +4,6 @@ function SEP {
     echo " | "
 }
 
-function IFS {
-    echo "$SEP"
-}
-
 function PRINT_VARS {
     echo "ROOT | DISPLAY_NAME | PACKAGE_NAME | STAGE | PORT"
 }

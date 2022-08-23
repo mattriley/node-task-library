@@ -48,4 +48,6 @@ function ITERMOCIL_TASKS {
 
 
 
-
+function TASK_PATHS {
+    echo "$TASKS | $TASK_LIBRARY_ROOT/src/bash/tasks"
+}

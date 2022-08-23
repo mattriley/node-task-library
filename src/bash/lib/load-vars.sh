@@ -18,6 +18,7 @@ function load_vars {
 
     env_after="$(env)"
     export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
+    export TASK_PATHS="$TASKS | $TASK_LIBRARY_ROOT/src/bash/tasks"
     echo
     npx task print-vars
 }

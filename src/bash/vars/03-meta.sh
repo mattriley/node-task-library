@@ -36,13 +36,6 @@ function COPY_MODULES {
     echo ""
 }
 
-
-function TASK_PATHS {
-    echo "$TASKS | $TASK_LIBRARY_ROOT/src/bash/tasks"
-}
-
-
-
 function NODE_MODULES_LINKS {
     echo "$PACKAGE_ROOT/node_modules_links"
 }

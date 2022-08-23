@@ -24,6 +24,10 @@ function NODE_MODULES {
     echo "$PACKAGE_ROOT/node_modules"
 }
 
+function DATA {
+    echo "$PACKAGE_ROOT/data"
+}
+
 function SRC {
     echo "$PACKAGE_ROOT/src"
 }

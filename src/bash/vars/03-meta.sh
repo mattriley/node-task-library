@@ -32,6 +32,9 @@ function DISPLAY_NAME {
     echo "$PACKAGE_NAME"
 }
 
+function COPY_MODULES {
+    echo ""
+}
 
 
 function TASK_PATHS {
@@ -55,12 +58,5 @@ function ITERMOCIL_TASKS {
 }
 
 
-
-function GIT_BRANCH {
-    (
-        cd "$GIT_ROOT"
-        git branch --show-current
-    )
-}
 
 

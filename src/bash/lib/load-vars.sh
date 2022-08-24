@@ -11,8 +11,9 @@ function load_vars {
     root=${ROOT_OVERRIDE:-"$ROOT"}
     [ "$root" ] && source "$root/task-vars" 2> /dev/null
     env_after="$(env)"
-    # export VARS1=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u | sed 's;=.*;;')
-    export external_var_names=$(uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
+    
+    external_var_names=$(uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
+    # external_var_names_excluding_staged=$(echo "$external_var_names" | sed -i '/__/d')
 
     while IFS= read -r name; do
         override_name="${name}_OVERRIDE"
@@ -21,6 +22,7 @@ function load_vars {
     done <<< "$internal_var_names"
 
     stage_upper=$(echo "$STAGE" | tr '[:lower:]' '[:upper:]')
+
     while IFS= read -r name; do
         if [[ "$name" =~ __$stage_upper$ ]]; then
             stageless=${name/__$stage_upper/}
@@ -29,9 +31,9 @@ function load_vars {
     done <<< "$external_var_names"
 
 
-    env_after="$(env)"
+    env_after_excluding_staged="$(env | sed '/__/d')"
     # export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
-    export VARS=$(uniq_vars "$env_before" "$env_after")
+    export VARS=$(uniq_vars "$env_before" "$env_after_excluding_staged")
     echo
     npx task print-vars
 }

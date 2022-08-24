@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function load_vars {
     [ "$VARS" ] && return 0
     vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
@@ -9,7 +11,8 @@ function load_vars {
     root=${ROOT_OVERRIDE:-"$ROOT"}
     [ "$root" ] && source "$root/task-vars" 2> /dev/null
     env_after="$(env)"
-    export VARS1=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u | sed 's;=.*;;')
+    # export VARS1=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u | sed 's;=.*;;')
+    export VARS1=$(uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
 
     while IFS= read -r name; do
         override_name="${name}_OVERRIDE"
@@ -27,7 +30,8 @@ function load_vars {
 
 
     env_after="$(env)"
-    export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
+    # export VARS=$(sort <(echo "$env_before" ) <(echo "$env_after") | uniq -u)
+    export VARS=$(uniq_vars "$env_before" "$env_after")
     echo
     npx task print-vars
 }

@@ -6,3 +6,6 @@ export COV_BRANCHES=0
 export COV_LINES=0
 export COV_FUNCTIONS=0
 export COV_STATEMENTS=0
+
+export BFF_URL__LOCAL="local"
+export BFF_URL__TEST="test"

@@ -4,7 +4,7 @@ function load_vars {
     [ "$VARS" ] && return 0
     vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
     export_functions "$vars_path" > /dev/null
-    var_names=$(export_functions "$vars_path")
+    var_function_names=$(export_functions "$vars_path")
 
     env_before="$(env)"
     source "./task-vars" 2> /dev/null
@@ -18,7 +18,7 @@ function load_vars {
         override_name="${name}_OVERRIDE"
         [ "${!override_name}" ] && export $name="${!override_name}"
         [ -z "${!name}" ] && export $name="$($name)"
-    done <<< "$var_names"
+    done <<< "$var_function_names"
 
     stage_upper=$(echo "$STAGE" | tr '[:lower:]' '[:upper:]')
     while IFS= read -r name; do

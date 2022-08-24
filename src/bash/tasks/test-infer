@@ -1,0 +1,5 @@
+#!/bin/bash
+
+[ -z "$TEST_RUNNER" ] && warn "No test runner found" && exit 0
+
+npx task "$TEST_RUNNER-test"

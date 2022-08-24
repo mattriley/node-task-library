@@ -29,23 +29,23 @@
         "test": "npx task test"
     },
     "dependencies": {
-        "c8": "^7.11.3",
+        "c8": "^7.12.0",
         "chokidar-cli": "^3.0.0",
         "fast-glob": "^3.2.11",
         "lodash": "^4.17.21",
-        "module-composer": "^0.59.0"
+        "module-composer": "^0.60.0"
     },
     "devDependencies": {
         "cloc": "^2.10.0",
         "doctoc": "^2.2.0",
         "ejs": "^3.1.8",
-        "eslint": "^8.21.0",
+        "eslint": "^8.22.0",
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-mocha": "^10.1.0",
         "husky": "^8.0.1",
-        "module-indexgen": "^0.15.2",
+        "module-indexgen": "^0.18.0",
         "npm-check-updates": "^16.0.5",
-        "task-library": "file:./",
+        "task-library": "file:",
         "testing": "file:./testing"
     }
 }

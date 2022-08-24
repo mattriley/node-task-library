@@ -1,5 +1,9 @@
 #!/bin/bash
+  
+rm -rf "$DIST" && mkdir -p "$DIST"
 
-has_any_dependency "parcel" && npx task parcel-dist "$@"
+npx task dist-static
 
-[ $DIST_FLATTEN = "true" ] && npx task dist-flatten
+npx task dist-infer
+
+[ $DIST_FLATTEN = "true" ] && flat "$DIST"

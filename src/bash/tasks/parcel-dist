@@ -8,10 +8,6 @@ npx task code-gen
 npx task index-html-template-gen
 npx task index-html-render-template
 
-rm -rf "$DIST"
-mkdir -p "$DIST"
-[ -d "$STATIC" ] && cp -a "$STATIC/" "$DIST"
-
 export BABEL_OMIT_PRESETS="@babel/preset-env | @babel/preset-react"
 
 npx parcel "$parcel_command" \

@@ -1,5 +1,3 @@
 #!/bin/bash
   
-npx task jest-test \
-    --coverage \
-    "$@"
+npx task jest-test --coverage "$@"

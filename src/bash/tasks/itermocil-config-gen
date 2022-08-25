@@ -8,8 +8,6 @@ windows:
     panes:
 EOF
 
-IFS="$SEP"; tasks=($DEV_TASKS); unset IFS
-
 function action {
     cat << EOF >> "$ITERMOCIL_CONFIG" 
         - commands:

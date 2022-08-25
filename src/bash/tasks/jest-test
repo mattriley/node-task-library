@@ -1,5 +1,3 @@
 #!/bin/bash
 
-npx jest test \
-    --passWithNoTests \
-    "$@"
+npx jest test --passWithNoTests "$@"

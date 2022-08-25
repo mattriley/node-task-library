@@ -1,9 +1,10 @@
 #!/bin/bash
 
-[ -f "$SERVER" ] && nodemon "$SERVER" "$@"
+tasks=()
 
-has_dev_dependency "parcel" && npx task parcel-serve "$@"
+has_dev_dependency "nodemon" && tasks+=("nodemon")
+has_dev_dependency "parcel" && tasks+=("parcel-serve")
 
-exit 0
+[ ${#tasks[@]} = 0 ] && warn "Unable to infer start task" && exit 0
 
-
+npx task "${tasks[0]}" "$@"

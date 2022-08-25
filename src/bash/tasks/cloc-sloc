@@ -1,7 +1,3 @@
 #!/bin/bash
 
-[ ! -d "$SRC" ] && warn "$SRC not found" && exit 0
-
-mkdir -p "$METRICS"
-
 npx cloc --json "$SRC" > "$METRICS_LOC"

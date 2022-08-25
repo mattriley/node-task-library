@@ -1,0 +1,5 @@
+#!/bin/bash
+
+has_dev_dependency "cloc" && npx task cloc-sloc
+
+exit 0

@@ -1,0 +1,3 @@
+#!/bin/bash
+  
+has_dev_dependency "eslint" && npx task eslint "$@"

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function DEFAULT_COV_TASK {
+    echo "c8-cov"
+}
+
 function TESTS {
     echo "$PACKAGE_ROOT/tests"
 }

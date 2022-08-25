@@ -6,7 +6,7 @@ is_on_npm && tasks+=("npm-deploy")
 is_on_ghp && tasks+=("github-pages-deploy")
 is_on_sls && tasks+=("sls-deploy")
 
-[ ${#tasks[@]} = 0 ] && echo "Couldn't infer what to deploy" && exit 1
+[ ${#tasks[@]} = 0 ] && warn "Unable to infer deploy task" && exit 0
 
 echo
 echo "The following tasks will be run:"

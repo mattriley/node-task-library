@@ -1,7 +1,3 @@
 #!/bin/bash
 
-task="$TEST_RUNNER-cov-report"
-task_file=$(find_task_file "$task")
-[ -z "$task_file" ] && task="c8-cov-report"
-
-npx task "$task"
+npx task cov-report-infer

@@ -1,5 +1,9 @@
 #!/bin/bash
 
-has_dev_dependency "parcel" && npx task parcel-dist "$@"
+tasks=()
 
-exit 0
+has_dev_dependency "parcel" && tasks+=("parcel-dist")
+
+[ ${#tasks[@]} = 0 ] && warn "Unable to infer dist task" && exit 0
+
+npx task "${tasks[0]}" "$@"

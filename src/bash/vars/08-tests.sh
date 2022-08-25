@@ -4,6 +4,18 @@ function DEFAULT_COV_TASK {
     echo "c8-cov"
 }
 
+function DEFAULT_COV_REPORT_TASK {
+    echo "c8-cov-report"
+}
+
+function DEFAULT_TEST_TASK {
+    echo "node-test"
+}
+
+function DEFAULT_TEST_WATCH_TASK {
+    echo "chokidar-test-watch"
+}
+
 function TESTS {
     echo "$PACKAGE_ROOT/tests"
 }

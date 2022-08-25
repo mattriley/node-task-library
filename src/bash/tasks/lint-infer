@@ -4,6 +4,6 @@ tasks=()
 
 has_dev_dependency "eslint" && tasks+=("eslint")
 
-[ ${#tasks[@]} = 0 ] && warn "Unable to infer lint task" && exit 0
+[ ${#tasks[@]} = 0 ] && warn "Unable to infer ${BOLD}lint${NORM} task" && exit 0
 
 npx task "${tasks[0]}" "$@"

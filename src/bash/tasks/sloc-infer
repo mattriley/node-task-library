@@ -4,6 +4,6 @@ tasks=()
 
 has_dev_dependency "cloc" && tasks+=("cloc-sloc")
 
-[ ${#tasks[@]} = 0 ] && warn "Unable to infer sloc task" && exit 0
+[ ${#tasks[@]} = 0 ] && warn "Unable to infer ${BOLD}sloc${NORM} task" && exit 0
 
 npx task "${tasks[0]}" "$@"

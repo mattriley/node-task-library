@@ -4,6 +4,6 @@ tasks=()
 
 has_dev_dependency "parcel" && tasks+=("parcel-dist")
 
-[ ${#tasks[@]} = 0 ] && warn "Unable to infer dist task" && exit 0
+[ ${#tasks[@]} = 0 ] && warn "Unable to infer ${BOLD}dist${NORM} task" && exit 0
 
 npx task "${tasks[0]}" "$@"

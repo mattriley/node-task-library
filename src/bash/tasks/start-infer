@@ -5,6 +5,6 @@ tasks=()
 has_dev_dependency "nodemon" && tasks+=("nodemon")
 has_dev_dependency "parcel" && tasks+=("parcel-serve")
 
-[ ${#tasks[@]} = 0 ] && warn "Unable to infer start task" && exit 0
+[ ${#tasks[@]} = 0 ] && warn "Unable to infer ${BOLD}start${NORM} task" && exit 0
 
 npx task "${tasks[0]}" "$@"

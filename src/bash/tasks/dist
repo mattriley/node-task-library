@@ -1,9 +1,10 @@
 #!/bin/bash
   
-rm -rf "$DIST" && mkdir -p "$DIST"
+remkdir "$DIST"
 
 npx task dist-static
-
 npx task dist-infer
 
 [ $DIST_FLATTEN = "true" ] && flat "$DIST"
+
+exit 0

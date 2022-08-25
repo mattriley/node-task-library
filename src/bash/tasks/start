@@ -1,5 +1,3 @@
 #!/bin/bash
 
-[ -f "$SERVER" ] && nodemon "$SERVER" "$@"
-
-has_any_dependency "parcel" && npx task parcel-serve "$@"
+npx task start-infer

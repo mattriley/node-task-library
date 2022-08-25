@@ -4,6 +4,6 @@ npx task dist
 
 [ ! -z "$GITHUB_PAGES_CNAME" ] && echo "$GITHUB_PAGES_CNAME" > "$DIST/CNAME"
 
-rm -rf "$GITHUB_PAGES_PATH" && mkdir -p "$GITHUB_PAGES_PATH"
+remkdir "$GITHUB_PAGES_PATH"
 
 cp -a "$DIST/" "$GITHUB_PAGES_PATH"

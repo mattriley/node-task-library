@@ -1,3 +1,5 @@
 #!/bin/bash
 
 has_dev_dependency "parcel" && npx task parcel-dist "$@"
+
+exit 0

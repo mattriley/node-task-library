@@ -2,5 +2,5 @@
   
 npx task cov-report
 
-INDEX_HTML="$(set -- "$COVERAGE/**/index.html"; echo "$1")"
-open -a "Google Chrome" "$INDEX_HTML"
+report="$(set -- "$COVERAGE/**/index.html"; echo "$1")"
+open -a "Google Chrome" "$report"

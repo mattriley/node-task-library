@@ -19,7 +19,14 @@ module.exports = (userConfig = {}) => {
     const lib = {};
     let linkId = 0;
 
-    lib.metrics = () => JSON.parse(fs.readFileSync(config.metricsSummary, 'utf-8'));
+    lib.metrics = () => {
+        try {
+            return JSON.parse(fs.readFileSync(config.metricsSummary, 'utf-8'));
+        }
+        catch {
+            return {};
+        }
+    };
     lib.json = obj => JSON.stringify(obj, null, 4);
     lib.readText = loc => fs.promises.readFile(loc, 'utf-8');
     lib.fetchText = loc => child.execSync(`curl ${loc} -s`).toString('utf8');

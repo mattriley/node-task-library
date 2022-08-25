@@ -13,13 +13,22 @@ function load_vars {
     env_after="$(env)"
     external_var_names=$(uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
 
+    # while IFS= read -r name; do
+    #     override_name="${name}_OVERRIDE"
+    #     [ "${!override_name}" ] && export $name="${!override_name}"
+    #     val="$($name)"
+    #     val=${val/$SEP/ }
+    #     [ -z "${!name}" ] && export $name="$val"
+    # done <<< "$internal_var_names"
+
     while IFS= read -r name; do
         override_name="${name}_OVERRIDE"
-        [ "${!override_name}" ] && export $name="${!override_name}"
-        val="$($name)"
-        val=${val/$SEP/ }
-        [ -z "${!name}" ] && export $name="$val"
-    done <<< "$internal_var_names"
+        local val="${!name}"
+        [ "${!override_name}" ] && val="${!override_name}"        
+        [ -z "${!name}" ] && val="$($name)"
+        val=${val//$SEP/ }
+        export "$name"="$val"
+    done <<< "$internal_var_names"    
 
     stage_upper=$(echo "$STAGE" | tr '[:lower:]' '[:upper:]')
     staged_var_names=$(echo "$external_var_names" | sed "s;=.+__$stage_upper;;")

@@ -1,9 +1,3 @@
 #!/bin/bash
 
-[ -z "$TEST_RUNNER" ] && warn "No test runner found" && exit 0
-
-task="$TEST_RUNNER-test-watch"
-task_file=$(find_task_file "$task")
-[ -z "$task_file" ] && task="chokidar-test-watch"
-
-npx task "$task"
+npx task test-watch-infer

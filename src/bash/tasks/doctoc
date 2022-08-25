@@ -2,7 +2,7 @@
   
 set -e
 
-[ ! -f "$README" ] && exit 0
+[ ! -f "$README" ] && warn "$README not found" && exit 0
 
 npx doctoc --title "## Table of Contents" --maxlevel 2 "$README" > /dev/null
 

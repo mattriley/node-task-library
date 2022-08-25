@@ -1,8 +1,3 @@
 #!/bin/bash
 
-IFS="$SEP"; ESLINT_PATHS_ARR=($ESLINT_PATHS); unset IFS
-
-npx eslint \
-    --ext .mjs --ext .js --ext .jsx \
-    "${ESLINT_PATHS_ARR[@]}" \
-    "$@"
+npx eslint --ext ".mjs" --ext ".js" $ESLINT_PATHS "$@"

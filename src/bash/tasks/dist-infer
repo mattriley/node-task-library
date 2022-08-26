@@ -1,9 +1,4 @@
 #!/bin/bash
 
-tasks=()
-
-has_dev_dependency "parcel" && tasks+=("parcel-dist")
-
-[ ${#tasks[@]} = 0 ] && warn "Unable to infer ${BOLD}dist${NORM} task" && exit 0
-
-npx task "${tasks[0]}" "$@"
+function f1 { has_dev_dependency "parcel" && echo "parcel-dist"; }
+infer_tasks "dist" "f1"

@@ -1,9 +1,4 @@
 #!/bin/bash
 
-tasks=()
-
-has_dev_dependency "cloc" && tasks+=("cloc-sloc")
-
-[ ${#tasks[@]} = 0 ] && warn "Unable to infer ${BOLD}sloc${NORM} task" && exit 0
-
-npx task "${tasks[0]}" "$@"
+function f1 { has_dev_dependency "cloc" && echo "cloc-sloc"; }
+infer_tasks "sloc" "f1"

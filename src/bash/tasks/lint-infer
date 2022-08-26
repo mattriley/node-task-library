@@ -1,9 +1,4 @@
 #!/bin/bash
 
-tasks=()
-
-has_dev_dependency "eslint" && tasks+=("eslint")
-
-[ ${#tasks[@]} = 0 ] && warn "Unable to infer ${BOLD}lint${NORM} task" && exit 0
-
-npx task "${tasks[0]}" "$@"
+function f1 { has_dev_dependency "eslint" && echo "eslint"; }
+infer_tasks "lint" "f1"

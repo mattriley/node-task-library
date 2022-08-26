@@ -3,21 +3,24 @@
 function f1 { is_on_npm && echo "npm-deploy"; }
 function f2 { is_on_ghp && echo "github-pages-deploy"; }
 function f3 { is_on_sls && echo "sls-deploy"; }
-function mapper { $1; unset $1; }
-tasks=$(map "f1 f2 f3" mapper)
 
-[ -z "$tasks" ] && warn "Unable to infer deploy task" && exit 0
+infer_tasks "deploy" "f1 f2 f3"
 
-echo
-echo "The following tasks will be run:"
+# function mapper { $1; unset $1; }
+# tasks=$(map "f1 f2 f3" mapper)
 
-function action { echo "• $1"; }
-for_each "$tasks" action
+# [ -z "$tasks" ] && warn "Unable to infer deploy task" && exit 0
 
-ask_ok
+# echo
+# echo "The following tasks will be run:"
 
-function action { npx task "$1"; }
-for_each "$tasks" action
+# function action { echo "• $1"; }
+# for_each "$tasks" action
+
+# ask_ok
+
+# function action { npx task "$1"; }
+# for_each "$tasks" action
 
 
 

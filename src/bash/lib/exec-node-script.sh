@@ -1,3 +1,5 @@
-function node_script {
+function exec_node_script {
+
     node "$TASK_LIBRARY_ROOT/src/node/bin/$1" "${@:2}"
+    
 }

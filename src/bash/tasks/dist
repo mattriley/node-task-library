@@ -5,6 +5,6 @@ remkdir "$DIST"
 npx task dist-static
 npx task dist-infer
 
-[ $DIST_FLATTEN = "true" ] && flat "$DIST"
+[ $DIST_FLATTEN = "true" ] && flatten_dir "$DIST"
 
 exit 0

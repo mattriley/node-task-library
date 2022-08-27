@@ -8,7 +8,7 @@ windows:
     panes:
 EOF
 
-function action {
+function callback {
     cat << EOF >> "$ITERMOCIL_CONFIG" 
         - commands:
             - nvm use
@@ -16,4 +16,4 @@ function action {
 EOF
 }
 
-list_each "$DEV_TASKS" action
+list_each "$DEV_TASKS"

@@ -5,10 +5,10 @@ IFS="$SEP"; package_names=($DEV_LINKS); unset IFS
 rm -rf "$NODE_MODULES_LINKS"
 mkdir -p "$NODE_MODULES_LINKS"
 
-function action {
+function callback {
     target="$(pwd)/$NODE_MODULES/$1"
     link="$(pwd)/$NODE_MODULES_LINKS/$1"
     [ -d "$target" ] && ln -s "$target" "$link"
 }
 
-list_each "$DEV_LINKS" action
+list_each "$DEV_LINKS"

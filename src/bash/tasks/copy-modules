@@ -2,7 +2,7 @@
   
 copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
 
-function action { 
+function callback { 
     rm -rf "$MODULES/$1"
     cp -r "$copy_modules_root/$1" "$MODULES"
 
@@ -12,4 +12,4 @@ function action {
     fi
 }
 
-list_each "$COPY_MODULES" action
+list_each "$COPY_MODULES"

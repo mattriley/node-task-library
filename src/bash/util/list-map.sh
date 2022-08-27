@@ -2,13 +2,14 @@ function list_map {
 
     local IFS="$SEP"
     local arr=($1)
-    local func=$2
+    local callback=${2:-"callback"}
     local res=()
 
     for item in "${arr[@]}"; do 
-        res+=($($func "$item"))
+        res+=($($callback "$item"))
     done
     
+    unset $callback
     list_join "${res[*]}"
 
 }

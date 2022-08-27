@@ -10,12 +10,12 @@ IFS="$SEP"; var_names=($PRINT_VARS); unset IFS
 
 echo
 
-function action {
+function callback {
     [ $1 = "STAGE" ] && [ ${!1} = 'prod' ] && style="$RED" || style="$BOLD"
     echo "$1=${style}${!1}${NORM}"
 }
 
-list_each "$PRINT_VARS" action
+list_each "$PRINT_VARS"
 
 vars_printed=${#var_names[@]}
 vars_total=$(echo -n "$VARS" | grep -c '^')

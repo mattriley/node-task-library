@@ -12,8 +12,8 @@ function infer_tasks {
         n=n+1
     done
 
-    function mapper { $1; unset $1; }
-    tasks=$(list_map "$func_names" mapper)
+    function callback { $1; unset $1; }
+    tasks=$(list_map "$func_names")
     [ -z "$tasks" ] && echo "$default_task" || echo "$tasks"
 
 }

@@ -6,9 +6,8 @@ function ESLINT_CONFIG {
 
 function ESLINT_PATHS {
     # eslint doesn't like empty directories
-    function predicate { [ ! -z "$(ls -A "$1")" ]; } 
-    list_filter "$TEST_WATCH_PATHS" predicate
-    unset predicate
+    function callback { [ ! -z "$(ls -A "$1")" ]; } 
+    list_filter "$TEST_WATCH_PATHS"
 }
 
 function ESLINT_CONDITIONAL_PLUGINS {
@@ -17,7 +16,6 @@ function ESLINT_CONDITIONAL_PLUGINS {
 
 function ESLINT_PLUGINS {
     echo -n "import | "
-    function predicate { has_dev_dependency "$1"; }
-    list_filter "$ESLINT_CONDITIONAL_PLUGINS" predicate
-    unset predicate
+    function callback { has_dev_dependency "$1"; }
+    list_filter "$ESLINT_CONDITIONAL_PLUGINS"
 }

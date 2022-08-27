@@ -1,4 +1,4 @@
-function map {
+function list_map {
 
     local IFS="$SEP"
     local arr=($1)
@@ -10,6 +10,6 @@ function map {
         res+=($($func "$item"))
     done
     
-    join "${res[*]}" "$out_sep" # joins on first character of $IFS (space)
+    list_join "${res[*]}" "$out_sep" # joins on first character of $IFS (space)
 
 }

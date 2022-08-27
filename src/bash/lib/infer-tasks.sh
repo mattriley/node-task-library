@@ -13,7 +13,7 @@ function infer_tasks {
     done
 
     function mapper { $1; unset $1; }
-    tasks=$(map "$func_names" mapper)
+    tasks=$(list_map "$func_names" mapper)
     [ -z "$tasks" ] && echo "$default_task" || echo "$tasks"
 
 }

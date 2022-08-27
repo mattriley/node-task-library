@@ -30,13 +30,13 @@ function TESTING {
 
 function TEST_WATCH_PATHS {
     function predicate { [ -d "$1" ]; }
-    filter "$SRC | $TESTS | $TESTING" predicate
+    list_filter "$SRC | $TESTS | $TESTING" predicate
     unset predicate
 }
 
 function TEST_RUNNER {
     function predicate { has_dev_dependency "$1"; } 
-    find "$SUPPORTED_TEST_RUNNERS" predicate
+    list_find "$SUPPORTED_TEST_RUNNERS" predicate
     unset predicate
 }
 

@@ -15,7 +15,7 @@ function action {
     echo "$1=${style}${!1}${NORM}"
 }
 
-for_each "$PRINT_VARS" action
+list_each "$PRINT_VARS" action
 
 vars_printed=${#var_names[@]}
 vars_total=$(echo -n "$VARS" | grep -c '^')

@@ -1,4 +1,4 @@
-function filter {
+function list_filter {
 
     local IFS="$SEP"
     local arr=($1)
@@ -10,6 +10,6 @@ function filter {
         $func "$item" && res+=("$item")
     done
     
-    join "${res[*]}" "$out_sep" # joins on first character of $IFS (space)
+    list_join "${res[*]}" "$out_sep" # joins on first character of $IFS (space)
 
 }

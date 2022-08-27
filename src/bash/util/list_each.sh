@@ -1,4 +1,4 @@
-function for_each {
+function list_each {
 
     local IFS="$SEP"
     local arr=($1)

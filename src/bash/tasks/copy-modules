@@ -12,4 +12,4 @@ function action {
     fi
 }
 
-for_each "$COPY_MODULES" action
+list_each "$COPY_MODULES" action

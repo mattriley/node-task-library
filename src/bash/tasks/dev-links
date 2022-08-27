@@ -11,4 +11,4 @@ function action {
     [ -d "$target" ] && ln -s "$target" "$link"
 }
 
-for_each "$DEV_LINKS" action
+list_each "$DEV_LINKS" action

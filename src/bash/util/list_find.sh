@@ -1,4 +1,4 @@
-function find {
+function list_find {
 
     local IFS="$SEP"
     local arr=($1) 

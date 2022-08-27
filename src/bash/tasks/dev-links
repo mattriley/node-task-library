@@ -1,13 +1,11 @@
 #!/bin/bash
 
 IFS="$SEP"; package_names=($DEV_LINKS); unset IFS
-
-rm -rf "$NODE_MODULES_LINKS"
-mkdir -p "$NODE_MODULES_LINKS"
+remkdir "$NODE_MODULES_LINKS"
 
 function callback {
-    target="$(pwd)/$NODE_MODULES/$1"
-    link="$(pwd)/$NODE_MODULES_LINKS/$1"
+    local target="$(pwd)/$NODE_MODULES/$1"
+    local link="$(pwd)/$NODE_MODULES_LINKS/$1"
     [ -d "$target" ] && ln -s "$target" "$link"
 }
 

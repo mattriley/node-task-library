@@ -1,3 +1,5 @@
 function port {
-    node "$TASK_LIBRARY_ROOT/src/node/bin/port-gen" "$1"
+
+    exec_node_script "port-gen.js" "$1"
+
 }

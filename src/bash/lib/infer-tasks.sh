@@ -6,7 +6,7 @@ function infer_tasks {
     local func_names=""
     local n=1
     
-    while [ is_function "$func_prefix$n" ]
+    while is_function "$func_prefix$n"
     do
         func_names+=" $func_prefix$n"
         n=n+1

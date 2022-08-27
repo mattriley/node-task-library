@@ -1,6 +1,7 @@
 #!/bin/bash
 
 function load_vars {
+
     [ "$VARS" ] && return 0
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
     export_functions "$vars_path" > /dev/null
@@ -34,4 +35,5 @@ function load_vars {
     export VARS=$(uniq_vars "$env_before" "$env_after")
     echo
     run_task print-vars
+    
 }

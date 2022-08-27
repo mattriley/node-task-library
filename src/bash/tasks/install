@@ -6,39 +6,39 @@
 which -s "jq" || brew install "jq"
 which -s "itermocil" || brew install "TomAnthony/brews/itermocil"
 
-npm_install "" module-composer
+npm_install "module-composer"
 
-npm_install -D module-indexgen npm-check-updates eslint husky
+npm_install "module-indexgen npm-check-updates eslint husky" -D
 
 if [ -f "$README_TEMPLATE" ]; then
-    npm_install -D ejs doctoc cloc
+    npm_install "ejs doctoc cloc" -D
 fi
 
 if [ -f "$SERVER" ]; then
-    npm_install -D nodemon
-    npm_install "" express cors ajv ajv-formats
+    npm_install "nodemon" -D
+    npm_install "express cors ajv ajv-formats"
 fi
 
 if [ -f "$SERVERLESS_CONFIG" ]; then
-    npm_install -D serverless aws-sdk
+    npm_install "serverless aws-sdk" -D
 fi
 
 if has_dev_dependency "react"; then
-    npm_install -D @babel/core @babel/preset-react
+    npm_install "@babel/core @babel/preset-react" -D
 fi
 
 if has_dev_dependency "@babel/core"; then
-    npm_install -D @babel/preset-env @babel/node
+    npm_install "@babel/preset-env @babel/node" -D
 fi
 
 if has_dev_dependency "jest"; then
-    npm_install -D jest-environment-jsdom
+    npm_install "jest-environment-jsdom" -D
 fi
 
 if has_dev_dependency "eslint"; then
     function callback { echo "eslint-plugin-$1"; }
     packages=$(OUTSEP=" " list_map "$ESLINT_PLUGINS")
-    npm_install -D "$packages"
+    npm_install "$packages" -D
 fi
 
 exit 0

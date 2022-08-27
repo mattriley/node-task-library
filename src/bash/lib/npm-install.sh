@@ -1,7 +1,7 @@
 function npm_install {
 
-    local options="$1"
-    local packages="${@:2}"
+    local packages="$1"
+    local options="$2"
     [ "$packages" ] && local message=" ${BOLD}$packages${NORM}"
     echo -n "Installing$message..."
     local output=$(npm i $options $packages 2>&1)

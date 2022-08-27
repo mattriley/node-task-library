@@ -1,5 +1,5 @@
 #!/bin/bash
 
-[ ! $(ls -A "$TESTS") ] && warn "No tests found" && exit 0
+[ -z "$(ls -A "$TESTS")" ] && warn "No tests found" && exit 0
 
 npx task test-infer

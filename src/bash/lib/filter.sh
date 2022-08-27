@@ -4,6 +4,7 @@ function filter {
     local fun=$2
     local out_sep="$3"
     local res=()
-    for el in "${arr[@]}"; do $fun "$el" && res+=("$el"); done
+    
+    for el in "${arr[@]}"; do "$fun" "$el" && res+=("$el"); done
     join "${res[*]}" "$out_sep" # joins on first character of $IFS (space)
 }

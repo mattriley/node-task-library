@@ -1,4 +1,5 @@
 #!/bin/bash
 
 function f1 { has_dev_dependency "eslint" && echo "eslint"; }
-infer_tasks "lint" "f1"
+tasks=$(infer_tasks "lint" "f1")
+run_tasks "$tasks"

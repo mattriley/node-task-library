@@ -1,4 +1,5 @@
 #!/bin/bash
 
 function f1 { has_dev_dependency "parcel" && echo "parcel-dist"; }
-infer_tasks "dist" "f1"
+tasks=$(infer_tasks "dist" "f1")
+run_tasks "$tasks"

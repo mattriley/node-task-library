@@ -2,21 +2,27 @@ function infer_tasks {
 
     task_name="$1"
     func_names="$2"
+    default_task="$3"
+
     function mapper { $1; unset $1; }
     tasks=$(map "$func_names" mapper)
+
+    # echo "1 $tasks"
+
+    #function predicate1 { echo "&&&&&&"; task_exists "$1"; echo "$?"; return "$?"; }
+    #tasks=$(filter "$tasks" predicate1)
     num_tasks=$(length "$tasks")
 
-    [ -z "$tasks" ] && warn "Unable to infer $task_name task" && exit 0
+    [ -z "$tasks" ] && echo "$default_task" || echo "$tasks"
 
-    if [ $num_tasks -gt 1 ]; then
-        echo
-        echo "The following tasks will be run:"
-        function action { echo "• $1"; }
-        for_each "$tasks" action
-        ask_ok
-    fi
+    # echo "$tasks"
 
-    function action { npx task "$1"; }
-    for_each "$tasks" action
+    # echo "2 $tasks"
+
+    # [ -z "$tasks" ] && warn "Unable to infer $task_name task" && exit 0
+
+    # echo "   Inferred ${BOLD}$tasks${NORM}"
+
+    # run_tasks "$tasks"
 
 }

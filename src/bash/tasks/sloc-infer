@@ -1,4 +1,5 @@
 #!/bin/bash
 
 function f1 { has_dev_dependency "cloc" && echo "cloc-sloc"; }
-infer_tasks "sloc" "f1"
+tasks=$(infer_tasks "sloc" "f1")
+run_tasks "$tasks"

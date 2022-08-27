@@ -1,8 +1,8 @@
 function infer_tasks {
 
     task_name="$1"
-    func_prefix="$2"
-    default_task="$3"
+    func_prefix="f"
+    default_task="$2"
 
     func_names=""
     x=1

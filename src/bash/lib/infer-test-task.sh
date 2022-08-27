@@ -9,6 +9,6 @@ function infer_test_task {
 
     function f1 { [ -z "$suffix" ] && echo "$TEST_RUNNER" || echo "$TEST_RUNNER-$suffix"; }
 
-    infer_tasks "$suffix" "f" "$default_task"
+    infer_tasks "$suffix" "$default_task"
 
 }

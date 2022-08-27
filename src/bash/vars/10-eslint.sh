@@ -6,7 +6,7 @@ function ESLINT_CONFIG {
 
 function ESLINT_PATHS {
     # eslint doesn't like empty directories
-    function callback { [ ! -z "$(ls -A "$1")" ]; } 
+    function callback { ! is_empty_dir "$1"; } 
     list_filter "$TEST_WATCH_PATHS"
 }
 

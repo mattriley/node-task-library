@@ -1,6 +1,8 @@
-function node_module {
+function exec_node_module {
+
     node \
         --experimental-specifier-resolution="node" \
         --input-type="module" \
         - < "$TASK_LIBRARY_ROOT/src/node/bin/$1" "${@:2}"
+
 }

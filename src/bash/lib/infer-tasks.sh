@@ -1,8 +1,16 @@
 function infer_tasks {
 
     task_name="$1"
-    func_names="$2"
+    func_prefix="$2"
     default_task="$3"
+
+    func_names=""
+    x=1
+    while [ "$(type -t "$func_prefix$x")" = 'function' ]
+    do
+        func_names+=" $func_prefix$x"
+        x=x+1
+    done
 
     function mapper { $1; unset $1; }
     tasks=$(map "$func_names" mapper)

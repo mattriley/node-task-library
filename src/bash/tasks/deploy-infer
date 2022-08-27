@@ -3,5 +3,5 @@
 function f1 { is_on_npm && echo "npm-deploy"; }
 function f2 { is_on_ghp && echo "github-pages-deploy"; }
 function f3 { is_on_sls && echo "sls-deploy"; }
-tasks=$(infer_tasks "deploy" "f1 f2 f3")
+tasks=$(infer_tasks "deploy" "f")
 run_tasks "$tasks"

@@ -37,7 +37,7 @@ fi
 
 if has_dev_dependency "eslint"; then
     function mapper { echo "eslint-plugin-$1"; }
-    packages=$(list_map "$ESLINT_PLUGINS" mapper " ")
+    packages=$(OUTSEP=" " list_map "$ESLINT_PLUGINS" mapper)
     npm_install -D "$packages"
 fi
 

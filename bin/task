@@ -29,5 +29,6 @@ function extract_function_names {
     done < "$script"
 }
 
+export_functions "$TASK_LIBRARY_ROOT/src/bash/util" > /dev/null
 export_functions "$TASK_LIBRARY_ROOT/src/bash/lib" > /dev/null
 load_vars && run_task "$@"

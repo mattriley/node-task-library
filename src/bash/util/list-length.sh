@@ -1,7 +1,7 @@
 function list_length {
 
     local IFS="$SEP"
-    local arr=($1) # splits on each character of $IFS (space or pipe)
+    local arr=($1)
     echo "${#arr[@]}"
     
 }

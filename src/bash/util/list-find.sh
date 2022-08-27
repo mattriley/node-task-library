@@ -2,10 +2,12 @@ function list_find {
 
     local IFS="$SEP"
     local arr=($1) 
-    local func=$2
+    local callback=${2:-"callback"}
 
     for item in "${arr[@]}"; do 
-        $func "$item" && echo "$item" && break;
+        $callback "$item" && echo "$item" && break;
     done
+
+    unset $callback
 
 }

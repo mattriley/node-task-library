@@ -2,14 +2,14 @@ function list_filter {
 
     local IFS="$SEP"
     local arr=($1)
-    local func=$2
-    local out_sep="$3"
+    local callback=${2:-"callback"}
     local res=()
     
     for item in "${arr[@]}"; do 
-        $func "$item" && res+=("$item")
+        $callback "$item" && res+=("$item")
     done
     
-    list_join "${res[*]}" "$out_sep" # joins on first character of $IFS (space)
+    unset $callback
+    list_join "${res[*]}"
 
 }

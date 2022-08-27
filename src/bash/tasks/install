@@ -1,44 +1,4 @@
 #!/bin/bash
 
-# Not yet sure how I could infer these:
-# @node-loader/babel
-
-which -s "jq" || brew install "jq"
-which -s "itermocil" || brew install "TomAnthony/brews/itermocil"
-
-npm_install "module-composer"
-
-npm_install "module-indexgen npm-check-updates eslint husky" -D
-
-if [ -f "$README_TEMPLATE" ]; then
-    npm_install "ejs doctoc cloc" -D
-fi
-
-if [ -f "$SERVER" ]; then
-    npm_install "nodemon" -D
-    npm_install "express cors ajv ajv-formats"
-fi
-
-if [ -f "$SERVERLESS_CONFIG" ]; then
-    npm_install "serverless aws-sdk" -D
-fi
-
-if has_dev_dependency "react"; then
-    npm_install "@babel/core @babel/preset-react" -D
-fi
-
-if has_dev_dependency "@babel/core"; then
-    npm_install "@babel/preset-env @babel/node" -D
-fi
-
-if has_dev_dependency "jest"; then
-    npm_install "jest-environment-jsdom" -D
-fi
-
-if has_dev_dependency "eslint"; then
-    function callback { echo "eslint-plugin-$1"; }
-    packages=$(OUTSEP=" " list_map "$ESLINT_PLUGINS")
-    npm_install "$packages" -D
-fi
-
-exit 0
+npx task install-brew-packages
+npx task install-npm-packages

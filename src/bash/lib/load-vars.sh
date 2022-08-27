@@ -34,6 +34,6 @@ function load_vars {
     local env_after="$(env)"
     export VARS=$(uniq_vars "$env_before" "$env_after")
     echo
-    run_task print-vars
-    
+    npx task print-vars
+
 }

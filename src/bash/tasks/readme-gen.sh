@@ -7,11 +7,11 @@ set -e
  node_command="node"
  node_options=""
 
-if has_any_dependency "@node-loader/babel"
+if npm.has_dev_dependency "@node-loader/babel"
 then
     node_options="--experimental-loader @node-loader/babel"
     export BABEL_OMIT_PRESETS="@babel/preset-env"
-elif has_any_dependency "@babel/core"
+elif npm.has_dev_dependency "@babel/core"
 then
     node_command="babel-node"
 fi

@@ -23,10 +23,10 @@ function f1 { echo "module-indexgen npm-check-updates eslint husky"; }
 function f2 { [ -f "$README_TEMPLATE" ] && echo "ejs doctoc cloc"; }
 function f3 { [ -f "$SERVER" ] && echo "nodemon"; }
 function f4 { [ -f "$SERVERLESS_CONFIG" ] && echo "serverless aws-sdk"; }
-function f5 { has_dev_dependency "react" && echo "@babel/core @babel/preset-react"; }
-function f6 { has_dev_dependency "@babel/core" && echo "@babel/preset-env @babel/node"; }
-function f7 { has_dev_dependency "jest" && echo "jest-environment-jsdom"; }
-function f8 { has_dev_dependency "eslint" && echo "$eslint_plugins"; }
+function f5 { npm.has_dev_dependency "react" && echo "@babel/core @babel/preset-react"; }
+function f6 { npm.has_dev_dependency "@babel/core" && echo "@babel/preset-env @babel/node"; }
+function f7 { npm.has_dev_dependency "jest" && echo "jest-environment-jsdom"; }
+function f8 { npm.has_dev_dependency "eslint" && echo "$eslint_plugins"; }
 
 function callback { 
     local packages=$($1)

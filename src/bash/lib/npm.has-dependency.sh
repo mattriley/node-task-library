@@ -1,4 +1,4 @@
-function has_dependency {
+function npm.has_dependency {
 
     [ $(jq ".dependencies | has(\"$1\")" "$PACKAGE_JSON") = "true" ]
 

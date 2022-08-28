@@ -10,7 +10,7 @@ function PACKAGE_NAME {
 }
 
 function DISPLAY_NAME {
-    exec_node_script "start-case.js" "$PACKAGE_NAME"
+    node.exec_script "start-case.js" "$PACKAGE_NAME"
 }
 
 function NODE_MODULES_LINKS {

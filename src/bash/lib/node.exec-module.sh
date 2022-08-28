@@ -1,4 +1,4 @@
-function exec_node_module {
+function node.exec_module {
 
     node \
         --experimental-specifier-resolution="node" \

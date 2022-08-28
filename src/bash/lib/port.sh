@@ -1,5 +1,5 @@
 function port {
 
-    exec_node_script "port-gen.js" "$1"
+    node.exec_script "port-gen.js" "$1"
 
 }

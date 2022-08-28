@@ -1,3 +1,3 @@
 #!/bin/bash
   
-exec_node_module "zora-testrunner.mjs" "$TEST_PATTERN"
+node.exec_module "zora-testrunner.mjs" "$TEST_PATTERN"

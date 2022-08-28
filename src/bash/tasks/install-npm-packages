@@ -3,39 +3,34 @@
 # Not yet sure how I could infer these:
 # @node-loader/babel
 
-npm_install "module-composer"
+# prod
+function f1 { echo "module-composer"; }
+function f2 { [ -f "$SERVER" ] && echo "express cors ajv ajv-formats"; }
 
-npm_install "module-indexgen npm-check-updates eslint husky" -D
+function callback { 
+    local packages=$($1)
+    [ "$packages" ] && npm_install "$packages"
+}
 
-if [ -f "$README_TEMPLATE" ]; then
-    npm_install "ejs doctoc cloc" -D
-fi
+list_each "f1 f2" "callback"
 
-if [ -f "$SERVER" ]; then
-    npm_install "nodemon" -D
-    npm_install "express cors ajv ajv-formats"
-fi
+#dev
+function callback { echo "eslint-plugin-$1"; }
+eslint_plugins=$(OUTSEP=" " list_map "$ESLINT_PLUGINS")
 
-if [ -f "$SERVERLESS_CONFIG" ]; then
-    npm_install "serverless aws-sdk" -D
-fi
 
-if has_dev_dependency "react"; then
-    npm_install "@babel/core @babel/preset-react" -D
-fi
+function f1 { echo "module-indexgen npm-check-updates eslint husky"; }
+function f2 { [ -f "$README_TEMPLATE" ] && echo "ejs doctoc cloc"; }
+function f3 { [ -f "$SERVER" ] && echo "nodemon"; }
+function f4 { [ -f "$SERVERLESS_CONFIG" ] && echo "serverless aws-sdk"; }
+function f5 { has_dev_dependency "react" && echo "@babel/core @babel/preset-react"; }
+function f6 { has_dev_dependency "@babel/core" && echo "@babel/preset-env @babel/node"; }
+function f7 { has_dev_dependency "jest" && echo "jest-environment-jsdom"; }
+function f8 { has_dev_dependency "eslint" && echo "$eslint_plugins"; }
 
-if has_dev_dependency "@babel/core"; then
-    npm_install "@babel/preset-env @babel/node" -D
-fi
+function callback { 
+    local packages=$($1)
+    [ "$packages" ] && npm_install "$packages" -D
+}
 
-if has_dev_dependency "jest"; then
-    npm_install "jest-environment-jsdom" -D
-fi
-
-if has_dev_dependency "eslint"; then
-    function callback { echo "eslint-plugin-$1"; }
-    packages=$(OUTSEP=" " list_map "$ESLINT_PLUGINS")
-    npm_install "$packages" -D
-fi
-
-exit 0
+list_each "f1 f2 f3 f4 f5 f6 f7 f8" "callback"

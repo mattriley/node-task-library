@@ -8,7 +8,7 @@ function infer_tasks {
         unset $1
     }
 
-    local tasks=$(list_map "$(list_of_func)" callback)
+    local tasks=$(list.map "$(list_of_func)" callback)
     [ -z "$tasks" ] && echo "$default_task" || echo "$tasks"
 
 }

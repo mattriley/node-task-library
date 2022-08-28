@@ -15,7 +15,7 @@ function callback {
     echo "$1=${style}${!1}${NORM}"
 }
 
-list_each "$PRINT_VARS"
+list.each "$PRINT_VARS"
 
 vars_printed=${#var_names[@]}
 vars_total=$(echo -n "$VARS" | grep -c '^')

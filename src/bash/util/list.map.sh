@@ -1,13 +1,15 @@
-function list_find {
+function list.map {
 
     local IFS="$SEP"
-    local arr=($1) 
+    local arr=($1)
     local callback=${2:-"callback"}
+    local res=()
 
     for item in "${arr[@]}"; do 
-        $callback "$item" && echo "$item" && break;
+        res+=($($callback "$item"))
     done
-
+    
     unset $callback
+    list.join "${res[*]}"
 
 }

@@ -1,4 +1,4 @@
-function list_filter {
+function list.filter {
 
     local IFS="$SEP"
     local arr=($1)
@@ -10,6 +10,6 @@ function list_filter {
     done
     
     unset $callback
-    list_join "${res[*]}"
+    list.join "${res[*]}"
 
 }

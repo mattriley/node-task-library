@@ -1,7 +1,7 @@
-function list_first {
+function list.length {
 
     local IFS="$SEP"
     local arr=($1)
-    echo "${arr[0]}"
+    echo "${#arr[@]}"
     
 }

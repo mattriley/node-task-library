@@ -9,4 +9,4 @@ function callback {
     [ -d "$target" ] && ln -s "$target" "$link"
 }
 
-list_each "$DEV_LINKS"
+list.each "$DEV_LINKS"

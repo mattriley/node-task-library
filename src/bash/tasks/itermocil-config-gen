@@ -16,4 +16,4 @@ function callback {
 EOF
 }
 
-list_each "$DEV_TASKS"
+list.each "$DEV_TASKS"

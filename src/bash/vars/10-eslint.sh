@@ -7,7 +7,7 @@ function ESLINT_CONFIG {
 function ESLINT_PATHS {
     # eslint doesn't like empty directories
     function callback { ! is_empty_dir "$1"; } 
-    list_filter "$TEST_WATCH_PATHS"
+    list.filter "$TEST_WATCH_PATHS"
 }
 
 function ESLINT_CONDITIONAL_PLUGINS {
@@ -17,5 +17,5 @@ function ESLINT_CONDITIONAL_PLUGINS {
 function ESLINT_PLUGINS {
     echo -n "import | "
     function callback { has_dev_dependency "$1"; }
-    list_filter "$ESLINT_CONDITIONAL_PLUGINS"
+    list.filter "$ESLINT_CONDITIONAL_PLUGINS"
 }

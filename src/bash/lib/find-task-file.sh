@@ -4,9 +4,9 @@ function find_task_file {
     [ -z "$task_name" ] && echo "Task name is required" && exit 1
     
     function callback { echo "$1/$task_name"; }
-    paths=$(list_map "$TASK_PATHS")
+    paths=$(list.map "$TASK_PATHS")
 
     function callback { [ -f "$1" ]; }
-    list_find "$paths"
+    list.find "$paths"
 
 }

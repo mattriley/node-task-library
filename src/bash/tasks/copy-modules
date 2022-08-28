@@ -12,4 +12,4 @@ function callback {
     fi
 }
 
-list_each "$COPY_MODULES"
+list.each "$COPY_MODULES"

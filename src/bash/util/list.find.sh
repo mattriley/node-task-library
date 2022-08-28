@@ -1,11 +1,11 @@
-function list_each {
+function list.find {
 
     local IFS="$SEP"
-    local arr=($1)
+    local arr=($1) 
     local callback=${2:-"callback"}
 
     for item in "${arr[@]}"; do 
-        $callback "$item"
+        $callback "$item" && echo "$item" && break;
     done
 
     unset $callback

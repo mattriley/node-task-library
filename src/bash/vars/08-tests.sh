@@ -30,12 +30,12 @@ function TESTING {
 
 function TEST_WATCH_PATHS {
     function callback { [ -d "$1" ]; }
-    list_filter "$SRC | $TESTS | $TESTING"
+    list.filter "$SRC | $TESTS | $TESTING"
 }
 
 function TEST_RUNNER {
     function callback { has_dev_dependency "$1"; } 
-    list_find "$SUPPORTED_TEST_RUNNERS"
+    list.find "$SUPPORTED_TEST_RUNNERS"
 }
 
 function COVERAGE {

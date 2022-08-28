@@ -17,7 +17,7 @@ function load_vars {
     while IFS= read -r name; do
         local override_name="${name}_OVERRIDE"
         local val="${!name}"
-        [ "${!override_name}" ] && val="${!override_name}"        
+        [ "${!override_name}" ] && val="${!override_name}" 
         [ -z "${!name}" ] && val="$($name)"
         local val=${val//$SEP/ }
         export "$name"="$val"

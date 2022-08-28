@@ -12,12 +12,11 @@ function callback {
     [ "$packages" ] && npm_install "$packages"
 }
 
-list_each "f1 f2" "callback"
+list_each "$(list_of_func)" "callback"
 
-#dev
+# dev
 function callback { echo "eslint-plugin-$1"; }
 eslint_plugins=$(OUTSEP=" " list_map "$ESLINT_PLUGINS")
-
 
 function f1 { echo "module-indexgen npm-check-updates eslint husky"; }
 function f2 { [ -f "$README_TEMPLATE" ] && echo "ejs doctoc cloc"; }
@@ -33,4 +32,4 @@ function callback {
     [ "$packages" ] && npm_install "$packages" -D
 }
 
-list_each "f1 f2 f3 f4 f5 f6 f7 f8" "callback"
+list_each "$(list_of_func)" "callback"

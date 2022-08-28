@@ -1,7 +1,7 @@
 #!/bin/bash
 
 IFS="$SEP"; package_names=($DEV_LINKS); unset IFS
-remkdir "$NODE_MODULES_LINKS"
+fs.remkdir "$NODE_MODULES_LINKS"
 
 function callback {
     local target="$(pwd)/$NODE_MODULES/$1"

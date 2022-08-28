@@ -1,4 +1,4 @@
-function is_empty_dir {
+function fs.empty {
 
     [ -z "$(ls -A "$1")" ]
 

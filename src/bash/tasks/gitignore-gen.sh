@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cat <<END >> $GIT_IGNORE
+cat <<END >> "$GIT_IGNORE"
 .DS_Store
 /*cache
 /*output
@@ -20,6 +20,6 @@ cat <<END >> $GIT_IGNORE
 /npm-debug.log
 END
 
-sort -u -o $GIT_IGNORE $GIT_IGNORE
+sort -u -o "$GIT_IGNORE" "$GIT_IGNORE"
 
 git add "$GIT_IGNORE"

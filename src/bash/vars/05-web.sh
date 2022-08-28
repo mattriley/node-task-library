@@ -9,7 +9,7 @@ function SERVER {
 }
 
 function SERVER_PORT {
-    port "$(package name)"
+    port "$(npm.package name)"
 }
 
 function PORT {
@@ -25,7 +25,7 @@ function WEB_BASE_PATH {
 }
 
 function WEB_URL {
-    [[ $WEB_BASE_PATH == /* ]] && web_base_path="$WEB_BASE_PATH" || web_base_path="/$WEB_BASE_PATH"
+    # [[ $WEB_BASE_PATH == /* ]] && web_base_path="$WEB_BASE_PATH" || web_base_path="/$WEB_BASE_PATH"
     [ "$WEB_HOST_NAME" ] && [ "$WEB_BASE_PATH" ] && echo "https://$WEB_HOST_NAME$WEB_BASE_PATH" && return 0
     [ "$WEB_HOST_NAME" ] && echo "https://$WEB_HOST_NAME"
 }
@@ -47,7 +47,7 @@ function INDEX_HTML_TITLE {
 }
 
 function INDEX_HTML_DESCRIPTION {
-    echo "$(package description)"
+    npm.package description
 }
 
 function INDEX_HTML_AUTHOR {

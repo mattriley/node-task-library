@@ -6,7 +6,7 @@ function ask_ok {
     echo -n "👀 OK? "
     choice="$OK"
 
-    [ -z "$choice" ] && read choice || echo "$choice"
+    [ -z "$choice" ] && read -r choice || echo "$choice"
 
     case "$choice" in 
         y|Y ) echo;;

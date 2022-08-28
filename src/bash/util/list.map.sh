@@ -5,13 +5,13 @@ function list.map {
     local IFS="$SEP"
     local arr=($1)
     local callback=${2:-"callback"}
-    local res=()
 
-    for item in "${arr[@]}"; do 
-        res+=($($callback "$item"))
+    for item in "${arr[@]}"; do
+        local res
+        res="$($callback "$item")"
+        [ "$res" ] && echo -n "$res "
     done
     
-    unset $callback
-    list.join "${res[*]}"
+    unset "$callback"
 
 }

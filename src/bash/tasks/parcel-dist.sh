@@ -10,6 +10,7 @@ npx task index-html-render-template
 
 export BABEL_OMIT_PRESETS="@babel/preset-env | @babel/preset-react"
 
+# shellcheck disable=SC2086
 npx parcel "$parcel_command" \
     $PARCEL_OPTIONS \
     --public-url "$base_path" \

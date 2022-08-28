@@ -2,6 +2,6 @@
 
 function fs.empty {
 
-    [ -z "$(ls -A "$1")" ]
+    [ ! -d "$1" ] || [ -z "$(ls -A "$1")" ]
 
 }

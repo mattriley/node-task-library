@@ -2,4 +2,4 @@
   
 npx -p npm-check-updates ncu -u
 
-npm_install && npm_install -D task-library
+npm.install && npm.install -D task-library

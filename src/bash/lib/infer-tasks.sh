@@ -2,18 +2,13 @@ function infer_tasks {
 
     local task_name="$1"
     local default_task="$2"
-    local func_prefix="f"
-    local func_names=""
-    local n=1
-    
-    while is_function "$func_prefix$n"
-    do
-        func_names+=" $func_prefix$n"
-        n=n+1
-    done
 
-    function callback { $1; unset $1; }
-    tasks=$(list_map "$func_names")
+    function callback { 
+        echo "$($1)"
+        unset $1
+    }
+
+    local tasks=$(list_map "$(list_of_func)" callback)
     [ -z "$tasks" ] && echo "$default_task" || echo "$tasks"
 
 }

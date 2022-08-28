@@ -10,6 +10,7 @@ function f2 { [ -f "$SERVER" ] && echo "express cors ajv ajv-formats"; }
 function callback { 
     local packages=$($1)
     [ "$packages" ] && npm_install "$packages"
+    unset $1
 }
 
 list_each "$(list_of_func)" "callback"
@@ -30,6 +31,7 @@ function f8 { has_dev_dependency "eslint" && echo "$eslint_plugins"; }
 function callback { 
     local packages=$($1)
     [ "$packages" ] && npm_install "$packages" -D
+    unset $1
 }
 
 list_each "$(list_of_func)" "callback"

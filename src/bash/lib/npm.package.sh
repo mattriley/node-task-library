@@ -2,6 +2,6 @@
 
 function package {
 
-    echo $(cat "$PACKAGE_JSON" | jq -r ".$1 // empty")
+    jq -r ".$1 // empty" "$PACKAGE_JSON"
     
 }

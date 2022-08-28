@@ -2,15 +2,16 @@
 
 function infer_tasks {
 
-    local task_name="$1"
-    local default_task="$2"
+    local default_task="$1"
 
-    function callback { 
+    function callback {
+        # shellcheck disable=SC2005
         echo "$($1)"
-        unset $1
+        unset "$1"
     }
 
-    local tasks=$(list.map "$(list_of_func)" callback)
+    local tasks
+    tasks=$(list.map "$(list_of_func)")
     [ -z "$tasks" ] && echo "$default_task" || echo "$tasks"
 
 }

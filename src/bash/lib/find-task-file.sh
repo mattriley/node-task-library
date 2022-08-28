@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function find_task_file {
 
     local task_name="$1"

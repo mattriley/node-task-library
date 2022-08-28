@@ -3,6 +3,7 @@
 function load_vars {
 
     [ "$VARS" ] && return 0
+    import "vars"
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
     export_functions "$vars_path" > /dev/null
     local internal_var_names=$(export_functions "$vars_path")

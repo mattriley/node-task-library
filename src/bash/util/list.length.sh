@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function list.length {
 
     local IFS="$SEP"

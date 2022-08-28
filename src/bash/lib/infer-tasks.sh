@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function infer_tasks {
 
     local task_name="$1"

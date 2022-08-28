@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function run_task {
 
     local task_name=${1:-"default"}

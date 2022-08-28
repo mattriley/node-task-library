@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function node.exec_module {
 
     node \

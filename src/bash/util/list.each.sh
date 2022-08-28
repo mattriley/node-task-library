@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function list.each {
 
     local IFS="$SEP"

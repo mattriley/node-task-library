@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function list.map {
 
     local IFS="$SEP"

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function list.join {
 
     local sep=${OUTSEP:-$SEP}

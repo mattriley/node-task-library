@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function list.find {
 
     local IFS="$SEP"

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function run_tasks {
 
     local tasks="$1"

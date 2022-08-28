@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function npm_install {
 
     local packages="$1"

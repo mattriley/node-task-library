@@ -6,8 +6,6 @@
 
 # Selected
 
-IFS="$SEP"; var_names=("$PRINT_VARS"); unset IFS
-
 echo
 
 function callback {
@@ -17,7 +15,7 @@ function callback {
 
 list.each "$PRINT_VARS"
 
-vars_printed=${#var_names[@]}
+vars_printed=$(list.length "$PRINT_VARS")
 vars_total=$(echo -n "$VARS" | grep -c '^')
 
 echo

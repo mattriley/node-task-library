@@ -18,7 +18,7 @@ function NODE_MODULES_LINKS {
 }
 
 function PRINT_VARS {
-    echo "ROOT | DISPLAY_NAME | PACKAGE_NAME | STAGE | PORT"
+    echo "STAGE | PORT | PACKAGE_NAME | DISPLAY_NAME"
 }
 
 function DEV_LINKS {

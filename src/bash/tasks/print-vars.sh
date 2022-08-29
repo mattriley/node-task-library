@@ -6,12 +6,12 @@
 
 # Selected
 
-IFS="$SEP"; var_names=($PRINT_VARS); unset IFS
+IFS="$SEP"; var_names=("$PRINT_VARS"); unset IFS
 
 echo
 
 function callback {
-    [ $1 = "STAGE" ] && [ ${!1} = 'prod' ] && style="$RED" || style="$BOLD"
+    [ "$1" = "STAGE" ] && [ "${!1}" = 'prod' ] && style="$BOLD$RED" || style="$BOLD"
     echo "$1=${style}${!1}${NORM}"
 }
 

@@ -4,8 +4,6 @@ function find_task_file {
 
     local task_name="$1"
 
-    # echo "##### $task_name" 1>&2
-
     [ -z "$task_name" ] && echo "Task name is required" && exit 1
     
     function callback { echo "$1/$task_name $1/$task_name.sh"; }

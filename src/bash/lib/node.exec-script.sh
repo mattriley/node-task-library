@@ -15,6 +15,5 @@ function node.exec_script {
 
     # shellcheck disable=SC2086
     "$node_command" $node_options "$node_script" "${@:2}"
-    # NODE_OPTIONS="$node_options" "$node_command" "$node_script" "${@:2}"
 
 }

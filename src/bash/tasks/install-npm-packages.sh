@@ -19,7 +19,7 @@ list.each "$(list_of_func)" "callback"
 # dev
 function callback { echo "eslint-plugin-$1"; }
 # shellcheck disable=SC2153
-eslint_plugins=$(OUTSEP=" " list.map "$ESLINT_PLUGINS")
+eslint_plugins=$(list.map "$ESLINT_PLUGINS")
 
 function f1 { echo "module-indexgen npm-check-updates eslint husky"; }
 function f2 { [ -f "$README_TEMPLATE" ] && echo "ejs doctoc cloc"; }

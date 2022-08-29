@@ -2,8 +2,7 @@
 
 function list.length {
 
-    local IFS="$SEP"
-    IFS="$SEP" local arr=($1)
+    IFS="$SEP" read -r -a arr <<< "$1"
     echo "${#arr[@]}"
     
 }

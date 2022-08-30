@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 fs.remkdir "$NODE_MODULES_LINKS"
 
 function callback {

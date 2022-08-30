@@ -1,5 +1,7 @@
 #!/bin/bash
-  
+
+set -e
+
 npx c8 \
     --all \
     --src "$SRC" \

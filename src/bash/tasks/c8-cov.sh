@@ -1,5 +1,7 @@
 #!/bin/bash
-  
+
+set -e
+
 npx task c8-cov-report \
     --check-coverage \
     --branches "$COV_BRANCHES" \

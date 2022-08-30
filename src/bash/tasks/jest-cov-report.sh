@@ -1,3 +1,5 @@
 #!/bin/bash
-  
-npx task jest-test --coverage --coverageThreshold "{}" "$@"
+
+set -e
+
+npx task jest-test --coverage --coverageThreshold '{}' "$@"

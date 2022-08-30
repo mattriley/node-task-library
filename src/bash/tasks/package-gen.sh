@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # shellcheck disable=SC2005
 echo "$(node.exec_script "package-gen.js")" > "$PACKAGE_JSON"
 

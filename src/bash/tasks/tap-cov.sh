@@ -1,5 +1,7 @@
 #!/bin/bash
-  
+
+set -e
+
 npx task tap-cov-report \
     --no-browser \
     --check-coverage \

@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# Not yet sure how I could infer these:
-# @node-loader/babel
+set -e
 
 # prod
 function f1 { echo "module-composer"; }

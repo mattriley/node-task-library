@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 [ -f "$INDEX_HTML_TEMPLATE" ] && warn "$INDEX_HTML_TEMPLATE already exists" && exit
 
 cat > "$INDEX_HTML_TEMPLATE" <<'EOF'

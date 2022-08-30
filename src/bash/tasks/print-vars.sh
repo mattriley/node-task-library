@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # All
 
 [ "$1" = "--all" ] && echo "$VARS" && exit

@@ -1,3 +1,5 @@
 #!/bin/bash
-  
-ZORA_ONLY=true npx task test
+
+set -e
+
+ZORA_ONLY="true" npx task test

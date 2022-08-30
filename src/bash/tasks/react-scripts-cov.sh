@@ -1,5 +1,7 @@
 #!/bin/bash
-  
+
+set -e
+
 npx task react-scripts-cov-report \
     --roots "$SRC" \
     --collectCoverageFrom "<rootDir>/$SRC/**" \

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 cat <<END >> "$GIT_IGNORE"
 .DS_Store
 /*cache

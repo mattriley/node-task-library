@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 npx task dev-links
 npx task install
 npx task husky

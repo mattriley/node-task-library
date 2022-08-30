@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 npx task dist
 
 [ -n "$GITHUB_PAGES_CNAME" ] && echo "$GITHUB_PAGES_CNAME" > "$DIST/CNAME"

@@ -1,5 +1,7 @@
 #!/bin/bash
-  
+
+set -e
+
 cat << EOF > "$ITERMOCIL_CONFIG" 
 windows:
   - name: $PACKAGE_NAME

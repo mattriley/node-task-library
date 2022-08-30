@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 npx task github-pages-dist
 
 cd "$GITHUB_PAGES_PATH" \

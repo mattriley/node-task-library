@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 echo
 echo "${BOLD}$NPM_BUMP_VERSION${NORM} version will be bumped"
 

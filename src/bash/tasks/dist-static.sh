@@ -1,5 +1,7 @@
 #!/bin/bash
 
-[ ! -d "$STATIC" ] && warn "$STATIC not found" && exit 0
+set -e
+
+[ ! -d "$STATIC" ] && warn "$STATIC not found" && exit
 
 cp -a "$STATIC/" "$DIST"

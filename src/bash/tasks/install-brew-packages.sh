@@ -6,4 +6,4 @@
 which -s "jq" || brew install "jq"
 which -s "itermocil" || brew install "TomAnthony/brews/itermocil"
 
-exit 0
+exit

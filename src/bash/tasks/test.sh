@@ -1,5 +1,5 @@
 #!/bin/bash
 
-fs.empty "$TESTS" && warn "No tests found" && exit 0
+fs.empty "$TESTS" && warn "No tests found" && exit
 
 npx task test-infer

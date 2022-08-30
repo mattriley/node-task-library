@@ -1,6 +1,6 @@
 #!/bin/bash
 
-[ -f "$INDEX_HTML_TEMPLATE" ] && warn "$INDEX_HTML_TEMPLATE already exists" && exit 0
+[ -f "$INDEX_HTML_TEMPLATE" ] && warn "$INDEX_HTML_TEMPLATE already exists" && exit
 
 cat > "$INDEX_HTML_TEMPLATE" <<'EOF'
 <!DOCTYPE html>

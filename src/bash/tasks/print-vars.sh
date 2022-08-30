@@ -2,7 +2,7 @@
 
 # All
 
-[ "$1" = "--all" ] && echo "$VARS" && exit 0
+[ "$1" = "--all" ] && echo "$VARS" && exit
 
 # Selected
 

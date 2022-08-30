@@ -1,10 +1,12 @@
 #!/bin/bash
-  
+
+set -e
+
 fs.remkdir "$DIST"
 
 npx task dist-static
 npx task dist-infer
 
-[ "$DIST_FLATTEN" = "true" ] && fs.flatten "$DIST"
-
-exit 0
+if [ "$DIST_FLATTEN" = "true" ]; then
+  fs.flatten "$DIST"
+fi

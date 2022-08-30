@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function default {
 
-npx task pre-commit
+    set -e
+
+    run_task pre-commit
+
+}

@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function jest_test_watch {
 
-npx task jest-test --watch "$@"
+    set -e
+
+    run_task jest-test --watch "$@"
+
+}

@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function start {
 
-npx task start-infer
+    set -e
+
+    run_task start-infer
+
+}

@@ -1,10 +1,14 @@
 #!/bin/bash
 
-set -e
+function tap_cov_report {
 
-npx task tap-test \
-    --no-browser \
-    --no-check-coverage \
-    --coverage \
-    --coverage-report="html" \
-    "$@"
+    set -e
+
+    run_task tap-test \
+        --no-browser \
+        --no-check-coverage \
+        --coverage \
+        --coverage-report="html" \
+        "$@"
+
+}

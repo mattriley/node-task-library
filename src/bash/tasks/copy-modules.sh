@@ -1,17 +1,21 @@
 #!/bin/bash
 
-set -e
+function copy_modules {
 
-copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
+    set -e
 
-function callback { 
-    rm -rf "${MODULES/$1}:?"
-    cp -r "$copy_modules_root/$1" "$MODULES"
+    copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
 
-    if [ "$1" = "routing" ]; then
-        cp "$copy_modules_root/lambda.js" "$SRC"
-        cp "$copy_modules_root/server.js" "$SRC"
-    fi
+    function copy_modules { 
+        rm -rf "${MODULES/$1}:?"
+        cp -r "$copy_modules_root/$1" "$MODULES"
+
+        if [ "$1" = "routing" ]; then
+            cp "$copy_modules_root/lambda.js" "$SRC"
+            cp "$copy_modules_root/server.js" "$SRC"
+        fi
+    }
+
+    list.each "$COPY_MODULES"
+
 }
-
-list.each "$COPY_MODULES"

@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function jest_cov_report {
 
-npx task jest-test --coverage --coverageThreshold '{}' "$@"
+    set -e
+
+    run_task jest-test --coverage --coverageThreshold '{}' "$@"
+
+}

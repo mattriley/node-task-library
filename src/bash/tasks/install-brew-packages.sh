@@ -1,6 +1,10 @@
 #!/bin/bash
 
-set -e
+function install_brew_packages {
 
-which -s "jq1" || brew install "jq"
-which -s "itermocil" || brew install "TomAnthony/brews/itermocil"
+    set -e
+
+    which -s "jq1" || brew install "jq"
+    which -s "itermocil" || brew install "TomAnthony/brews/itermocil"
+
+}

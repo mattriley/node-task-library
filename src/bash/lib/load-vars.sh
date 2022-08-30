@@ -2,6 +2,31 @@
 
 function load_vars {
 
+function import {
+    local path="$TASK_LIBRARY_ROOT/src/bash/$1"
+    export_functions "$path" > /dev/null
+    [ "$1" = "-p" ] && echo "$path"
+}
+
+function export_functions {
+    for script in $1/*.sh; do
+        funcs=$(extract_function_names "$script")
+        source "$script"
+        while IFS= read -r name; do 
+            export -f "$name";
+            echo "$name"
+        done <<< "$funcs"
+    done
+}
+
+function extract_function_names {
+    script="$1"
+    pattern='^function (.+) '
+    while IFS= read -r line; do
+        [[ $line =~ $pattern ]] && echo "${BASH_REMATCH[1]}"
+    done < "$script"
+}
+
     [ "$VARS" ] && return 0
     import "vars"
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
@@ -43,6 +68,7 @@ function load_vars {
     VARS=$(uniq_vars "$env_before" "$env_after")
     export VARS
     echo
-    npx task print-vars
+    
+    print_vars
 
 }

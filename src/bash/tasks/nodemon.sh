@@ -1,7 +1,11 @@
 #!/bin/bash
 
-set -e
+function nodemon {
 
-[ -f "$SERVER" ] && "$SERVER not found" && exit
+    set -e
 
-nodemon "$SERVER" "$@"
+    [ -f "$SERVER" ] && "$SERVER not found" && exit
+
+    nodemon "$SERVER" "$@"
+
+}

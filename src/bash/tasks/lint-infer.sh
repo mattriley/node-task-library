@@ -1,6 +1,10 @@
 #!/bin/bash
 
-set -e
+function lint_infer {
 
-function f1 { npm.has_dev_dependency "eslint" && echo "eslint"; }
-run_tasks "$(infer_tasks)"
+    set -e
+
+    function lint_infer { npm.has_dev_dependency "eslint" && echo "eslint"; }
+    run_tasks "$(infer_tasks)"
+
+}

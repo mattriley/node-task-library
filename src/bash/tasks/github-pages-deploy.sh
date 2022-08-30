@@ -1,10 +1,14 @@
 #!/bin/bash
 
-set -e
+function github_pages_deploy {
 
-npx task github-pages-dist
+    set -e
 
-cd "$GITHUB_PAGES_PATH" \
-    && git add . \
-    && git commit -m"Deploy to GitHub Pages" --no-verify \
-    && git push
+    run_task github-pages-dist
+
+    cd "$GITHUB_PAGES_PATH" \
+        && git add . \
+        && git commit -m"Deploy to GitHub Pages" --no-verify \
+        && git push
+
+}

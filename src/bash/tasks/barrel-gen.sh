@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function barrel_gen {
 
-npx task indexgen "$@"
+    set -e
+
+    run_task indexgen "$@"
+
+}

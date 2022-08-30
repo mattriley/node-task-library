@@ -16,3 +16,4 @@ function sync {
 
 sync 'util'
 sync 'lib'
+sync 'tasks'

@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function cloc_sloc {
 
-npx cloc --json "$SRC" > "$METRICS_LOC"
+    set -e
+
+    cloc --json "$SRC" > "$METRICS_LOC"
+
+}

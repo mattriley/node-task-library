@@ -1,7 +1,11 @@
 #!/bin/bash
 
-set -e
+function dist_static {
 
-[ ! -d "$STATIC" ] && warn "$STATIC not found" && exit
+    set -e
 
-cp -a "$STATIC/" "$DIST"
+    [ ! -d "$STATIC" ] && warn "$STATIC not found" && exit
+
+    cp -a "$STATIC/" "$DIST"
+
+}

@@ -1,7 +1,11 @@
 #!/bin/bash
 
-set -e
+function eslint_config_gen {
 
-node.exec_script "eslint-config-gen.js" > "$ESLINT_CONFIG"
+    set -e
 
-git add "$ESLINT_CONFIG"
+    node.exec_script "eslint-config-gen.js" > "$ESLINT_CONFIG"
+
+    git add "$ESLINT_CONFIG"
+
+}

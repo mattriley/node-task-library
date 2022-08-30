@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function mocha_test_watch {
 
-npx mocha "$TEST_PATTERN" --watch --watch-files "$SRC" 
+    set -e
+
+    mocha "$TEST_PATTERN" --watch --watch-files "$SRC" 
+
+}

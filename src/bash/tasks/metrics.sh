@@ -1,7 +1,11 @@
 #!/bin/bash
 
-set -e
+function metrics {
 
-npx task cov
-npx task sloc
-npx task metrics-summary
+    set -e
+
+    run_task cov
+    run_task sloc
+    run_task metrics-summary
+
+}

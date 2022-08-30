@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function cov_report {
 
-npx task cov-report-infer
+    set -e
+
+    run_task cov-report-infer
+
+}

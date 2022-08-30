@@ -1,7 +1,11 @@
 #!/bin/bash
 
-set -e
+function jest_config_gen {
 
-node.exec_script "jest-config-gen.js" > "$JEST_CONFIG"
+    set -e
 
-git add "$JEST_CONFIG"
+    node.exec_script "jest-config-gen.js" > "$JEST_CONFIG"
+
+    git add "$JEST_CONFIG"
+
+}

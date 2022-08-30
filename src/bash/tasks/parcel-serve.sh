@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function parcel_serve {
 
-npx task parcel-dist serve --open
+    set -e
+
+    run_task parcel-dist serve --open
+
+}

@@ -1,13 +1,17 @@
 #!/bin/bash
 
-set -e
+function npm_deploy {
 
-echo
-echo "${BOLD}$NPM_BUMP_VERSION${NORM} version will be bumped"
+    set -e
 
-ask_ok
+    echo
+    echo "${BOLD}$NPM_BUMP_VERSION${NORM} version will be bumped"
 
-npm version "$NPM_BUMP_VERSION" \
-    && npm publish \
-    && git push \
-    && git push --tags
+    ask_ok
+
+    npm version "$NPM_BUMP_VERSION" \
+        && npm publish \
+        && git push \
+        && git push --tags
+
+}

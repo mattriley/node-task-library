@@ -1,6 +1,10 @@
 #!/bin/bash
 
-set -e
+function eslint {
 
-# shellcheck disable=SC2086
-npx eslint --ext ".mjs" --ext ".js" $ESLINT_PATHS "$@"
+    set -e
+
+    # shellcheck disable=SC2086
+    eslint --ext ".mjs" --ext ".js" $ESLINT_PATHS "$@"
+
+}

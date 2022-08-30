@@ -1,7 +1,13 @@
 #!/bin/bash
 
-set -e
+function node_test {
 
-test_files=$(node -p "require('fast-glob').sync('$TEST_PATTERN').join('$SEP')")
-function callback { node --experimental-specifier-resolution=node "$1"; }
-list.each "$test_files"
+    set -e
+
+    echo "Not implemented"
+
+    # test_files=$(node -p "require('fast-glob').sync('$TEST_PATTERN').join('$SEP')")
+    # function node_test { node --experimental-specifier-resolution=node "$1"; }
+    # list.each "$test_files"
+
+}

@@ -1,7 +1,10 @@
 #!/bin/bash
 
-set -e
+function test_infer {
 
-tasks=$(infer_test_task "" "$DEFAULT_TEST_TASK")
-run_tasks "$tasks"
+    set -e
 
+    tasks=$(infer_test_task "" "$DEFAULT_TEST_TASK")
+    run_tasks "$tasks"
+
+}

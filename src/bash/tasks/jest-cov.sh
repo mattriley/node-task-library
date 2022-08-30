@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function jest_cov {
 
-npx task jest-test --coverage "$@"
+    set -e
+
+    run_task jest-test --coverage "$@"
+
+}

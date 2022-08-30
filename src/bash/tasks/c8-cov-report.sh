@@ -1,12 +1,16 @@
 #!/bin/bash
 
-set -e
+function c8_cov_report {
 
-npx c8 \
-    --all \
-    --src "$SRC" \
-    --reporter="text-summary" \
-    --reporter="json-summary" \
-    --reporter="lcov" \
-    "$@" \
-    npx task test
+    set -e
+
+    c8 \
+        --all \
+        --src "$SRC" \
+        --reporter="text-summary" \
+        --reporter="json-summary" \
+        --reporter="lcov" \
+        "$@" \
+        "$TASK_LIBRARY_ROOT/bin/task" test
+
+}

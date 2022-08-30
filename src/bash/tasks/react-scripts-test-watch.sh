@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function react_scripts_test_watch {
 
-npx react-scripts test
+    set -e
+
+    react-scripts test
+
+}

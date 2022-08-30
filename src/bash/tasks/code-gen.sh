@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function code_gen {
 
-# Do nothing. Override to use.
+    set -e
+
+    # Do nothing. Override to use.
+
+}

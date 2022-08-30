@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function tape_test {
 
-npx tape "$TEST_PATTERN" "$@"
+    set -e
+
+    tape "$TEST_PATTERN" "$@"
+
+}

@@ -1,10 +1,14 @@
 #!/bin/bash
-  
-set -e
 
-[ ! -f "$README_TEMPLATE" ] && warn "$README_TEMPLATE not found" && exit
+function readme_gen {
+    
+    set -e
 
-node.exec_script "$README_GEN" > "$README"
-npx task doctoc
+    [ ! -f "$README_TEMPLATE" ] && warn "$README_TEMPLATE not found" && exit
 
-git add "$README"
+    node.exec_script "$README_GEN" > "$README"
+    run_task tasks.doctoc
+
+    git add "$README"
+
+}

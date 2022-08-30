@@ -1,7 +1,11 @@
 #!/bin/bash
 
-set -e
+function babel_config_gen {
 
-cp "$TASK_LIBRARY_ROOT/src/node/configs/$BABEL_CONFIG" "$BABEL_CONFIG"
+    set -e
 
-git add "$BABEL_CONFIG"
+    cp "$TASK_LIBRARY_ROOT/src/node/configs/$BABEL_CONFIG" "$BABEL_CONFIG"
+
+    git add "$BABEL_CONFIG"
+
+}

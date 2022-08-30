@@ -1,9 +1,13 @@
 #!/bin/bash
 
-set -e
+function itermocil {
 
-npx task itermocil-config-gen
+    set -e
 
-mkdir -p "$HOME/.itermocil"
+    run_task itermocil-config-gen
 
-itermocil --here
+    mkdir -p "$HOME/.itermocil"
+
+    itermocil --here
+
+}

@@ -1,9 +1,13 @@
 #!/bin/bash
+
+function tasks.doctoc {
   
-set -e
+    set -e
 
-[ ! -f "$README" ] && warn "$README not found" && exit
+    [ ! -f "$README" ] && warn "$README not found" && exit
 
-npx doctoc --title "## Table of Contents" --maxlevel 2 "$README" > /dev/null
+    doctoc --title "## Table of Contents" --maxlevel 2 "$README" > /dev/null
 
-git add "$README"
+    git add "$README"
+
+}

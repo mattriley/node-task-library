@@ -1,12 +1,16 @@
 #!/bin/bash
 
-set -e
+function dist {
 
-fs.remkdir "$DIST"
+    set -e
 
-npx task dist-static
-npx task dist-infer
+    fs.remkdir "$DIST"
 
-if [ "$DIST_FLATTEN" = "true" ]; then
-  fs.flatten "$DIST"
-fi
+    run_task dist-static
+    run_task dist-infer
+
+    if [ "$DIST_FLATTEN" = "true" ]; then
+        fs.flatten "$DIST"
+    fi
+
+}

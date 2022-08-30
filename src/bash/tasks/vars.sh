@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function vars {
 
-npx task print-vars --all
+    set -e
+
+    run_task print-vars --all
+
+}

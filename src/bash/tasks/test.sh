@@ -1,7 +1,11 @@
 #!/bin/bash
 
-set -e
+function test {
 
-fs.empty "$TESTS" && warn "No tests found" && exit
+    set -e
 
-npx task test-infer
+    fs.empty "$TESTS" && warn "No tests found" && exit
+
+    run_task test-infer
+
+}

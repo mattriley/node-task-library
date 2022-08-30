@@ -1,7 +1,11 @@
 #!/bin/bash
 
-set -e
+function tap_test {
 
-npx tap --no-coverage "$@" "$TESTS" 
+    set -e
 
-# tap seems to not accept glob so passing test path instead
+    tap --no-coverage "$@" "$TESTS" 
+
+    # tap seems to not accept glob so passing test path instead
+
+}

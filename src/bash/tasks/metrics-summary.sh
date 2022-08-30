@@ -1,9 +1,13 @@
 #!/bin/bash
 
-set -e
+function metrics_summary {
 
-mkdir -p "$METRICS"
+    set -e
 
-[ -f "$COVERAGE_JSON_SUMMARY" ] && cp "$COVERAGE_JSON_SUMMARY" "$METRICS_COV"
+    mkdir -p "$METRICS"
 
-node.exec_script "metrics-summary.js" > "$METRICS_SUMMARY"
+    [ -f "$COVERAGE_JSON_SUMMARY" ] && cp "$COVERAGE_JSON_SUMMARY" "$METRICS_COV"
+
+    node.exec_script "metrics-summary.js" > "$METRICS_SUMMARY"
+
+}

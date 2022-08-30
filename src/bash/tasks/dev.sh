@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function dev {
 
-npx task itermocil
+    set -e
+
+    run_task itermocil
+
+}

@@ -1,8 +1,10 @@
 #!/bin/bash
 
-set -e
+function gitignore_gen {
 
-cat <<END >> "$GIT_IGNORE"
+    set -e
+
+    cat <<END >> "$GIT_IGNORE"
 .DS_Store
 /*cache
 /*output
@@ -22,6 +24,8 @@ cat <<END >> "$GIT_IGNORE"
 /npm-debug.log
 END
 
-sort -u -o "$GIT_IGNORE" "$GIT_IGNORE"
+    sort -u -o "$GIT_IGNORE" "$GIT_IGNORE"
 
-git add "$GIT_IGNORE"
+    git add "$GIT_IGNORE"
+
+}

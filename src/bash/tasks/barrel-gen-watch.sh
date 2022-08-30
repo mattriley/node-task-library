@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function barrel_gen_watch {
 
-npx task barrel-gen --watch
+    set -e
+
+    run_task barrel-gen --watch
+
+}

@@ -1,13 +1,17 @@
 #!/bin/bash
 
-set -e
+function pre_commit {
 
-npx task config-gen
-npx task code-gen
-npx task lint --fix
-npx task cov
-npx task sloc
-npx task metrics-summary
-npx task readme-gen
+    set -e
 
-git add .
+    run_task config-gen
+    run_task code-gen
+    run_task lint --fix
+    run_task cov
+    run_task sloc
+    run_task metrics-summary
+    run_task readme-gen
+
+    git add .
+
+}

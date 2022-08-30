@@ -1,6 +1,10 @@
 #!/bin/bash
 
-set -e
+function chokidar_test_watch {
 
-# shellcheck disable=SC2086
-npx chokidar $TEST_WATCH_PATHS -c "npx task test"
+    set -e
+
+    # shellcheck disable=SC2086
+    chokidar $TEST_WATCH_PATHS -c "run_task test"
+
+}

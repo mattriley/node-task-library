@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function mocha_test {
 
-npx mocha "$TEST_PATTERN"
+    set -e
+
+    mocha "$TEST_PATTERN"
+
+}

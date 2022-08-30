@@ -1,9 +1,13 @@
 #!/bin/bash
 
-set -e
+function setup {
 
-npx task dev-links
-npx task install
-npx task husky
-npx task config-gen
-npx task npm-latest
+    set -e
+
+    run_task dev-links
+    run_task install
+    run_task husky
+    run_task config-gen
+    run_task npm-latest
+
+}

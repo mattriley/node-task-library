@@ -1,8 +1,12 @@
 #!/bin/bash
 
-set -e
+function cov_open {
 
-npx task cov-report
+    set -e
 
-report="$(set -- "$COVERAGE/**/index.html"; echo "$1")"
-open -a "Google Chrome" "$report"
+    run_task cov-report
+
+    report="$(set -- "$COVERAGE/**/index.html"; echo "$1")"
+    open -a "Google Chrome" "$report"
+
+}

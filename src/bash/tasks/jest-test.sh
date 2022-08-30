@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function jest_test {
 
-npx jest test --passWithNoTests "$@"
+    set -e
+
+    jest test --passWithNoTests "$@"
+
+}

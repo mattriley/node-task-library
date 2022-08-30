@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function sls_deploy {
 
-sls deploy
+    set -e
+
+    sls deploy
+
+}

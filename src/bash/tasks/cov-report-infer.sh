@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function cov_report_infer {
 
-run_tasks "$(infer_test_task "cov-report" "$DEFAULT_COV_REPORT_TASK")"
+    set -e
+
+    run_tasks "$(infer_test_task "cov-report" "$DEFAULT_COV_REPORT_TASK")"
+
+}

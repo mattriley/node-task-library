@@ -1,9 +1,13 @@
 #!/bin/bash
 
-set -e
+function react_scripts_cov_report {
 
-# echo "$(node $TASK_LIBRARY_ROOT/src/node/bin/configure-jest-coverage-reporters.js)" > ./package.json
+    set -e
 
-npx task react-scripts-test \
-    --coverage \
-    "$@"
+    # echo "$(node $TASK_LIBRARY_ROOT/src/node/bin/configure-jest-coverage-reporters.js)" > ./package.json
+
+    run_task react-scripts-test \
+        --coverage \
+        "$@"
+
+}

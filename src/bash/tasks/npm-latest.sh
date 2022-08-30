@@ -1,7 +1,11 @@
 #!/bin/bash
 
-set -e
+function npm_latest {
 
-npx -p npm-check-updates ncu -u
+    set -e
 
-npm.install && npm.install "task-library" -D
+    ncu -u
+
+    npm.install && npm.install "task-library" -D
+
+}

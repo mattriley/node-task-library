@@ -11,30 +11,13 @@ export GRE=$(tput setaf 2)
 export YEL=$(tput setaf 3)
 
 function import {
-    local path="$TASK_LIBRARY_ROOT/src/bash/$1"
-    export_functions "$path" > /dev/null
-    [ "$1" = "-p" ] && echo "$path"
-}
-
-function export_functions {
-    for script in $1/*.sh; do
-        funcs=$(extract_function_names "$script")
-        source "$script"
-        while IFS= read -r name; do 
-            export -f "$name";
-            echo "$name"
-        done <<< "$funcs"
+    local module_path="$TASK_LIBRARY_ROOT/src/bash/$1"
+    for script_path in "$module_path"/*.sh; do
+        source "$script_path"
     done
-}
-
-function extract_function_names {
-    script="$1"
-    pattern='^function (.+) '
-    while IFS= read -r line; do
-        [[ $line =~ $pattern ]] && echo "${BASH_REMATCH[1]}"
-    done < "$script"
 }
 
 import "util"
 import "lib"
+import "tasks"
 load_vars && run_task "$@"

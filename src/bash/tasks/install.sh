@@ -1,6 +1,10 @@
 #!/bin/bash
 
-set -e
+function install {
 
-npx task install-brew-packages
-npx task install-npm-packages
+    set -e
+
+    run_task install-brew-packages
+    run_task install-npm-packages
+
+}

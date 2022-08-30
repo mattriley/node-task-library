@@ -1,21 +1,25 @@
 #!/bin/bash
 
-set -e
+function itermocil_config_gen {
 
-cat << EOF > "$ITERMOCIL_CONFIG" 
+    set -e
+
+    cat << EOF > "$ITERMOCIL_CONFIG" 
 windows:
-  - name: $PACKAGE_NAME
+- name: $PACKAGE_NAME
     root: $(pwd)
     layout: tiled
     panes:
 EOF
 
-function callback {
+    function itermocil_config_gen {
     cat << EOF >> "$ITERMOCIL_CONFIG" 
-        - commands:
-            - nvm use
-            - npx task $1
+    - commands:
+        - nvm use
+        - run_task $1
 EOF
-}
+    }
 
-list.each "$DEV_TASKS"
+    list.each "$DEV_TASKS"
+
+}

@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function test_only {
 
-ZORA_ONLY="true" npx task test
+    set -e
+
+    ZORA_ONLY="true" run_task test
+
+}

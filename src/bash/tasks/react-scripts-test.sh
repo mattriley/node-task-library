@@ -1,11 +1,15 @@
 #!/bin/bash
 
-set -e
+function react_scripts_test {
 
-npx react-scripts test \
-    --roots "$TESTS" \
-    --testMatch "<rootDir>/$TEST_PATTERN" \
-    --watchAll false \
-    --silent \
-    --passWithNoTests \
-    "$@"
+    set -e
+
+    react-scripts test \
+        --roots "$TESTS" \
+        --testMatch "<rootDir>/$TEST_PATTERN" \
+        --watchAll false \
+        --silent \
+        --passWithNoTests \
+        "$@"
+
+}

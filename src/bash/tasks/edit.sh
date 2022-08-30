@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function edit {
 
-code .
+    set -e
+
+    code .
+
+}

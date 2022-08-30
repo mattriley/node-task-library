@@ -1,10 +1,14 @@
 #!/bin/bash
 
-set -e
+function husky {
 
-command="npx task pre-commit"
-file="./.husky/pre-commit"
-[ -f "$file" ] && grep -q "$command" "$file" && exit
+    set -e
 
-npx husky install
-npx husky add "$file" "$command"
+    command="run_task pre-commit"
+    file="./.husky/pre-commit"
+    [ -f "$file" ] && grep -q "$command" "$file" && exit
+
+    husky install
+    husky add "$file" "$command"
+
+}

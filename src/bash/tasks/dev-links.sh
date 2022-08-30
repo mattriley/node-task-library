@@ -1,15 +1,19 @@
 #!/bin/bash
 
-set -e
+function dev_links {
 
-fs.remkdir "$NODE_MODULES_LINKS"
+    set -e
 
-function callback {
-    local target
-    target="$(pwd)/$NODE_MODULES/$1"
-    local link
-    link="$(pwd)/$NODE_MODULES_LINKS/$1"
-    [ -d "$target" ] && ln -s "$target" "$link"
+    fs.remkdir "$NODE_MODULES_LINKS"
+
+    function dev_links {
+        local target
+        target="$(pwd)/$NODE_MODULES/$1"
+        local link
+        link="$(pwd)/$NODE_MODULES_LINKS/$1"
+        [ -d "$target" ] && ln -s "$target" "$link"
+    }
+
+    list.each "$DEV_LINKS"
+
 }
-
-list.each "$DEV_LINKS"

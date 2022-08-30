@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function test_watch {
 
-npx task test-watch-infer
+    set -e
+
+    run_task test-watch-infer
+
+}

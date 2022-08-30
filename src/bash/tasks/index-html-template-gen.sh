@@ -1,10 +1,12 @@
 #!/bin/bash
 
-set -e
+function index_html_template_gen {
 
-[ -f "$INDEX_HTML_TEMPLATE" ] && warn "$INDEX_HTML_TEMPLATE already exists" && exit
+    set -e
 
-cat > "$INDEX_HTML_TEMPLATE" <<'EOF'
+    [ -f "$INDEX_HTML_TEMPLATE" ] && warn "$INDEX_HTML_TEMPLATE already exists" && exit
+
+    cat > "$INDEX_HTML_TEMPLATE" <<'EOF'
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,3 +28,5 @@ cat > "$INDEX_HTML_TEMPLATE" <<'EOF'
 </body>
 </html>
 EOF
+
+}

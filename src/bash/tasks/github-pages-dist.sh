@@ -1,11 +1,15 @@
 #!/bin/bash
 
-set -e
+function github_pages_dist {
 
-npx task dist
+    set -e
 
-[ -n "$GITHUB_PAGES_CNAME" ] && echo "$GITHUB_PAGES_CNAME" > "$DIST/CNAME"
+    run_task dist
 
-fs.remkdir "$GITHUB_PAGES_PATH"
+    [ -n "$GITHUB_PAGES_CNAME" ] && echo "$GITHUB_PAGES_CNAME" > "$DIST/CNAME"
 
-cp -a "$DIST/" "$GITHUB_PAGES_PATH"
+    fs.remkdir "$GITHUB_PAGES_PATH"
+
+    cp -a "$DIST/" "$GITHUB_PAGES_PATH"
+
+}

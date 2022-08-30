@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function serve_dist {
 
-npx serve "$DIST"
+    set -e
+
+    serve "$DIST"
+
+}

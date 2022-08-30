@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function cov {
 
-npx task cov-infer
+    set -e
+
+    run_task cov-infer
+
+}

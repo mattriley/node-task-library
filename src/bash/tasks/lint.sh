@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function lint {
 
-npx task lint-infer
+    set -e
+
+    run_task lint-infer
+
+}

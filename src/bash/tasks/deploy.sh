@@ -1,5 +1,9 @@
 #!/bin/bash
 
-set -e
+function deploy {
 
-npx task deploy-infer
+    set -e
+
+    run_task deploy-infer
+
+}

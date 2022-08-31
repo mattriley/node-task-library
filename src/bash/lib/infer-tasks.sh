@@ -11,7 +11,7 @@ function lib.infer_tasks {
     }
 
     local tasks
-    tasks=$(list.map "$(list_of_func)")
+    tasks=$(list.map "$(util.list_of_func)")
     [ -z "$tasks" ] && echo "$default_task" || echo "$tasks"
 
 }

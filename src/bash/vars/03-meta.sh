@@ -6,7 +6,7 @@ function STAGE {
 }
 
 function PACKAGE_NAME {
-    lib.npm.package "name"
+    npm.package "name"
 }
 
 function DISPLAY_NAME {

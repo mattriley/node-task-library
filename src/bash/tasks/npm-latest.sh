@@ -6,6 +6,6 @@ function tasks.npm_latest {
 
     ncu -u
 
-    lib.npm.install && lib.npm.install "task-library" -D
+    npm.install && npm.install "task-library" -D
 
 }

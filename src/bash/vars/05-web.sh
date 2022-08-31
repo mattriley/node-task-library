@@ -9,7 +9,7 @@ function SERVER {
 }
 
 function SERVER_PORT {
-    lib.port "$(lib.npm.package name)"
+    lib.port "$(npm.package name)"
 }
 
 function PORT {
@@ -47,7 +47,7 @@ function INDEX_HTML_TITLE {
 }
 
 function INDEX_HTML_DESCRIPTION {
-    lib.npm.package description
+    npm.package description
 }
 
 function INDEX_HTML_AUTHOR {

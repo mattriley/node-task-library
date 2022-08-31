@@ -7,9 +7,9 @@ function lib.node.exec_script {
     local node_command="node"
     local node_options=""
 
-    if lib.npm.has_dev_dependency "@node-loader/babel"; then
+    if npm.has_dev_dependency "@node-loader/babel"; then
         node_options="--experimental-loader @node-loader/babel"
-    elif lib.npm.has_dev_dependency "@babel/core"; then
+    elif npm.has_dev_dependency "@babel/core"; then
         node_command="babel-node"
     fi
 

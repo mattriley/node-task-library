@@ -16,6 +16,6 @@ function ESLINT_CONDITIONAL_PLUGINS {
 
 function ESLINT_PLUGINS {
     echo -n "import | "
-    function callback { lib.npm.has_dev_dependency "$1"; }
+    function callback { npm.has_dev_dependency "$1"; }
     list.filter "$ESLINT_CONDITIONAL_PLUGINS"
 }

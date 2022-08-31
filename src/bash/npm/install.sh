@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function lib.npm.install {
+function npm.install {
 
     local packages="$1"
     local options="$2"

@@ -34,7 +34,7 @@ function TEST_WATCH_PATHS {
 }
 
 function TEST_RUNNER {
-    function callback { lib.npm.has_dev_dependency "$1"; } 
+    function callback { npm.has_dev_dependency "$1"; } 
     list.find "$SUPPORTED_TEST_RUNNERS"
 }
 

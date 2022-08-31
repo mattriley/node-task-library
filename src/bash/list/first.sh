@@ -1,8 +1,8 @@
 #!/bin/bash
 
-function util.list.length {
+function list.first {
 
     IFS="$SEP" read -r -a arr <<< "$1"
-    echo "${#arr[@]}"
+    echo "${arr[0]}"
     
 }

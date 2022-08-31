@@ -16,6 +16,6 @@ function tasks.copy_modules {
         fi
     }
 
-    util.list.each "$COPY_MODULES"
+    list.each "$COPY_MODULES"
 
 }

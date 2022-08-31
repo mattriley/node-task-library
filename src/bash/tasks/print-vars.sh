@@ -17,9 +17,9 @@ function tasks.print_vars {
         echo "$1=${style}${!1}${NORM}"
     }
 
-    util.list.each "$PRINT_VARS"
+    list.each "$PRINT_VARS"
 
-    vars_printed=$(util.list.length "$PRINT_VARS")
+    vars_printed=$(list.length "$PRINT_VARS")
     vars_total=$(echo -n "$VARS" | grep -c '^')
 
     echo

@@ -1,14 +1,14 @@
 #!/bin/bash
 
-function util.list.filter {
+function list.each {
 
     IFS="$SEP" read -r -a arr <<< "$1"
     local callback=${2:-"callback"}
-    
+
     for item in "${arr[@]}"; do 
-        $callback "$item" && echo "$item"
+        $callback "$item"
     done
-    
+
     unset "$callback"
 
 }

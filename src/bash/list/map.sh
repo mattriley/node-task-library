@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function util.list.map {
+function list.map {
 
     IFS="$SEP" read -r -a arr <<< "$1"
     local callback=${2:-"callback"}

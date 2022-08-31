@@ -8,9 +8,9 @@ function lib.find_task_file {
     
     function callback { echo "$1/$task_name $1/$task_name.sh"; }
     local paths
-    paths=$(util.list.map "$TASK_PATHS")
+    paths=$(list.map "$TASK_PATHS")
 
     function callback { [ -f "$1" ]; }
-    util.list.find "$paths"
+    list.find "$paths"
 
 }

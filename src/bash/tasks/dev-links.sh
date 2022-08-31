@@ -14,6 +14,6 @@ function tasks.dev_links {
         [ -d "$target" ] && ln -s "$target" "$link"
     }
 
-    util.list.each "$DEV_LINKS"
+    list.each "$DEV_LINKS"
 
 }

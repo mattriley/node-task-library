@@ -30,12 +30,12 @@ function TESTING {
 
 function TEST_WATCH_PATHS {
     function callback { [ -d "$1" ]; }
-    util.list.filter "$SRC | $TESTS | $TESTING"
+    list.filter "$SRC | $TESTS | $TESTING"
 }
 
 function TEST_RUNNER {
     function callback { lib.npm.has_dev_dependency "$1"; } 
-    util.list.find "$SUPPORTED_TEST_RUNNERS"
+    list.find "$SUPPORTED_TEST_RUNNERS"
 }
 
 function COVERAGE {

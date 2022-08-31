@@ -15,7 +15,7 @@ function tasks.install_npm_packages {
         unset "$1"
     }
 
-    util.list.each "$(util.list_of_func)" "callback"
+    list.each "$(list_of_func)" "callback"
 
     # dev
     function callback { echo "eslint-plugin-$1"; }
@@ -38,6 +38,6 @@ function tasks.install_npm_packages {
         unset "$1"
     }
 
-    util.list.each "$(list_of_func)" "callback"
+    list.each "$(list_of_func)" "callback"
 
 }

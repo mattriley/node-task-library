@@ -4,7 +4,7 @@ function tasks.doctoc {
   
     set -e
 
-    [ ! -f "$README" ] && lib.warn "$README not found" && exit
+    [ ! -f "$README" ] && util.warn "$README not found" && exit
 
     doctoc --title "## Table of Contents" --maxlevel 2 "$README" > /dev/null
 

@@ -4,7 +4,7 @@ function tasks.test {
 
     set -e
 
-    util.fs.empty "$TESTS" && lib.warn "No tests found" && exit
+    fs.empty "$TESTS" && lib.warn "No tests found" && exit
 
     lib.run_task test-infer
 

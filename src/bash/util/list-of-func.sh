@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function list_of_func {
+function util.list_of_func {
 
     local prefix="${1:-f}"
     local n=1

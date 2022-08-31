@@ -19,6 +19,7 @@ function import {
 
 import "util"
 import "list"
+import "fs"
 import "lib"
 import "tasks"
 lib.load_vars && lib.run_task "$@"

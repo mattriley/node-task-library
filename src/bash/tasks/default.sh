@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function default {
+function tasks.default {
 
     set -e
 

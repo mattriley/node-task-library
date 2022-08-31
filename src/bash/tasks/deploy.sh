@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function deploy {
+function tasks.deploy {
 
     set -e
 
-    run_task deploy-infer
+    lib.run_task deploy-infer
 
 }

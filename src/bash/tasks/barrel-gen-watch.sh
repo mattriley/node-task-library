@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function barrel_gen_watch {
+function tasks.barrel_gen_watch {
 
     set -e
 
-    run_task barrel-gen --watch
+    lib.run_task barrel-gen --watch
 
 }

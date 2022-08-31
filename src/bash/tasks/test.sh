@@ -1,11 +1,11 @@
 #!/bin/bash
 
-function test {
+function tasks.test {
 
     set -e
 
-    fs.empty "$TESTS" && warn "No tests found" && exit
+    util.fs.empty "$TESTS" && lib.warn "No tests found" && exit
 
-    run_task test-infer
+    lib.run_task test-infer
 
 }

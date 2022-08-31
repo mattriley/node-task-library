@@ -1,10 +1,10 @@
 #!/bin/bash
 
-function test_watch_infer {
+function tasks.test_watch_infer {
 
     set -e
 
-    tasks=$(infer_test_task "test-watch" "$DEFAULT_TEST_WATCH_TASK")
-    run_tasks "$tasks"
+    tasks=$(lib.infer_test_task "test-watch" "$DEFAULT_TEST_WATCH_TASK")
+    lib.run_tasks "$tasks"
 
 }

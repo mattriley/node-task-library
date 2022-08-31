@@ -1,10 +1,10 @@
 #!/bin/bash
 
-function dist_infer {
+function tasks.dist_infer {
 
     set -e
 
-    function dist_infer { npm.has_dev_dependency "parcel" && echo "parcel-dist"; }
-    run_tasks "$(infer_tasks)"
+    function f1 { lib.npm.has_dev_dependency "parcel" && echo "parcel-dist"; }
+    lib.run_tasks "$(lib.infer_tasks)"
 
 }

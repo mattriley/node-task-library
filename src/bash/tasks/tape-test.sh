@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function tape_test {
+function tasks.tape_test {
 
     set -e
 

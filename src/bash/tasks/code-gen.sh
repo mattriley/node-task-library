@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function code_gen {
+function tasks.code_gen {
 
     set -e
 

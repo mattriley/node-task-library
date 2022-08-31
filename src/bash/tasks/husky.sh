@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function husky {
+function tasks.husky {
 
     set -e
 

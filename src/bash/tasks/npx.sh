@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function npx {
+function tasks.npx {
 
     set -e
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function cloc_sloc {
+function tasks.cloc_sloc {
 
     set -e
 

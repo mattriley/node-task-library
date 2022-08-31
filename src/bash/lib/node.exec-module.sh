@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function node.exec_module {
+function lib.node.exec_module {
 
     node \
         --experimental-specifier-resolution="node" \

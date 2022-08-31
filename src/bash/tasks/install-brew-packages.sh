@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function install_brew_packages {
+function tasks.install_brew_packages {
 
     set -e
 

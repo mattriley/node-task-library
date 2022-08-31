@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function jest_test_watch {
+function tasks.jest_test_watch {
 
     set -e
 
-    run_task jest-test --watch "$@"
+    lib.run_task jest-test --watch "$@"
 
 }

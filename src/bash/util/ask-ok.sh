@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function ask_ok {
+function util.ask_ok {
 
     echo
     echo -n "👀 OK? "

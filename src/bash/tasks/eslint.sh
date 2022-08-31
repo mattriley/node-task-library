@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function eslint {
+function tasks.eslint {
 
     set -e
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function infer_tasks {
+function lib.infer_tasks {
 
     local default_task="$1"
 
@@ -11,7 +11,7 @@ function infer_tasks {
     }
 
     local tasks
-    tasks=$(list.map "$(list_of_func)")
+    tasks=$(util.list.map "$(util.list_of_func)")
     [ -z "$tasks" ] && echo "$default_task" || echo "$tasks"
 
 }

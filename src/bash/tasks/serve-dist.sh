@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function serve_dist {
+function tasks.serve_dist {
 
     set -e
 

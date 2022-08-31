@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function mocha_test_watch {
+function tasks.mocha_test_watch {
 
     set -e
 

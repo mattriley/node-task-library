@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function jest_test {
+function tasks.jest_test {
 
     set -e
 

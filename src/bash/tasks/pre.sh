@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function pre {
+function tasks.pre {
 
     set -e
 
-    run_task pre-commit
+    lib.run_task pre-commit
 
 }

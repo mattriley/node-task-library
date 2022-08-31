@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function dev {
+function tasks.dev {
 
     set -e
 
-    run_task itermocil
+    lib.run_task itermocil
 
 }

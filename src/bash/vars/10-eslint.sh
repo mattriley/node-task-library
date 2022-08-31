@@ -6,8 +6,8 @@ function ESLINT_CONFIG {
 
 function ESLINT_PATHS {
     # eslint doesn't like empty directories
-    function callback { ! fs.empty "$1"; } 
-    list.filter "$TEST_WATCH_PATHS"
+    function callback { ! util.fs.empty "$1"; } 
+    util.list.filter "$TEST_WATCH_PATHS"
 }
 
 function ESLINT_CONDITIONAL_PLUGINS {
@@ -16,6 +16,6 @@ function ESLINT_CONDITIONAL_PLUGINS {
 
 function ESLINT_PLUGINS {
     echo -n "import | "
-    function callback { npm.has_dev_dependency "$1"; }
-    list.filter "$ESLINT_CONDITIONAL_PLUGINS"
+    function callback { lib.npm.has_dev_dependency "$1"; }
+    util.list.filter "$ESLINT_CONDITIONAL_PLUGINS"
 }

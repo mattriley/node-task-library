@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function itermocil_config_gen {
+function tasks.itermocil_config_gen {
 
     set -e
 
@@ -12,8 +12,8 @@ windows:
     panes:
 EOF
 
-    function itermocil_config_gen {
-    cat << EOF >> "$ITERMOCIL_CONFIG" 
+    function callback {
+        cat << EOF >> "$ITERMOCIL_CONFIG" 
     - commands:
         - nvm use
         - run_task $1

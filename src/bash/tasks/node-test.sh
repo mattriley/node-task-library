@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function node_test {
+function tasks.node_test {
 
     set -e
 

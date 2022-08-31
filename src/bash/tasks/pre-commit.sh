@@ -1,16 +1,16 @@
 #!/bin/bash
 
-function pre_commit {
+function tasks.pre_commit {
 
     set -e
 
-    run_task config-gen
-    run_task code-gen
-    run_task lint --fix
-    run_task cov
-    run_task sloc
-    run_task metrics-summary
-    run_task readme-gen
+    lib.run_task config-gen
+    lib.run_task code-gen
+    lib.run_task lint --fix
+    lib.run_task cov
+    lib.run_task sloc
+    lib.run_task metrics-summary
+    lib.run_task readme-gen
 
     git add .
 

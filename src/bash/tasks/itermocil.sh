@@ -1,10 +1,10 @@
 #!/bin/bash
 
-function itermocil {
+function tasks.itermocil {
 
     set -e
 
-    run_task itermocil-config-gen
+    lib.run_task itermocil-config-gen
 
     mkdir -p "$HOME/.itermocil"
 

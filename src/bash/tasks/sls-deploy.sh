@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function sls_deploy {
+function tasks.sls_deploy {
 
     set -e
 

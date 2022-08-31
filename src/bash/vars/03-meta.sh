@@ -6,11 +6,11 @@ function STAGE {
 }
 
 function PACKAGE_NAME {
-    npm.package "name"
+    lib.npm.package "name"
 }
 
 function DISPLAY_NAME {
-    node.exec_script "start-case.js" "$PACKAGE_NAME"
+    lib.node.exec_script "start-case.js" "$PACKAGE_NAME"
 }
 
 function NODE_MODULES_LINKS {

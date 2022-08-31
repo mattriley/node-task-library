@@ -1,10 +1,10 @@
 #!/bin/bash
 
-function github_pages_deploy {
+function tasks.github_pages_deploy {
 
     set -e
 
-    run_task github-pages-dist
+    lib.run_task github-pages-dist
 
     cd "$GITHUB_PAGES_PATH" \
         && git add . \

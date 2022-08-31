@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function chokidar_test_watch {
+function tasks.chokidar_test_watch {
 
     set -e
 

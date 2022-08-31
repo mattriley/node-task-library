@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function cov {
+function tasks.cov {
 
     set -e
 
-    run_task cov-infer
+    lib.run_task cov-infer
 
 }

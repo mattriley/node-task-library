@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function mocha_test {
+function tasks.mocha_test {
 
     set -e
 

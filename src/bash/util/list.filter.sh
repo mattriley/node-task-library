@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function list.filter {
+function util.list.filter {
 
     IFS="$SEP" read -r -a arr <<< "$1"
     local callback=${2:-"callback"}

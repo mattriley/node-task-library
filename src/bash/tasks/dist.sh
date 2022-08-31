@@ -1,13 +1,13 @@
 #!/bin/bash
 
-function dist {
+function tasks.dist {
 
     set -e
 
     fs.remkdir "$DIST"
 
-    run_task dist-static
-    run_task dist-infer
+    lib.run_task dist-static
+    lib.run_task dist-infer
 
     if [ "$DIST_FLATTEN" = "true" ]; then
         fs.flatten "$DIST"

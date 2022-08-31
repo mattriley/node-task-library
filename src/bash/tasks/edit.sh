@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function edit {
+function tasks.edit {
 
     set -e
 

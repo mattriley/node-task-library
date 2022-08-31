@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function lint {
+function tasks.lint {
 
     set -e
 
-    run_task lint-infer
+    lib.run_task lint-infer
 
 }

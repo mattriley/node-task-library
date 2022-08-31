@@ -20,4 +20,4 @@ function import {
 import "util"
 import "lib"
 import "tasks"
-load_vars && run_task "$@"
+lib.load_vars && lib.run_task "$@"

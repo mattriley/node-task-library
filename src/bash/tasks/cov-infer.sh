@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function cov_infer {
+function tasks.cov_infer {
 
     set -e
 
-    run_tasks "$(infer_test_task "cov" "$DEFAULT_COV_TASK")"
+    lib.run_tasks "$(lib.infer_test_task "cov" "$DEFAULT_COV_TASK")"
 
 }

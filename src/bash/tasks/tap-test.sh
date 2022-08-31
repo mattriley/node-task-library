@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function tap_test {
+function tasks.tap_test {
 
     set -e
 

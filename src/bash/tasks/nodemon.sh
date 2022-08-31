@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function nodemon {
+function tasks.nodemon {
 
     set -e
 

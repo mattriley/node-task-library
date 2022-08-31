@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function metrics_summary {
+function tasks.metrics_summary {
 
     set -e
 
@@ -8,6 +8,6 @@ function metrics_summary {
 
     [ -f "$COVERAGE_JSON_SUMMARY" ] && cp "$COVERAGE_JSON_SUMMARY" "$METRICS_COV"
 
-    node.exec_script "metrics-summary.js" > "$METRICS_SUMMARY"
+    lib.node.exec_script "metrics-summary.js" > "$METRICS_SUMMARY"
 
 }

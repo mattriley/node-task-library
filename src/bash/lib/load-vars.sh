@@ -1,31 +1,31 @@
 #!/bin/bash
 
-function load_vars {
+function lib.load_vars {
 
-function import {
-    local path="$TASK_LIBRARY_ROOT/src/bash/$1"
-    export_functions "$path" > /dev/null
-    [ "$1" = "-p" ] && echo "$path"
-}
+    function import {
+        local path="$TASK_LIBRARY_ROOT/src/bash/$1"
+        export_functions "$path" > /dev/null
+        [ "$1" = "-p" ] && echo "$path"
+    }
 
-function export_functions {
-    for script in $1/*.sh; do
-        funcs=$(extract_function_names "$script")
-        source "$script"
-        while IFS= read -r name; do 
-            export -f "$name";
-            echo "$name"
-        done <<< "$funcs"
-    done
-}
+    function export_functions {
+        for script in $1/*.sh; do
+            funcs=$(extract_function_names "$script")
+            source "$script"
+            while IFS= read -r name; do 
+                export -f "$name";
+                echo "$name"
+            done <<< "$funcs"
+        done
+    }
 
-function extract_function_names {
-    script="$1"
-    pattern='^function (.+) '
-    while IFS= read -r line; do
-        [[ $line =~ $pattern ]] && echo "${BASH_REMATCH[1]}"
-    done < "$script"
-}
+    function extract_function_names {
+        script="$1"
+        pattern='^function (.+) '
+        while IFS= read -r line; do
+            [[ $line =~ $pattern ]] && echo "${BASH_REMATCH[1]}"
+        done < "$script"
+    }
 
     [ "$VARS" ] && return 0
     import "vars"
@@ -42,7 +42,7 @@ function extract_function_names {
     local env_after
     env_after="$(env)"
     local external_var_names
-    external_var_names=$(uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
+    external_var_names=$(util.uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
 
     while IFS= read -r name; do
         local override_name="${name}_OVERRIDE"
@@ -65,10 +65,10 @@ function extract_function_names {
 
     local env_after
     env_after="$(env)"
-    VARS=$(uniq_vars "$env_before" "$env_after")
+    VARS=$(util.uniq_vars "$env_before" "$env_after")
     export VARS
     echo
     
-    print_vars
+    tasks.print_vars
 
 }

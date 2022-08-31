@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function parcel_dist {
+function tasks.parcel_dist {
 
     set -e
 
@@ -8,9 +8,9 @@ function parcel_dist {
     [ "$parcel_command" = "build" ] && base_path="$WEB_BASE_PATH"
     [ -z "$base_path" ] && base_path="/"
 
-    run_task code-gen
-    run_task index-html-template-gen
-    run_task index-html-render-template
+    lib.run_task code-gen
+    lib.run_task index-html-template-gen
+    lib.run_task index-html-render-template
 
     export BABEL_OMIT_PRESETS="@babel/preset-env | @babel/preset-react"
 

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-function start_infer {
+function tasks.start_infer {
 
     set -e
 
-    function start_infer { npm.has_dev_dependency "nodemon" && echo "nodemon"; }
-    function start_infer { npm.has_dev_dependency "parcel" && echo "parcel-serve"; }
-    run_first_task "$(infer_tasks)"
+    function f1 { lib.npm.has_dev_dependency "nodemon" && echo "nodemon"; }
+    function f2 { lib.npm.has_dev_dependency "parcel" && echo "parcel-serve"; }
+    lib.run_first_task "$(infer_tasks)"
 
 }

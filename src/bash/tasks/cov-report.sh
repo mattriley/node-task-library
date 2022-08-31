@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function cov_report {
+function tasks.cov_report {
 
     set -e
 
-    run_task cov-report-infer
+    lib.run_task cov-report-infer
 
 }

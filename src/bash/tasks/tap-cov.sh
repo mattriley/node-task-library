@@ -1,10 +1,10 @@
 #!/bin/bash
 
-function tap_cov {
+function tasks.tap_cov {
 
     set -e
 
-    run_task tap-cov-report \
+    lib.run_task tap-cov-report \
         --no-browser \
         --check-coverage \
         --branches "$COV_BRANCHES" \

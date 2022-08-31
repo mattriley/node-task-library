@@ -1,12 +1,12 @@
 #!/bin/bash
 
-function dev_links {
+function tasks.dev_links {
 
     set -e
 
     fs.remkdir "$NODE_MODULES_LINKS"
 
-    function dev_links {
+    function callback {
         local target
         target="$(pwd)/$NODE_MODULES/$1"
         local link
@@ -14,6 +14,6 @@ function dev_links {
         [ -d "$target" ] && ln -s "$target" "$link"
     }
 
-    list.each "$DEV_LINKS"
+    util.list.each "$DEV_LINKS"
 
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-function task_exists {
+function lib.task_exists {
 
-    find_task_file "$1"
+    lib.find_task_file "$1"
 
 }

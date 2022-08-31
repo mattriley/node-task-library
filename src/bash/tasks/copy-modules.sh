@@ -1,12 +1,12 @@
 #!/bin/bash
 
-function copy_modules {
+function tasks.copy_modules {
 
     set -e
 
     copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
 
-    function copy_modules { 
+    function callback { 
         rm -rf "${MODULES/$1}:?"
         cp -r "$copy_modules_root/$1" "$MODULES"
 
@@ -16,6 +16,6 @@ function copy_modules {
         fi
     }
 
-    list.each "$COPY_MODULES"
+    util.list.each "$COPY_MODULES"
 
 }

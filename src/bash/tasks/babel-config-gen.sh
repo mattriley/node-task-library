@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function babel_config_gen {
+function tasks.babel_config_gen {
 
     set -e
 

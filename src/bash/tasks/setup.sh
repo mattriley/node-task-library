@@ -1,13 +1,13 @@
 #!/bin/bash
 
-function setup {
+function tasks.setup {
 
     set -e
 
-    run_task dev-links
-    run_task install
-    run_task husky
-    run_task config-gen
-    run_task npm-latest
+    lib.run_task dev-links
+    lib.run_task install
+    lib.run_task husky
+    lib.run_task config-gen
+    lib.run_task npm-latest
 
 }

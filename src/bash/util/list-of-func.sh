@@ -1,11 +1,11 @@
 #!/bin/bash
 
-function list_of_func {
+function util.list_of_func {
 
     local prefix="${1:-f}"
     local n=1
     
-    while is_function "$prefix$n"
+    while util.is_function "$prefix$n"
     do
         echo -n "$prefix$n "
         n=$((n + 1))

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function test_watch {
+function tasks.test_watch {
 
     set -e
 
-    run_task test-watch-infer
+    lib.run_task test-watch-infer
 
 }

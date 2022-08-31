@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function parcel_serve {
+function tasks.parcel_serve {
 
     set -e
 
-    run_task parcel-dist serve --open
+    lib.run_task parcel-dist serve --open
 
 }

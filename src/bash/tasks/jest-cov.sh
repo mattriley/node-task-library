@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function jest_cov {
+function tasks.jest_cov {
 
     set -e
 
-    run_task jest-test --coverage "$@"
+    lib.run_task jest-test --coverage "$@"
 
 }

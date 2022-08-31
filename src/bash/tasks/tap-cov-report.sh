@@ -1,10 +1,10 @@
 #!/bin/bash
 
-function tap_cov_report {
+function tasks.tap_cov_report {
 
     set -e
 
-    run_task tap-test \
+    lib.run_task tap-test \
         --no-browser \
         --no-check-coverage \
         --coverage \

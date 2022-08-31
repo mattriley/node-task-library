@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function list.find {
+function util.list.find {
 
     IFS="$SEP" read -r -a arr <<< "$1"
     local callback=${2:-"callback"}

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function react_scripts_test {
+function tasks.react_scripts_test {
 
     set -e
 

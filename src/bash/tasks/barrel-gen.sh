@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function barrel_gen {
+function tasks.barrel_gen {
 
     set -e
 
-    run_task indexgen "$@"
+    lib.run_task indexgen "$@"
 
 }

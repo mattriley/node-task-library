@@ -1,11 +1,11 @@
 #!/bin/bash
 
-function metrics {
+function tasks.metrics {
 
     set -e
 
-    run_task cov
-    run_task sloc
-    run_task metrics-summary
+    lib.run_task cov
+    lib.run_task sloc
+    lib.run_task metrics-summary
 
 }

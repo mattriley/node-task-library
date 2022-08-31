@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function gitignore_gen {
+function tasks.gitignore_gen {
 
     set -e
 

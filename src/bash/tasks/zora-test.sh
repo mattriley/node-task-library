@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function zora_test {
+function tasks.zora_test {
 
     set -e
 
-    node.exec_module "zora-testrunner.mjs" "$TEST_PATTERN"
+    lib.node.exec_module "zora-testrunner.mjs" "$TEST_PATTERN"
 
 }

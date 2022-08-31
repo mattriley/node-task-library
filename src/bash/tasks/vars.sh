@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function vars {
+function tasks.vars {
 
     set -e
 
-    run_task print-vars --all
+    lib.run_task print-vars --all
 
 }

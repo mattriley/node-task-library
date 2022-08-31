@@ -1,13 +1,13 @@
 #!/bin/bash
 
-function sloc {
+function tasks.sloc {
 
     set -e
 
-    [ ! -d "$SRC" ] && warn "$SRC not found" && exit
+    [ ! -d "$SRC" ] && lib.warn "$SRC not found" && exit
 
     mkdir -p "$METRICS"
 
-    run_task sloc-infer
+    lib.run_task sloc-infer
 
 }

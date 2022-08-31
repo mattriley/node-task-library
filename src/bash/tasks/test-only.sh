@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function test_only {
+function tasks.test_only {
 
     set -e
 
-    ZORA_ONLY="true" run_task test
+    ZORA_ONLY="true" lib.run_task test
 
 }

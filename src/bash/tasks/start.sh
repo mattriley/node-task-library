@@ -1,9 +1,9 @@
 #!/bin/bash
 
-function start {
+function tasks.start {
 
     set -e
 
-    run_task start-infer
+    lib.run_task start-infer
 
 }

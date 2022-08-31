@@ -1,11 +1,11 @@
 #!/bin/bash
 
-function npm_latest {
+function tasks.npm_latest {
 
     set -e
 
     ncu -u
 
-    npm.install && npm.install "task-library" -D
+    lib.npm.install && lib.npm.install "task-library" -D
 
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function is_function {
+function util.is_function {
     
     [ "$(type -t "$1")" = "function" ]
 

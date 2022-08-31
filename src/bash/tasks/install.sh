@@ -1,10 +1,10 @@
 #!/bin/bash
 
-function install {
+function tasks.install {
 
     set -e
 
-    run_task install-brew-packages
-    run_task install-npm-packages
+    lib.run_task install-brew-packages
+    lib.run_task install-npm-packages
 
 }

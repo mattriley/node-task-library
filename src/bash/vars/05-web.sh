@@ -9,7 +9,7 @@ function SERVER {
 }
 
 function SERVER_PORT {
-    port "$(npm.package name)"
+    lib.port "$(lib.npm.package name)"
 }
 
 function PORT {
@@ -31,7 +31,7 @@ function WEB_URL {
 }
 
 function BFF_URL {
-    echo "http://localhost:$(port "$PACKAGE_NAME-bff")"
+    echo "http://localhost:$(lib.port "$PACKAGE_NAME-bff")"
 }
 
 function INDEX_HTML_TEMPLATE {
@@ -47,7 +47,7 @@ function INDEX_HTML_TITLE {
 }
 
 function INDEX_HTML_DESCRIPTION {
-    npm.package description
+    lib.npm.package description
 }
 
 function INDEX_HTML_AUTHOR {

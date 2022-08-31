@@ -10,19 +10,11 @@ export RED=$(tput setaf 1)
 export GRE=$(tput setaf 2)
 export YEL=$(tput setaf 3)
 
-function import {
-    local module_path="$TASK_LIBRARY_ROOT/src/bash/$1"
+for module_path in "$TASK_LIBRARY_ROOT/src/bash/modules"/*; do
     for script_path in "$module_path"/*.sh; do
+        # shellcheck disable=SC1090
         source "$script_path"
     done
-}
+done
 
-import "util"
-import "list"
-import "fs"
-import "lib"
-import "npm"
-import "node"
-import "aws"
-import "tasks"
 lib.load_vars && lib.run_task "$@"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function sync {
-    ( cd "./src/bash" || exit 1
+    ( cd "./src/bash/modules" || exit 1
     for script_path in "$1"/*.sh; do
         echo "$script_path"
         script=$(<"$script_path")

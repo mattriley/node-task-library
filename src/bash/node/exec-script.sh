@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function lib.node.exec_script {
+function node.exec_script {
 
     local node_script="$TASK_LIBRARY_ROOT/src/node/bin/$1"
     [ ! -f "$node_script" ] && node_script="$1"

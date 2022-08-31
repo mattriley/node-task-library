@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function util.dt.now_ms {
+function util.now_ms {
 
     node -p "Date.now()" 
 

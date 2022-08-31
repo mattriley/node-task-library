@@ -11,7 +11,7 @@ function lib.run_task {
     
     echo "${NORM}⚡️ Task ${BOLD}$task_name${NORM} started" # Source: $task_file"
     local time_before
-    time_before=$(util.dt.now_ms)
+    time_before=$(util.now_ms)
     # ( cd "$ROOT" && "$task_file" "${@:2}" )
     if util.is_function "$task_function"; then   
         "$task_function" "${@:2}"        
@@ -21,10 +21,10 @@ function lib.run_task {
     fi
     local exit_code=$?
     local time_after
-    time_after=$(util.dt.now_ms)
+    time_after=$(util.now_ms)
     local time_taken_ms=$((time_after-time_before))
     local time_taken_s
-    time_taken_s=$(util.dt.ms_to_s $time_taken_ms)
+    time_taken_s=$(util.ms_to_s $time_taken_ms)
     [[ $time_taken_s == .* ]] && time_taken_s="0$time_taken_s"
     [ $exit_code = 0 ] && icon="✅" || icon="❌"
     echo "${NORM}${icon} Task ${BOLD}$task_name${NORM} completed with exit code $exit_code in ${time_taken_ms}ms (${time_taken_s}s)"

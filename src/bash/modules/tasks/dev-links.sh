@@ -4,7 +4,7 @@ function tasks.dev_links {
 
     set -e
 
-    fs.remkdir "$NODE_MODULES_LINKS"
+    fs.re_mkdir "$NODE_MODULES_LINKS"
 
     function callback {
         local target

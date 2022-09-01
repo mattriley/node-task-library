@@ -4,7 +4,7 @@ function tasks.husky {
 
     set -e
 
-    command="run_task pre-commit"
+    command="$TASK_LIBRARY_ROOT/bin/task pre-commit"
     file="./.husky/pre-commit"
     [ -f "$file" ] && grep -q "$command" "$file" && exit
 

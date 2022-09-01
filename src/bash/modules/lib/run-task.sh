@@ -2,7 +2,7 @@
 
 function lib.run_task {
 
-    local task_name=${1:-"default"}
+    local task_name="$1"
     local task_file
     task_file=$(lib.find_task_file "$task_name")
     task_function="tasks.${task_name//-/_}"

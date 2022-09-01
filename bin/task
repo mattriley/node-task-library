@@ -20,4 +20,5 @@ for module_path in "$TASK_LIBRARY_ROOT/src/bash/modules"/*; do
     done
 done
 
-lib.load_vars && lib.run_task "$@"
+task_name=${1:-default}
+lib.load_vars && lib.run_task "$task_name"

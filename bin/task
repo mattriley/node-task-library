@@ -1,14 +1,15 @@
 #!/bin/bash
 
+NORM=$(tput sgr0)
+BOLD=$(tput bold)
+RED=$(tput setaf 1)
+GRE=$(tput setaf 2)
+YEL=$(tput setaf 3)
+
+export NORM BOLD RED GRE YEL
 export SEP=" | "
 export TASK_LIBRARY_ROOT="./node_modules/task-library"
 export SUPPORTED_TEST_RUNNERS="jest | mocha | tap | tape | zora"
-
-export NORM=$(tput sgr0)
-export BOLD=$(tput bold)
-export RED=$(tput setaf 1)
-export GRE=$(tput setaf 2)
-export YEL=$(tput setaf 3)
 
 for module_path in "$TASK_LIBRARY_ROOT/src/bash/modules"/*; do
     for script_path in "$module_path"/*.sh; do

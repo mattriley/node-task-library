@@ -1,8 +1,9 @@
 #!/bin/bash
 
-function sync {
-    ( cd "./src/bash/modules" || exit 1
-    for script_path in "$1"/*.sh; do
+TASK_LIBRARY_ROOT="./node_modules/task-library"
+
+for module_path in "$TASK_LIBRARY_ROOT/src/bash/modules"/*; do
+    for script_path in "$module_path"/*.sh; do
         echo "$script_path"
         script=$(<"$script_path")
         namespace=$(dirname "$script_path")
@@ -14,14 +15,5 @@ function sync {
         new_script=$(sed "s/^function.*{/function $function_name {/" <<< "$script")
         echo "$new_script"
         echo "$new_script" > "$script_path"
-    done )
-}
-
-sync 'util'
-sync 'lib'
-sync 'list'
-sync 'fs'
-sync 'npm'
-sync 'node'
-sync 'aws'
-sync 'tasks'
+    done
+done

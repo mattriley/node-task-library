@@ -5,8 +5,8 @@ function tasks.deploy_infer {
     set -e
 
     function f1 { npm.is_published && echo "npm-deploy"; }
-    function f2 { lib.is_on_ghp && echo "github-pages-deploy"; }
-    function f3 { lib.is_on_sls && echo "sls-deploy"; }
+    function f2 { ghp.is_published && echo "github-pages-deploy"; }
+    function f3 { [ -f "$SERVERLESS_CONFIG" ] && echo "sls-deploy"; }
     lib.run_tasks "$(lib.infer_tasks)"
 
 }

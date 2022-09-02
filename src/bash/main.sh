@@ -10,13 +10,7 @@ function main {
     # shellcheck disable=SC1091
     source "$TASK_LIBRARY_ROOT/src/bash/compose.sh" && compose
 
-    function cleanup {
-        [ "$IS_SUBTASK" ] && return
-        [ "$ERROR_COUNT" -gt 0 ] && echo "❌ FAILURE" && exit 1
-        echo "✅ SUCCESS" 
-    }
-
-    trap cleanup EXIT
+    trap startup.on_exit EXIT
 
     task_name=${1:-default}
     startup.load_vars && lib.run_task "$task_name"

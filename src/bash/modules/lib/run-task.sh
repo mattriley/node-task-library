@@ -3,12 +3,15 @@
 function lib.run_task {
 
     local task_name="$1"
+    local task_function="tasks.${task_name//-/_}"
     local task_file
     task_file=$(lib.find_task_file "$task_name")
-    task_function="tasks.${task_name//-/_}"
-    [ -z "$task_file" ] && ! util.is_function "$task_function" && echo -e "Task ${BOLD}$task_name${NORM} not found" && return 1
-
     
+    util.is_function "$task_function" && task_is_function="true"
+    [ "$task_file" ] && task_is_file="true"
+    [ "$task_is_function" ] || [ "$task_is_file" ] && task_exists="true"
+    [ -z "$task_exists" ] && echo -e "Task ${BOLD}$task_name${NORM} not found" && return 1
+
     echo "${NORM}⚡️ Task ${BOLD}$task_name${NORM} started" # Source: $task_file"
     local time_before
     time_before=$(util.now_ms)

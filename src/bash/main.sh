@@ -5,9 +5,10 @@ function main {
     set -o pipefail
 
     export IS_SUBTASK; [[ "$*" =~ "--subtask" ]] && IS_SUBTASK="true"
+    export TASK_LIBRARY_ROOT="./node_modules/task-library"
 
     # shellcheck disable=SC1091
-    source "./node_modules/task-library/src/bash/compose.sh" && compose
+    source "$TASK_LIBRARY_ROOT/src/bash/compose.sh" && compose
 
     function cleanup {
         [ "$IS_SUBTASK" ] && return

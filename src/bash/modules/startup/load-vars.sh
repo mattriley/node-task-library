@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function lib.load_vars {
+function startup.load_vars {
 
     function import {
         local path="$TASK_LIBRARY_ROOT/src/bash/$1"

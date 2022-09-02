@@ -19,6 +19,6 @@ function main {
     trap cleanup EXIT
 
     task_name=${1:-default}
-    lib.load_vars && lib.run_task "$task_name"
+    startup.load_vars && lib.run_task "$task_name"
 
 }

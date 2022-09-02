@@ -2,7 +2,7 @@
 
 function main {
 
-    set -eo pipefail
+    set -o pipefail
 
     NORM=$(tput sgr0)
     BOLD=$(tput bold)
@@ -21,6 +21,17 @@ function main {
             source "$script_path"
         done
     done
+
+    export is_subtask; [[ "$@" =~ "--subtask" ]] && is_subtask="true"
+
+    function cleanup()
+    {
+        # ...
+        # :
+        [ -z "$is_subtask" ] && echo "$ANY_ERR" && exit $ANY_ERR
+    }
+
+    trap cleanup EXIT
 
     task_name=${1:-default}
     lib.load_vars && lib.run_task "$task_name"

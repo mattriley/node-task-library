@@ -2,6 +2,8 @@
 
 function tasks.pre_commit {
 
+    # lib.run_task noop
+
     lib.run_task config-gen
     lib.run_task code-gen
     lib.run_task lint --fix

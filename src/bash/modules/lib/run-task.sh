@@ -26,6 +26,7 @@ function lib.run_task {
     local time_taken_s; time_taken_s="$(util.ms_to_s $time_taken_ms)"
     [[ $time_taken_s == .* ]] && time_taken_s="0$time_taken_s"
     [ $return_code = 0 ] && icon="✅" || icon="❌"
+    [ $return_code -gt 0 ] && export ANY_ERR=1
     echo "${NORM}${icon} Task ${BOLD}$task_name${NORM} completed with exit code $return_code in ${time_taken_ms}ms (${time_taken_s}s)"
     return "$return_code"
 

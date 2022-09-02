@@ -10,6 +10,6 @@ function tasks.c8_cov_report {
         --reporter="json-summary" \
         --reporter="lcov" \
         $@ \
-        "$TASK_LIBRARY_ROOT/bin/task" test
+        "$TASK_LIBRARY_ROOT/bin/task" test --subtask
 
 }

@@ -4,7 +4,7 @@ function tasks.itermocil_config_gen {
 
     cat << EOF > "$ITERMOCIL_CONFIG" 
 windows:
-- name: $PACKAGE_NAME
+  - name: $PACKAGE_NAME
     root: $(pwd)
     layout: tiled
     panes:
@@ -12,9 +12,9 @@ EOF
 
     function callback {
         cat << EOF >> "$ITERMOCIL_CONFIG" 
-    - commands:
+      - commands:
         - nvm use
-        - run_task $1
+        - npx task $1
 EOF
     }
 

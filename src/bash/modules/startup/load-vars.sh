@@ -32,8 +32,7 @@ function startup.load_vars {
     done <<< "$staged_var_names"
 
     local env_after; env_after="$(env)"
-    VARS=$(util.uniq_vars "$env_before" "$env_after")
-    export VARS
+    export VARS; VARS=$(util.uniq_vars "$env_before" "$env_after")
     echo
     
     tasks.print_vars

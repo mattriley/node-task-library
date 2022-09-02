@@ -10,7 +10,7 @@ function startup.load_vars {
 
     function export_functions {
         for script in "$1"/*.sh; do
-            local funcs; funcs=$(extract_function_names "$script")
+            local funcs; funcs=$(startup.parse_function_names "$script")
             # shellcheck disable=SC1090
             source "$script"
             while IFS= read -r name; do 
@@ -18,14 +18,6 @@ function startup.load_vars {
                 echo "$name"
             done <<< "$funcs"
         done
-    }
-
-    function extract_function_names {
-        local script="$1"
-        local pattern='^function (.+) '
-        while IFS= read -r line; do
-            [[ $line =~ $pattern ]] && echo "${BASH_REMATCH[1]}"
-        done < "$script"
     }
 
     [ "$VARS" ] && return 0

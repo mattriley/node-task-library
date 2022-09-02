@@ -4,31 +4,15 @@ function main {
 
     set -o pipefail
 
-    NORM=$(tput sgr0)
-    BOLD=$(tput bold)
-    RED=$(tput setaf 1)
-    GRE=$(tput setaf 2)
-    YEL=$(tput setaf 3)
+    export IS_SUBTASK; [[ "$*" =~ "--subtask" ]] && IS_SUBTASK="true"
 
-    export NORM BOLD RED GRE YEL
-    export SEP=" | "
-    export TASK_LIBRARY_ROOT="./node_modules/task-library"
-    export SUPPORTED_TEST_RUNNERS="jest | mocha | tap | tape | zora"
+    # shellcheck disable=SC1091
+    source "./node_modules/task-library/src/bash/compose.sh" && compose
 
-    for module_path in "$TASK_LIBRARY_ROOT/src/bash/modules"/*; do
-        for script_path in "$module_path"/*.sh; do
-            # shellcheck disable=SC1090
-            source "$script_path"
-        done
-    done
-
-    export is_subtask; [[ "$@" =~ "--subtask" ]] && is_subtask="true"
-
-    function cleanup()
-    {
-        # ...
-        # :
-        [ -z "$is_subtask" ] && echo "$ANY_ERR" && exit $ANY_ERR
+    function cleanup {
+        [ "$IS_SUBTASK" ] && return
+        [ "$ERROR_COUNT" -gt 0 ] && echo "❌ FAILURE" && exit 1
+        echo "✅ SUCCESS" 
     }
 
     trap cleanup EXIT

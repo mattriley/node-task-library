@@ -2,14 +2,7 @@
 
 function startup.load_vars {
 
-    function import {
-        local path="$TASK_LIBRARY_ROOT/src/bash/$1"
-        startup.export_functions "$path" > /dev/null
-        [ "$1" = "-p" ] && echo "$path"
-    }
-
     [ "$VARS" ] && return 0
-    import "vars"
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
     startup.export_functions "$vars_path" > /dev/null
     local internal_var_names; internal_var_names=$(startup.export_functions "$vars_path")

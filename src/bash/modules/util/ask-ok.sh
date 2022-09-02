@@ -10,7 +10,7 @@ function util.ask_ok {
 
     case "$choice" in 
         y|Y ) echo;;
-        n|N ) echo "Aborting..."; echo; exit 1;;
-        * ) echo "Invalid input. Aborting..."; echo; exit 1;;
+        n|N ) echo "Aborting..."; echo; return 1;;
+        * ) echo "Invalid input. Aborting..."; echo; return 1;;
     esac
 }

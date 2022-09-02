@@ -2,7 +2,7 @@
 
 function tasks.c8_cov_report {
 
-    set -e
+    
 
     c8 \
         --all \

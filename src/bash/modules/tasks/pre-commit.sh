@@ -2,7 +2,7 @@
 
 function tasks.pre_commit {
 
-    set -e
+    
 
     lib.run_task config-gen
     lib.run_task code-gen

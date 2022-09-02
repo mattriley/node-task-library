@@ -2,7 +2,7 @@
 
 function tasks.metrics {
 
-    set -e
+    
 
     lib.run_task cov
     lib.run_task sloc

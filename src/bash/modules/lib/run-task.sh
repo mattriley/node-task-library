@@ -12,13 +12,17 @@ function lib.run_task {
     echo "${NORM}⚡️ Task ${BOLD}$task_name${NORM} started" # Source: $task_file"
     local time_before
     time_before=$(util.now_ms)
+    set +e
     if util.is_function "$task_function"; then   
-        "$task_function" "${@:2}"        
+        "$task_function" "${@:2}"
+        return_code="$?"
     else
         chmod +x "$task_file"
         ( cd "$ROOT" && "$task_file" "${@:2}" )
+        return_code="$?"
     fi
-    local return_code=$?
+    set -e
+    # local return_code=$?
     local time_after
     time_after=$(util.now_ms)
     local time_taken_ms=$((time_after-time_before))

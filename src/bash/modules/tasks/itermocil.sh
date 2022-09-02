@@ -2,7 +2,7 @@
 
 function tasks.itermocil {
 
-    set -e
+    
 
     lib.run_task itermocil-config-gen
 

@@ -2,7 +2,7 @@
 
 function tasks.react_scripts_test {
 
-    set -e
+    
 
     react-scripts test \
         --roots "$TESTS" \

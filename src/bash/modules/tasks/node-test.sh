@@ -2,7 +2,7 @@
 
 function tasks.node_test {
 
-    set -e
+    
 
     echo "Not implemented"
 

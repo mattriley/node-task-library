@@ -2,7 +2,7 @@
 
 function tasks.readme_gen {
     
-    set -e
+    
 
     [ ! -f "$README_TEMPLATE" ] && util.warn "$README_TEMPLATE not found" && return
 

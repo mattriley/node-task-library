@@ -2,7 +2,7 @@
 
 function tasks.tap_test {
 
-    set -e
+    
 
     tap --no-coverage "$@" "$TESTS" 
 

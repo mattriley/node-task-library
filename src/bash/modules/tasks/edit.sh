@@ -2,7 +2,7 @@
 
 function tasks.edit {
 
-    set -e
+    
 
     code .
 

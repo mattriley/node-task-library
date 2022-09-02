@@ -2,7 +2,7 @@
 
 function tasks.dev_links {
 
-    set -e
+    
 
     fs.re_mkdir "$NODE_MODULES_LINKS"
 

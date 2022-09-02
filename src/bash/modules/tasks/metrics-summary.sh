@@ -2,7 +2,7 @@
 
 function tasks.metrics_summary {
 
-    set -e
+    
 
     mkdir -p "$METRICS"
 

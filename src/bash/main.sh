@@ -1,8 +1,8 @@
 #!/bin/bash
 
-set -e
-
 function main {
+
+    set -eo pipefail
 
     NORM=$(tput sgr0)
     BOLD=$(tput bold)

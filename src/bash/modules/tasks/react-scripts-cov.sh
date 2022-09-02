@@ -2,7 +2,7 @@
 
 function tasks.react_scripts_cov {
 
-    set -e
+    
 
     lib.run_task react-scripts-cov-report \
         --roots "$SRC" \

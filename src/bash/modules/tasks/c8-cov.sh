@@ -2,7 +2,7 @@
 
 function tasks.c8_cov {
 
-    set -e
+    
 
     lib.run_task c8-cov-report \
         --check-coverage \

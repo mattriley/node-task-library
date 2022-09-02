@@ -2,7 +2,7 @@
 
 function tasks.github_pages_dist {
 
-    set -e
+    
 
     lib.run_task dist
 

@@ -2,7 +2,7 @@
 
 function tasks.copy_modules {
 
-    set -e
+    
 
     copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
 

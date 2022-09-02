@@ -2,7 +2,7 @@
 
 function tasks.husky {
 
-    set -e
+    
 
     command="$TASK_LIBRARY_ROOT/bin/task pre-commit"
     file="./.husky/pre-commit"

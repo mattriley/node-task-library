@@ -2,7 +2,7 @@
 
 function tasks.npm_deploy {
 
-    set -e
+    
 
     echo
     echo "${BOLD}$NPM_BUMP_VERSION${NORM} version will be bumped"

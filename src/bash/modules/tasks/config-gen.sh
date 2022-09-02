@@ -2,7 +2,7 @@
 
 function tasks.config_gen {
 
-    set -e
+    
 
     function f1 { echo "gitignore-gen"; }
     function f2 { echo "package-gen"; }

@@ -2,7 +2,7 @@
 
 function tasks.cov_open {
 
-    set -e
+    
 
     lib.run_task cov-report
 

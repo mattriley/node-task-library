@@ -2,7 +2,7 @@
 
 function tasks.gitignore_gen {
 
-    set -e
+    
 
     cat <<END >> "$GIT_IGNORE"
 .DS_Store

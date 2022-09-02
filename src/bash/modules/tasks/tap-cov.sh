@@ -2,7 +2,7 @@
 
 function tasks.tap_cov {
 
-    set -e
+    
 
     lib.run_task tap-cov-report \
         --no-browser \

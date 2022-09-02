@@ -2,7 +2,7 @@
 
 function tasks.setup {
 
-    set -e
+    
 
     lib.run_task dev-links
     lib.run_task install

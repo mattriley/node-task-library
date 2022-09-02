@@ -2,7 +2,7 @@
 
 function tasks.github_pages_deploy {
 
-    set -e
+    
 
     lib.run_task github-pages-dist
 

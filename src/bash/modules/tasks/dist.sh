@@ -2,7 +2,7 @@
 
 function tasks.dist {
 
-    set -e
+    
 
     fs.re_mkdir "$DIST"
 

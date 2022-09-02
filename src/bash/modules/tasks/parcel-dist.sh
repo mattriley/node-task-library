@@ -2,7 +2,7 @@
 
 function tasks.parcel_dist {
 
-    set -e
+    
 
     parcel_command="${1:-build}"
     [ "$parcel_command" = "build" ] && base_path="$WEB_BASE_PATH"

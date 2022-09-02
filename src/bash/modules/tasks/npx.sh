@@ -2,7 +2,7 @@
 
 function tasks.npx {
 
-    set -e
+    
 
     npx "$@"
 

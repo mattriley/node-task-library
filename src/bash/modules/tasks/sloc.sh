@@ -2,7 +2,7 @@
 
 function tasks.sloc {
 
-    set -e
+    
 
     [ ! -d "$SRC" ] && util.warn "$SRC not found" && return
 

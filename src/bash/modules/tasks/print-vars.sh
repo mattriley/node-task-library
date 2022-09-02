@@ -2,7 +2,7 @@
 
 function tasks.print_vars {
 
-    set -e
+    
 
     # All
 

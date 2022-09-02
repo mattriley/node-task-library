@@ -2,7 +2,7 @@
 
 function tasks.itermocil_config_gen {
 
-    set -e
+    
 
     cat << EOF > "$ITERMOCIL_CONFIG" 
 windows:

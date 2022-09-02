@@ -2,7 +2,7 @@
 
 function tasks.deploy_infer {
 
-    set -e
+    
 
     function f1 { npm.is_published && echo "npm-deploy"; }
     function f2 { ghp.is_published && echo "github-pages-deploy"; }

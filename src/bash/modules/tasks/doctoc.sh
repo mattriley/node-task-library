@@ -2,7 +2,7 @@
 
 function tasks.doctoc {
   
-    set -e
+    
 
     [ ! -f "$README" ] && util.warn "$README not found" && return
 

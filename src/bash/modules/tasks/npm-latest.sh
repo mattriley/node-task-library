@@ -2,7 +2,7 @@
 
 function tasks.npm_latest {
 
-    set -e
+    
 
     ncu -u
 

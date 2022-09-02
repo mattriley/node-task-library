@@ -2,7 +2,7 @@
 
 function tasks.install_npm_packages {
 
-    set -e
+    
 
     # prod
     function f1 { echo "module-composer"; }

@@ -4,7 +4,7 @@ function tasks.index_html_template_gen {
 
     set -e
 
-    [ -f "$INDEX_HTML_TEMPLATE" ] && util.warn "$INDEX_HTML_TEMPLATE already exists" && exit
+    [ -f "$INDEX_HTML_TEMPLATE" ] && util.warn "$INDEX_HTML_TEMPLATE already exists" && return
 
     cat > "$INDEX_HTML_TEMPLATE" <<'EOF'
 <!DOCTYPE html>

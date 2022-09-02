@@ -4,7 +4,7 @@ function tasks.readme_gen {
     
     set -e
 
-    [ ! -f "$README_TEMPLATE" ] && util.warn "$README_TEMPLATE not found" && exit
+    [ ! -f "$README_TEMPLATE" ] && util.warn "$README_TEMPLATE not found" && return
 
     node.exec_script "$README_GEN" > "$README"
     lib.run_task doctoc

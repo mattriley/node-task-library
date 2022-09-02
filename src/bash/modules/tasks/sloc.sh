@@ -4,7 +4,7 @@ function tasks.sloc {
 
     set -e
 
-    [ ! -d "$SRC" ] && util.warn "$SRC not found" && exit
+    [ ! -d "$SRC" ] && util.warn "$SRC not found" && return
 
     mkdir -p "$METRICS"
 

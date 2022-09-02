@@ -4,7 +4,7 @@ function tasks.nodemon {
 
     set -e
 
-    [ -f "$SERVER" ] && "$SERVER not found" && exit
+    [ -f "$SERVER" ] && "$SERVER not found" && return
 
     nodemon "$SERVER" "$@"
 

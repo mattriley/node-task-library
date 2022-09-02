@@ -17,21 +17,14 @@ function lib.run_task {
 
     function run_task_command { "$task_command" "$task_args"; }
     function run_task_file { ( cd "$ROOT" && chmod +x "$task_file" && run_task_command ); }
-
-    local time_before
-    time_before="$(util.now_ms)"
-
-    # set +e
+    
+    local time_before; time_before="$(util.now_ms)"
     if [ "$task_is_function" ]; then run_task_command; else run_task_file; fi
     local return_code="$?"
-    # set -e
-
-    local time_after
-    time_after="$(util.now_ms)"
+    local time_after; time_after="$(util.now_ms)"
 
     local time_taken_ms="$((time_after-time_before))"
-    local time_taken_s
-    time_taken_s="$(util.ms_to_s $time_taken_ms)"
+    local time_taken_s; time_taken_s="$(util.ms_to_s $time_taken_ms)"
     [[ $time_taken_s == .* ]] && time_taken_s="0$time_taken_s"
     [ $return_code = 0 ] && icon="✅" || icon="❌"
     echo "${NORM}${icon} Task ${BOLD}$task_name${NORM} completed with exit code $return_code in ${time_taken_ms}ms (${time_taken_s}s)"

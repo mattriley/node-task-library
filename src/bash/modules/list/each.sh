@@ -6,7 +6,7 @@ function list.each {
     local callback=${2:-"callback"}
 
     for item in "${arr[@]}"; do 
-        $callback "$item"
+        "$callback" "$item"
     done
 
     unset "$callback"

@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2086
 
 function npm.install {
 
@@ -6,9 +7,8 @@ function npm.install {
     local options="$2"
     [ "$packages" ] && local message=" ${BOLD}$packages${NORM}"
     echo -n "Installing$message..."
-    local output
-    # shellcheck disable=SC2086
-    output="$(npm i $options $packages 2>&1)"
+    
+    local output; output="$(npm i $options $packages 2>&1)" 
     [ $? ] && echo " done" && return 0
     echo " done with errors"
     echo "$output"

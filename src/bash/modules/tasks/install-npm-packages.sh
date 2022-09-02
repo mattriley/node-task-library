@@ -7,8 +7,7 @@ function tasks.install_npm_packages {
     function f2 { [ -f "$SERVER" ] && echo "express cors ajv ajv-formats"; }
 
     function callback { 
-        local packages
-        packages=$($1)
+        local packages; packages=$($1)
         [ "$packages" ] && npm.install "$packages"
         unset "$1"
     }
@@ -30,8 +29,7 @@ function tasks.install_npm_packages {
     function f8 { npm.has_dev_dependency "eslint" && echo "$eslint_plugins"; }
 
     function callback { 
-        local packages
-        packages=$($1)
+        local packages; packages=$($1)
         [ "$packages" ] && npm.install "$packages" -D
         unset "$1"
     }

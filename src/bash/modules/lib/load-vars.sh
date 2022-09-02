@@ -10,7 +10,7 @@ function lib.load_vars {
 
     function export_functions {
         for script in "$1"/*.sh; do
-            funcs=$(extract_function_names "$script")
+            local funcs; funcs=$(extract_function_names "$script")
             # shellcheck disable=SC1090
             source "$script"
             while IFS= read -r name; do 
@@ -21,8 +21,8 @@ function lib.load_vars {
     }
 
     function extract_function_names {
-        script="$1"
-        pattern='^function (.+) '
+        local script="$1"
+        local pattern='^function (.+) '
         while IFS= read -r line; do
             [[ $line =~ $pattern ]] && echo "${BASH_REMATCH[1]}"
         done < "$script"
@@ -32,18 +32,14 @@ function lib.load_vars {
     import "vars"
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
     export_functions "$vars_path" > /dev/null
-    local internal_var_names
-    internal_var_names=$(export_functions "$vars_path")
+    local internal_var_names; internal_var_names=$(export_functions "$vars_path")
 
-    local env_before
-    env_before="$(env)"
+    local env_before; env_before="$(env)"
     source "./task-vars" 2> /dev/null
     local root=${ROOT_OVERRIDE:-"$ROOT"}
     [ "$root" ] && source "$root/task-vars" 2> /dev/null
-    local env_after
-    env_after="$(env)"
-    local external_var_names
-    external_var_names=$(util.uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
+    local env_after; env_after="$(env)"
+    local external_var_names; external_var_names=$(util.uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
 
     while IFS= read -r name; do
         local override_name="${name}_OVERRIDE"
@@ -54,18 +50,15 @@ function lib.load_vars {
         export "$name"="$val"
     done <<< "$internal_var_names"    
 
-    local stage_upper
-    stage_upper=$(echo "$STAGE" | tr '[:lower:]' '[:upper:]')
-    local staged_var_names
-    staged_var_names=$(echo "$external_var_names" | sed "s;=.+__$stage_upper;;")
+    local stage_upper; stage_upper=$(echo "$STAGE" | tr '[:lower:]' '[:upper:]')
+    local staged_var_names; staged_var_names=$(echo "$external_var_names" | sed "s;=.+__$stage_upper;;")
 
     while IFS= read -r name; do
         local base_name=${name/__$stage_upper/}
         export "$base_name"="${!name}"
     done <<< "$staged_var_names"
 
-    local env_after
-    env_after="$(env)"
+    local env_after; env_after="$(env)"
     VARS=$(util.uniq_vars "$env_before" "$env_after")
     export VARS
     echo

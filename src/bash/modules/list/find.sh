@@ -6,7 +6,7 @@ function list.find {
     local callback=${2:-"callback"}
 
     for item in "${arr[@]}"; do 
-        $callback "$item" && echo "$item" && break;
+        "$callback" "$item" && echo "$item" && break;
     done
 
     unset "$callback"

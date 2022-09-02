@@ -6,8 +6,7 @@ function list.map {
     local callback=${2:-"callback"}
 
     for item in "${arr[@]}"; do
-        local res
-        res="$($callback "$item")"
+        local res; res="$($callback "$item")"
         [ "$res" ] && echo -n "$res "
     done
 

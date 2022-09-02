@@ -2,8 +2,6 @@
 
 function tasks.dist {
 
-    
-
     fs.re_mkdir "$DIST"
 
     lib.run_task dist-static

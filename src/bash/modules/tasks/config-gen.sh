@@ -2,8 +2,6 @@
 
 function tasks.config_gen {
 
-    
-
     function f1 { echo "gitignore-gen"; }
     function f2 { echo "package-gen"; }
     function f3 { npm.has_dev_dependency "react" && echo "babel-config-gen"; }

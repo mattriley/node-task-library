@@ -2,8 +2,6 @@
 
 function tasks.npx {
 
-    
-
     npx "$@"
 
 }

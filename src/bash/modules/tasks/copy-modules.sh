@@ -2,8 +2,6 @@
 
 function tasks.copy_modules {
 
-    
-
     copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
 
     function callback { 

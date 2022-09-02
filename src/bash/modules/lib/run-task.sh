@@ -21,10 +21,10 @@ function lib.run_task {
     local time_before
     time_before="$(util.now_ms)"
 
-    set +e
+    # set +e
     if [ "$task_is_function" ]; then run_task_command; else run_task_file; fi
     local return_code="$?"
-    set -e
+    # set -e
 
     local time_after
     time_after="$(util.now_ms)"

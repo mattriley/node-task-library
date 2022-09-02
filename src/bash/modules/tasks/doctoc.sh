@@ -1,8 +1,6 @@
 #!/bin/bash
 
 function tasks.doctoc {
-  
-    
 
     [ ! -f "$README" ] && util.warn "$README not found" && return
 

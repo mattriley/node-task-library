@@ -13,4 +13,5 @@ function util.ask_ok {
         n|N ) echo "Aborting..."; echo; return 1;;
         * ) echo "Invalid input. Aborting..."; echo; return 1;;
     esac
+    
 }

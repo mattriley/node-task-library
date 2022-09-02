@@ -2,6 +2,6 @@
 
 function tasks.code_gen {
 
-    : # Placeholder function only
+    : # placeholder function only
 
 }

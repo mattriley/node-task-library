@@ -2,8 +2,6 @@
 
 function tasks.sls_deploy {
 
-    
-
     sls deploy
 
 }

@@ -2,8 +2,6 @@
 
 function tasks.print_vars {
 
-    
-
     # All
 
     [ "$1" = "--all" ] && echo "$VARS" && return

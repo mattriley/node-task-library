@@ -2,8 +2,6 @@
 
 function tasks.tap_cov_report {
 
-    
-
     lib.run_task tap-test \
         --no-browser \
         --no-check-coverage \

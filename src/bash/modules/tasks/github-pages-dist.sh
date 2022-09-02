@@ -2,8 +2,6 @@
 
 function tasks.github_pages_dist {
 
-    
-
     lib.run_task dist
 
     [ -n "$GITHUB_PAGES_CNAME" ] && echo "$GITHUB_PAGES_CNAME" > "$DIST/CNAME"

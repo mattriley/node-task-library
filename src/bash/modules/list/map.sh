@@ -10,7 +10,7 @@ function list.map {
         res="$($callback "$item")"
         [ "$res" ] && echo -n "$res "
     done
-    
+
     unset "$callback"
 
 }

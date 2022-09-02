@@ -2,8 +2,6 @@
 
 function tasks.github_pages_deploy {
 
-    
-
     lib.run_task github-pages-dist
 
     cd "$GITHUB_PAGES_PATH" \

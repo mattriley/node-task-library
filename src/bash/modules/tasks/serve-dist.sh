@@ -2,8 +2,6 @@
 
 function tasks.serve_dist {
 
-    
-
     serve "$DIST"
 
 }

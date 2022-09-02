@@ -2,8 +2,6 @@
 
 function tasks.dev_links {
 
-    
-
     fs.re_mkdir "$NODE_MODULES_LINKS"
 
     function callback {

@@ -2,8 +2,6 @@
 
 function tasks.itermocil_config_gen {
 
-    
-
     cat << EOF > "$ITERMOCIL_CONFIG" 
 windows:
 - name: $PACKAGE_NAME

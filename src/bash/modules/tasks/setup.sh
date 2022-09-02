@@ -2,8 +2,6 @@
 
 function tasks.setup {
 
-    
-
     lib.run_task dev-links
     lib.run_task install
     lib.run_task husky

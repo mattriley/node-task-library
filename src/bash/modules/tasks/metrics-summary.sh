@@ -2,8 +2,6 @@
 
 function tasks.metrics_summary {
 
-    
-
     mkdir -p "$METRICS"
 
     [ -f "$COVERAGE_JSON_SUMMARY" ] && cp "$COVERAGE_JSON_SUMMARY" "$METRICS_COV"

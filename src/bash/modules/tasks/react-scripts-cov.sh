@@ -2,8 +2,6 @@
 
 function tasks.react_scripts_cov {
 
-    
-
     lib.run_task react-scripts-cov-report \
         --roots "$SRC" \
         --collectCoverageFrom "<rootDir>/$SRC/**" \

@@ -9,11 +9,12 @@ function lib.load_vars {
     }
 
     function export_functions {
-        for script in $1/*.sh; do
+        for script in "$1"/*.sh; do
             funcs=$(extract_function_names "$script")
+            # shellcheck disable=SC1090
             source "$script"
             while IFS= read -r name; do 
-                export -f "$name";
+                # export -f "$name";
                 echo "$name"
             done <<< "$funcs"
         done

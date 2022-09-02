@@ -2,8 +2,6 @@
 
 function tasks.node_test {
 
-    
-
     echo "Not implemented"
 
     # test_files=$(node -p "require('fast-glob').sync('$TEST_PATTERN').join('$SEP')")

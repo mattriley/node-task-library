@@ -2,8 +2,6 @@
 
 function tasks.install_npm_packages {
 
-    
-
     # prod
     function f1 { echo "module-composer"; }
     function f2 { [ -f "$SERVER" ] && echo "express cors ajv ajv-formats"; }

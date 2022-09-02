@@ -4,27 +4,15 @@ function startup.load_vars {
 
     function import {
         local path="$TASK_LIBRARY_ROOT/src/bash/$1"
-        export_functions "$path" > /dev/null
+        startup.export_functions "$path" > /dev/null
         [ "$1" = "-p" ] && echo "$path"
-    }
-
-    function export_functions {
-        for script in "$1"/*.sh; do
-            local funcs; funcs=$(startup.parse_function_names "$script")
-            # shellcheck disable=SC1090
-            source "$script"
-            while IFS= read -r name; do 
-                # export -f "$name";
-                echo "$name"
-            done <<< "$funcs"
-        done
     }
 
     [ "$VARS" ] && return 0
     import "vars"
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
-    export_functions "$vars_path" > /dev/null
-    local internal_var_names; internal_var_names=$(export_functions "$vars_path")
+    startup.export_functions "$vars_path" > /dev/null
+    local internal_var_names; internal_var_names=$(startup.export_functions "$vars_path")
 
     local env_before; env_before="$(env)"
     source "./task-vars" 2> /dev/null

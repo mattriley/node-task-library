@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function lib.infer_test_task {
+function lib.infer_test_tasks {
 
     local task_name="$1"
     local default_task="$2"

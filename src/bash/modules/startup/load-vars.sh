@@ -5,7 +5,6 @@ function startup.load_vars {
 
     [ "$VARS" ] && return 0
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
-    # startup.export_functions "$vars_path" > /dev/null
 
     for script in "$vars_path"/*.sh; do source "$script"; done
 

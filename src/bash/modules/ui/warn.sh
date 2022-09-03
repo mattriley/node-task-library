@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function util.warn {
+function ui.warn {
 
     echo "  ${YEL}$1${NORM}" >&2
     

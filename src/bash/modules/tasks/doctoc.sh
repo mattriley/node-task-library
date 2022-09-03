@@ -2,7 +2,7 @@
 
 function tasks.doctoc {
 
-    [ ! -f "$README" ] && util.warn "$README not found" && return
+    [ ! -f "$README" ] && ui.warn "$README not found" && return
 
     doctoc --title "## Table of Contents" --maxlevel 2 "$README" > /dev/null
 

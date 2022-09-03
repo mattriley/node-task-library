@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function util.info {
+function ui.info {
 
     echo "  $1"
     

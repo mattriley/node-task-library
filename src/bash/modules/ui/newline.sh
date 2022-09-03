@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function util.newline {
+function ui.newline {
 
     echo
 

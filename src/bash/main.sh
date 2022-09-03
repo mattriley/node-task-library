@@ -15,5 +15,6 @@ function main {
 
     task_name=${1:-default}
     startup.load_vars && lib.run_task "$task_name"
+    [ ! "$task_name" = "vars" ] && tasks.print_vars
 
 }

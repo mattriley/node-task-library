@@ -20,7 +20,4 @@ function startup.load_vars {
     local env_after; env_after="$(env)"
     export VARS; VARS=$(util.uniq_vars "$env_before" "$env_after")
 
-    ui.newline
-    tasks.print_vars
-
 }

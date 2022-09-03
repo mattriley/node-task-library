@@ -12,7 +12,7 @@ function lib.run_task {
     local task_command; [ "$task_is_file" ] && task_command="$task_file" || task_command="$task_function"
 
     [ -z "$task_exists" ] && echo "  Task ${BOLD}$task_name${NORM} not found" 1>&2 && return 1
-    echo "${NORM}  Task ${BOLD}$task_name${NORM} started"
+    echo "${NORM}  Task ${BOLD}$task_name${NORM} started..."
 
     function run_task_command { "$task_command" "$task_args"; }
     function run_task_file { ( cd "$ROOT" && chmod +x "$task_file" && run_task_command ); }
@@ -27,7 +27,8 @@ function lib.run_task {
     [[ $time_taken_s == .* ]] && time_taken_s="0$time_taken_s"
     [ $return_code = 0 ] && icon="${GRE}█${NORM}" || icon="${RED}█${NORM}"
     [ $return_code -gt 0 ] && export ERROR_COUNT=$((ERROR_COUNT + 1))
-    echo "${NORM}${icon} Task ${BOLD}$task_name${NORM} completed with exit code $return_code in ${time_taken_ms}ms (${time_taken_s}s)"
+    [ $return_code = 0 ] && result="succeeded" || result="failed with exit code $return_code"
+    echo "${NORM}${icon} Task ${BOLD}$task_name${NORM} $result in ${time_taken_ms}ms (${time_taken_s}s)"
     return "$return_code"
 
 }

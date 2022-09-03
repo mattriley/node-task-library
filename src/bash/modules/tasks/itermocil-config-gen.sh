@@ -6,7 +6,7 @@ function tasks.itermocil_config_gen {
 windows:
   - name: $PACKAGE_NAME
     root: $(pwd)
-    layout: tiled
+    layout: $ITERMOCIL_LAYOUT
     panes:
 EOF
 

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function tasks.help {
+function tasks.tasks {
 
     local task_paths; task_paths=("$TASKS" "$TASK_LIBRARY_ROOT/src/bash/modules/tasks")
 

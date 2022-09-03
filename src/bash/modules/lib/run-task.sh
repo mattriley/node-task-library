@@ -11,8 +11,8 @@ function lib.run_task {
     local task_exists; [ "$task_is_function" ] || [ "$task_is_file" ] && task_exists="true"
     local task_command; [ "$task_is_file" ] && task_command="$task_file" || task_command="$task_function"
 
-    [ -z "$task_exists" ] && echo "  Task ${BOLD}$task_name${NORM} not found" 1>&2 && return 1
-    echo "${NORM}  Task ${BOLD}$task_name${NORM} started..."
+    [ -z "$task_exists" ] && util.info "Task ${BOLD}$task_name${NORM} not found" 1>&2 && return 1
+    util.info "Task ${BOLD}$task_name${NORM} started..."
 
     function run_task_command { "$task_command" "$task_args"; }
     function run_task_file { ( cd "$ROOT" && chmod +x "$task_file" && run_task_command ); }
@@ -28,7 +28,7 @@ function lib.run_task {
     [ $return_code = 0 ] && icon="${GRE}█${NORM}" || icon="${RED}█${NORM}"
     [ $return_code -gt 0 ] && export ERROR_COUNT=$((ERROR_COUNT + 1))
     [ $return_code = 0 ] && result="succeeded" || result="failed with exit code $return_code"
-    echo "${NORM}${icon} Task ${BOLD}$task_name${NORM} $result in ${time_taken_ms}ms (${time_taken_s}s)"
+    echo "${icon} Task ${BOLD}$task_name${NORM} $result in ${time_taken_ms}ms (${time_taken_s}s)"
     return "$return_code"
 
 }

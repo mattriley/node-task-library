@@ -2,7 +2,7 @@
 
 function tasks.node_test {
 
-    echo "Not implemented"
+    util.warn "Not implemented"
 
     # test_files=$(node -p "require('fast-glob').sync('$TEST_PATTERN').join('$SEP')")
     # function node_test { node --experimental-specifier-resolution=node "$1"; }

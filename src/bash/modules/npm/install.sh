@@ -9,8 +9,8 @@ function npm.install {
     echo -n "Installing$message..."
     
     local output; output="$(npm i $options $packages 2>&1)" 
-    [ $? ] && echo " done" && return 0
-    echo " done with errors"
-    echo "$output"
+    [ $? ] && util.info " done" && return 0
+    util.info " done with errors"
+    util.info "$output"
 
 }

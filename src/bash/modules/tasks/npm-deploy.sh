@@ -2,8 +2,7 @@
 
 function tasks.npm_deploy {
 
-    echo
-    echo "${BOLD}$NPM_BUMP_VERSION${NORM} version will be bumped"
+    util.info "\n${BOLD}$NPM_BUMP_VERSION${NORM} version will be bumped"
 
     util.ask_ok || return 1
 

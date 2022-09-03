@@ -2,7 +2,7 @@
 
 function tasks.npm_deploy {
 
-    ui.info "\n${BOLD}$NPM_BUMP_VERSION${NORM} version will be bumped"
+    ui.info "${BOLD}$NPM_BUMP_VERSION${NORM} version will be bumped"
 
     ui.ask_ok || return 1
 

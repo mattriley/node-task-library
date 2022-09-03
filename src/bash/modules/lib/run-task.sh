@@ -11,7 +11,8 @@ function lib.run_task {
     local task_exists; [ "$task_is_function" ] || [ "$task_is_file" ] && task_exists="true"
     local task_command; [ "$task_is_file" ] && task_command="$task_file" || task_command="$task_function"
 
-    [ -z "$task_exists" ] && ui.info "Task ${BOLD}$task_name${NORM} not found" 1>&2 && return 1
+    [ -z "$task_exists" ] && ui.info "${RED}▇${NORM} Task ${BOLD}$task_name${NORM} not found" 1>&2 && exit 1
+    
     echo "▇ Task ${BOLD}$task_name${NORM} started..."
 
     function run_task_command { "$task_command" "$task_args"; }

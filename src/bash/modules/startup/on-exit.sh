@@ -1,10 +1,15 @@
 #!/bin/bash
 
 function startup.on_exit {
+    
+    local exit_code="$?"
+    local failure="${RED}FAILURE${NORM}"
+    local success="${GRE}SUCCESS${NORM}"
 
-    [ "$IS_SUBTASK" ] && return
     ui.newline
-    [ "$ERROR_COUNT" -gt 0 ] && echo "${RED}FAILURE${NORM}" && exit 1
-    echo "${GRE}SUCCESS${NORM}" 
+    [ "$exit_code" -gt 0 ] && echo "$failure" && exit 1
+    [ "$IS_SUBTASK" ] && return
+    [ "$ERROR_COUNT" -gt 0 ] && echo "$failure" && exit 1
+    echo "$success"
 
 }

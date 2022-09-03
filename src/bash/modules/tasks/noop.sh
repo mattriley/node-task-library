@@ -2,7 +2,9 @@
 
 function tasks.noop {
 
-    return 1
+    lib.run_task goo
+
+    # return 1
 
     : # do nothing
 

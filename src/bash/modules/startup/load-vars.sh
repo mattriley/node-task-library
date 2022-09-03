@@ -8,9 +8,7 @@ function startup.load_vars {
     local internal_var_names; internal_var_names=$(startup.export_functions "$vars_path")
 
     local env_before; env_before="$(env)"
-    source "./task-vars" 2> /dev/null
-    local root=${ROOT_OVERRIDE:-"$ROOT"}
-    [ "$root" ] && source "$root/task-vars" 2> /dev/null
+    startup.source_project_vars
     local env_after; env_after="$(env)"
     local external_var_names; external_var_names=$(util.uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
 

@@ -6,6 +6,7 @@ function node.exec_script {
     [ ! -f "$node_script" ] && node_script="$1"
     local node_command="node"
     local node_options=""
+    local node_script_args="${*:2}"
 
     if npm.has_dev_dependency "@node-loader/babel"; then
         node_options="--experimental-loader @node-loader/babel --no-warnings"
@@ -14,6 +15,6 @@ function node.exec_script {
     fi
 
     # shellcheck disable=SC2086
-    "$node_command" $node_options "$node_script" "${@:2}"
+    "$node_command" $node_options "$node_script" $node_script_args
 
 }

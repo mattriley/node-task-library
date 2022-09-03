@@ -2,8 +2,9 @@
 
 function tasks.parcel_dist {
 
-    parcel_command="${1:-build}"
-    [ "$parcel_command" = "build" ] && base_path="$WEB_BASE_PATH"
+    local parcel_command="${1:-build}"
+    local parcel_args="${*:2}"
+    local base_path; [ "$parcel_command" = "build" ] && base_path="$WEB_BASE_PATH"
     [ -z "$base_path" ] && base_path="/"
 
     lib.run_task code-gen
@@ -17,6 +18,6 @@ function tasks.parcel_dist {
         $PARCEL_OPTIONS \
         --public-url "$base_path" \
         --dist-dir "$DIST" \
-        "${@:2}"
+        $parcel_args
 
 }

@@ -6,7 +6,7 @@ function list.filter {
     local callback=${2:-"callback"}
 
     for item in "${arr[@]}"; do 
-        "$callback" "$item" && echo -n "$item"
+        "$callback" "$item" && echo -n "$item "
     done
 
     unset "$callback"

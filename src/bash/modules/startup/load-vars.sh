@@ -12,7 +12,7 @@ function startup.load_vars {
     local env_before; env_before="$(env)"
     startup.source_project_vars
     local env_after; env_after="$(env)"
-    local external_var_names; external_var_names=$(util.uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
+    local external_var_names; external_var_names="$(util.var_names "$(util.uniq_vars "$env_before" "$env_after")")"
 
     startup.set_default_vars "$internal_var_names"
     startup.set_staged_vars "$external_var_names"
@@ -20,7 +20,7 @@ function startup.load_vars {
     local env_after; env_after="$(env)"
     export VARS; VARS=$(util.uniq_vars "$env_before" "$env_after")
 
-    echo
+    ui.newline
     tasks.print_vars
 
 }

@@ -2,26 +2,20 @@
 
 function tasks.print_vars {
 
-    # All
-
-    [ "$1" = "--all" ] && echo "$VARS" && return
-
-    # Selected
-
-    echo
+    local all_var_names; all_var_names="$(util.var_names "$VARS")"
+    local var_names; [[ "$*" =~ "--all" ]] && var_names="$all_var_names" || var_names="$PRINT_VARS"
+    local vars_printed; vars_printed="$(list.length "$var_names")"
+    local vars_total; vars_total="$(echo -n "$VARS" | grep -c '^')"
 
     function callback {
         [ "$1" = "STAGE" ] && [ "${!1}" = 'prod' ] && style="$BOLD$RED" || style="$BOLD"
-        echo "$1=${style}${!1}${NORM}"
+        ui.info "$1=${style}${!1}${NORM}"
     }
 
-    list.each "$PRINT_VARS"
-
-    vars_printed=$(list.length "$PRINT_VARS")
-    vars_total=$(echo -n "$VARS" | grep -c '^')
-
-    echo
-    echo "${vars_printed} of ${vars_total} task vars displayed"
-    echo
+    ui.newline
+    list.each "$var_names"
+    ui.newline
+    ui.info "${vars_printed} of ${vars_total} task vars displayed"
+    ui.newline
 
 }

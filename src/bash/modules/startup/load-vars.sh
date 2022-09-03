@@ -1,10 +1,14 @@
 #!/bin/bash
+# shellcheck disable=SC1090
 
 function startup.load_vars {
 
     [ "$VARS" ] && return 0
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
-    startup.export_functions "$vars_path" > /dev/null
+    # startup.export_functions "$vars_path" > /dev/null
+
+    for script in "$vars_path"/*.sh; do source "$script"; done
+
     local internal_var_names; internal_var_names=$(startup.parse_function_names "$vars_path")
 
     local env_before; env_before="$(env)"

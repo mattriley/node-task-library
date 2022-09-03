@@ -10,6 +10,7 @@ function main {
     # shellcheck disable=SC1091
     source "$TASK_LIBRARY_ROOT/src/bash/compose.sh" && compose
 
+    trap startup.on_term SIGTERM SIGINT
     trap startup.on_exit EXIT
 
     task_name=${1:-default}

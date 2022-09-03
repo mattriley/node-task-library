@@ -3,7 +3,8 @@
 function startup.on_exit {
 
     [ "$IS_SUBTASK" ] && return
-    [ "$ERROR_COUNT" -gt 0 ] && echo "❌ FAILURE" && exit 1
-    echo "✅ SUCCESS" 
+    echo
+    [ "$ERROR_COUNT" -gt 0 ] && echo "${RED}FAILURE${NORM}" && exit 1
+    echo "${GRE}SUCCESS${NORM}" 
 
 }

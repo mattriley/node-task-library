@@ -2,7 +2,7 @@
 
 function tasks.noop {
 
-    # return 1
+    return 1
 
     : # do nothing
 

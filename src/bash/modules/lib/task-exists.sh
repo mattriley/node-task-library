@@ -2,6 +2,7 @@
 
 function lib.task_exists {
 
-    lib.find_task_file "$1"
+    local tasks; tasks=$(lib.find_task_file "$1")
+    [ -n "$tasks" ]
 
 }

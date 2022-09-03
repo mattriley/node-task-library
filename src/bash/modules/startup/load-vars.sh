@@ -14,15 +14,8 @@ function startup.load_vars {
     local env_after; env_after="$(env)"
     local external_var_names; external_var_names=$(util.uniq_vars "$env_before" "$env_after" | sed 's;=.*;;')
 
-    startup.apply_default_vars "$internal_var_names"
-
-    local stage_upper; stage_upper=$(echo "$STAGE" | tr '[:lower:]' '[:upper:]')
-    local staged_var_names; staged_var_names=$(echo "$external_var_names" | sed "s;=.+__$stage_upper;;")
-
-    while IFS= read -r name; do
-        local base_name=${name/__$stage_upper/}
-        export "$base_name"="${!name}"
-    done <<< "$staged_var_names"
+    startup.set_default_vars "$internal_var_names"
+    startup.set_staged_vars "$external_var_names"
 
     local env_after; env_after="$(env)"
     export VARS; VARS=$(util.uniq_vars "$env_before" "$env_after")

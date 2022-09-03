@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function startup.apply_default_vars {
+function startup.set_default_vars {
 
     local internal_var_names="$1"
 

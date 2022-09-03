@@ -2,6 +2,6 @@
 
 function ui.warn {
 
-    echo "  ${YEL}$1${NORM}" >&2
+    echo "${YEL}$1${NORM}" >&2
     
 }

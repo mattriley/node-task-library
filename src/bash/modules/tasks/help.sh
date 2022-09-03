@@ -7,10 +7,10 @@ function tasks.help {
     ui.newline
 
     for task_path in "${task_paths[@]}"; do 
-        ui.info "Tasks at ${BOLD}$task_path${NORM}:"
+        ui.info "${BOLD}Tasks at $task_path${NORM}"
         for task_file in "$task_path"/*; do 
             local task_name; task_name=$(basename "$task_file" ".sh")
-            ui.info "- $task_name"
+            ui.info "$task_name"
         done
         ui.newline
     done

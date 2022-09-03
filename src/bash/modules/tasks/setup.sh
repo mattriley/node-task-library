@@ -7,5 +7,7 @@ function tasks.setup {
     lib.run_task husky
     lib.run_task config-gen
     lib.run_task npm-latest
+    
+    ui.newline
 
 }

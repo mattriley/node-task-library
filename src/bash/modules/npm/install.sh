@@ -6,11 +6,13 @@ function npm.install {
     local packages="$1"
     local options="$2"
     [ "$packages" ] && local message=" ${BOLD}$packages${NORM}"
-    ui.info "Installing$message..."
+    ui.print "Installing$message... "
     
-    local output; output="$(npm i $options $packages 2>&1)" 
-    [ "$?" ] && ui.info "Installation completed" && return 0
-    ui.info "Installation completed with errors"
-    ui.info "$output"
+    if local output; output="$(npm i $options $packages 2>&1)"; then
+        ui.info "done"
+    else
+        ui.info "done with errors"
+        ui.info "$output"
+    fi
 
 }

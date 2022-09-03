@@ -2,6 +2,8 @@
 
 function tasks.install_npm_packages {
 
+    ui.newline
+
     # prod
     function f1 { echo "module-composer"; }
     function f2 { [ -f "$SERVER" ] && echo "express cors ajv ajv-formats"; }
@@ -35,5 +37,7 @@ function tasks.install_npm_packages {
     }
 
     list.each "$(util.list_of_func)"
+
+    ui.newline
 
 }

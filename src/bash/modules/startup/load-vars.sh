@@ -5,7 +5,7 @@ function startup.load_vars {
     [ "$VARS" ] && return 0
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
     startup.export_functions "$vars_path" > /dev/null
-    local internal_var_names; internal_var_names=$(startup.export_functions "$vars_path")
+    local internal_var_names; internal_var_names=$(startup.parse_function_names "$vars_path")
 
     local env_before; env_before="$(env)"
     startup.source_project_vars

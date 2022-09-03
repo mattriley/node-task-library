@@ -12,7 +12,7 @@ function lib.run_task {
     local task_command; [ "$task_is_file" ] && task_command="$task_file" || task_command="$task_function"
 
     [ -z "$task_exists" ] && ui.info "Task ${BOLD}$task_name${NORM} not found" 1>&2 && return 1
-    ui.info "Task ${BOLD}$task_name${NORM} started..."
+    echo "  Task ${BOLD}$task_name${NORM} started..."
 
     function run_task_command { "$task_command" "$task_args"; }
     function run_task_file { ( cd "$ROOT" && chmod +x "$task_file" && run_task_command ); }

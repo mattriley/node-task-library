@@ -14,7 +14,8 @@ function main {
     trap startup.on_exit EXIT
 
     task_name=${1:-default}
-    startup.load_vars && lib.run_task "$task_name"
-    [ ! "$task_name" = "vars" ] && tasks.print_vars
+    startup.load_vars 
+    [ ! "$task_name" = "vars" ] && [ -z "$IS_SUBTASK" ] && tasks.print_vars
+    lib.run_task "$task_name"
 
 }

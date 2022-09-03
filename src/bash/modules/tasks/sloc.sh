@@ -2,7 +2,7 @@
 
 function tasks.sloc {
 
-    [ ! -d "$SRC" ] && ui.warn "$SRC not found" && return
+    [ ! -d "$SRC" ] && ui.task_warn "$SRC not found" && return
 
     mkdir -p "$METRICS"
 

@@ -4,10 +4,9 @@
 function startup.load_vars {
 
     [ "$VARS" ] && return 0
+
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
-
     for script in "$vars_path"/*.sh; do source "$script"; done
-
     local internal_var_names; internal_var_names=$(startup.parse_function_names "$vars_path")
 
     local env_before; env_before="$(env)"
@@ -20,8 +19,8 @@ function startup.load_vars {
 
     local env_after; env_after="$(env)"
     export VARS; VARS=$(util.uniq_vars "$env_before" "$env_after")
+
     echo
-    
     tasks.print_vars
 
 }

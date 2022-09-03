@@ -15,7 +15,8 @@ function lib.run_task {
     
     echo "▇ Task ${BOLD}$task_name${NORM} started..."
 
-    function run_task_command { "$task_command" "$task_args"; }
+    # shellcheck disable=SC2086
+    function run_task_command { "$task_command" $task_args; }
     function run_task_file { ( cd "$ROOT" && chmod +x "$task_file" && run_task_command ); }
     
     local time_before; time_before="$(util.now_ms)"

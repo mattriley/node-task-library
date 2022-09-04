@@ -6,7 +6,7 @@ function lib.find_task_file {
 
     [ -z "$task_name" ] && ui.warn "Task name is required" && return 1
 
-    function callback { [ -f "$1" ]; }
-    list.find "$ROOT/$TASKS/$task_name | $TASKS/$task_name.sh"
+    function callback { [ -f "$ROOT/$TASKS/$1" ]; }
+    list.find "$task_name | $task_name.sh"
 
 }

@@ -15,12 +15,10 @@ function lib.run_task {
     
     echo "▇ Task ${BOLD}$task_name${NORM} started..."
 
-    # shellcheck disable=SC2086
-    function run_task_command { "$task_command" $task_args; }
-    function run_task_file { ( cd "$ROOT" && chmod +x "$task_file" && run_task_command ); }
-    
     local time_before; time_before="$(util.now_ms)"
-    if [ "$task_is_file" ]; then run_task_file; else run_task_command; fi
+    [ "$task_is_file" ] && chmod +x "$task_file"
+    # shellcheck disable=SC2086
+    ( cd "$ROOT" && "$task_command" $task_args )
     local return_code="$?"
     local time_after; time_after="$(util.now_ms)"
 

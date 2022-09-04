@@ -10,7 +10,7 @@ function tasks.c8_cov_report {
         --reporter="json-summary" \
         --reporter="lcov" \
         $@ \
-        npx task test --subtask
+        "$TASK_LIBRARY_ROOT/bin/task" test --subtask
 
     ui.newline
 

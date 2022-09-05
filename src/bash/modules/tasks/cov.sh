@@ -2,6 +2,6 @@
 
 function tasks.cov {
 
-    lib.run_task cov-infer
+    lib.run_tasks "$(infer.cov)"
 
 }

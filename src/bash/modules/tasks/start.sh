@@ -2,6 +2,6 @@
 
 function tasks.start {
 
-    lib.run_task start-infer
+    lib.run_tasks "$(infer.start)"
 
 }

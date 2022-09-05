@@ -1,7 +1,7 @@
 #!/bin/bash
 
-function tasks.git_push {
+function tasks.push {
 
-    lib.run_task git-push
+    lib.run_tasks "$(infer.push)"
 
 }

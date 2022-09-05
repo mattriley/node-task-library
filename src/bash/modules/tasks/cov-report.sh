@@ -2,6 +2,6 @@
 
 function tasks.cov_report {
 
-    lib.run_task cov-report-infer
+    lib.run_tasks "$(infer.cov_report)"
 
 }

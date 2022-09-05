@@ -2,6 +2,6 @@
 
 function tasks.test_watch {
 
-    lib.run_task test-watch-infer
+    lib.run_tasks "$(infer.test_watch)"
 
 }

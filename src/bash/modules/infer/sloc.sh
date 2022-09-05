@@ -1,8 +1,8 @@
 #!/bin/bash
 
-function tasks.sloc_infer {
+function infer.sloc {
 
     function f1 { npm.has_dev_dependency "cloc" && echo "cloc-sloc"; }
-    lib.infer_and_run_tasks
+    lib.infer_tasks
 
 }

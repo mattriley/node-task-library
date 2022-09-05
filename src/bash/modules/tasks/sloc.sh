@@ -6,6 +6,6 @@ function tasks.sloc {
 
     mkdir -p "$METRICS"
 
-    lib.run_task sloc-infer
+    lib.run_tasks "$(infer.sloc)"
 
 }

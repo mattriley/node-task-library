@@ -2,6 +2,6 @@
 
 function tasks.deploy {
 
-    lib.run_task deploy-infer
+    lib.run_tasks "$(infer.deploy)"
 
 }

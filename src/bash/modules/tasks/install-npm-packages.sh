@@ -1,43 +1,28 @@
 #!/bin/bash
+# shellcheck disable=SC2153,SC2086
 
 function tasks.install_npm_packages {
 
-    ui.newline
+    function f1 { echo "-D npm-check-updates eslint husky"; }
+    function f2 { [ -d "$MODULES" ] && echo "module-composer"; }
+    function f3 { [ -d "$MODULES" ] && echo "-D module-indexgen"; }
+    function f4 { [ -f "$SERVER" ] && echo "express cors ajv ajv-formats"; }
+    function f5 { [ -f "$README_TEMPLATE" ] && echo "-D ejs doctoc cloc"; }
+    function f6 { [ -f "$SERVER" ] && echo "-D nodemon"; }
+    function f7 { [ -f "$SERVERLESS_CONFIG" ] && echo "-D serverless aws-sdk"; }
+    function f8 { npm.has_dev_dependency "react" && echo "-D @babel/core @babel/preset-react"; }
+    function f9 { npm.has_dev_dependency "@babel/core" && echo "-D @babel/preset-env @babel/node"; }
+    function f10 { npm.has_dev_dependency "jest" && echo "-D jest-environment-jsdom"; }
+    function f11 { npm.has_dev_dependency "eslint" && echo "-D $(printf "eslint-plugin-%s " "$ESLINT_PLUGINS")"; }
 
-    # prod
-    function f1 { echo "module-composer"; }
-    function f2 { [ -f "$SERVER" ] && echo "express cors ajv ajv-formats"; }
-
-    function callback { 
-        local packages; packages=$($1)
-        [ "$packages" ] && npm.install "$packages"
+    function callback {
+        local args; args="$("$1")"
+        [ "$args" ] && npm.install "$args"
         unset "$1"
     }
 
-    list.each "$(util.list_of_func)" "callback"
-
-    # dev
-    function callback { echo "eslint-plugin-$1"; }
-    # shellcheck disable=SC2153
-    eslint_plugins=$(list.map "$ESLINT_PLUGINS")
-
-    function f1 { echo "module-indexgen npm-check-updates eslint husky"; }
-    function f2 { [ -f "$README_TEMPLATE" ] && echo "ejs doctoc cloc"; }
-    function f3 { [ -f "$SERVER" ] && echo "nodemon"; }
-    function f4 { [ -f "$SERVERLESS_CONFIG" ] && echo "serverless aws-sdk"; }
-    function f5 { npm.has_dev_dependency "react" && echo "@babel/core @babel/preset-react"; }
-    function f6 { npm.has_dev_dependency "@babel/core" && echo "@babel/preset-env @babel/node"; }
-    function f7 { npm.has_dev_dependency "jest" && echo "jest-environment-jsdom"; }
-    function f8 { npm.has_dev_dependency "eslint" && echo "$eslint_plugins"; }
-
-    function callback { 
-        local packages; packages=$($1)
-        [ "$packages" ] && npm.install "$packages" -D
-        unset "$1"
-    }
-
-    list.each "$(util.list_of_func)"
-
+    ui.newline && \
+    list.each "$(util.list_of_func)" && \
     ui.newline
 
 }

@@ -3,12 +3,11 @@
 
 function npm.install {
 
-    local packages="$1"
-    local options="$2"
-    [ "$packages" ] && local message=" ${BOLD}$packages${NORM}"
+    local args="$1"
+    [ "$args" ] && local message=" ${BOLD}$args${NORM}"
     ui.print "Installing$message... "
     
-    if local output; output="$(npm i $options $packages 2>&1)"; then
+    if local output; output="$(npm i $args 2>&1)"; then
         ui.info "done"
     else
         ui.info "done with errors"

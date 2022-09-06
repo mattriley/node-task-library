@@ -9,7 +9,6 @@ function startup.on_exit {
     ui.newline
     [ "$exit_code" -gt 0 ] && echo "$failure" && exit 1
     [ "$IS_SUBTASK" ] && return
-    [ "$ERROR_COUNT" -gt 0 ] && echo "$failure" && exit 1
     echo "$success"
 
 }

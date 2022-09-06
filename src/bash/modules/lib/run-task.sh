@@ -20,7 +20,6 @@ function lib.run_task {
     local time_taken_s; time_taken_s="$(util.ms_to_s $time_taken_ms)"
     [[ $time_taken_s == .* ]] && time_taken_s="0$time_taken_s"
     [ $return_code = 0 ] && icon="${GRE}▇${NORM}" || icon="${RED}▇${NORM}"
-    [ $return_code -gt 0 ] && export ERROR_COUNT=$((ERROR_COUNT + 1))
     local result; [ $return_code = 0 ] && result="succeeded" || result="failed with exit code $return_code"
     ui.info "${icon} Task ${BOLD}$task_name${NORM} $result in ${time_taken_ms}ms (${time_taken_s}s)"
     return $return_code

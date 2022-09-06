@@ -9,7 +9,6 @@ function compose {
     export YEL; YEL=$(tput setaf 3)
 
     export SEP=" | "
-    export ERROR_COUNT=0
     export SUPPORTED_TEST_RUNNERS="jest | mocha | tap | tape | zora"
 
     for module_path in "$TASK_LIBRARY_ROOT/src/bash/modules"/*; do

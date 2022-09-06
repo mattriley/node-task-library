@@ -3,8 +3,6 @@
 
 function startup.load_vars {
 
-    [ "$VARS" ] && return 0
-
     local vars_path="$TASK_LIBRARY_ROOT/src/bash/vars"
     for script in "$vars_path"/*.sh; do source "$script"; done
     local internal_var_names; internal_var_names=$(startup.parse_function_names "$vars_path")

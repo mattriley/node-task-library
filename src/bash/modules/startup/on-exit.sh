@@ -4,7 +4,7 @@ function startup.on_exit {
     
     local exit_code="$?"
     local failure="${RED}FAILURE${NORM}"
-    local success="${GRE}SUCCESS${NORM}"
+    local success="${GREEN}SUCCESS${NORM}"
 
     ui.newline
     [ "$exit_code" -gt 0 ] && echo "$failure" && exit 1

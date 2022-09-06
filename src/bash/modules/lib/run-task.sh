@@ -6,9 +6,9 @@ function lib.run_task {
     local task_args="${*:2}"
     local task_command; task_command=$(lib.task_command "$task_name")
 
-    [ -z "$task_command" ] && ui.info "${RED}▇${NORM} Task ${BOLD}$task_name${NORM} not found" 1>&2 && return 1
+    [ -z "$task_command" ] && ui.info "$RED_FLAG Task ${BOLD}$task_name${NORM} not found" 1>&2 && return 1
     
-    ui.info "▇ Task ${BOLD}$task_name${NORM} started..."
+    ui.info "$WHITE_FLAG Task ${BOLD}$task_name${NORM} started..."
 
     local time_before; time_before="$(util.now_ms)"
     # shellcheck disable=SC2086
@@ -19,7 +19,7 @@ function lib.run_task {
     local time_taken_ms="$((time_after-time_before))"
     local time_taken_s; time_taken_s="$(util.ms_to_s $time_taken_ms)"
     [[ $time_taken_s == .* ]] && time_taken_s="0$time_taken_s"
-    [ $return_code = 0 ] && icon="${GRE}▇${NORM}" || icon="${RED}▇${NORM}"
+    [ $return_code = 0 ] && icon="$GREEN_FLAG" || icon="$RED_FLAG"
     local result; [ $return_code = 0 ] && result="succeeded" || result="failed with exit code $return_code"
     ui.info "${icon} Task ${BOLD}$task_name${NORM} $result in ${time_taken_ms}ms (${time_taken_s}s)"
     return $return_code

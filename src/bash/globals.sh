@@ -7,5 +7,9 @@ export SEP=" | "
 export NORM; NORM=$(tput sgr0)
 export BOLD; BOLD=$(tput bold)
 export RED; RED=$(tput setaf 1)
-export GRE; GRE=$(tput setaf 2)
-export YEL; YEL=$(tput setaf 3)
+export GREEN; GREEN=$(tput setaf 2)
+export YELLOW; YELLOW=$(tput setaf 3)
+
+export GREEN_FLAG="${GREEN}▇${NORM}"
+export RED_FLAG="${RED}▇${NORM}"
+export WHITE_FLAG="▇"

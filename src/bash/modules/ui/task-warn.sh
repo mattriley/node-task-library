@@ -2,6 +2,6 @@
 
 function ui.task_warn {
 
-    echo "  ${YEL}$1${NORM}" >&2
+    echo "  ${YELLOW}$1${NORM}" >&2
     
 }

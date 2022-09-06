@@ -2,7 +2,6 @@
 # shellcheck disable=SC1090,SC1091
 
 set -o pipefail
-
 source "$(dirname "${BASH_SOURCE[0]}")/globals.sh"
 
 function main {

@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2086
 
 function tasks.parcel_dist {
 
@@ -7,13 +8,9 @@ function tasks.parcel_dist {
     local base_path; [ "$parcel_command" = "build" ] && base_path="$WEB_BASE_PATH"
     [ -z "$base_path" ] && base_path="/"
 
-    lib.run_task code-gen
-    lib.run_task index-html-template-gen
-    lib.run_task index-html-render-template
-
     export BABEL_OMIT_PRESETS="@babel/preset-env | @babel/preset-react"
 
-    # shellcheck disable=SC2086
+    lib.run_tasks "code-gen | index-html-template-gen | index-html-render-template" && \
     parcel "$parcel_command" \
         $PARCEL_OPTIONS \
         --public-url "$base_path" \

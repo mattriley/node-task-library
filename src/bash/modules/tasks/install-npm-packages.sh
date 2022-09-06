@@ -7,8 +7,8 @@ function tasks.install_npm_packages {
     function f2 { [ -d "$MODULES" ] && echo "module-composer"; }
     function f3 { [ -d "$MODULES" ] && echo "-D module-indexgen"; }
     function f4 { [ -f "$SERVER" ] && echo "express cors ajv ajv-formats"; }
-    function f5 { [ -f "$README_TEMPLATE" ] && echo "-D ejs doctoc cloc"; }
-    function f6 { [ -f "$SERVER" ] && echo "-D nodemon"; }
+    function f5 { [ -f "$SERVER" ] && echo "-D nodemon"; }
+    function f6 { [ -f "$README_TEMPLATE" ] && echo "-D ejs doctoc cloc"; }
     function f7 { [ -f "$SERVERLESS_CONFIG" ] && echo "-D serverless aws-sdk"; }
     function f8 { npm.has_dev_dependency "react" && echo "-D @babel/core @babel/preset-react"; }
     function f9 { npm.has_dev_dependency "@babel/core" && echo "-D @babel/preset-env @babel/node"; }

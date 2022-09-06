@@ -1,10 +1,9 @@
 #!/bin/bash
+# shellcheck disable=SC2086
 
 function tasks.indexgen {
 
-    ui.newline
-
-    # shellcheck disable=SC2086
+    ui.newline && \
     indexgen $BARREL_PATHS $INDEXGEN_OPTIONS "$@"
 
 }

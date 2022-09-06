@@ -22,8 +22,7 @@ function tasks.gitignore_gen {
 /npm-debug.log
 END
 
-    sort -u -o "$GIT_IGNORE" "$GIT_IGNORE"
-
+    sort -u -o "$GIT_IGNORE" "$GIT_IGNORE" && \
     git add "$GIT_IGNORE"
 
 }

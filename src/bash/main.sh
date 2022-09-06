@@ -1,4 +1,7 @@
 #!/bin/bash
+# shellcheck disable=SC1090,SC1091
+
+source "$(dirname "${BASH_SOURCE[0]}")/globals.sh"
 
 function main {
 
@@ -7,8 +10,11 @@ function main {
     export IS_SUBTASK; [[ "$*" =~ "--subtask" ]] && IS_SUBTASK="true"
     export TASK_LIBRARY_ROOT="./node_modules/task-library"
 
-    # shellcheck disable=SC1091
-    source "$TASK_LIBRARY_ROOT/src/bash/compose.sh" && compose
+    for module_path in "$TASK_LIBRARY_ROOT/src/bash/modules"/*; do
+        for script_path in "$module_path"/*.sh; do
+            source "$script_path"
+        done
+    done
 
     trap startup.on_term SIGTERM SIGINT
     trap startup.on_exit EXIT

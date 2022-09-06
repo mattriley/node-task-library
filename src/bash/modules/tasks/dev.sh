@@ -2,6 +2,6 @@
 
 function tasks.dev {
 
-    lib.run_task itermocil
+    lib.run_task "itermocil"
 
 }

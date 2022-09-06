@@ -2,6 +2,6 @@
 
 function tasks.default {
 
-    lib.run_task pre-commit
+    lib.run_task "pre-commit"
 
 }

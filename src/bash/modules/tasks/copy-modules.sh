@@ -2,7 +2,7 @@
 
 function tasks.copy_modules {
 
-    copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
+    local copy_modules_root; copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
 
     function callback { 
         rm -rf "${MODULES/$1}:?"

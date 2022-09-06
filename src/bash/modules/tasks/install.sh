@@ -2,7 +2,6 @@
 
 function tasks.install {
 
-    lib.run_task install-brew-packages && \
-    lib.run_task install-npm-packages
+    lib.run_tasks "install-brew-packages | install-npm-packages"
 
 }

@@ -12,7 +12,7 @@ function lib.run_task {
 
     local time_before; time_before="$(util.now_ms)"
     # shellcheck disable=SC2086
-    ( cd "$ROOT" && "$task_command" $task_args )
+    "$task_command" $task_args
     local return_code="$?"
     local time_after; time_after="$(util.now_ms)"
 

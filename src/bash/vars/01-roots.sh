@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# function ROOT {
-#     echo "."
-# }
+function ROOT {
+    echo "."
+}
 
 function PACKAGE_ROOT {
     echo "."

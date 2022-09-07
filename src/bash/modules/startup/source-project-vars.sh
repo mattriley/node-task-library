@@ -3,8 +3,7 @@
 
 function startup.source_project_vars {
 
-    source "./task-vars" 2> /dev/null
-    ( cd "$ROOT" && source "./task-vars" 2> /dev/null )
-    
+    source "./task-vars"
+    [ "$ROOT" ] && source "$ROOT/task-vars"
 
 }

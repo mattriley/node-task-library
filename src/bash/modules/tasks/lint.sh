@@ -2,6 +2,6 @@
 
 function tasks.lint {
 
-    lib.run_tasks "$(infer.lint)"
+    lib.run_tasks "$(infer.lint)" "$@"
 
 }

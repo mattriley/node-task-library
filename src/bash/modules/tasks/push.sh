@@ -2,6 +2,6 @@
 
 function tasks.push {
 
-    lib.run_tasks "$(infer.push)"
+    lib.run_tasks "$(infer.push)" "$@"
 
 }

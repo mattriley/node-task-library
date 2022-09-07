@@ -2,6 +2,6 @@
 
 function tasks.deploy {
 
-    lib.run_tasks "$(infer.deploy)"
+    lib.run_tasks "$(infer.deploy)" "$@"
 
 }

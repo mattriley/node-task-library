@@ -2,6 +2,6 @@
 
 function tasks.commit {
 
-    lib.run_tasks "$(infer.commit)"
+    lib.run_tasks "$(infer.commit)" "$@"
 
 }

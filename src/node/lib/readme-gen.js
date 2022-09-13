@@ -45,6 +45,7 @@ module.exports = (userConfig = {}) => {
         const imported = await import(path.resolve(composeFile));
         const compose = imported?.default ?? imported;
         const composition = compose(args);
+        if (composition.load) await composition.load();
         return callback(composition);
     };
 

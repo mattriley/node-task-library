@@ -1,6 +1,6 @@
 {
     "name": "task-library",
-    "version": "0.171.0",
+    "version": "0.172.0",
     "description": "A collection of bash scripts to support build, test, deploy and chores associated with developing and maintaining Node apps.",
     "homepage": "https://github.com/mattriley/node-task-library",
     "repository": "github:mattriley/node-task-library",

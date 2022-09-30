@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function ROOT {
-    pwd
+    echo "." # pwd
 }
 
 function PACKAGE_ROOT {

@@ -49,7 +49,7 @@ module.exports = (userConfig = {}) => {
         return callback(composition);
     };
 
-    lib.renderModuleDiagram = async composeFile => {
+    lib.renderModuleDiagram = async (composeFile = process.env.COMPOSE) => {
         const link = lib.renderLink('https://github.com/mattriley/node-module-composer', 'Module Composer');
         return [
             await lib.compose(c => lib.renderCode(c.mermaid(), 'mermaid'), composeFile),

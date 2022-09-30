@@ -1,11 +1,11 @@
 #!/bin/bash
 
 function ROOT {
-    echo "."
+    pwd
 }
 
 function PACKAGE_ROOT {
-    echo "."
+    echo "$ROOT"
 }
 
 function GIT_ROOT {
@@ -34,4 +34,8 @@ function SRC {
 
 function MODULES {
     echo "$SRC/modules"
+}
+
+function COMPOSE {
+    find "$SRC" -name "compose.*js" -print -quit
 }

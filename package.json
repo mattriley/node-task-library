@@ -46,6 +46,6 @@
         "module-indexgen": "^0.18.0",
         "npm-check-updates": "^16.1.0",
         "task-library": "file:",
-        "testing": "file:./testing"
+        "testing": "file:/Users/mattriley/Home/Code/node-task-library/testing"
     }
 }

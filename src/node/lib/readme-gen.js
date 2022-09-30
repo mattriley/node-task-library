@@ -41,7 +41,7 @@ module.exports = (userConfig = {}) => {
         return { code, lang, source, root, webroot };
     };
 
-    lib.compose = async (callback, composeFile = 'src/compose.js', args = {}) => {
+    lib.compose = async (callback, composeFile = process.env.COMPOSE, args = {}) => {
         const imported = await import(path.resolve(composeFile));
         const compose = imported?.default ?? imported;
         const composition = compose(args);

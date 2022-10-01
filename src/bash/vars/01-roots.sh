@@ -1,11 +1,11 @@
 #!/bin/bash
 
 function ROOT {
-    echo "." # pwd
+    echo "." # Try to avoid $(pwd) for easier visual scanning
 }
 
 function PACKAGE_ROOT {
-    echo "$ROOT"
+    echo "." # Not $ROOT; Use case: catering-website
 }
 
 function GIT_ROOT {

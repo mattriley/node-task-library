@@ -8,6 +8,10 @@ function PACKAGE_ROOT {
     echo "." # Not $ROOT; Use case: catering-website
 }
 
+function PACKAGE_DEPENDENCIES_ROOT {
+    echo "$PACKAGE_ROOT"
+}
+
 function GIT_ROOT {
     echo "$PACKAGE_ROOT"
 }

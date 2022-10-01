@@ -1,5 +1,11 @@
 #!/bin/bash
 
+function tasks.readme_template_gen.precondition {
+
+    [ -f "$README_TEMPLATE" ] && echo "$README_TEMPLATE already exists"
+
+}
+
 function tasks.readme_template_gen {
 
     [ -f "$README_TEMPLATE" ] && \

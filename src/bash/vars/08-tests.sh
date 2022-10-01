@@ -16,6 +16,10 @@ function DEFAULT_TEST_WATCH_TASK {
     echo "chokidar-test-watch"
 }
 
+function SUPPORTED_TEST_RUNNERS {
+    echo "jest | mocha | tap | tape | zora"
+}
+
 function TESTS {
     echo "$PACKAGE_ROOT/tests"
 }

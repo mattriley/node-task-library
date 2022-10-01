@@ -2,7 +2,9 @@
 # shellcheck disable=SC1090,SC1091
 
 set -o pipefail
-source "$(dirname "${BASH_SOURCE[0]}")/globals.sh"
+
+export TASK_LIBRARY_ROOT="./node_modules/task-library"
+export SEP=" | "
 
 function main {
 

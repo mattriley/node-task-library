@@ -2,6 +2,8 @@
 
 function lib.infer_test_tasks {
 
+    export BABEL_PRESET_ENV_MODULES="true"
+
     local task_name="$1"
     local default_task="$2"
 

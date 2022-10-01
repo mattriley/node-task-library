@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function ui.task_info {
+function reporter.task_info {
 
     echo "  $1"
     

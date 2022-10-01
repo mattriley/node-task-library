@@ -2,11 +2,11 @@
 
 function tasks.npm_latest {
 
-    ui.newline && \
+    reporter.newline && \
     ncu -u && \
-    ui.newline && \
+    reporter.newline && \
     npm.install && 
     npm.install "-D task-library" && \
-    ui.newline
+    reporter.newline
 
 }

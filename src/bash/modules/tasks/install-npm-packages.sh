@@ -22,8 +22,8 @@ function tasks.install_npm_packages {
         unset "$1"
     }
 
-    ui.newline && \
+    reporter.newline && \
     list.each "$(util.list_of_func)" && \
-    ui.newline
+    reporter.newline
 
 }

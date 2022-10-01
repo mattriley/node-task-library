@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function ui.print {
+function reporter.print {
 
     echo -n "$1"
 

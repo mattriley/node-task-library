@@ -6,7 +6,7 @@ function startup.on_exit {
     local failure="${RED}FAILURE${NORM}"
     local success="${GREEN}SUCCESS${NORM}"
 
-    ui.newline
+    reporter.newline
     [ "$exit_code" -gt 0 ] && echo "$failure" && exit 1
     [ "$IS_SUBTASK" ] && return
     echo "$success"

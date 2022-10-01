@@ -9,13 +9,13 @@ function tasks.print_vars {
 
     function callback {
         [ "$1" = "STAGE" ] && [ "${!1}" = 'prod' ] && style="$BOLD$RED" || style="$BOLD"
-        ui.info "$1=${style}${!1}${NORM}"
+        reporter.info "$1=${style}${!1}${NORM}"
     }
 
-    ui.newline
+    reporter.newline
     list.each "$var_names"
-    ui.newline
-    ui.info "${vars_printed} of ${vars_total} task vars displayed"
-    ui.newline
+    reporter.newline
+    reporter.info "${vars_printed} of ${vars_total} task vars displayed"
+    reporter.newline
 
 }

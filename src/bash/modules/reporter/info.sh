@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function ui.info {
+function reporter.info {
 
     echo "$1"
 

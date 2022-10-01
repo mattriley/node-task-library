@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function ui.warn {
+function reporter.warn {
 
     echo "${YELLOW}$1${NORM}" >&2
     

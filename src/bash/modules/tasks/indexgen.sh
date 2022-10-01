@@ -3,7 +3,7 @@
 
 function tasks.indexgen {
 
-    ui.newline && \
+    reporter.newline && \
     indexgen $BARREL_PATHS $INDEXGEN_OPTIONS "$@"
 
 }

@@ -2,7 +2,7 @@
 
 function tasks.readme_gen {
 
-    [ ! -f "$README_TEMPLATE" ] && reporter.task_warn "$README_TEMPLATE not found" && return
+    tasks.readme_template_gen
 
     node.exec_infer "$README_GEN" > "$README" && \
         lib.run_task "doctoc" && \

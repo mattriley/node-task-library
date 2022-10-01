@@ -19,16 +19,15 @@ function lib.run_task {
     # fi
 
     "$task_command" $task_args
-    local return_code="$?"
+    local exit_code="$?"
     local time_after; time_after="$(util.now_ms)"
-
     local time_taken_ms="$((time_after-time_before))"
 
-    [ $return_code = 0 ] && icon="$GREEN_FLAG" || icon="$RED_FLAG"
-    local result; [ $return_code = 0 ] && result="succeeded" || result="failed with exit code $return_code"
+    local result_code; [ $exit_code = 0 ] || result_supp="$exit_code"
+    local result_code; [ $exit_code = 0 ] && result_code="PASS" || result_code="FAIL"
 
-    reporter.task_completed "${icon}" "$task_name" "$result" "$time_taken_ms"
+    reporter.task_completed "$task_name" "$result_code" "$result_supp" "$time_taken_ms"
 
-    return $return_code
+    return $exit_code
 
 }

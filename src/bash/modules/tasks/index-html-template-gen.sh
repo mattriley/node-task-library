@@ -2,7 +2,7 @@
 
 function tasks.index_html_template_gen.precondition {
 
-    [ -f "$INDEX_HTML_TEMPLATE" ] && "existing $INDEX_HTML_TEMPLATE found"
+    [ -f "$INDEX_HTML_TEMPLATE" ] && echo "existing $INDEX_HTML_TEMPLATE found"
 
 }
 

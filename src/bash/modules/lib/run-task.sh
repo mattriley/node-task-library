@@ -1,5 +1,5 @@
 #!/bin/bash
-# _shellcheck disable=SC2086
+# shellcheck disable=SC2086
 
 function lib.run_task {
 
@@ -13,18 +13,17 @@ function lib.run_task {
 
     local time_before; time_before="$(util.now_ms)"
     
-    # local precondition_fail_reason="$("$task_command.precondition" $task_args)"
-    # if "$precondition_fail_reason"; then
-    #     reporter.info "${icon} Task ${BOLD}$task_name${NORM} $result in ${time_taken_ms}ms (${time_taken_s}s)"
-    # fi
+    local precondition_command="$task_command.precondition"
+    local skip_reason; util.is_function $precondition_command && skip_reason="$("$precondition_command" $task_args)"
+    local exit_code=0; [ "$skip_reason" ] || "$task_command" $task_args || exit_code="$?"
 
-    "$task_command" $task_args
-    local exit_code="$?"
     local time_after; time_after="$(util.now_ms)"
     local time_taken_ms="$((time_after-time_before))"
 
-    local result_code; [ $exit_code = 0 ] || result_supp="$exit_code"
-    local result_code; [ $exit_code = 0 ] && result_code="PASS" || result_code="FAIL"
+    local result_code="PASS"
+    local result_supp=""
+    [ $exit_code -ne 0 ] && result_code="FAIL" && result_supp="$exit_code"
+    [ "$skip_reason" ] && result_code="SKIP" && result_supp="$skip_reason"
 
     reporter.task_completed "$task_name" "$result_code" "$result_supp" "$time_taken_ms"
 

@@ -12,15 +12,15 @@ function reporter.task_completed {
     case "$result_code" in
     "PASS")
         flag="$GREEN_FLAG"
-        text="succeeded"
+        text="${GREEN}succeeded${NORM}"
         ;;
     "SKIP")
         flag="$YELLOW_FLAG"
-        text="skipped with reason $result_supp"
+        text="${YELLOW}skipped${NORM} because $result_supp"
         ;;
     "FAIL")
         flag="$RED_FLAG"
-        text="failed with exit code $result_supp"
+        text="${RED}failed${NORM} with exit code $result_supp"
         ;;
     *)
         exit 1
@@ -29,6 +29,6 @@ function reporter.task_completed {
 
     local time_taken_s; time_taken_s="$(util.ms_to_s "$time_taken_ms")"
     [[ $time_taken_s == .* ]] && time_taken_s="0$time_taken_s"
-    reporter.info "${flag} Task ${BOLD}$task_name${NORM} $text in ${time_taken_ms}ms (${time_taken_s}s)"
+    reporter.info "${flag} Task ${BOLD}$task_name${NORM} $text • ${time_taken_ms}ms (${time_taken_s}s)"
     
 }

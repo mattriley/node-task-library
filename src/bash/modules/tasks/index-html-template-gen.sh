@@ -1,10 +1,12 @@
 #!/bin/bash
 
-function tasks.index_html_template_gen {
+function tasks.index_html_template_gen.precondition {
 
-    [ -f "$INDEX_HTML_TEMPLATE" ] && \
-    reporter.task_warn "Skipping template generation. $INDEX_HTML_TEMPLATE already exists" && \
-    return
+    [ -f "$INDEX_HTML_TEMPLATE" ] && "existing $INDEX_HTML_TEMPLATE found"
+
+}
+
+function tasks.index_html_template_gen {
 
     cat > "$INDEX_HTML_TEMPLATE" <<'EOF'
 <!DOCTYPE html>

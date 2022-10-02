@@ -1,8 +1,12 @@
 #!/bin/bash
 
-function tasks.sloc {
+function tasks.sloc.precondition {
 
-    [ ! -d "$SRC" ] && reporter.task_warn "$SRC not found" && return
+    [ ! -d "$SRC" ] && echo "$SRC not found"
+
+}
+
+function tasks.sloc {
 
     mkdir -p "$METRICS" && \
     lib.run_tasks "$(infer.sloc)" "$@"

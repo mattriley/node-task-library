@@ -1,8 +1,12 @@
 #!/bin/bash
 
-function tasks.dist_static {
+function tasks.dist_static.precondition {
 
-    [ ! -d "$STATIC" ] && reporter.task_warn "$STATIC not found" && return
+    [ ! -d "$STATIC" ] && "$STATIC not found"
+
+}
+
+function tasks.dist_static {
 
     cp -a "$STATIC/" "$DIST"
 

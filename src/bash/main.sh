@@ -19,7 +19,7 @@ function main {
     trap startup.on_term SIGTERM SIGINT
     trap startup.on_exit EXIT
 
-    local task_name=${1:-default}
+    local task_name=${1:-$DEFAULT_TASK}
     local task_args=${*:2}
     [ ! "$task_name" = "vars" ] && [ -z "$IS_SUBTASK" ] && tasks.print_vars
     lib.run_task "$task_name" "$task_args"

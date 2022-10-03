@@ -13,6 +13,10 @@ function DISPLAY_NAME {
     node.exec_script "start-case.js" "$PACKAGE_NAME"
 }
 
+function DEFAULT_TASK {
+    echo "pre-commit"
+}
+
 function NODE_MODULES_LINKS {
     echo "$PACKAGE_ROOT/node_modules_links"
 }

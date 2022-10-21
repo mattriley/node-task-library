@@ -2,6 +2,6 @@
 
 function npm.package {
 
-    jq -r ".$1 // empty" "$PACKAGE_JSON"
+    tools.jq -r ".$1 // empty" "$PACKAGE_JSON"
 
 }

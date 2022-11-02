@@ -5,6 +5,14 @@ const child = require('child_process');
 const process = require('process');
 const p = require('../lib/package');
 
+try {
+    require('module-composer/extensions/perf');
+    require('module-composer/extensions/eject');
+    require('module-composer/extensions/mermaid');
+} catch (err) {
+    console.warn(`Error occurred while loading module-composer extensions: ${err}`);
+}
+
 const defaultConfig = {
     template: process.env.README_TEMPLATE,
     title: process.env.README_TITLE,

@@ -50,6 +50,10 @@ function COVERAGE_JSON_SUMMARY {
     echo "$COVERAGE/coverage-summary.json"
 }
 
+function COVERAGE_BROWSER {
+    echo "Google Chrome"
+}
+
 function COV_BRANCHES {
     echo "100"
 }

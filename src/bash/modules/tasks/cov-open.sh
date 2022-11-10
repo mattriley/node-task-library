@@ -3,7 +3,6 @@
 function tasks.cov_open {
 
     lib.run_task "cov-report" && \
-    local report; report="$(set -- "$COVERAGE/**/index.html"; echo "$1")" && \
-    open -a "Google Chrome" "$report"
+    find "$COVERAGE" -name "index.html" -exec open -a "$COVERAGE_BROWSER" "{}" \; -quit
 
 }

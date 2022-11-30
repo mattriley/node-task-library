@@ -30,6 +30,7 @@ const tasks = 'pre test cov lint start deploy'.split(' ');
 
 if (!p.scripts) p.scripts = {};
 tasks.forEach(t => p.scripts[t] = `npx task ${t}`);
+p.scripts.setup = 'nvm use && npm i && npx task setup';
 
 const sortObj = (obj = {}) => {
     const sortedKeys = Object.keys(obj).sort();

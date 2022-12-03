@@ -34,18 +34,18 @@
         "chokidar-cli": "^3.0.0",
         "fast-glob": "^3.2.12",
         "lodash": "^4.17.21",
-        "module-composer": "^0.91.0"
+        "module-composer": "^0.92.0"
     },
     "devDependencies": {
         "cloc": "^2.10.0",
         "doctoc": "^2.2.1",
         "ejs": "^3.1.8",
-        "eslint": "^8.27.0",
+        "eslint": "^8.29.0",
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-mocha": "^10.1.0",
         "husky": "^8.0.2",
         "module-indexgen": "^0.21.0",
-        "npm-check-updates": "^16.3.18",
+        "npm-check-updates": "^16.4.3",
         "task-library": "file:",
         "testing": "file:./testing"
     }

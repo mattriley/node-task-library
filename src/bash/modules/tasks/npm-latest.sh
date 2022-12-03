@@ -2,11 +2,10 @@
 
 function tasks.npm_latest {
 
-    local args; args=${1:-"-u"}
     local package_json_before; package_json_before=$(<"$PACKAGE_JSON")
 
     reporter.newline && \
-    ncu "$args" && \
+    ncu -u && \
     reporter.newline
 
     local package_json_after; package_json_after=$(<"$PACKAGE_JSON")
@@ -14,7 +13,5 @@ function tasks.npm_latest {
 
     npm.install && \
     reporter.newline
-
-    # npm.install "-D task-library" && \
 
 }

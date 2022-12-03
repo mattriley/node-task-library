@@ -1,7 +1,9 @@
 #!/bin/bash
 # shellcheck disable=SC2153,SC2086
 
-function tasks.install_npm_packages {
+# add task "latest" to call npm-latest
+
+function tasks.npm_infer {
 
     function f1 { echo "-D npm-check-updates eslint husky"; }
     function f2 { [ -d "$MODULES" ] && echo "module-composer"; }

@@ -2,6 +2,8 @@
 
 function tasks.install {
 
-    lib.run_tasks "install-brew-packages | install-npm-packages"
+    npm.install
+
+    lib.run_tasks "brew-infer | npm-infer"
 
 }

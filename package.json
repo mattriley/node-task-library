@@ -44,7 +44,7 @@
         "eslint-plugin-import": "^2.26.0",
         "eslint-plugin-mocha": "^10.1.0",
         "husky": "^8.0.2",
-        "module-indexgen": "^0.21.0",
+        "module-indexgen": "^0.22.0",
         "npm-check-updates": "^16.4.3",
         "task-library": "file:",
         "testing": "file:./testing"

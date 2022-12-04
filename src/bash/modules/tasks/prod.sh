@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function tasks.deploy {
+function tasks.prod {
 
     export STAGE="prod"
 

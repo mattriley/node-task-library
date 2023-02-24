@@ -6,9 +6,15 @@ function tasks.sloc.precondition {
 
 }
 
+function tasks.sloc.infer {
+
+    infer.sloc
+
+}
+
 function tasks.sloc {
 
     mkdir -p "$METRICS" && \
-    lib.run_tasks "$(infer.sloc)" "$@"
+    lib.run_tasks "$(tasks.sloc.infer)" "$@"
 
 }

@@ -6,8 +6,14 @@ function tasks.test.precondition {
 
 }
 
+function tasks.test.infer {
+
+    infer.test
+
+}
+
 function tasks.test {
 
-    lib.run_tasks "$(infer.test)" "$@"
+    lib.run_tasks "$(tasks.test.infer)" "$@"
 
 }

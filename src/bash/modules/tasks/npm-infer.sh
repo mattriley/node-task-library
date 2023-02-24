@@ -1,7 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC2153,SC2086
-
-# add task "latest" to call npm-latest
+# shellcheck disable=SC2317
 
 function tasks.npm_infer {
 

@@ -1,7 +1,13 @@
 #!/bin/bash
 
+function tasks.latest.infer {
+
+    echo "npm-latest"
+
+}
+
 function tasks.latest {
 
-    lib.run_tasks "npm-latest"
+    lib.run_tasks "$(tasks.latest.infer)"
 
 }

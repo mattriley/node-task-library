@@ -1,5 +1,13 @@
 #!/bin/bash
 
+function NODE_VERSION {
+    echo "latest"
+}
+
+function NODENV_VERSION {
+    echo "$NODE_VERSION"
+}
+
 function ROOT {
     echo "." # Try to avoid $(pwd) for easier visual scanning
 }

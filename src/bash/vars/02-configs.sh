@@ -12,6 +12,14 @@ function GIT_IGNORE {
     echo "$PACKAGE_ROOT/.gitignore"
 }
 
+function NODE_VERSION_FILE {
+    echo "$PACKAGE_ROOT/.node-version"
+}
+
+function NVMRC {
+    echo "$PACKAGE_ROOT/.nvmrc"
+}
+
 function BABEL_CONFIG {
     echo "$PACKAGE_ROOT/babel.config.js"
 }

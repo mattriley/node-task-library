@@ -13,7 +13,6 @@ EOF
     function callback {
         cat << EOF >> "$ITERMOCIL_CONFIG" 
       - commands:
-        - nvm use
         - npx task $1
 EOF
     }

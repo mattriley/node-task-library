@@ -25,7 +25,7 @@
         "deploy": "npx task deploy",
         "lint": "npx task lint",
         "pre": "npx task pre",
-        "setup": "nvm use && npm i && npx task setup",
+        "setup": "npm i && npx task setup",
         "start": "npx task start",
         "test": "npx task test"
     },

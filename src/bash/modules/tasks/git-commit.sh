@@ -3,7 +3,7 @@
 function tasks.git_commit {
 
     local commit_message=${1:-"Unspecified changes"}
-    local commit_args="-m '$commit_message' ${*:2}"
+    local commit_args="-m "$commit_message" ${*:2}"
 
     reporter.newline && \
     git add . && \

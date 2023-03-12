@@ -3,6 +3,7 @@ const path = require('path');
 const p = require('../lib/package');
 const logJson = require('../lib/log-json');
 const process = require('process');
+const fs = require('fs');
 
 const binFiles = glob.sync('./bin/*');
 
@@ -40,7 +41,9 @@ const sortObj = (obj = {}) => {
 
 p.scripts = sortObj(p.scripts);
 
-p.devDependencies.testing = `file:${process.env.TESTING}`;
+if (fs.existsSync(process.env.TESTING)) {
+    p.devDependencies.testing = `file:${process.env.TESTING}`;
+}
 
 p.dependencies = sortObj(p.dependencies);
 p.devDependencies = sortObj(p.devDependencies);

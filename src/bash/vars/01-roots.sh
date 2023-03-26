@@ -1,7 +1,7 @@
 #!/bin/bash
 
 function NODE_VERSION {
-    echo "latest"
+    npx n --latest
 }
 
 function NODENV_VERSION {

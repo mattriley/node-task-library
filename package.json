@@ -34,7 +34,8 @@
         "chokidar-cli": "^3.0.0",
         "fast-glob": "^3.2.12",
         "lodash": "^4.17.21",
-        "module-composer": "^0.92.0"
+        "module-composer": "^0.92.0",
+        "n": "^9.0.1"
     },
     "devDependencies": {
         "cloc": "^2.10.0",

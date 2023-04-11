@@ -22,7 +22,7 @@ const start = async () => {
 
         const compose = ({ defaults, overrides, config } = {}) => {
             const options = { overrides, configs: [config] };
-            const composition = composeModules({ defaults, ...options }, options);
+            const composition = composeModules({ defaults, ...options });
             return composition;
         };
 

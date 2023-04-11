@@ -49,10 +49,10 @@ module.exports = (userConfig = {}) => {
         return { code, lang, source, root, webroot };
     };
 
-    lib.compose = async (callback, composeFile = process.env.COMPOSE, args = {}, options = {}) => {
+    lib.compose = async (callback, composeFile = process.env.COMPOSE, options = {}) => {
         const imported = await import(path.resolve(composeFile));
         const compose = imported?.default ?? imported;
-        const composition = compose(args, options);
+        const composition = compose(options);
         if (composition.load) await composition.load();
         return callback(composition);
     };
@@ -60,7 +60,7 @@ module.exports = (userConfig = {}) => {
     lib.mermaid = async (mermaidOptions = {}) => {
         const composeOptions = { extensions: ['mermaid'] };
         const render = c => lib.renderCode(c.mermaid(mermaidOptions), 'mermaid');
-        return lib.compose(render, undefined, {}, composeOptions);
+        return lib.compose(render, undefined, composeOptions);
     };
 
     lib.renderModuleDiagram = async (composeFile = process.env.COMPOSE) => {

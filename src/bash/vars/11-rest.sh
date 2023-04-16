@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function GIT_BRANCH {
+    git branch --show-current
+}
+
 function SOURCE_CODE_URL {
     echo "$GITHUB_REPO_URL"
 }

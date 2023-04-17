@@ -1,8 +1,8 @@
 #!/bin/bash
-# shellcheck disable=SC2317
 
 function tasks.dev_links {
 
+    # shellcheck disable=SC2317
     function callback {
         local target; target="$(pwd)/$NODE_MODULES/$1"
         local link; link="$(pwd)/$NODE_MODULES_LINKS/$1"

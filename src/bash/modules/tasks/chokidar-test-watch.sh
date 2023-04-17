@@ -1,5 +1,4 @@
 #!/bin/bash
-# shellcheck disable=SC2086
 
 function tasks.chokidar_test_watch.precondition {
 
@@ -9,6 +8,7 @@ function tasks.chokidar_test_watch.precondition {
 
 function tasks.chokidar_test_watch {
 
+    # shellcheck disable=SC2086
     reporter.newline && \
     chokidar $TEST_WATCH_PATHS -c "$TASK_LIBRARY_ROOT/bin/task test"
 

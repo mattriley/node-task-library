@@ -6,7 +6,6 @@ function tasks.start.infer {
 
 }
 
-
 function tasks.start {
 
     lib.run_tasks "$(tasks.start.infer)" "$@"

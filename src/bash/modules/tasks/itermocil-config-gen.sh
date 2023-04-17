@@ -10,6 +10,7 @@ windows:
     panes:
 EOF
 
+    # shellcheck disable=SC2317
     function callback {
         cat << EOF >> "$ITERMOCIL_CONFIG" 
       - commands:

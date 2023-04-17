@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck source=/dev/null
 
 function brew.install {
     curl -fsSL "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh" | /bin/bash
@@ -7,7 +8,7 @@ function brew.install {
 
 function tools.brew {
 
-    which -s "brew" || brew.install
+    which -s brew || brew.install
     brew "$@"
 
 }

@@ -1,5 +1,4 @@
 #!/bin/bash
-# shellcheck disable=SC2086
 
 function tasks.parcel_dist {
 
@@ -10,6 +9,7 @@ function tasks.parcel_dist {
 
     export BABEL_OMIT_PRESETS="@babel/preset-env | @babel/preset-react"
 
+    # shellcheck disable=SC2086
     lib.run_tasks "code-gen | index-html-template-gen | index-html-render-template" && \
     parcel "$parcel_command" \
         $PARCEL_OPTIONS \

@@ -1,8 +1,9 @@
 #!/bin/bash
-# shellcheck disable=SC2068
+
 
 function tasks.jest_test {
 
+    # shellcheck disable=SC2068
     jest test --passWithNoTests $@
 
 }

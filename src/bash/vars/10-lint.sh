@@ -19,3 +19,7 @@ function ESLINT_PLUGINS {
     function callback { npm.has_dev_dependency "$1"; }
     list.filter "$ESLINT_CONDITIONAL_PLUGINS"
 }
+
+function SHELLCHECK_PATHS {
+    echo "$TEST_WATCH_PATHS | $TASKS"
+}

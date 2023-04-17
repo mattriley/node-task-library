@@ -2,17 +2,17 @@
 
 function GITHUB_USER_NAME {
     (
-        cd "$GIT_ROOT"
+        cd "$GIT_ROOT" || exit 1
         [[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]
-        echo ${BASH_REMATCH[1]}
+        echo "${BASH_REMATCH[1]}"
     )
 }
 
 function GITHUB_REPO_NAME {
     (
-        cd "$GIT_ROOT"
+        cd "$GIT_ROOT" || exit 1
         [[ $(git config --get remote.origin.url) =~ github\.com:(.+)\/(.+)\.git$ ]]
-        echo ${BASH_REMATCH[2]}
+        echo "${BASH_REMATCH[2]}"
     )
 }
 

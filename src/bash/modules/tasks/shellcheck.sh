@@ -2,7 +2,13 @@
 
 function tasks.shellcheck {
 
-    local dirs; dirs=$(list.flat "$SHELLCHECK_PATHS")
+    # shellcheck disable=SC2317
+    function callback { ! fs.is_dir_empty "$1"; } 
+
+    # shellcheck disable=SC2153
+    local shellcheck_paths; shellcheck_paths=$(list.filter "$SHELLCHECK_PATHS")
+
+    local dirs; dirs=$(list.flat "$shellcheck_paths")
 
     # shellcheck disable=SC2068,SC2086
     find $dirs -name "*.sh" -exec shellcheck {} $@ \;

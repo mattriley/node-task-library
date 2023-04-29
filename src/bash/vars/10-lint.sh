@@ -5,9 +5,7 @@ function ESLINT_CONFIG {
 }
 
 function ESLINT_PATHS {
-    # eslint doesn't like empty directories
-    function callback { ! fs.is_dir_empty "$1"; } 
-    list.filter "$TEST_WATCH_PATHS"
+    echo "$TEST_WATCH_PATHS"
 }
 
 function ESLINT_CONDITIONAL_PLUGINS {
@@ -21,6 +19,5 @@ function ESLINT_PLUGINS {
 }
 
 function SHELLCHECK_PATHS {
-    function callback { ! fs.is_dir_empty "$1"; } 
-    list.filter "$TEST_WATCH_PATHS | $TASKS"
+    echo "$TEST_WATCH_PATHS | $TASKS"
 }

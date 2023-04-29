@@ -6,5 +6,14 @@ A collection of bash scripts to support build, test, deploy and chores associate
 
 <br />
 
-<!-- START doctoc -->
-<!-- END doctoc -->
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+## Table of Contents
+
+- [Notes](#notes)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# Notes
+
+- `find -exec` does not return exit code of exec command. Workaround: Use `xargs` instead.

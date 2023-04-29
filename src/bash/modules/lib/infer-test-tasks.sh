@@ -2,8 +2,6 @@
 
 function lib.infer_test_tasks {
 
-    [ ! -d "$TESTS" ] && reporter.warn "Tests directory not found: $TESTS" && return
-
     local task_name="$1"
     local default_task="$2"
 

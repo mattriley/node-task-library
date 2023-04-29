@@ -21,5 +21,6 @@ function ESLINT_PLUGINS {
 }
 
 function SHELLCHECK_PATHS {
-    echo "$TEST_WATCH_PATHS | $TASKS"
+    function callback { ! fs.is_dir_empty "$1"; } 
+    list.filter "$TEST_WATCH_PATHS | $TASKS"
 }

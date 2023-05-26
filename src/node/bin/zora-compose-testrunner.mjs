@@ -21,7 +21,7 @@ const start = async () => {
         // const { helpers } = composeTesting({ window }).modules;
 
         const compose = ({ defaults, overrides, config } = {}) => {
-            const options = { overrides, configs: [config] };
+            const options = { overrides, config };
             const composition = composeModules({ defaults, ...options });
             return composition;
         };

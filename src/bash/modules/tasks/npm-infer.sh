@@ -5,8 +5,8 @@
 function tasks.npm_infer {
 
     function f1 { echo "-D npm-check-updates eslint husky"; }
-    function f2 { [ -d "$MODULES" ] && echo "module-composer"; }
-    function f3 { [ -d "$MODULES" ] && echo "-D module-indexgen"; }
+    function f2 { [ -d "$MODULES" ] && [ "$PACKAGE_NAME" != "module-composer" ] && echo "module-composer"; }
+    function f3 { [ -d "$MODULES" ] && [ "$PACKAGE_NAME" != "module-indexgen" ] && echo "-D module-indexgen"; }
     function f4 { [ -f "$SERVER" ] && echo "express cors ajv ajv-formats"; }
     function f5 { [ -f "$SERVER" ] && echo "-D nodemon"; }
     function f6 { [ -d "$STATIC" ] && [ ! -d "$SRC" ] && echo "-D serve"; }

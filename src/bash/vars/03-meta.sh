@@ -30,7 +30,7 @@ function DEV_LINKS {
 }
 
 function DEV_TASKS {
-    echo "edit | test-watch | start | barrel-gen-watch"
+    echo "git-remote-status | test-watch | start | barrel-gen-watch"
 }
 
 function COPY_MODULES {

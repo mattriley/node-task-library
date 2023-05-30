@@ -9,5 +9,6 @@ function tasks.dev.infer {
 function tasks.dev {
 
     lib.run_task "$(tasks.dev.infer)"
+    tasks.edit
 
 }

@@ -5,22 +5,13 @@ const child = require('child_process');
 const process = require('process');
 const p = require('../lib/package');
 
-// try {
-if (process.env.MODULE_COMPOSER_ENABLED === 'true') {
-    require('module-composer/extensions/perf');
-    require('module-composer/extensions/eject');
-    require('module-composer/extensions/mermaid');
-}
-// } catch (err) {
-//     console.warn(`Error occurred while loading module-composer extensions: ${err}`);
-// }
-
 const defaultConfig = {
     template: process.env.README_TEMPLATE,
     title: process.env.README_TITLE,
     baseUrl: process.env.README_BASE_URL,
     gitBranch: process.env.GIT_BRANCH,
-    metricsSummary: process.env.METRICS_SUMMARY
+    metricsSummary: process.env.METRICS_SUMMARY,
+    moduleComposerEnabled: process.env.MODULE_COMPOSER_ENABLED === 'true'
 };
 
 module.exports = (userConfig = {}) => {
@@ -28,6 +19,12 @@ module.exports = (userConfig = {}) => {
     const config = { ...defaultConfig, ...userConfig };
     const lib = {};
     let linkId = 0;
+
+    if (config.moduleComposerEnabled) {
+        require('module-composer/extensions/perf');
+        require('module-composer/extensions/eject');
+        require('module-composer/extensions/mermaid');
+    }
 
     lib.metrics = () => {
         try {

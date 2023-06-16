@@ -5,13 +5,15 @@ const child = require('child_process');
 const process = require('process');
 const p = require('../lib/package');
 
-try {
+// try {
+if (process.env.MODULE_COMPOSER_ENABLED === 'true') {
     require('module-composer/extensions/perf');
     require('module-composer/extensions/eject');
     require('module-composer/extensions/mermaid');
-} catch (err) {
-    console.warn(`Error occurred while loading module-composer extensions: ${err}`);
 }
+// } catch (err) {
+//     console.warn(`Error occurred while loading module-composer extensions: ${err}`);
+// }
 
 const defaultConfig = {
     template: process.env.README_TEMPLATE,
@@ -64,6 +66,11 @@ module.exports = (userConfig = {}) => {
     };
 
     lib.renderModuleDiagram = async (composeFile = process.env.COMPOSE) => {
+        if (!process.env.MODULE_COMPOSER_ENABLED) {
+            console.warn('module-composer is not enabled.');
+            return '';
+        }
+
         const link = lib.renderLink('https://github.com/mattriley/node-module-composer', 'Module Composer');
         return [
             await lib.compose(c => lib.renderCode(c.mermaid(), 'mermaid'), composeFile),

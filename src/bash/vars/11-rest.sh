@@ -17,7 +17,8 @@ function ISSUES_EMAIL {
 }
 
 function BARREL_PATHS {
-    echo "$TEST_WATCH_PATHS"
+    function callback { [ -d "$1" ]; }
+    list.filter "$MODULES | $TESTS | $TESTING"
 }
 
 function NPM_BUMP_VERSION {

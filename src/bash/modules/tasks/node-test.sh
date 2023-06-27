@@ -3,6 +3,7 @@
 
 function tasks.node_test {
 
-    node --test --test-reporter=spec "$(lib.list_tests)"
+    # shellcheck disable=SC2046
+    node --test --test-reporter=spec $(lib.list_tests)
 
 }

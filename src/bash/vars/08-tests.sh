@@ -43,7 +43,7 @@ function TEST_RUNNER {
 }
 
 function CUSTOM_TEST_RUNNER {
-    echo "$TESTING/test-runner"
+    echo "$TESTING/test-runner.js"
 }
 
 function COVERAGE {

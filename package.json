@@ -46,6 +46,7 @@
         "husky": "^8.0.3",
         "module-indexgen": "^0.33.0",
         "npm-check-updates": "^16.10.12",
-        "task-library": "file:"
+        "task-library": "file:",
+        "testing": "file:./testing"
     }
 }

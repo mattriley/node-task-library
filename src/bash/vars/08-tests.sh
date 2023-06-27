@@ -42,6 +42,10 @@ function TEST_RUNNER {
     list.find "$SUPPORTED_TEST_RUNNERS"
 }
 
+function CUSTOM_TEST_RUNNER {
+    echo "$TESTING/test-runner"
+}
+
 function COVERAGE {
     echo "$OUTPUT_ROOT/coverage"
 }

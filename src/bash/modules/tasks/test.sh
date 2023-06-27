@@ -15,6 +15,8 @@ function tasks.test.infer {
 
 function tasks.test {
 
+    [ -f "$CUSTOM_TEST_RUNNER" ] && "$CUSTOM_TEST_RUNNER" && return "$?"
+
     lib.run_tasks "$(tasks.test.infer)" "$@"
 
 }

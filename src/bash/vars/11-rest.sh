@@ -18,8 +18,8 @@ function ISSUES_EMAIL {
 
 function BARREL_PATHS {
     function callback { [ -d "$1" ]; }
-    list.filter "$MODULES | $TESTING"
-    # avoid $SRC or $TESTS
+    list.filter "$MODULES | $TESTING_MODULES"
+    # avoid $SRC $TESTING $TESTS
 }
 
 function NPM_BUMP_VERSION {

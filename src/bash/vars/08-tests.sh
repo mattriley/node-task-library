@@ -32,6 +32,10 @@ function TESTING {
     echo "$PACKAGE_ROOT/testing"
 }
 
+function TESTING_MODULES {
+    echo "$TESTING/modules"
+}
+
 function TEST_WATCH_PATHS {
     function callback { [ -d "$1" ]; }
     list.filter "$SRC | $TESTS | $TESTING"

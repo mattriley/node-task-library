@@ -12,4 +12,4 @@ export COV_STATEMENTS="0"
 export BFF_URL__LOCAL="local"
 export BFF_URL__TEST="test"
 
-export TEST_RUNNER="node"
+export TEST_RUNNER="custom"

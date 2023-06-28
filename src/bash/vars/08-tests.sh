@@ -43,7 +43,7 @@ function TEST_RUNNER {
 }
 
 function CUSTOM_TEST_RUNNER {
-    echo "$TESTING/test-runner.js"
+    [ -d "$TESTING" ] && find "$TESTING" -name "test-runner.*js" -print -quit
 }
 
 function COVERAGE {

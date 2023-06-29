@@ -20,6 +20,7 @@
         "src/**/*",
         "bin/**/*"
     ],
+    "main": "./src/main.js",
     "scripts": {
         "cov": "npx task cov",
         "deploy": "npx task deploy",

@@ -47,7 +47,10 @@ function TEST_RUNNER {
 }
 
 function CUSTOM_TEST_RUNNER {
-    [ -d "$TESTING" ] && find "$TESTING" -name "test-runner.*js" -print -quit
+    local test_runner
+    [ -d "$TESTING" ] && test_runner=$(find "$TESTING" -name "test-runner.*js" -print -quit)
+    [ ! "$test_runner" ] && test_runner="$TASK_LIBRARY_ROOT/src/node/bin/test-module-runner.js"
+    echo "$test_runner"
 }
 
 function COVERAGE {

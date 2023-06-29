@@ -15,6 +15,6 @@ function tasks.test.infer {
 
 function tasks.test {
 
-    lib.run_tasks "$(tasks.test.infer)" "$@"
+    lib.run_tasks "$(tasks.test.infer)" $@
 
 }

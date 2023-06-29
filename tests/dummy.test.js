@@ -1,3 +1,11 @@
-// throw new Error();
+module.exports = ({ test }) => {
 
-console.warn(1);
+    test.only('foobar', () => {
+
+    });
+
+    test('foobar 2', () => {
+
+    });
+
+};

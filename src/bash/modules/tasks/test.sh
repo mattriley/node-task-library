@@ -15,6 +15,7 @@ function tasks.test.infer {
 
 function tasks.test {
 
+    # shellcheck disable=SC2068
     lib.run_tasks "$(tasks.test.infer)" $@
 
 }

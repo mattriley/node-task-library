@@ -8,7 +8,6 @@ function tasks.test_only.infer {
 
 function tasks.test_only {
 
-    export ZORA_ONLY="true" 
     lib.run_task "$(tasks.test_only.infer)"
 
 }

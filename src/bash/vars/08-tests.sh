@@ -17,7 +17,7 @@ function DEFAULT_TEST_WATCH_TASK {
 }
 
 function SUPPORTED_TEST_RUNNERS {
-    echo "jest | mocha | tap | tape | zora"
+    echo "jest | mocha | tap | tape"
 }
 
 function TESTS {

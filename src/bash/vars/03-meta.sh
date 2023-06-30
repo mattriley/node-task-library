@@ -26,7 +26,7 @@ function PRINT_VARS {
 }
 
 function DEV_LINKS {
-    echo "module-composer | module-indexgen | task-library"
+    echo "module-composer | module-indexgen | module-testrunner | task-library"
 }
 
 function DEV_TASKS {

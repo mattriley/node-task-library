@@ -17,7 +17,7 @@ function DEFAULT_TEST_WATCH_TASK {
 }
 
 function SUPPORTED_TEST_RUNNERS {
-    echo "jest | mocha | tap | tape"
+    echo "jest | mocha | tap | tape | module-testrunner"
 }
 
 function TESTS {

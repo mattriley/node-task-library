@@ -1,6 +1,5 @@
 #!/bin/bash
-# shellcheck disable=SC2153,SC2086
-# shellcheck disable=SC2317
+# shellcheck disable=SC2153,SC2086,SC2317
 
 function tasks.npm_infer {
 
@@ -13,10 +12,11 @@ function tasks.npm_infer {
     function f7 { [ -f "$README_TEMPLATE" ] && echo "-D ejs doctoc cloc"; }
     function f8 { [ -f "$SERVERLESS_CONFIG" ] && echo "-D serverless aws-sdk"; }
     function f9 { [ "$TEST_RUNNER" ] && [ "$TEST_RUNNER" != "custom" ] && echo "-D $TEST_RUNNER"; }
-    function f10 { node.module_installed "react" && echo "-D @babel/core @babel/preset-react"; }
-    function f11 { node.module_installed "@babel/core" && echo "-D @babel/preset-env @babel/node"; }
-    function f12 { node.module_installed "jest" && echo "-D jest-environment-jsdom"; }
-    function f13 { node.module_installed "eslint" && echo "-D $(printf "eslint-plugin-%s " "$ESLINT_PLUGINS")"; }
+    function f10 { grep -rq "react-dom" "$SRC" && echo "-D react react-dom"; }
+    function f11 { node.module_installed "react" && echo "-D @babel/core @babel/preset-react"; }
+    function f12 { node.module_installed "@babel/core" && echo "-D @babel/preset-env @babel/node"; }
+    function f13 { node.module_installed "jest" && echo "-D jest-environment-jsdom"; }
+    function f14 { node.module_installed "eslint" && echo "-D $(printf "eslint-plugin-%s " "$ESLINT_PLUGINS")"; }
 
     function callback {
         local args; args="$("$1")"

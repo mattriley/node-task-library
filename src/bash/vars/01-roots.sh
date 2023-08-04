@@ -8,12 +8,8 @@ function NODENV_VERSION {
     echo "$NODE_VERSION"
 }
 
-function ROOT {
-    echo "." # Try to avoid $(pwd) for easier visual scanning
-}
-
 function PACKAGE_ROOT {
-    echo "." # Not $ROOT; Use case: catering-website
+    echo "."
 }
 
 function PACKAGE_DEPENDENCIES_ROOT {

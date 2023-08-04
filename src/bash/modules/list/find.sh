@@ -9,6 +9,6 @@ function list.find {
         "$callback" "$item" && echo "$item" && break;
     done
 
-    unset "$callback"
+    # unset "$callback"
 
 }

@@ -10,6 +10,6 @@ function list.map {
         [ "$res" ] && echo -n "$res "
     done
 
-    unset "$callback"
+    # unset "$callback"
 
 }

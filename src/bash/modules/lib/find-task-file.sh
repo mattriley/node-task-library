@@ -8,8 +8,6 @@ function lib.find_task_file {
     function callback { echo "$1/$task_name | $1/$task_name.sh | "; }
     local search; search=$(list.map "$TASKS")
 
-    # shellcheck disable=SC2317
-    function callback { [ -f "$1" ]; }
-    list.find "$search"
+    list.find "$search" predicates.file_exists
 
 }

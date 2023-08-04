@@ -9,6 +9,6 @@ function list.each {
         "$callback" "$item"
     done
 
-    unset "$callback"
+    # unset "$callback"
 
 }

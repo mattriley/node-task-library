@@ -12,7 +12,7 @@ function tasks.npm_infer {
     function f7 { [ -f "$README_TEMPLATE" ] && echo "-D ejs doctoc cloc"; }
     function f8 { [ -f "$SERVERLESS_CONFIG" ] && echo "-D serverless aws-sdk"; }
     function f9 { [ "$TEST_RUNNER" ] && [ "$TEST_RUNNER" != "custom" ] && echo "-D $TEST_RUNNER"; }
-    function f10 { grep -rq "react-dom" "$SRC" && echo "-D react react-dom"; }
+    function f10 { [ "$PACKAGE_NAME" != "task-library" ] && grep -rq "react-dom" "$SRC" && echo "-D react react-dom"; }
     function f11 { node.module_installed "react" && echo "-D @babel/core @babel/preset-react"; }
     function f12 { node.module_installed "@babel/core" && echo "-D @babel/preset-env @babel/node"; }
     function f13 { node.module_installed "jest" && echo "-D jest-environment-jsdom"; }

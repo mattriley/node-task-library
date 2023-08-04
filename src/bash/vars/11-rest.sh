@@ -17,8 +17,8 @@ function ISSUES_EMAIL {
 }
 
 function BARREL_PATHS {
-    function callback { [ -d "$1" ]; }
-    list.filter "$MODULES | $TESTING_MODULES"
+    function directory_exists { [ -d "$1" ]; }
+    list.filter "$MODULES | $TESTING_MODULES" directory_exists
     # avoid $SRC $TESTING $TESTS
 }
 

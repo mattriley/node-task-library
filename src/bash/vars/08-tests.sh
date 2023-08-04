@@ -37,13 +37,11 @@ function TESTING_MODULES {
 }
 
 function TEST_WATCH_PATHS {
-    function callback { [ -d "$1" ]; }
-    list.filter "$SRC | $TESTS | $TESTING"
+    list.filter "$SRC | $TESTS | $TESTING" predicates.directory_exists
 }
 
 function TEST_RUNNER {
-    function callback { node.module_installed "$1"; } 
-    list.find "$SUPPORTED_TEST_RUNNERS"
+    list.find "$SUPPORTED_TEST_RUNNERS" predicates.node_module_installed
 }
 
 function CUSTOM_TEST_RUNNER {

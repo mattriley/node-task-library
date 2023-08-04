@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=SC2317
 
 function ESLINT_CONFIG {
     echo "$PACKAGE_ROOT/.eslintrc.json"
@@ -14,8 +15,7 @@ function ESLINT_CONDITIONAL_PLUGINS {
 
 function ESLINT_PLUGINS {
     echo -n "import | "
-    function callback { node.module_installed "$1"; }
-    list.filter "$ESLINT_CONDITIONAL_PLUGINS"
+    list.filter "$ESLINT_CONDITIONAL_PLUGINS" predicates.node_module_installed
 }
 
 function SHELLCHECK_PATHS {

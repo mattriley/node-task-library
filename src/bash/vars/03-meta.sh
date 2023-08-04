@@ -17,16 +17,12 @@ function DEFAULT_TASK {
     echo "pre-commit"
 }
 
-function NODE_MODULES_LINKS {
-    echo "$PACKAGE_ROOT/node_modules_links"
-}
-
 function PRINT_VARS {
     echo "STAGE | PORT | PACKAGE_NAME | DISPLAY_NAME"
 }
 
 function SELECTED_NODE_MODULES {
-    echo "module-composer | module-indexgen | module-testrunner | task-library"
+    echo ""
 }
 
 function DEV_TASKS {

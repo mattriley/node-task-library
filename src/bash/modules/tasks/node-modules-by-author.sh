@@ -14,14 +14,17 @@ function tasks.node_modules_by_author {
     author_name=$(echo "$author_name" | tr '[:upper:]' '[:lower:]')
     local author_dir="node_modules_by_$author_name"
 
-    function callback {
+    local dest="$PACKAGE_ROOT/$author_dir"
+
+    function link_author_node_module {
         local target; target="$(pwd)/$NODE_MODULES/$1"
-        local link; link="$(pwd)/$author_dir/$1"
-        [ -d "$target" ] && ln -s "$target" "$link"
+        # local link; link="$(pwd)/$author_dir/$1"
+        local link; link="$(pwd)/$dest/$1"
+        [ -d "$target" ] && mkdir -p "$dest" ln -s "$target" "$link"
     }
 
-    fs.re_mkdir "$author_dir" && \
-    list.each "$matches"
+    rm -rf "$dest" && \
+    list.each "$matches" link_author_node_module
 
 
 }

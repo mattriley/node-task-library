@@ -2,15 +2,16 @@
 
 function tasks.node_modules_selected {
 
+    local dest="$PACKAGE_ROOT/node_modules_selected"
+
     # shellcheck disable=SC2317
-    function callback {
+    function link_selected_node_module {
         local target; target="$(pwd)/$NODE_MODULES/$1"
-        local link; link="$(pwd)/$NODE_MODULES_LINKS/$1"
-        [ -d "$target" ] && ln -s "$target" "$link"
+        local link; link="$(pwd)/$dest/$1"
+        [ -d "$target" ] && mkdir -p "dest" && ln -s "$target" "$link"
     }
 
-    fs.re_mkdir "$NODE_MODULES_LINKS" && \
-    list.each "$SELECTED_NODE_MODULES"
-
+    rm -rf "$dest" &&
+    list.each "$SELECTED_NODE_MODULES" link_selected_node_module
 
 }

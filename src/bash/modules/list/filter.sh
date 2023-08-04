@@ -9,6 +9,6 @@ function list.filter {
         "$callback" "$item" && echo -n "$item "
     done
 
-    unset "$callback"
+    # unset "$callback"
 
 }

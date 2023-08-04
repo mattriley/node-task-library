@@ -12,4 +12,5 @@ function tasks.dev_links {
     fs.re_mkdir "$NODE_MODULES_LINKS" && \
     list.each "$DEV_LINKS"
 
+
 }

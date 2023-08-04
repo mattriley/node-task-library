@@ -2,7 +2,7 @@
 
 function tasks.setup.infer {
 
-    echo "dev-links | install | husky | config-gen"
+    echo "dev-links | node-modules-by-author | install | husky | config-gen"
 
 }
 

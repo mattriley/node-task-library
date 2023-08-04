@@ -2,6 +2,6 @@
 
 function node.module_installed {
 
-    [ -d "$NODE_MODULES/$1" ]
+    [ -d "$(pwd)/$NODE_MODULES/$1" ]
 
 }

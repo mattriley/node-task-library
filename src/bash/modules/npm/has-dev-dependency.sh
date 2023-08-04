@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function npm.has_any_dependency {
+function node.is_module_installed {
 
     [ "$(tools.jq ".devDependencies | has(\"$1\")" "$PACKAGE_DEPENDENCIES_JSON")" = "true" ]
 

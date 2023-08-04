@@ -42,7 +42,7 @@ function TEST_WATCH_PATHS {
 }
 
 function TEST_RUNNER {
-    function callback { npm.has_any_dependency "$1"; } 
+    function callback { node.is_module_installed "$1"; } 
     list.find "$SUPPORTED_TEST_RUNNERS"
 }
 

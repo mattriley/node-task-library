@@ -13,10 +13,10 @@ function tasks.npm_infer {
     function f7 { [ -f "$README_TEMPLATE" ] && echo "-D ejs doctoc cloc"; }
     function f8 { [ -f "$SERVERLESS_CONFIG" ] && echo "-D serverless aws-sdk"; }
     function f9 { [ "$TEST_RUNNER" ] && [ "$TEST_RUNNER" != "custom" ] && echo "-D $TEST_RUNNER"; }
-    function f10 { npm.has_any_dependency "react" && echo "-D @babel/core @babel/preset-react"; }
-    function f11 { npm.has_any_dependency "@babel/core" && echo "-D @babel/preset-env @babel/node"; }
-    function f12 { npm.has_any_dependency "jest" && echo "-D jest-environment-jsdom"; }
-    function f13 { npm.has_any_dependency "eslint" && echo "-D $(printf "eslint-plugin-%s " "$ESLINT_PLUGINS")"; }
+    function f10 { node.is_module_installed "react" && echo "-D @babel/core @babel/preset-react"; }
+    function f11 { node.is_module_installed "@babel/core" && echo "-D @babel/preset-env @babel/node"; }
+    function f12 { node.is_module_installed "jest" && echo "-D jest-environment-jsdom"; }
+    function f13 { node.is_module_installed "eslint" && echo "-D $(printf "eslint-plugin-%s " "$ESLINT_PLUGINS")"; }
 
     function callback {
         local args; args="$("$1")"

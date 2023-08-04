@@ -4,7 +4,7 @@
 set -o pipefail
 
 export TASK_LIBRARY_ROOT="./node_modules/task-library"
-export SEP=" | "
+IFS=$'\n| '
 
 function main {
 

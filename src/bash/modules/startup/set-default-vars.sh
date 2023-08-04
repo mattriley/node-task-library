@@ -9,7 +9,8 @@ function startup.set_default_vars {
         local val="${!name}"
         [ "${!override_name}" ] && val="${!override_name}" 
         [ -z "${!name}" ] && val="$($name)"
-        local val=${val//$SEP/ }
+        # local val=${val//$SEP/ }
+        local val=${val// / }
         export "$name"="$val"
     done <<< "$internal_var_names"    
 

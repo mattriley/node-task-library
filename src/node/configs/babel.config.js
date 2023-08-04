@@ -1,5 +1,5 @@
 const process = require('process');
-const omit = (process.env.BABEL_OMIT_PRESETS ?? '').split(process.env.SEP);
+const omit = (process.env.BABEL_OMIT_PRESETS ?? '').split('|');
 const modules = process.env.NODE_ENV === 'test' ? 'auto' : false;
 
 const presets = [

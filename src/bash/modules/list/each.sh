@@ -2,7 +2,7 @@
 
 function list.each {
 
-    IFS="$SEP" read -r -a arr <<< "$1"
+    read -r -a arr <<< "$1"
     local callback=${2:-"callback"}
 
     for item in "${arr[@]}"; do 

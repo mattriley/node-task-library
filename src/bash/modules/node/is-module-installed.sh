@@ -2,6 +2,6 @@
 
 function node.is_module_installed {
 
-    [ -f "$(pwd)/$NODE_MODULES/$1" ]
+    [ -d "$NODE_MODULES/$1" ]
 
 }

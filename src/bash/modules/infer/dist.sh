@@ -2,7 +2,7 @@
 
 function infer.dist {
 
-    function f1 { npm.has_dev_dependency "parcel" && echo "parcel-dist"; }
+    function f1 { npm.has_any_dependency "parcel" && echo "parcel-dist"; }
     lib.infer_tasks
 
 }

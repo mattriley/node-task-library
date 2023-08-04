@@ -2,7 +2,7 @@
 
 function infer.sloc {
 
-    function f1 { npm.has_dev_dependency "cloc" && echo "cloc-sloc"; }
+    function f1 { npm.has_any_dependency "cloc" && echo "cloc-sloc"; }
     lib.infer_tasks
 
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function tasks.dev_links {
+function tasks.node_modules_selected {
 
     # shellcheck disable=SC2317
     function callback {
@@ -10,7 +10,7 @@ function tasks.dev_links {
     }
 
     fs.re_mkdir "$NODE_MODULES_LINKS" && \
-    list.each "$DEV_LINKS"
+    list.each "$SELECTED_NODE_MODULES"
 
 
 }

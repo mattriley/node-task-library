@@ -25,7 +25,7 @@ function PRINT_VARS {
     echo "STAGE | PORT | PACKAGE_NAME | DISPLAY_NAME"
 }
 
-function DEV_LINKS {
+function SELECTED_NODE_MODULES {
     echo "module-composer | module-indexgen | module-testrunner | task-library"
 }
 

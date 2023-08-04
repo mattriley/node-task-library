@@ -8,7 +8,7 @@ function tasks.custom_test.precondition {
 
 function tasks.custom_test {
 
-    # shellcheck disable=SC2046
+    # shellcheck disable=2046
     NODE_OPTIONS="$NODE_OPTIONS $*" node "$CUSTOM_TEST_RUNNER" $(lib.list_tests)
 
 }

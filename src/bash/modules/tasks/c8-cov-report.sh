@@ -1,5 +1,5 @@
 #!/bin/bash
-# shellcheck disable=SC2068
+# shellcheck disable=2068
 
 function tasks.c8_cov_report {
 

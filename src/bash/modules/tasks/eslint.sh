@@ -2,10 +2,10 @@
 
 function tasks.eslint {
 
-    # shellcheck disable=SC2153
+    # shellcheck disable=2153
     local paths; paths=$(lib.filter_dir_exists "$ESLINT_PATHS")
 
-    # shellcheck disable=SC2068,SC2086
+    # shellcheck disable=2068,2086
     eslint --ext ".mjs" --ext ".js" $@ $paths
 
 }

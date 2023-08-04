@@ -7,7 +7,7 @@ function tasks.print_vars {
     local vars_printed; vars_printed="$(list.length "$var_names")"
     local vars_total; vars_total="$(echo -n "$VARS" | grep -c '^')"
 
-    # shellcheck disable=SC2317
+    # shellcheck disable=2317
     function callback {
         [ "$1" = "STAGE" ] && [ "${!1}" = 'prod' ] && style="$BOLD$RED" || style="$BOLD"
         reporter.info "$1=${style}${!1}${NORM}"

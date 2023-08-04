@@ -2,7 +2,7 @@
 
 function tasks.indexgen {
 
-    # shellcheck disable=SC2086
+    # shellcheck disable=2086
     reporter.newline && \
     indexgen $BARREL_PATHS $INDEXGEN_OPTIONS "$@"
 

@@ -3,7 +3,7 @@
 
 function tasks.jest_test {
 
-    # shellcheck disable=SC2068
+    # shellcheck disable=2068
     jest test --passWithNoTests $@
 
 }

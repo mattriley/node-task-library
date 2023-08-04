@@ -1,5 +1,5 @@
 #!/bin/bash
-# shellcheck disable=SC1090,SC1091
+# shellcheck disable=1090,1091
 
 set -o pipefail
 

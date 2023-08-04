@@ -1,5 +1,5 @@
 #!/bin/bash
-# shellcheck disable=SC2153,SC2086,SC2317
+# shellcheck disable=2153,2086,2317
 
 function tasks.npm_infer {
 

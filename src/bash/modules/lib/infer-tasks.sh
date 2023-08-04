@@ -1,5 +1,5 @@
 #!/bin/bash
-# shellcheck disable=SC2005
+# shellcheck disable=2005
 
 function lib.infer_tasks {
 

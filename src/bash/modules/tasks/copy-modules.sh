@@ -5,7 +5,7 @@ function tasks.copy_modules {
 
     local copy_modules_root; copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
 
-    # shellcheck disable=SC2317
+    # shellcheck disable=2317
     function callback { 
         rm -rf "${MODULES/$1}:?"
         cp -r "$copy_modules_root/$1" "$MODULES"

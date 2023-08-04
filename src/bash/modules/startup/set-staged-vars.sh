@@ -7,10 +7,10 @@ function startup.set_staged_vars {
     local staged_var_names; 
 
     # TODO: Review this check
-    # shellcheck disable=SC2001
+    # shellcheck disable=2001
     staged_var_names=$(echo "$external_var_names" | sed "s;=.+__$stage_upper;;")
 
-    # shellcheck disable=SC2317
+    # shellcheck disable=2317
     function callback {
         local name="$1"
         local base_name=${name/__$stage_upper/}

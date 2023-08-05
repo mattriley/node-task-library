@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function predicates.directory_empty {
+function fs.is_dir_not_empty {
 
     ! fs.is_dir_empty "$1"
 

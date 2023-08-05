@@ -2,6 +2,6 @@
 
 function predicates.node_module_installed {
 
-    node.module_installed "$1"
+    node.is_module_installed "$1"
 
 }

@@ -13,10 +13,10 @@ function tasks.npm_infer {
     function f8 { [ -f "$SERVERLESS_CONFIG" ] && echo "-D serverless aws-sdk"; }
     function f9 { [ "$TEST_RUNNER" ] && [ "$TEST_RUNNER" != "custom" ] && echo "-D $TEST_RUNNER"; }
     function f10 { [ "$PACKAGE_NAME" != "task-library" ] && grep -rq "react-dom" "$SRC" && echo "-D react react-dom"; }
-    function f11 { node.module_installed "react" && echo "-D @babel/core @babel/preset-react"; }
-    function f12 { node.module_installed "@babel/core" && echo "-D @babel/preset-env @babel/node"; }
-    function f13 { node.module_installed "jest" && echo "-D jest-environment-jsdom"; }
-    function f14 { node.module_installed "eslint" && echo "-D $(printf "eslint-plugin-%s " "$ESLINT_PLUGINS")"; }
+    function f11 { node.is_module_installed "react" && echo "-D @babel/core @babel/preset-react"; }
+    function f12 { node.is_module_installed "@babel/core" && echo "-D @babel/preset-env @babel/node"; }
+    function f13 { node.is_module_installed "jest" && echo "-D jest-environment-jsdom"; }
+    function f14 { node.is_module_installed "eslint" && echo "-D $(printf "eslint-plugin-%s " "$ESLINT_PLUGINS")"; }
 
     function callback {
         local args; args="$("$1")"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function node.module_installed {
+function node.is_module_installed {
 
     [ -d "$(pwd)/$NODE_MODULES/$1" ]
 

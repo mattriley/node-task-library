@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function node.module_installed {
+function node.is_module_installed {
 
     [ "$(tools.jq ".devDependencies | has(\"$1\")" "$PACKAGE_DEPENDENCIES_JSON")" = "true" ]
 

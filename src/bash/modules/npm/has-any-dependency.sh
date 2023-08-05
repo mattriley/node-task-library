@@ -1,7 +1,7 @@
 #!/bin/bash
 
-function node.module_installed {
+function node.is_module_installed {
 
-    npm.has_dependency "$1" || node.module_installed "$1"
+    npm.has_dependency "$1" || node.is_module_installed "$1"
 
 }

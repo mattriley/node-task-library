@@ -17,8 +17,7 @@ function ISSUES_EMAIL {
 }
 
 function BARREL_PATHS {
-    function directory_exists { [ -d "$1" ]; }
-    list.filter "$MODULES | $TESTING_MODULES" directory_exists
+    list.filter "$MODULES | $TESTING_MODULES" fs.dir_exists
     # avoid $SRC $TESTING $TESTS
 }
 

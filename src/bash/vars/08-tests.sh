@@ -37,7 +37,7 @@ function TESTING_MODULES {
 }
 
 function TEST_WATCH_PATHS {
-    list.filter "$SRC | $TESTS | $TESTING" predicates.directory_exists
+    list.filter "$SRC | $TESTS | $TESTING" fs.dir_exists
 }
 
 function TEST_RUNNER {

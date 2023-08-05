@@ -41,7 +41,7 @@ function TEST_WATCH_PATHS {
 }
 
 function TEST_RUNNER {
-    list.find "$SUPPORTED_TEST_RUNNERS" predicates.node_module_installed
+    list.find "$SUPPORTED_TEST_RUNNERS" node.is_module_installed
 }
 
 function CUSTOM_TEST_RUNNER {

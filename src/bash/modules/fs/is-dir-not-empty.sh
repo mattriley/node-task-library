@@ -2,6 +2,6 @@
 
 function fs.is_dir_not_empty {
 
-    ! fs.is_dir_empty "$1"
+    ! fs.dir_empty "$1"
 
 }

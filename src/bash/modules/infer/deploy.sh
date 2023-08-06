@@ -3,9 +3,9 @@
 
 function infer.deploy {
 
-    function f1 { npm.is_published && echo "npm-deploy"; }
-    function f2 { ghp.is_published && echo "github-pages-deploy"; }
-    function f3 { [ -f "$SERVERLESS_CONFIG" ] && echo "sls-deploy"; }
-    lib.infer_tasks
+    function infer_deploy_1 { npm.is_published && echo "npm-deploy"; }
+    function infer_deploy_2 { ghp.is_published && echo "github-pages-deploy"; }
+    function infer_deploy_3 { [ -f "$SERVERLESS_CONFIG" ] && echo "sls-deploy"; }
+    lib.infer_tasks infer_deploy_
 
 }

@@ -8,10 +8,10 @@ function lib.infer_test_tasks {
 
     [ -z "$TEST_RUNNER" ] && echo "$default_task" && return 0
     
-    function f1 { [ -z "$task_name" ] && echo "$TEST_RUNNER-test"; }
-    function f2 { lib.task_exists "$TEST_RUNNER-$task_name" && echo "$TEST_RUNNER-$task_name"; }
-    function f3 { echo "$default_task"; }
+    function infer_test_tasks_1 { [ -z "$task_name" ] && echo "$TEST_RUNNER-test"; }
+    function infer_test_tasks_2 { lib.task_exists "$TEST_RUNNER-$task_name" && echo "$TEST_RUNNER-$task_name"; }
+    function infer_test_tasks_3 { echo "$default_task"; }
 
-    lib.infer_tasks
+    lib.infer_tasks infer_test_tasks_
 
 }

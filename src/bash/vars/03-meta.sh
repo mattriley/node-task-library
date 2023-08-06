@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 function STAGE {
     echo "local"
 }

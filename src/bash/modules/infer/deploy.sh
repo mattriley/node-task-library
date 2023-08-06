@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=2317
 
 function infer.deploy {
 

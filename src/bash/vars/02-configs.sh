@@ -24,10 +24,6 @@ function JEST_CONFIG {
     echo "$PACKAGE_ROOT/jest.config.json"
 }
 
-function SERVERLESS_CONFIG {
-    echo "$PACKAGE_ROOT/serverless.yml"
-}
-
 function ITERMOCIL_CONFIG {
     echo "$PACKAGE_ROOT/itermocil.yml"
 }

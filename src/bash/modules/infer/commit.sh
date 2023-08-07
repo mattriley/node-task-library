@@ -3,7 +3,7 @@
 
 function infer.commit {
 
-    function infer_commit_1 { [ "$GIT_DETECTED" = "true" ] && echo "git-commit"; }
+    function infer_commit_1 { bool.is_true "$GIT_DETECTED" && echo "git-commit"; }
     lib.infer_tasks infer_commit_
 
 }

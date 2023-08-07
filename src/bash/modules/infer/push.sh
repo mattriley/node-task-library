@@ -3,7 +3,7 @@
 
 function infer.push {
 
-    function infer_push_1 { [ "$GIT_DETECTED" = "true" ] && echo "git-push"; }
+    function infer_push_1 { bool.is_true "$GIT_DETECTED" && echo "git-push"; }
     lib.infer_tasks infer_push_
 
 }

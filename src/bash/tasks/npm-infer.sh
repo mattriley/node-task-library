@@ -10,9 +10,9 @@ function tasks.npm_infer {
     function f5 { [ -f "$SERVER" ] && echo "-D nodemon"; }
     function f6 { [ -d "$STATIC" ] && [ ! -d "$SRC" ] && echo "-D serve"; }
     function f7 { [ -f "$README_TEMPLATE" ] && echo "-D ejs doctoc cloc"; }
-    function f8 { [ "$SERVERLESS_DETECTED" = "true" ] && echo "-D serverless aws-sdk"; }
+    function f8 { bool.is_true "$SERVERLESS_DETECTED" && echo "-D serverless aws-sdk"; }
     function f9 { [ "$TEST_RUNNER" ] && [ "$TEST_RUNNER" != "custom" ] && echo "-D $TEST_RUNNER"; }
-    function f10 { [ "$PACKAGE_NAME" != "task-library" ] && [ "$REACT_DETECTED" = "true" ] && echo "-D react react-dom"; }
+    function f10 { [ "$PACKAGE_NAME" != "task-library" ] && bool.is_true "$REACT_DETECTED" && echo "-D react react-dom"; }
     function f11 { node.is_module_installed "react" && echo "-D $BABEL_PRESET_ENV"; }
     function f12 { node.is_module_installed "react" && echo "-D @babel/core"; }
     function f13 { node.is_module_installed "@babel/core" && echo "-D @babel/preset-env @babel/node"; }

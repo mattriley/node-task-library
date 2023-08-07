@@ -4,8 +4,16 @@ function WEB_STATIC {
     echo "$PACKAGE_ROOT/static"
 }
 
+function STATIC_WEBSITE_DETECTED {
+    fs.dir_exists "$WEB_STATIC" && ! fs.dir_exists "$SRC" && echo "true" || echo "false"
+}
+
 function WEB_SERVER {
     echo "$SRC/server.js"
+}
+
+function WEB_SERVER_DETECTED {
+    fs.file_exists "$WEB_SERVER" && echo "true" || echo "false"
 }
 
 function WEB_SERVER_PORT {
@@ -68,8 +76,4 @@ function DIST {
 
 function DIST_FLATTEN {
     echo "false"
-}
-
-function PARCEL_OPTIONS {
-    echo "$INDEX_HTML"
 }

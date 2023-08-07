@@ -1,10 +1,10 @@
 #!/bin/bash
+# shellcheck disable=2317
 
 function tasks.tasks {
 
     reporter.newline
 
-    # shellcheck disable=2317
     function callback {
         reporter.info "${BOLD}Tasks at $1${NORM}"
         for task_file in "$1"/*; do 

@@ -2,7 +2,7 @@
 
 function tasks.test.precondition {
 
-    [ ! -d "$TESTS" ] && echo "$TESTS not found"
+    fs.dir_not_exists "$TESTS" && echo "$TESTS not found"
     fs.dir_empty "$TESTS" && echo "No tests found"
 
 }

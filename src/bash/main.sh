@@ -4,16 +4,19 @@
 set -o pipefail
 
 export TASK_LIBRARY_ROOT="./node_modules/task-library"
-IFS=$'\n| '
+export IFS=$'\n| '
+
+function load_module {
+    local module_path="$1"
+    for script_path in "$module_path"/*.sh; do source "$script_path"; done
+}
 
 function main {
 
-    for module_path in "$TASK_LIBRARY_ROOT/src/bash/modules"/*; do
-        for script_path in "$module_path"/*.sh; do
-            source "$script_path"
-        done
-    done
-
+    local bash_dir="$TASK_LIBRARY_ROOT/src/bash"
+    for module_path in "$bash_dir/modules"/*; do load_module "$module_path"; done
+    load_module "$bash_dir/tasks"
+    
     { [ "$VARS" ] && export IS_SUBTASK="true"; } || startup.load_vars
 
     trap startup.on_term SIGTERM SIGINT

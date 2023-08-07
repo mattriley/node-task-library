@@ -20,10 +20,6 @@ function NVMRC {
     echo "$PACKAGE_ROOT/.nvmrc"
 }
 
-function BABEL_CONFIG {
-    echo "$PACKAGE_ROOT/babel.config.js"
-}
-
 function JEST_CONFIG {
     echo "$PACKAGE_ROOT/jest.config.json"
 }

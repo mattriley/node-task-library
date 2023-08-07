@@ -16,7 +16,7 @@ function main {
     local bash_dir="$TASK_LIBRARY_ROOT/src/bash"
     for module_path in "$bash_dir/modules"/*; do load_module "$module_path"; done
     load_module "$bash_dir/tasks"
-    
+
     { [ "$VARS" ] && export IS_SUBTASK="true"; } || startup.load_vars
 
     trap startup.on_term SIGTERM SIGINT

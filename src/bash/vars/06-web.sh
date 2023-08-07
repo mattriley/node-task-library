@@ -1,19 +1,19 @@
 #!/bin/bash
 
-function STATIC {
+function WEB_STATIC {
     echo "$PACKAGE_ROOT/static"
 }
 
-function SERVER {
+function WEB_SERVER {
     echo "$SRC/server.js"
 }
 
-function SERVER_PORT {
+function WEB_SERVER_PORT {
     lib.port "$(npm.package name)"
 }
 
 function PORT {
-    echo "$SERVER_PORT"
+    echo "$WEB_SERVER_PORT"
 }
 
 function WEB_HOST_NAME {

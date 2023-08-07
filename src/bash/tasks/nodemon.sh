@@ -2,13 +2,13 @@
 
 function tasks.nodemon.precondition {
 
-    [ ! -f "$SERVER" ] && echo "$SERVER not found"
+    [ ! -f "$WEB_SERVER" ] && echo "$WEB_SERVER not found"
 
 }
 
 
 function tasks.nodemon {
 
-    nodemon "$SERVER" "$@"
+    nodemon "$WEB_SERVER" "$@"
 
 }

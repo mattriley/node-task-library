@@ -6,9 +6,9 @@ function tasks.npm_infer {
     function f1 { echo "-D npm-check-updates eslint husky"; }
     function f2 { [ -d "$MODULES" ] && [ "$PACKAGE_NAME" != "module-composer" ] && echo "module-composer"; }
     function f3 { [ -d "$MODULES" ] && [ "$PACKAGE_NAME" != "module-indexgen" ] && echo "-D module-indexgen"; }
-    function f4 { [ -f "$SERVER" ] && echo "express cors ajv ajv-formats"; }
-    function f5 { [ -f "$SERVER" ] && echo "-D nodemon"; }
-    function f6 { [ -d "$STATIC" ] && [ ! -d "$SRC" ] && echo "-D serve"; }
+    function f4 { [ -f "$WEB_SERVER" ] && echo "express cors ajv ajv-formats"; }
+    function f5 { [ -f "$WEB_SERVER" ] && echo "-D nodemon"; }
+    function f6 { [ -d "$WEB_STATIC" ] && [ ! -d "$SRC" ] && echo "-D serve"; }
     function f7 { [ -f "$README_TEMPLATE" ] && echo "-D ejs doctoc cloc"; }
     function f8 { bool.is_true "$SERVERLESS_DETECTED" && echo "-D serverless aws-sdk"; }
     function f9 { [ "$TEST_RUNNER" ] && [ "$TEST_RUNNER" != "custom" ] && echo "-D $TEST_RUNNER"; }

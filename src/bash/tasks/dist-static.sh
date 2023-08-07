@@ -2,12 +2,12 @@
 
 function tasks.dist_static.precondition {
 
-    [ ! -d "$STATIC" ] && echo "$STATIC not found"
+    [ ! -d "$WEB_STATIC" ] && echo "$WEB_STATIC not found"
 
 }
 
 function tasks.dist_static {
 
-    cp -a "$STATIC/" "$DIST"
+    cp -a "$WEB_STATIC/" "$DIST"
 
 }

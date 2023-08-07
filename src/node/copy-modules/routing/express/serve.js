@@ -1,6 +1,6 @@
 const process = require('process');
 const packageName = process.env.PACKAGE_NAME;
-const serverPort = process.env.SERVER_PORT;
+const serverPort = process.env.WEB_SERVER_PORT;
 
 module.exports = ({ routing }) => () => {
 

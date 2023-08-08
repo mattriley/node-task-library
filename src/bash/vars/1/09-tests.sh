@@ -42,3 +42,7 @@ function CUSTOM_TEST_RUNNER {
     [ ! "$test_runner" ] && test_runner="$TASK_LIBRARY_ROOT/src/node/bin/test-module-runner.js"
     echo "$test_runner"
 }
+
+function JEST_CONFIG {
+    echo "$PACKAGE_ROOT/jest.config.json"
+}

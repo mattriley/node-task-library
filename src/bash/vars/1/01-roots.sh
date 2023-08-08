@@ -12,10 +12,6 @@ function PACKAGE_ROOT {
     echo "."
 }
 
-function GIT_ROOT {
-    echo "$PACKAGE_ROOT"
-}
-
 function OUTPUT_ROOT {
     echo "$PACKAGE_ROOT"
 }

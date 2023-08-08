@@ -11,3 +11,7 @@ function PACKAGE_JSON_DETECTED {
 function PACKAGE_NAME {
     npm.package "name"
 }
+
+function NPM_BUMP_VERSION {
+    echo "minor"
+}

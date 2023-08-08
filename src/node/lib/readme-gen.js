@@ -9,7 +9,7 @@ const defaultConfig = {
     template: process.env.README_TEMPLATE,
     title: process.env.README_TITLE,
     baseUrl: process.env.README_BASE_URL,
-    gitBranch: process.env.GIT_BRANCH,
+    gitBranch: process.env.GIT_CURRENT_BRANCH,
     metricsSummary: process.env.METRICS_SUMMARY,
     moduleComposerEnabled: process.env.MODULE_COMPOSER_ENABLED === 'true'
 };

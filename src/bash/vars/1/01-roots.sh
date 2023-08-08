@@ -36,10 +36,3 @@ function SRC {
     echo "$PACKAGE_ROOT/src"
 }
 
-function MODULES {
-    echo "$SRC/modules"
-}
-
-function COMPOSE {
-    find "$SRC" -name "compose.*js" -print -quit
-}

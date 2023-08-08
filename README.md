@@ -1,6 +1,6 @@
 # Task Library
 
-<p align="right"><code>2145 sloc</code>&nbsp;<code>226 files</code>&nbsp;<code>5 deps</code>&nbsp;<code>12 dev deps</code></p>
+<p align="right"><code>2146 sloc</code>&nbsp;<code>227 files</code>&nbsp;<code>5 deps</code>&nbsp;<code>12 dev deps</code></p>
 
 A collection of bash scripts to support build, test, deploy and chores associated with developing and maintaining Node apps.
 

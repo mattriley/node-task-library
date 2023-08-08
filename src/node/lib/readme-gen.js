@@ -11,7 +11,7 @@ const defaultConfig = {
     baseUrl: process.env.README_BASE_URL,
     gitBranch: process.env.GIT_CURRENT_BRANCH,
     metricsSummary: process.env.METRICS_SUMMARY,
-    moduleComposerEnabled: process.env.MODULE_COMPOSER_ENABLED === 'true'
+    moduleComposerEnabled: process.env.MODULE_COMPOSER_DETECTED === 'true'
 };
 
 module.exports = (userConfig = {}) => {
@@ -48,7 +48,7 @@ module.exports = (userConfig = {}) => {
         return { code, lang, source, root, webroot };
     };
 
-    lib.compose = async (callback, composeFile = process.env.COMPOSE, options = {}) => {
+    lib.compose = async (callback, composeFile = process.env.COMPOSE_FILE, options = {}) => {
         const imported = await import(path.resolve(composeFile));
         const compose = imported?.default ?? imported;
         const composition = compose(options);
@@ -62,8 +62,8 @@ module.exports = (userConfig = {}) => {
         return lib.compose(render, undefined, composeOptions);
     };
 
-    lib.renderModuleDiagram = async (composeFile = process.env.COMPOSE) => {
-        if (!process.env.MODULE_COMPOSER_ENABLED) {
+    lib.renderModuleDiagram = async (composeFile = process.env.COMPOSE_FILE) => {
+        if (!process.env.MODULE_COMPOSER_DETECTED) {
             console.warn('module-composer is not enabled.');
             return '';
         }

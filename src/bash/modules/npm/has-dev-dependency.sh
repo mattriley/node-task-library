@@ -2,6 +2,6 @@
 
 function node.is_module_installed {
 
-    [ "$(tools.jq ".devDependencies | has(\"$1\")" "$PACKAGE_DEPENDENCIES_JSON")" = "true" ]
+    [ "$(tools.jq ".devDependencies | has(\"$1\")" "$PACKAGE_JSON")" = "true" ]
 
 }

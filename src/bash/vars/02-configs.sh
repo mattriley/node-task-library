@@ -1,13 +1,5 @@
 #!/bin/bash
 
-function PACKAGE_JSON {
-    echo "$PACKAGE_ROOT/package.json"
-}
-
-function PACKAGE_DEPENDENCIES_JSON {
-    echo "$PACKAGE_DEPENDENCIES_ROOT/package.json"
-}
-
 function GIT_IGNORE {
     echo "$PACKAGE_ROOT/.gitignore"
 }

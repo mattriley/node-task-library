@@ -1,15 +1,17 @@
 #!/bin/bash
 
+
 function STAGE {
     echo "local"
 }
 
-function PACKAGE_NAME {
-    npm.package "name"
+function PROJECT_NAME {
+    # shellcheck disable=2015
+    bool.is_true "$PACKAGE_JSON_DETECTED" && echo "$PACKAGE_NAME" || basename "$PWD"
 }
 
 function DISPLAY_NAME {
-    node.exec_script "start-case.js" "$PACKAGE_NAME"
+    node.exec_script "start-case.js" "$PROJECT_NAME"
 }
 
 function DEFAULT_TASK {
@@ -17,7 +19,7 @@ function DEFAULT_TASK {
 }
 
 function PRINT_VARS {
-    echo "STAGE | PORT | PACKAGE_NAME | DISPLAY_NAME"
+    echo "STAGE | PORT | PROJECT_NAME | DISPLAY_NAME"
 }
 
 function SELECTED_NODE_MODULES {

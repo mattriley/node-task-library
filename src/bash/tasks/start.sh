@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=2068
 
 function tasks.start.infer {
 
@@ -8,6 +9,6 @@ function tasks.start.infer {
 
 function tasks.start {
 
-    lib.run_tasks "$(tasks.start.infer)" "$@"
+    lib.run_tasks "$(tasks.start.infer)" $@
 
 }

@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=2068
 
 function tasks.tap_cov_report {
 
@@ -7,6 +8,6 @@ function tasks.tap_cov_report {
         --no-check-coverage \
         --coverage \
         --coverage-report="html" \
-        "$@"
+        $@
 
 }

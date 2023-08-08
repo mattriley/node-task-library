@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function fs.dir_exists {
+function fs.dir_not_exists {
 
     [ ! -d "$1" ]
 

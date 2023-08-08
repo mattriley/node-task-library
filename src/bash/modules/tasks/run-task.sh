@@ -1,11 +1,11 @@
 #!/bin/bash
 # shellcheck disable=2086
 
-function lib.run_task {
+function tasks.run_task {
 
     local task_name="$1"
     local task_args="${*:2}"
-    local task_command; task_command=$(lib.task_command "$task_name")
+    local task_command; task_command=$(tasks.task_command "$task_name")
 
     [ -z "$task_command" ] && reporter.info "$RED_FLAG Task ${BOLD}$task_name${NORM} not found" 1>&2 && return 1
     

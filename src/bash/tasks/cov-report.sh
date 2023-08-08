@@ -8,6 +8,6 @@ function tasks.cov_report.infer {
 
 function tasks.cov_report {
 
-    lib.run_tasks "$(tasks.cov_report.infer)" "$@"
+    tasks.run_tasks "$(tasks.cov_report.infer)" "$@"
 
 }

@@ -2,7 +2,7 @@
 
 function tasks.git_push {
 
-    lib.run_task git-commit "$@" && \
+    tasks.run_task git-commit "$@" && \
     git push
 
 }

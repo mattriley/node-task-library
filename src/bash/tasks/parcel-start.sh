@@ -8,6 +8,6 @@ function tasks.parcel_start.infer {
 
 function tasks.parcel_start {
 
-    lib.run_tasks "$(tasks.parcel_start.infer)" "$@"
+    tasks.run_tasks "$(tasks.parcel_start.infer)" "$@"
 
 }

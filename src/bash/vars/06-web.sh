@@ -17,7 +17,7 @@ function WEB_SERVER_DETECTED {
 }
 
 function WEB_SERVER_PORT {
-    lib.port "$(npm.package name)"
+    tasks.port "$(npm.package name)"
 }
 
 function PORT {
@@ -39,7 +39,7 @@ function WEB_URL {
 }
 
 function BFF_URL {
-    echo "http://localhost:$(lib.port "$PACKAGE_NAME-bff")"
+    echo "http://localhost:$(tasks.port "$PACKAGE_NAME-bff")"
 }
 
 function INDEX_HTML_TEMPLATE {

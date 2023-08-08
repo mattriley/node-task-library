@@ -4,6 +4,6 @@ function tasks.install {
 
     npm.install
 
-    lib.run_tasks "brew-infer | npm-infer"
+    tasks.run_tasks "brew-infer | npm-infer"
 
 }

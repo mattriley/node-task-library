@@ -8,6 +8,6 @@ function tasks.setup.infer {
 
 function tasks.setup {
 
-    lib.run_tasks "$(tasks.setup.infer)"
+    tasks.run_tasks "$(tasks.setup.infer)"
 
 }

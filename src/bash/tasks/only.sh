@@ -8,6 +8,6 @@ function tasks.only.infer {
 
 function tasks.only {
 
-    lib.run_task "$(tasks.only.infer)"
+    tasks.run_task "$(tasks.only.infer)"
 
 }

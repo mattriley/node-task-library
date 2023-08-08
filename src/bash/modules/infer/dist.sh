@@ -4,6 +4,6 @@
 function infer.dist {
 
     function infer_dist_1 { node.is_module_installed "parcel" && echo "parcel-dist"; }
-    lib.infer_tasks infer_dist_
+    tasks.infer_tasks infer_dist_
 
 }

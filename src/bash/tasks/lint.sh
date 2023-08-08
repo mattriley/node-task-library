@@ -8,6 +8,6 @@ function tasks.lint.infer {
 
 function tasks.lint {
 
-    lib.run_tasks "$(tasks.lint.infer)" "$@"
+    tasks.run_tasks "$(tasks.lint.infer)" "$@"
 
 }

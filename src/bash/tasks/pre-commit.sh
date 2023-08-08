@@ -8,6 +8,6 @@ function tasks.pre_commit.infer {
 
 function tasks.pre_commit {
 
-    lib.run_tasks "$(tasks.pre_commit.infer)"
+    tasks.run_tasks "$(tasks.pre_commit.infer)"
 
 }

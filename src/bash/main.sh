@@ -25,6 +25,6 @@ function main {
     local task_name=${1:-$DEFAULT_TASK}
     local task_args=${*:2}
     [ ! "$task_name" = "vars" ] && [ -z "$IS_SUBTASK" ] && tasks.print_vars
-    lib.run_task "$task_name" "$task_args"
+    tasks.run_task "$task_name" "$task_args"
 
 }

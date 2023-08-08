@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function lib.find_task_file {
+function tasks.find_task_file {
 
     local task_name="$1"
 

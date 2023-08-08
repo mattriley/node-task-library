@@ -8,6 +8,6 @@ function tasks.pre.infer {
 
 function tasks.pre {
 
-    lib.run_task "$(tasks.pre.infer)"
+    tasks.run_task "$(tasks.pre.infer)"
 
 }

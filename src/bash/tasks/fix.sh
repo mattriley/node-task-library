@@ -8,6 +8,6 @@ function tasks.fix.infer {
 
 function tasks.fix {
 
-    lib.run_tasks "$(tasks.fix.infer)" --fix "$@"
+    tasks.run_tasks "$(tasks.fix.infer)" --fix "$@"
 
 }

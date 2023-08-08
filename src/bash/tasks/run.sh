@@ -9,6 +9,6 @@ function tasks.run.infer {
 
 function tasks.run {
 
-    lib.run_tasks "$(tasks.run.infer)" "$@"
+    tasks.run_tasks "$(tasks.run.infer)" "$@"
 
 }

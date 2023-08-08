@@ -9,6 +9,6 @@ function tasks.metrics.infer {
 
 function tasks.metrics {
 
-    lib.run_tasks "$(tasks.metrics.infer)"
+    tasks.run_tasks "$(tasks.metrics.infer)"
 
 }

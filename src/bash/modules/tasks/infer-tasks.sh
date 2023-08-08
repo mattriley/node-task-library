@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=2005,2317
 
-function lib.infer_tasks {
+function tasks.infer_tasks {
 
     local function_prefix="$1"
     function invoke_function { echo "$($1)"; }

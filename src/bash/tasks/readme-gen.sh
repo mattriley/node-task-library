@@ -2,9 +2,9 @@
 
 function tasks.readme_gen {
 
-    lib.run_task "readme-template-gen" && \
+    tasks.run_task "readme-template-gen" && \
     node.exec_infer "$README_GEN" > "$README" && \
-    lib.run_task "doctoc" && \
+    tasks.run_task "doctoc" && \
     git add "$README"
 
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=2317
 
-function lib.infer_test_tasks {
+function tasks.infer_test_tasks {
 
     local task_name="$1"
     local default_task="$2"
@@ -9,9 +9,9 @@ function lib.infer_test_tasks {
     [ -z "$TEST_RUNNER" ] && echo "$default_task" && return 0
     
     function infer_test_tasks_1 { [ -z "$task_name" ] && echo "$TEST_RUNNER-test"; }
-    function infer_test_tasks_2 { lib.task_exists "$TEST_RUNNER-$task_name" && echo "$TEST_RUNNER-$task_name"; }
+    function infer_test_tasks_2 { tasks.task_exists "$TEST_RUNNER-$task_name" && echo "$TEST_RUNNER-$task_name"; }
     function infer_test_tasks_3 { echo "$default_task"; }
 
-    lib.infer_tasks infer_test_tasks_
+    tasks.infer_tasks infer_test_tasks_
 
 }

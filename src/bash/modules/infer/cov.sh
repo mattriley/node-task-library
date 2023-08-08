@@ -2,6 +2,6 @@
 
 function infer.cov {
 
-    tasks.infer_test_tasks "cov" "$DEFAULT_COV_TASK"
+    tests.infer_test_tasks "cov" "$DEFAULT_COV_TASK"
 
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=2317
 
-function tasks.infer_test_tasks {
+function tests.infer_test_tasks {
 
     local task_name="$1"
     local default_task="$2"

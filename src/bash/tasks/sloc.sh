@@ -2,7 +2,7 @@
 
 function tasks.sloc.precondition {
 
-    [ ! -d "$SRC" ] && echo "$SRC not found"
+    fs.dir_absent "$SRC" && echo "$SRC not found"
 
 }
 

@@ -8,7 +8,7 @@ function tasks.cov.infer {
 
 function tasks.cov.precondition {
 
-    fs.dir_not_exists "$TESTS" && echo "$TESTS not found"
+    fs.dir_absent "$TESTS" && echo "$TESTS not found"
 
 }
 

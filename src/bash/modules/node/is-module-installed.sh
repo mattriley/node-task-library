@@ -2,6 +2,6 @@
 
 function node.is_module_installed {
 
-    [ -d "$(pwd)/$NODE_MODULES/$1" ]
+    fs.dir_exists "$(pwd)/$NODE_MODULES/$1"
 
 }

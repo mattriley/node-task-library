@@ -8,6 +8,6 @@ function tasks.deploy.infer {
 
 function tasks.deploy {
 
-    tasks.run_tasks "$(tasks.deploy.infer)" "$@"
+    core.run_tasks "$(tasks.deploy.infer)" "$@"
 
 }

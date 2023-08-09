@@ -9,6 +9,6 @@ function tasks.push.infer {
 
 function tasks.push {
 
-    tasks.run_tasks "$(tasks.push.infer)" "$@"
+    core.run_tasks "$(tasks.push.infer)" "$@"
 
 }

@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=2317
 
-function tasks.find_task_file {
+function core.find_task_file {
 
     local task_name="$1"
 

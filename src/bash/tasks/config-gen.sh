@@ -8,6 +8,6 @@ function tasks.config_gen.infer {
 
 function tasks.config_gen {
 
-    tasks.run_tasks "$(tasks.config_gen.infer)" "$@"
+    core.run_tasks "$(tasks.config_gen.infer)" "$@"
 
 }

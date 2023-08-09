@@ -8,7 +8,7 @@ function tasks.dev.infer {
 
 function tasks.dev {
 
-    tasks.run_task "$(tasks.dev.infer)"
+    core.run_task "$(tasks.dev.infer)"
     tasks.edit
 
 }

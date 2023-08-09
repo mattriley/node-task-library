@@ -8,6 +8,6 @@ function tasks.pre.infer {
 
 function tasks.pre {
 
-    tasks.run_task "$(tasks.pre.infer)"
+    core.run_task "$(tasks.pre.infer)"
 
 }

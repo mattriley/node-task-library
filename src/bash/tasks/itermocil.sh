@@ -2,7 +2,7 @@
 
 function tasks.itermocil {
 
-    tasks.run_task "itermocil-config-gen" && \
+    core.run_task "itermocil-config-gen" && \
     mkdir -p "$HOME/.itermocil" && \
     itermocil --here
 

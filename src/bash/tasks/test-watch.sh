@@ -8,6 +8,6 @@ function tasks.test_watch.infer {
 
 function tasks.test_watch {
 
-    tasks.run_tasks "$(tasks.test_watch.infer)" "$@"
+    core.run_tasks "$(tasks.test_watch.infer)" "$@"
 
 }

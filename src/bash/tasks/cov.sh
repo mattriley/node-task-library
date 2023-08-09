@@ -14,6 +14,6 @@ function tasks.cov.precondition {
 
 function tasks.cov {
 
-    tasks.run_tasks "$(tasks.cov.infer)" "$@"
+    core.run_tasks "$(tasks.cov.infer)" "$@"
 
 }

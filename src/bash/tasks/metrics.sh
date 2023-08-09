@@ -9,6 +9,6 @@ function tasks.metrics.infer {
 
 function tasks.metrics {
 
-    tasks.run_tasks "$(tasks.metrics.infer)"
+    core.run_tasks "$(tasks.metrics.infer)"
 
 }

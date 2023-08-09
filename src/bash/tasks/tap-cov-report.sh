@@ -3,7 +3,7 @@
 
 function tasks.tap_cov_report {
 
-    tasks.run_task "tap-test" \
+    core.run_task "tap-test" \
         --no-browser \
         --no-check-coverage \
         --coverage \

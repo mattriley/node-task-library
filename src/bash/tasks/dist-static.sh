@@ -2,7 +2,7 @@
 
 function tasks.dist_static.precondition {
 
-    [ ! -d "$WEB_STATIC" ] && echo "$WEB_STATIC not found"
+    fs.dir_not_exists "$WEB_STATIC" && echo "$WEB_STATIC not found"
 
 }
 

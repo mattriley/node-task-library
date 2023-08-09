@@ -2,7 +2,7 @@
 
 function tasks.custom_test.precondition {
 
-    [ ! -f "$CUSTOM_TEST_RUNNER" ] && echo "$CUSTOM_TEST_RUNNER not found"
+    fs.file_not_exists "$CUSTOM_TEST_RUNNER" && echo "$CUSTOM_TEST_RUNNER not found"
 
 }
 

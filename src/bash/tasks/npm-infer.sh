@@ -4,8 +4,8 @@
 function tasks.npm_infer {
 
     function f1 { echo "-D npm-check-updates eslint husky"; }
-    function f2 { [ -d "$MODULES" ] && [ "$PACKAGE_NAME" != "module-composer" ] && echo "module-composer"; }
-    function f3 { [ -d "$MODULES" ] && [ "$PACKAGE_NAME" != "module-indexgen" ] && echo "-D module-indexgen"; }
+    function f2 { bool.is_true "$MODULE_COMPOSER_DETECTED" && [ "$PACKAGE_NAME" != "module-composer" ] && echo "module-composer"; }
+    function f3 { bool.is_true "$MODULE_COMPOSER_DETECTED" && [ "$PACKAGE_NAME" != "module-indexgen" ] && echo "-D module-indexgen"; }
     function f4 { bool.is_true "$WEB_SERVER_DETECTED" && echo "express cors ajv ajv-formats"; }
     function f5 { bool.is_true "$WEB_SERVER_DETECTED" && echo "-D nodemon"; }
     function f6 { bool.is_true "$STATIC_WEBSITE_DETECTED" && echo "-D serve"; }

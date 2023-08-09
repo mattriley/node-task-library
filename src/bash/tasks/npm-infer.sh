@@ -19,14 +19,14 @@ function tasks.npm_infer {
     function f14 { node.is_module_installed "jest" && echo "-D jest-environment-jsdom"; }
     function f15 { node.is_module_installed "eslint" && echo "-D $(printf "eslint-plugin-%s " "$ESLINT_PLUGINS")"; }
 
-    function callback {
+    function npm_install {
         local args; args="$("$1")"
         [ "$args" ] && npm.install "$args"
         unset "$1"
     }
 
     reporter.newline && \
-    list.each "$(util.list_of_func)" && \
+    list.each "$(util.list_of_func)" npm_install && \
     reporter.newline
 
 }

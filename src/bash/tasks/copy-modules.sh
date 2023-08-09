@@ -1,12 +1,11 @@
 #!/bin/bash
-
+# shellcheck disable=2317
 
 function tasks.copy_modules {
 
     local copy_modules_root; copy_modules_root="$TASK_LIBRARY_ROOT/src/node/copy-modules"
 
-    # shellcheck disable=2317
-    function callback { 
+    function copy_module { 
         rm -rf "${MODULES/$1}:?"
         cp -r "$copy_modules_root/$1" "$MODULES"
 
@@ -16,6 +15,6 @@ function tasks.copy_modules {
         fi
     }
 
-    list.each "$COPY_MODULES"
+    list.each "$COPY_MODULES" copy_module
 
 }

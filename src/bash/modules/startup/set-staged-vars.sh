@@ -1,4 +1,5 @@
 #!/bin/bash
+# shellcheck disable=2317
 
 function startup.set_staged_vars {
 
@@ -10,13 +11,12 @@ function startup.set_staged_vars {
     # shellcheck disable=2001
     staged_var_names=$(echo "$external_var_names" | sed "s;=.+__$stage_upper;;")
 
-    # shellcheck disable=2317
-    function callback {
+    function export_staged_var {
         local name="$1"
         local base_name=${name/__$stage_upper/}
         export "$base_name"="${!name}"
     }
 
-    list.each "$staged_var_names"
+    list.each "$staged_var_names" export_staged_var
 
 }

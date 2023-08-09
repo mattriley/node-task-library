@@ -1,13 +1,5 @@
 #!/bin/bash
 
-function NODE_VERSION {
-    npx n --latest
-}
-
-function NODENV_VERSION {
-    echo "$NODE_VERSION"
-}
-
 function PACKAGE_ROOT {
     echo "."
 }

@@ -9,7 +9,8 @@ function GIT_IGNORE {
 }
 
 function GIT_DETECTED {
-    fs.dir_exists "$GIT_ROOT/.git" && echo "true" || echo "false"
+    fs.dir_exists "$GIT_ROOT/.git"
+    bool.echo $?
 }
 
 function GIT_CURRENT_BRANCH {

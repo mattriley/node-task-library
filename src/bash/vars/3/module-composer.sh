@@ -9,9 +9,11 @@ function COMPOSE_FILE {
 }
 
 function MODULE_COMPOSER_DETECTED {
-    fs.dir_exists "$MODULES" && echo "true" || echo "false"
+    fs.dir_exists "$MODULES"
+    bool.echo $?
 }
 
 function MODULE_COMPOSER_DETECTED {
-    npm.has_dependency "module-composer" && echo "true" || echo "false"
+    npm.has_dependency "module-composer"
+    bool.echo $?
 }

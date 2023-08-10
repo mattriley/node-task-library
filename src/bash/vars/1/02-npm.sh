@@ -5,7 +5,8 @@ function PACKAGE_JSON {
 }
 
 function PACKAGE_JSON_DETECTED {
-    fs.file_exists "$PACKAGE_JSON" && echo "true" || echo "false"
+    fs.file_exists "$PACKAGE_JSON"
+    bool.echo $?
 }
 
 function PACKAGE_NAME {

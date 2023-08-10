@@ -1,5 +1,6 @@
 #!/bin/bash
 
 function REACT_DETECTED {
-    [ "$PACKAGE_NAME" != "task-library" ] && grep -rq "react-dom" "$SRC" && echo "true" || echo "false"
+    [ "$PACKAGE_NAME" != "task-library" ] && (node.is_module_installed "react" || grep -rq "react-dom" "$SRC")
+    bool.echo $?
 }

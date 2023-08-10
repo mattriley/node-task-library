@@ -5,5 +5,6 @@ function SERVERLESS_CONFIG {
 }
 
 function SERVERLESS_DETECTED {
-    fs.file_exists "$SERVERLESS_CONFIG" && echo "true" || echo "false"
+    fs.file_exists "$SERVERLESS_CONFIG"
+    bool.echo $?
 }

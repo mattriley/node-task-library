@@ -18,6 +18,11 @@ function ESLINT_PLUGINS {
     list.filter "$ESLINT_CONDITIONAL_PLUGINS" node.is_module_installed
 }
 
+function ESLINT_DETECTED {
+    fs.file_exists "$ESLINT_CONFIG"
+    bool.echo $?
+}
+
 function SHELLCHECK_PATHS {
     echo "$TEST_WATCH_PATHS | $TASKS"
 }

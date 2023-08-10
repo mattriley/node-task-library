@@ -5,7 +5,8 @@ function WEB_STATIC {
 }
 
 function STATIC_WEBSITE_DETECTED {
-    fs.dir_exists "$WEB_STATIC" && ! fs.dir_exists "$SRC" && echo "true" || echo "false"
+    fs.dir_exists "$WEB_STATIC" && fs.dir_absent "$SRC"
+    bool.echo $?
 }
 
 function WEB_SERVER {
@@ -13,7 +14,8 @@ function WEB_SERVER {
 }
 
 function WEB_SERVER_DETECTED {
-    fs.file_exists "$WEB_SERVER" && echo "true" || echo "false"
+    fs.file_exists "$WEB_SERVER"
+    bool.echo $?
 }
 
 function WEB_SERVER_PORT {

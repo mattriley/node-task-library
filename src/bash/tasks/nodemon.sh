@@ -2,7 +2,7 @@
 
 function tasks.nodemon.precondition {
 
-    [ ! -f "$WEB_SERVER" ] && echo "$WEB_SERVER not found"
+    fs.file_absent "$WEB_SERVER" && echo "$WEB_SERVER not found"
 
 }
 

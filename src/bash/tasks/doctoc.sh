@@ -2,7 +2,7 @@
 
 function tasks.doctoc.precondition {
 
-    [ ! -f "$README" ] && echo "$README not found"
+    fs.file_absent "$README" && echo "$README not found"
 
 }
 

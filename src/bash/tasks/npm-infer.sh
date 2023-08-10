@@ -9,7 +9,7 @@ function tasks.npm_infer {
     function f4 { bool.is_true "$WEB_SERVER_DETECTED" && echo "express cors ajv ajv-formats"; }
     function f5 { bool.is_true "$WEB_SERVER_DETECTED" && echo "-D nodemon"; }
     function f6 { bool.is_true "$STATIC_WEBSITE_DETECTED" && echo "-D serve"; }
-    function f7 { [ -f "$README_TEMPLATE" ] && echo "-D ejs doctoc cloc"; }
+    function f7 { fs.file_exists "$README_TEMPLATE" && echo "-D ejs doctoc cloc"; }
     function f8 { bool.is_true "$SERVERLESS_DETECTED" && echo "-D serverless aws-sdk"; }
     function f9 { [ "$TEST_RUNNER" ] && [ "$TEST_RUNNER" != "custom" ] && echo "-D $TEST_RUNNER"; }
     function f10 { bool.is_true "$REACT_DETECTED" && echo "-D react react-dom"; }

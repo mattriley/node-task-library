@@ -2,7 +2,7 @@
 
 function tasks.index_html_render_template.precondition {
 
-    [ ! -f "$INDEX_HTML_TEMPLATE" ] && echo "$INDEX_HTML_TEMPLATE not found"
+    fs.file_absent "$INDEX_HTML_TEMPLATE" && echo "$INDEX_HTML_TEMPLATE not found"
 
 }
 

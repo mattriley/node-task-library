@@ -3,6 +3,6 @@
 
 function startup.source_project_vars {
 
-    [ -f "./task-vars" ] && source "./task-vars"
+    fs.file_exists "./task-vars" && source "./task-vars"
 
 }

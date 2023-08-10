@@ -2,7 +2,7 @@
 
 function tasks.readme_template_gen.precondition {
 
-    [ -f "$README_TEMPLATE" ] && echo "existing $README_TEMPLATE found"
+    fs.file_exists "$README_TEMPLATE" && echo "existing $README_TEMPLATE found"
 
 }
 

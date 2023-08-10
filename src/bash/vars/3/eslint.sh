@@ -22,7 +22,3 @@ function ESLINT_DETECTED {
     fs.file_exists "$ESLINT_CONFIG"
     bool.echo $?
 }
-
-function SHELLCHECK_PATHS {
-    echo "$TEST_WATCH_PATHS | $TASKS"
-}

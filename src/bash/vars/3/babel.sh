@@ -5,5 +5,6 @@ function BABEL_CONFIG {
 }
 
 function BABEL_PRESET_ENV {
-    node.is_module_installed "parcel" && echo "@parcel/babel-preset-env" || echo "@babel/preset-env"
+    echo "@babel/preset-env"
+    # node.is_module_installed "parcel" && echo "@parcel/babel-preset-env" || echo "@babel/preset-env"
 }

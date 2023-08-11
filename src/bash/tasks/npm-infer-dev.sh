@@ -13,11 +13,10 @@ function tasks.npm_infer_dev {
     function f6 { bool.is_true "$SERVERLESS_DETECTED" && echo "serverless aws-sdk"; }
     function f7 { [ "$TEST_RUNNER" ] && [ "$TEST_RUNNER" != "custom" ] && echo "$TEST_RUNNER"; }
     function f8 { bool.is_true "$REACT_DETECTED" && echo "react react-dom"; }
-    function f9 { node.is_module_installed "react" && echo "$BABEL_PRESET_ENV"; }
-    function f10 { node.is_module_installed "react" && echo "@babel/core"; }
-    function f11 { node.is_module_installed "@babel/core" && echo "@babel/preset-env @babel/node"; }
-    function f12 { node.is_module_installed "jest" && echo "jest-environment-jsdom"; }
-    function f13 { node.is_module_installed "eslint" && printf "eslint-plugin-%s " "$ESLINT_PLUGINS"; }
+    function f9 { bool.is_true "$REACT_DETECTED" && bool.is_false "$PARCEL_DETECTED" && echo "@babel/core $BABEL_PRESET_ENV"; }
+    function f11 { node.is_module_installed "@babel/core" && echo "@babel/node"; }
+    function f12 { bool.is_true "$JEST_DETECTED" && echo "jest-environment-jsdom"; }
+    function f13 { bool.is_true "$ESLINT_DETECTED" && printf "eslint-plugin-%s " "$ESLINT_PLUGINS"; }
 
     local modules; modules=$(list.find "$(util.list_of_func)" util.invoke_anon)
     [ -z "$modules" ] && reporter.task_warn "No NPM packages inferred" && return 0

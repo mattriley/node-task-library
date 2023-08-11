@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=2317
 
-function startup.set_staged_vars {
+function var_loader.set_staged_vars {
 
     local external_var_names="$1"
     local stage_upper; stage_upper=$(echo "$STAGE" | tr '[:lower:]' '[:upper:]')

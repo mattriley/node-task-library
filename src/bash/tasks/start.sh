@@ -9,6 +9,6 @@ function tasks.start.infer {
 
 function tasks.start {
 
-    core.run_tasks "$(tasks.start.infer)" $@
+    task_runner.run_tasks "$(tasks.start.infer)" $@
 
 }

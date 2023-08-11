@@ -2,6 +2,6 @@
 
 function tasks.barrel_gen {
 
-    core.run_task "indexgen" "$@"
+    task_runner.run_task "indexgen" "$@"
 
 }

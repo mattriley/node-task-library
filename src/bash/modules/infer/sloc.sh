@@ -4,6 +4,6 @@
 function infer.sloc {
 
     function infer_sloc_1 { node.is_module_installed "cloc" && echo "cloc-sloc"; }
-    core.infer_tasks infer_sloc_
+    task_runner.infer_tasks infer_sloc_
 
 }

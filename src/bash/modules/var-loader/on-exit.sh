@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function startup.on_exit {
+function var_loader.on_exit {
     
     local exit_code="$?"
     local failure="${RED}FAILURE${NORM}"

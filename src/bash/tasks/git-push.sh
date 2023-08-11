@@ -2,7 +2,7 @@
 
 function tasks.git_push {
 
-    core.run_task git-commit "$@" && \
+    task_runner.run_task git-commit "$@" && \
     git push
 
 }

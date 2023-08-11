@@ -9,6 +9,6 @@ function PARCEL_CONFIG {
 }
 
 function PARCEL_DETECTED {
-    npm.is_module_installed "parcel" || fs.file_exists "$PARCEL_CONFIG"
+    node.is_module_installed "parcel" || fs.file_exists "$PARCEL_CONFIG"
     bool.echo $?
 }

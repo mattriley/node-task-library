@@ -8,6 +8,6 @@ function tasks.cov_report.infer {
 
 function tasks.cov_report {
 
-    core.run_tasks "$(tasks.cov_report.infer)" "$@"
+    task_runner.run_tasks "$(tasks.cov_report.infer)" "$@"
 
 }

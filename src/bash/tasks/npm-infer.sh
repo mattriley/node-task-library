@@ -3,7 +3,7 @@
 
 function tasks.npm_infer {
 
-    startup.load_vars
+    var_loader.load_vars
 
     function f1 { bool.is_true "$MODULE_COMPOSER_DETECTED" && [ "$PACKAGE_NAME" != "module-composer" ] && echo "module-composer"; }
     function f2 { bool.is_true "$WEB_SERVER_DETECTED" && echo "express cors ajv ajv-formats"; }

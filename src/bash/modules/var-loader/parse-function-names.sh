@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function startup.parse_function_names {
+function var_loader.parse_function_names {
 
     for script in "$1"/*.sh; do
         local pattern='^function (.+) '

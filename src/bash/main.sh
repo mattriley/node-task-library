@@ -17,14 +17,14 @@ function main {
     for module_path in "$bash_dir/modules"/*; do load_module "$module_path"; done
     load_module "$bash_dir/tasks"
 
-    { [ "$VARS" ] && export IS_SUBTASK="true"; } || startup.load_vars
+    { [ "$VARS" ] && export IS_SUBTASK="true"; } || var_loader.load_vars
 
-    trap startup.on_term SIGTERM SIGINT
-    trap startup.on_exit EXIT
+    trap var_loader.on_term SIGTERM SIGINT
+    trap var_loader.on_exit EXIT
 
     local task_name=${1:-$DEFAULT_TASK}
     local task_args=${*:2}
     [ ! "$task_name" = "vars" ] && [ -z "$IS_SUBTASK" ] && tasks.print_vars
-    core.run_task "$task_name" "$task_args"
+    task_runner.run_task "$task_name" "$task_args"
 
 }

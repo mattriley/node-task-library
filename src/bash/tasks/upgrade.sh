@@ -8,6 +8,6 @@ function tasks.upgrade.infer {
 
 function tasks.upgrade {
 
-    core.run_tasks "$(tasks.upgrade.infer)"
+    task_runner.run_tasks "$(tasks.upgrade.infer)"
 
 }

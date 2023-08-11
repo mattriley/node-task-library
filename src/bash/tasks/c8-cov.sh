@@ -2,7 +2,7 @@
 
 function tasks.c8_cov {
 
-    core.run_task "c8-cov-report" \
+    task_runner.run_task "c8-cov-report" \
         --check-coverage \
         --branches "$COV_BRANCHES" \
         --lines "$COV_LINES" \

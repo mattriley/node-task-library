@@ -2,6 +2,6 @@
 
 function tasks.barrel_gen_watch {
 
-    core.run_task "barrel-gen" --watch
+    task_runner.run_task "barrel-gen" --watch
 
 }

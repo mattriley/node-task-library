@@ -2,6 +2,6 @@
 
 function tasks.jest_cov {
 
-    core.run_task "jest-test" --coverage "$@"
+    task_runner.run_task "jest-test" --coverage "$@"
 
 }

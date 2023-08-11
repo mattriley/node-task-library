@@ -24,6 +24,6 @@ function tasks.npm_infer_dev {
 
     local absent; absent=$(list.filter "$modules" node.is_module_absent)
     [ -z "$absent" ] && return 0
-    npm.install_dev "$absent" && tasks.npm_infer_dev && return 0
+    npm.install_dev "$absent" && tasks.npm_infer_dev
 
 }

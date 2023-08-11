@@ -11,6 +11,21 @@ function load_module {
     for script_path in "$module_path"/*.sh; do source "$script_path"; done
 }
 
+function on_term {
+    exit 1
+}
+
+function on_exit {
+    local exit_code="$?"
+    local failure="${RED}FAILURE${NORM}"
+    local success="${GREEN}SUCCESS${NORM}"
+    reporter.newline
+    [ "$exit_code" -gt 0 ] && echo "$failure" && exit 1
+    [ "$IS_SUBTASK" ] && return
+    echo "$success"
+}
+
+
 function main {
 
     local bash_dir="$TASK_LIBRARY_ROOT/src/bash"
@@ -19,8 +34,8 @@ function main {
 
     { [ "$VARS" ] && export IS_SUBTASK="true"; } || var_loader.load_vars
 
-    trap var_loader.on_term SIGTERM SIGINT
-    trap var_loader.on_exit EXIT
+    trap on_term SIGTERM SIGINT
+    trap on_exit EXIT
 
     local task_name=${1:-$DEFAULT_TASK}
     local task_args=${*:2}

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function list.filter {
+function list.reject {
 
     read -r -a arr <<< "$1"
     local callback="$2"

@@ -9,10 +9,10 @@ function tasks.npm_infer {
     function f2 { bool.true "$WEB_SERVER_DETECTED" && echo "express cors ajv ajv-formats"; }
 
     local modules; modules=$(list.find "$(util.list_of_func)" util.invoke_anon)
+    modules=$(list.reject "$modules" npm.is_this_package)
     [ -z "$modules" ] && reporter.task_warn "No NPM packages inferred" && return 0
-
-    local absent; absent=$(list.reject "$modules" node.module_installed)
-    [ -n "$absent" ] && npm.install "$absent"
+    modules=$(list.reject "$modules" node.module_installed)
+    [ -n "$modules" ] && npm.install "$modules"
 
     tasks.npm_infer_dev
 

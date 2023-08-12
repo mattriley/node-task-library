@@ -19,10 +19,10 @@ function tasks.npm_infer_dev {
     function f13 { bool.true "$ESLINT_DETECTED" && printf "eslint-plugin-%s " "$ESLINT_PLUGINS"; }
 
     local modules; modules=$(list.find "$(util.list_of_func)" util.invoke_anon)
+    modules=$(list.reject "$modules" npm.is_this_package)
     [ -z "$modules" ] && reporter.task_warn "No NPM packages inferred" && return 0
-
-    local absent; absent=$(list.reject "$modules" node.module_installed)
-    [ -z "$absent" ] && return 0
-    npm.install_dev "$absent" && tasks.npm_infer_dev
+    modules=$(list.reject "$modules" node.module_installed)
+    [ -z "$modules" ] && return 0
+    npm.install_dev "$modules" && tasks.npm_infer_dev
 
 }

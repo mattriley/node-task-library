@@ -14,14 +14,14 @@ function tasks.npm_infer_dev {
     function f7 { [ "$TEST_RUNNER" ] && [ "$TEST_RUNNER" != "custom" ] && echo "$TEST_RUNNER"; }
     function f8 { bool.true "$REACT_DETECTED" && echo "react react-dom"; }
     function f9 { bool.true "$REACT_DETECTED" && bool.false "$PARCEL_DETECTED" && echo "@babel/core $BABEL_PRESET_ENV"; }
-    function f11 { node.is_module_installed "@babel/core" && echo "@babel/node"; }
+    function f11 { node.module_installed "@babel/core" && echo "@babel/node"; }
     function f12 { bool.true "$JEST_DETECTED" && echo "jest-environment-jsdom"; }
     function f13 { bool.true "$ESLINT_DETECTED" && printf "eslint-plugin-%s " "$ESLINT_PLUGINS"; }
 
     local modules; modules=$(list.find "$(util.list_of_func)" util.invoke_anon)
     [ -z "$modules" ] && reporter.task_warn "No NPM packages inferred" && return 0
 
-    local absent; absent=$(list.reject "$modules" node.is_module_installed)
+    local absent; absent=$(list.reject "$modules" node.module_installed)
     [ -z "$absent" ] && return 0
     npm.install_dev "$absent" && tasks.npm_infer_dev
 

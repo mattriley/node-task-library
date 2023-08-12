@@ -15,7 +15,7 @@ function ESLINT_CONDITIONAL_PLUGINS {
 
 function ESLINT_PLUGINS {
     echo -n "import | "
-    list.filter "$ESLINT_CONDITIONAL_PLUGINS" node.is_module_installed
+    list.filter "$ESLINT_CONDITIONAL_PLUGINS" node.module_installed
 }
 
 function ESLINT_DETECTED {

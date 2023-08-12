@@ -9,6 +9,6 @@ function PARCEL_CONFIG {
 }
 
 function PARCEL_DETECTED {
-    node.is_module_installed "parcel" || fs.file_exists "$PARCEL_CONFIG"
+    node.module_installed "parcel" || fs.file_exists "$PARCEL_CONFIG"
     bool.from_exit_status $?
 }

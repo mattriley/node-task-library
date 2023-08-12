@@ -11,7 +11,7 @@ function tasks.npm_infer {
     local modules; modules=$(list.find "$(util.list_of_func)" util.invoke_anon)
     [ -z "$modules" ] && reporter.task_warn "No NPM packages inferred" && return 0
 
-    local absent; absent=$(list.filter "$modules" node.is_module_absent)
+    local absent; absent=$(list.reject "$modules" node.module_installed)
     [ -n "$absent" ] && npm.install "$absent"
 
     tasks.npm_infer_dev

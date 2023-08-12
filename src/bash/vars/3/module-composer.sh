@@ -10,10 +10,10 @@ function COMPOSE_FILE {
 
 function MODULE_COMPOSER_DETECTED {
     fs.dir_exists "$MODULES"
-    bool.echo $?
+    bool.from_exit_status $?
 }
 
 function MODULE_COMPOSER_DETECTED {
     npm.has_dependency "module-composer"
-    bool.echo $?
+    bool.from_exit_status $?
 }

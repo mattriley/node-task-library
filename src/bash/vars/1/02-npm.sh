@@ -6,7 +6,7 @@ function PACKAGE_JSON {
 
 function PACKAGE_JSON_DETECTED {
     fs.file_exists "$PACKAGE_JSON"
-    bool.echo $?
+    bool.from_exit_status $?
 }
 
 function PACKAGE_NAME {

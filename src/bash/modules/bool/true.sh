@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function bool.is_true {
+function bool.true {
 
     [ "$1" = "true" ]
 

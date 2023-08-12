@@ -20,5 +20,5 @@ function ESLINT_PLUGINS {
 
 function ESLINT_DETECTED {
     fs.file_exists "$ESLINT_CONFIG"
-    bool.echo $?
+    bool.from_exit_status $?
 }

@@ -5,8 +5,8 @@ function tasks.npm_infer {
 
     var_loader.load_vars
 
-    function f1 { bool.is_true "$MODULE_COMPOSER_DETECTED" && [ "$PACKAGE_NAME" != "module-composer" ] && echo "module-composer"; }
-    function f2 { bool.is_true "$WEB_SERVER_DETECTED" && echo "express cors ajv ajv-formats"; }
+    function f1 { bool.true "$MODULE_COMPOSER_DETECTED" && [ "$PACKAGE_NAME" != "module-composer" ] && echo "module-composer"; }
+    function f2 { bool.true "$WEB_SERVER_DETECTED" && echo "express cors ajv ajv-formats"; }
 
     local modules; modules=$(list.find "$(util.list_of_func)" util.invoke_anon)
     [ -z "$modules" ] && reporter.task_warn "No NPM packages inferred" && return 0

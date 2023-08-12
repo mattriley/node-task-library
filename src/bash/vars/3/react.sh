@@ -2,5 +2,5 @@
 
 function REACT_DETECTED {
     [ "$PACKAGE_NAME" != "task-library" ] && (node.is_module_installed "react" || grep -rq "react-dom" "$SRC")
-    bool.echo $?
+    bool.from_exit_status $?
 }

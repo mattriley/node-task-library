@@ -6,7 +6,7 @@ function WEB_STATIC {
 
 function STATIC_WEBSITE_DETECTED {
     fs.dir_exists "$WEB_STATIC" && fs.dir_absent "$SRC"
-    bool.echo $?
+    bool.from_exit_status $?
 }
 
 function WEB_SERVER {
@@ -15,7 +15,7 @@ function WEB_SERVER {
 
 function WEB_SERVER_DETECTED {
     fs.file_exists "$WEB_SERVER"
-    bool.echo $?
+    bool.from_exit_status $?
 }
 
 function WEB_SERVER_PORT {

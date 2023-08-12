@@ -7,7 +7,7 @@ function STAGE {
 
 function PROJECT_NAME {
     # shellcheck disable=2015
-    bool.is_true "$PACKAGE_JSON_DETECTED" && echo "$PACKAGE_NAME" || basename "$PWD"
+    bool.true "$PACKAGE_JSON_DETECTED" && echo "$PACKAGE_NAME" || basename "$PWD"
 }
 
 function DISPLAY_NAME {

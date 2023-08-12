@@ -6,5 +6,5 @@ function SERVERLESS_CONFIG {
 
 function SERVERLESS_DETECTED {
     fs.file_exists "$SERVERLESS_CONFIG"
-    bool.echo $?
+    bool.from_exit_status $?
 }

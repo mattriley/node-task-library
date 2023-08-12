@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function npm.is_published {
+function npm.published {
 
     npm view > /dev/null 2>&1
 

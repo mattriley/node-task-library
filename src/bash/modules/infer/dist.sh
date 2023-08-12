@@ -3,7 +3,7 @@
 
 function infer.dist {
 
-    function infer_dist_1 { node.is_module_installed "parcel" && echo "parcel-dist"; }
+    function infer_dist_1 { bool.is_true "$PARCEL_DETECTED" && echo "parcel-dist"; }
     task_runner.infer_tasks infer_dist_
 
 }

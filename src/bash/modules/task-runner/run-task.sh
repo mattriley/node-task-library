@@ -11,13 +11,13 @@ function task_runner.run_task {
     
     reporter.info "$WHITE_FLAG Task ${BOLD}$task_name${NORM} started..."
 
-    local time_before; time_before="$(util.now_ms)"
+    local time_before; time_before="$(time.now_ms)"
     
     local precondition_command="$task_command.precondition"
     local skip_reason; fp.is_function $precondition_command && skip_reason="$("$precondition_command" $task_args)"
     local exit_code=0; [ "$skip_reason" ] || "$task_command" $task_args || exit_code="$?"
 
-    local time_after; time_after="$(util.now_ms)"
+    local time_after; time_after="$(time.now_ms)"
     local time_taken_ms="$((time_after-time_before))"
 
     local result_code="PASS"

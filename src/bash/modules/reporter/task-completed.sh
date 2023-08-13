@@ -27,7 +27,7 @@ function reporter.task_completed {
         ;;
     esac
 
-    local time_taken_s; time_taken_s="$(util.ms_to_s "$time_taken_ms")"
+    local time_taken_s; time_taken_s="$(time.ms_to_s "$time_taken_ms")"
     [[ $time_taken_s == .* ]] && time_taken_s="0$time_taken_s"
     reporter.info "${flag} Task ${BOLD}$task_name${NORM} $text • ${time_taken_ms}ms (${time_taken_s}s)"
     

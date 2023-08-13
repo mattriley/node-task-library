@@ -6,7 +6,8 @@ function list.map_invoke {
     local callback=${2:-echo}
 
     for fun in "${arr[@]}"; do
-        local res; res=$(fp.invoke "$fun"); res=$(fp.invoke "$callback" "$res")
+        local val; val=$(fp.invoke "$fun"); 
+        local res; res=$(fp.invoke "$callback" "$val")
         [ "$res" ] && echo -n "$res ";
     done
 

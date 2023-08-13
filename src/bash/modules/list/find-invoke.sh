@@ -6,9 +6,8 @@ function list.find_invoke {
     local callback="$2"
 
     for fun in "${arr[@]}"; do
-        local res; res="$($fun)"
-        unset "$fun"
-        res=$($callback "$res")
+        local val; val=$(fp.invoke "$fun")
+        local res; res=$(fp.invoke "$callback" "$val")
         [ "$res" ] && echo "$res" && break;
     done
 

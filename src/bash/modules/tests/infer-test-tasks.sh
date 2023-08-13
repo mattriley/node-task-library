@@ -9,9 +9,9 @@ function tests.infer_test_tasks {
     [ -z "$TEST_RUNNER" ] && echo "$default_task" && return 0
     
     function infer_test_tasks_1 { [ -z "$task_name" ] && echo "$TEST_RUNNER-test"; }
-    function infer_test_tasks_2 { task_runner.task_exists "$TEST_RUNNER-$task_name" && echo "$TEST_RUNNER-$task_name"; }
+    function infer_test_tasks_2 { core.tasks.task_exists "$TEST_RUNNER-$task_name" && echo "$TEST_RUNNER-$task_name"; }
     function infer_test_tasks_3 { echo "$default_task"; }
 
-    task_runner.infer_tasks infer_test_tasks_
+    core.tasks.infer_tasks infer_test_tasks_
 
 }

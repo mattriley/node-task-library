@@ -2,7 +2,7 @@
 
 function tasks.tap_cov {
 
-    task_runner.run_task "tap-cov-report" \
+    core.tasks.run_task "tap-cov-report" \
         --no-browser \
         --check-coverage \
         --branches "$COV_BRANCHES" \

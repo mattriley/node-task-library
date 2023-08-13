@@ -16,6 +16,6 @@ function tasks.test.infer {
 function tasks.test {
 
     # shellcheck disable=2068
-    task_runner.run_tasks "$(tasks.test.infer)" $@
+    core.tasks.run_tasks "$(tasks.test.infer)" $@
 
 }

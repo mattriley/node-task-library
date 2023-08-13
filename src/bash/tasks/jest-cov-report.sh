@@ -2,6 +2,6 @@
 
 function tasks.jest_cov_report {
 
-    task_runner.run_task "jest-test" --coverage --coverageThreshold '{}' "$@"
+    core.tasks.run_task "jest-test" --coverage --coverageThreshold '{}' "$@"
 
 }

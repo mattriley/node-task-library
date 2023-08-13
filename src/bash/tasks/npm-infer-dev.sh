@@ -3,7 +3,7 @@
 
 function tasks.npm_infer_dev {
 
-    var_loader.load_vars
+    core.vars.load_vars
 
     function f1 { echo "npm-check-updates eslint husky"; }
     function f2 { bool.true "$MODULE_COMPOSER_DETECTED" && echo "module-indexgen"; }

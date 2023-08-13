@@ -15,6 +15,6 @@ function tasks.sloc.infer {
 function tasks.sloc {
 
     mkdir -p "$METRICS" && \
-    task_runner.run_tasks "$(tasks.sloc.infer)" "$@"
+    core.tasks.run_tasks "$(tasks.sloc.infer)" "$@"
 
 }

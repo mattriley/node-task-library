@@ -8,6 +8,6 @@ function tasks.publish.infer {
 
 function tasks.publish {
 
-    task_runner.run_tasks "$(tasks.publish.infer)" "$@"
+    core.tasks.run_tasks "$(tasks.publish.infer)" "$@"
 
 }

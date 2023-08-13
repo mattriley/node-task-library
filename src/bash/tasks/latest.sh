@@ -8,6 +8,6 @@ function tasks.latest.infer {
 
 function tasks.latest {
 
-    task_runner.run_tasks "$(tasks.latest.infer)"
+    core.tasks.run_tasks "$(tasks.latest.infer)"
 
 }

@@ -8,6 +8,6 @@ function tasks.default.infer {
 
 function tasks.default {
 
-    task_runner.run_task "$(tasks.default.infer)"
+    core.tasks.run_task "$(tasks.default.infer)"
 
 }

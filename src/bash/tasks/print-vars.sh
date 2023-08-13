@@ -2,7 +2,7 @@
 
 function tasks.print_vars {
 
-    local all_var_names; all_var_names="$(var_loader.var_names "$VARS")"
+    local all_var_names; all_var_names="$(core.vars.var_names "$VARS")"
     local var_names; [[ "$*" =~ "--all" ]] && var_names="$all_var_names" || var_names="$PRINT_VARS"
     local vars_printed; vars_printed="$(list.length "$var_names")"
     local vars_total; vars_total="$(echo -n "$VARS" | grep -c '^')"

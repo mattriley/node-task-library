@@ -8,6 +8,6 @@ function tasks.commit.infer {
 
 function tasks.commit {
 
-    task_runner.run_tasks "$(tasks.commit.infer)" "$@"
+    core.tasks.run_tasks "$(tasks.commit.infer)" "$@"
 
 }

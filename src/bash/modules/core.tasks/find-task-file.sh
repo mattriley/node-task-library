@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=2317
 
-function task_runner.find_task_file {
+function core.tasks.find_task_file {
 
     local task_name="$1"
     function task_files { echo "$1/$task_name $1/$task_name.sh"; }

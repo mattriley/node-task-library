@@ -9,6 +9,6 @@ function tasks.test_only.infer {
 function tasks.test_only {
 
     export NODE_OPTIONS="$NODE_OPTIONS --test-only"
-    task_runner.run_task "$(tasks.test_only.infer)"
+    core.tasks.run_task "$(tasks.test_only.infer)"
 
 }

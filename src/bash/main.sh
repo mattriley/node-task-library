@@ -33,7 +33,7 @@ function main {
     for module_path in "$bash_dir/modules"/*; do load_module "$module_path"; done
     load_module "$bash_dir/tasks"
 
-    { [ "$VARS" ] && export IS_SUBTASK="true"; } || var_loader.load_vars
+    { [ "$VARS" ] && export IS_SUBTASK="true"; } || core.vars.load_vars
 
     trap on_term SIGTERM SIGINT
     trap on_exit EXIT
@@ -41,6 +41,6 @@ function main {
     local task_name=${1:-$DEFAULT_TASK}
     local task_args=${*:2}
     [ ! "$task_name" = "vars" ] && [ -z "$IS_SUBTASK" ] && tasks.print_vars
-    task_runner.run_task "$task_name" "$task_args"
+    core.tasks.run_task "$task_name" "$task_args"
 
 }

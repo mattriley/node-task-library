@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function var_loader.set_default_vars {
+function core.vars.set_default_vars {
 
     local internal_var_names="$1"
 

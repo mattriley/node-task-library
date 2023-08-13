@@ -6,7 +6,7 @@ function list.reject {
     local callback="$2"
 
     for item in "${arr[@]}"; do 
-        ! "$callback" "$item" && echo -n "$item "
+        $callback "$item" || echo -n "$item "
     done
 
 }

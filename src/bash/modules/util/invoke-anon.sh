@@ -3,7 +3,7 @@
 
 function util.invoke_anon {
 
-    echo "$($1)"
+    $1
     unset "$1"
 
 }

@@ -51,7 +51,7 @@
         "husky": "^8.0.3",
         "module-indexgen": "^0.34.0",
         "module-testrunner": "^0.5.0",
-        "npm-check-updates": "^16.10.18",
+        "npm-check-updates": "^16.11.1",
         "task-library": "file:",
         "testing": "file:./testing"
     }

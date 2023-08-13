@@ -2,6 +2,6 @@
 
 function npm.install_dev {
 
-    npm.install "-D $1"
+    [ -n "$1" ] && npm.install "-D $1"
 
 }

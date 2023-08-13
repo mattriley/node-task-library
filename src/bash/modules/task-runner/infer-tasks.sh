@@ -4,8 +4,7 @@
 function task_runner.infer_tasks {
 
     local function_prefix="$1"
-    function invoke_function { echo "$($1)"; }
-    local tasks; tasks=$(list.map "$(util.list_of_func "$function_prefix")" invoke_function)
+    local tasks; tasks=$(list.map_invoke "$(util.list_of_func "$function_prefix")")
     [ -z "$tasks" ] && reporter.task_warn "No tasks inferred"
     echo "$tasks"
 

@@ -12,6 +12,6 @@ function tests.infer_test_tasks {
     function infer_test_tasks_2 { core.tasks.task_exists "$TEST_RUNNER-$task_name" && echo "$TEST_RUNNER-$task_name"; }
     function infer_test_tasks_3 { echo "$default_task"; }
 
-    core.tasks.infer_tasks infer_test_tasks_
+    list.first "$(core.tasks.infer_tasks infer_test_tasks_)"
 
 }

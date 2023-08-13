@@ -4,6 +4,7 @@
 set -o pipefail
 
 export TASK_LIBRARY_ROOT="./node_modules/task-library"
+export ANON_FUNC_PATTERN="^f[0-9]+"
 export IFS=$'\n| '
 
 function load_module {

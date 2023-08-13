@@ -15,12 +15,12 @@ function var_loader.load_vars {
     local env_before; env_before="$(env)"
     var_loader.source_project_vars
     local env_after; env_after="$(env)"
-    local external_var_names; external_var_names="$(util.var_names "$(util.uniq_vars "$env_before" "$env_after")")"
+    local external_var_names; external_var_names="$(var_loader.var_names "$(var_loader.uniq_vars "$env_before" "$env_after")")"
 
     var_loader.set_default_vars "$internal_var_names"  
     var_loader.set_staged_vars "$external_var_names"
 
     local env_after; env_after="$(env)"
-    export VARS; VARS=$(util.uniq_vars "$env_before" "$env_after")
+    export VARS; VARS=$(var_loader.uniq_vars "$env_before" "$env_after")
 
 }

@@ -5,7 +5,7 @@ function PARCEL_OPTIONS {
 }
 
 function PARCEL_CONFIG {
-    echo "$PACKAGE_DIR/.parcelrc"
+    echo "$PACKAGE_ROOT/.parcelrc"
 }
 
 function PARCEL_DETECTED {

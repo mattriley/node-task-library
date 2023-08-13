@@ -14,7 +14,7 @@ function task_runner.run_task {
     local time_before; time_before="$(util.now_ms)"
     
     local precondition_command="$task_command.precondition"
-    local skip_reason; util.is_function $precondition_command && skip_reason="$("$precondition_command" $task_args)"
+    local skip_reason; fp.is_function $precondition_command && skip_reason="$("$precondition_command" $task_args)"
     local exit_code=0; [ "$skip_reason" ] || "$task_command" $task_args || exit_code="$?"
 
     local time_after; time_after="$(util.now_ms)"

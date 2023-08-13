@@ -18,7 +18,7 @@ function tasks.npm_infer_dev {
     function f12 { bool.true "$JEST_DETECTED" && echo "jest-environment-jsdom"; }
     function f13 { bool.true "$ESLINT_DETECTED" && printf "eslint-plugin-%s " "$ESLINT_PLUGINS"; }
 
-    local modules; modules=$(list.find_invoke "$(util.list_of_func)" npm.filter_modules)
+    local modules; modules=$(list.find_invoke "$(fp.list_of_func)" npm.filter_modules)
     [ -z "$modules" ] && return 0
     npm.install_dev "$modules"
     tasks.npm_infer_dev

@@ -5,6 +5,6 @@ function JEST_CONFIG {
 }
 
 function JEST_DETECTED {
-    node.module_installed "jest" || npm.has_dependency "jest" || fs.file_exists "$JEST_CONFIG"
+    node.module_installed "jest" || fs.file_exists "$JEST_CONFIG"
     bool.from_exit_status $?
 }

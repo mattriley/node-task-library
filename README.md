@@ -1,6 +1,6 @@
 # Task Library
 
-<p align="right"><code>2204 sloc</code>&nbsp;<code>233 files</code>&nbsp;<code>5 deps</code>&nbsp;<code>15 dev deps</code></p>
+<p align="right"><code>2218 sloc</code>&nbsp;<code>235 files</code>&nbsp;<code>5 deps</code>&nbsp;<code>15 dev deps</code></p>
 
 A collection of bash scripts to support build, test, deploy and chores associated with developing and maintaining Node apps.
 
@@ -10,9 +10,10 @@ A collection of bash scripts to support build, test, deploy and chores associate
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ## Table of Contents
 
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Overriding variable defaults](#overriding-variable-defaults)
+- [Install](#install)
+- [Usage](#usage)
+- [Overriding variable defaults](#overriding-variable-defaults)
+- [Tasks](#tasks)
 - [Developer Notes](#developer-notes)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -48,6 +49,62 @@ To obtain the default value for any variable, invoke a function of the same name
 echo $(NODE_VERSION)
 ```
 
-# Developer Notes
+## Tasks
+
+### install
+
+Installs NPM packages based on inference (to be elaborated).
+
+### update / upgrade / latest
+
+Updates all NPM packages to the latest version regardless of semver.
+
+### configure / config-gen
+
+Generates config files based on inference (to be elaborated).
+
+### test
+
+Runs tests using inferred test runner.
+
+### test-watch
+
+Runs tests in watch mode using inferred test runner.
+
+### cov
+
+Runs tests with code coverage using inferred test runner.
+
+### lint
+
+Runs lint using inferred linters.
+
+Currently supports ESLint and Shellcheck.
+
+### fix
+
+Runs lint with fix option using inferred linters.
+
+### start / run
+
+Starts the application using inferred launcher.
+
+Currently supports Nodemon (for console applications), Serve (for static websites) and Parcel (for single page apps).
+
+### build / dist
+
+Creates a build based on inference (to be elaborated).
+
+### deploy / publish
+
+Deploys application based on inference (to be eleborated).
+
+Currently supports GitHub Pages, NPM packages and Serverless.
+
+### pre-commit / pre
+
+Runs config-gen, code-gen, lint, cov, sloc, metrics-summary, readme-gen (to be eleborated).
+
+## Developer Notes
 
 - `find -exec` does not return exit code of exec command. Workaround: Use `xargs` instead.

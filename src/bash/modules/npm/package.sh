@@ -2,6 +2,6 @@
 
 function npm.package {
 
-    tools.jq -r ".$1 // empty" "$PACKAGE_JSON"
+    json.get "$1" < "$PACKAGE_JSON"
 
 }

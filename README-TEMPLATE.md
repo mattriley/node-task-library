@@ -82,7 +82,7 @@ Currently supports GitHub Pages, NPM packages and Serverless.
 
 ### pre-commit / pre
 
-Runs config, code-gen, lint, cov, sloc, metrics-summary, readme-gen (to be eleborated).
+Runs config, code-gen, lint, cov, sloc, metrics-summary, readme (to be eleborated).
 
 ## Developer Notes
 

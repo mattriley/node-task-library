@@ -1,11 +1,11 @@
 #!/bin/bash
 
-function PACKAGE_JSON {
+function PACKAGE_CONFIG {
     echo "$PACKAGE_ROOT/package.json"
 }
 
-function PACKAGE_JSON_DETECTED {
-    fs.file_exists "$PACKAGE_JSON"
+function PACKAGE_CONFIG_DETECTED {
+    fs.file_exists "$PACKAGE_CONFIG"
     bool.from_exit_status $?
 }
 

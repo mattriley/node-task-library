@@ -3,7 +3,7 @@ module.exports = {
     eslintConfig: require('./eslint-config'),
     jestConfig: require('./jest-config'),
     metricsSummary: require('./metrics-summary'),
-    packageGen: require('./package-gen'),
+    packageConfig: require('./package-config'),
     portGen: require('./port-gen'),
     readmeGen: require('./readme-gen'),
     startCase: require('./start-case')

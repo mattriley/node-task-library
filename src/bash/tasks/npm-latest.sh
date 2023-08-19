@@ -2,14 +2,14 @@
 
 function tasks.npm_latest {
 
-    local package_json_before; package_json_before=$(<"$PACKAGE_JSON")
+    local package_config_before; package_config_before=$(<"$PACKAGE_CONFIG")
 
     reporter.newline
     ncu -u
     reporter.newline
 
-    local package_json_after; package_json_after=$(<"$PACKAGE_JSON")
-    [ "$package_json_after" = "$package_json_before" ] && return
+    local package_config_after; package_config_after=$(<"$PACKAGE_CONFIG")
+    [ "$package_config_after" = "$package_config_before" ] && return
 
     npm install
     reporter.newline

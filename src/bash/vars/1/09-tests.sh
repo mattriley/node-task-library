@@ -42,3 +42,12 @@ function CUSTOM_TEST_RUNNER {
     [ ! "$test_runner" ] && test_runner="$TASK_LIBRARY_ROOT/src/node/bin/test-module-runner.js"
     echo "$test_runner"
 }
+
+function TESTS_DETECTED {
+    fs.dir_exists "$TESTS"
+}
+
+function TESTING_LIBRARY_DETECTED {
+    node.module_installed "@testing-library"
+    bool.from_exit_status $?
+}

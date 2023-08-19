@@ -10,7 +10,7 @@ function ESLINT_PATHS {
 }
 
 function ESLINT_CONDITIONAL_PLUGINS {
-    echo "react | jest | mocha | tap | tape"
+    echo "react | jest | mocha | tap | tape | testing-library"
 }
 
 function ESLINT_PLUGINS {

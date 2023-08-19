@@ -1,7 +1,7 @@
 #!/bin/bash
 # shellcheck disable=2317
 
-function tasks.itermocil_config_gen {
+function tasks.itermocil_config {
 
     cat << EOF > "$ITERMOCIL_CONFIG" 
 windows:

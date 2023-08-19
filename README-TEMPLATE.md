@@ -38,7 +38,7 @@ Installs NPM packages based on inference (to be elaborated).
 
 Updates all NPM packages to the latest version regardless of semver.
 
-### configure / config-gen
+### configure / config
 
 Generates config files based on inference (to be elaborated).
 
@@ -82,7 +82,7 @@ Currently supports GitHub Pages, NPM packages and Serverless.
 
 ### pre-commit / pre
 
-Runs config-gen, code-gen, lint, cov, sloc, metrics-summary, readme-gen (to be eleborated).
+Runs config, code-gen, lint, cov, sloc, metrics-summary, readme-gen (to be eleborated).
 
 ## Developer Notes
 

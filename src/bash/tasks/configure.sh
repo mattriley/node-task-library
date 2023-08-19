@@ -2,7 +2,7 @@
 
 function tasks.configure.infer {
 
-    echo "config-gen"
+    echo "config"
 
 }
 

@@ -2,7 +2,7 @@
 
 function tasks.pre_commit.infer {
 
-    echo "config-gen | code-gen | lint | cov | sloc | metrics-summary | readme-gen"
+    echo "config | code-gen | lint | cov | sloc | metrics-summary | readme-gen"
 
 }
 

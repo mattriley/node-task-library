@@ -1,12 +1,12 @@
 #!/bin/bash
 
-function tasks.index_html_template_gen.precondition {
+function tasks.index_html_template.precondition {
 
     fs.file_exists "$INDEX_HTML_TEMPLATE" && echo "existing $INDEX_HTML_TEMPLATE found"
 
 }
 
-function tasks.index_html_template_gen {
+function tasks.index_html_template {
 
     cat > "$INDEX_HTML_TEMPLATE" <<'EOF'
 <!DOCTYPE html>

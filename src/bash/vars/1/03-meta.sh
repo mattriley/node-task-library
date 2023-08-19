@@ -27,7 +27,7 @@ function SELECTED_NODE_MODULES {
 }
 
 function DEV_TASKS {
-    echo "git-remote-status | test-watch | start | barrel-gen-watch"
+    echo "git-remote-status | test-watch | start | barrel-watch"
 }
 
 function COPY_MODULES {

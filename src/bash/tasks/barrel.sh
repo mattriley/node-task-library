@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function tasks.barrel_gen {
+function tasks.barrel {
 
     core.tasks.run_task "indexgen" "$@"
 

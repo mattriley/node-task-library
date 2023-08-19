@@ -3,7 +3,7 @@
 
 function infer.config {
 
-    function infer_config_1 { bool.true "$GIT_DETECTED" && echo "gitignore-gen"; }
+    function infer_config_1 { bool.true "$GIT_DETECTED" && echo "gitignore"; }
     function infer_config_2 { bool.true "$PACKAGE_CONFIG_DETECTED" && echo "package-config"; }
     function infer_config_3 { bool.true "$PARCEL_DETECTED" && echo "parcel-config"; }
     function infer_config_4 { bool.true "$REACT_DETECTED" && echo "babel-config"; }

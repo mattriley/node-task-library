@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function tasks.gitignore_gen {
+function tasks.gitignore {
 
     cat <<END >> "$GIT_IGNORE"
 .DS_Store

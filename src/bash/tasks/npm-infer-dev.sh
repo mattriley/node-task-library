@@ -17,13 +17,13 @@ function tasks.npm_infer_dev {
     function f8 { bool.true "$REACT_DETECTED" && echo "react react-dom"; }
 
     # JSX support in the absence of Parcel; Parcel supports JSX out of the box.
-    function f9 { bool.true "$JSX_DETECTED" && bool.false "$PARCEL_DETECTED" && echo "@babel/core $BABEL_PRESET_ENV"; }
+    function f9 { bool.true "$JSX_DETECTED" && bool.false "$PARCEL_DETECTED" && echo "@babel/core @babel/preset-env"; }
 
     # Babel support for Node CLI.
     function f10 { node.module_installed "@babel/core" && echo "@babel/node"; }
 
     # JSX support for test runners.
-    function f11 { bool.true "$TESTS_DETECTED" && bool.true "$JSX_DETECTED" && echo "@babel/core $BABEL_PRESET_ENV"; }
+    function f11 { bool.true "$TESTS_DETECTED" && bool.true "$JSX_DETECTED" && echo "@babel/core @babel/preset-env"; }
 
     # JSDOM support for React+Jest.
     function f12 { bool.true "$TESTS_DETECTED" && bool.true "$REACT_DETECTED" && bool.true "$JEST_DETECTED" && echo "jest-environment-jsdom"; }

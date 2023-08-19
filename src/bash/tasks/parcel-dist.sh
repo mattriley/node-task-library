@@ -7,7 +7,7 @@ function tasks.parcel_dist {
     local base_path; [ "$parcel_command" = "build" ] && base_path="$WEB_BASE_PATH"
     [ -z "$base_path" ] && base_path="/"
 
-    export BABEL_OMIT_PRESETS="$BABEL_PRESET_ENV | @babel/preset-react"
+    export BABEL_OMIT_PRESETS="@babel/preset-env | @babel/preset-react"
 
     # shellcheck disable=2086
     core.tasks.run_tasks "code-gen | index-html-template-gen | index-html-render-template" && \

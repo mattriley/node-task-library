@@ -2,7 +2,7 @@
 
 function tasks.config.infer {
 
-    echo "node-version-gen | nvmrc-gen | $(infer.config)"
+    echo "node-version | nvmrc | $(infer.config)"
 
 }
 

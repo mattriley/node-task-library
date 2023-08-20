@@ -29,17 +29,20 @@ function on_exit {
 
 function main {
 
+    local task_name=${1:-$DEFAULT_TASK}
+    local task_args=${*:2}
+    local task_function="tasks.${task_name//-/_}"
+
     local bash_dir="$TASK_LIBRARY_ROOT/src/bash"
     for module_path in "$bash_dir/modules"/*; do load_module "$module_path"; done
     load_module "$bash_dir/tasks"
 
     { [ "$VARS" ] && export IS_SUBTASK="true"; } || core.vars.load_vars
+    fp.is_function "$task_function.vars" && "$task_function.vars"
 
     trap on_term SIGTERM SIGINT
     trap on_exit EXIT
 
-    local task_name=${1:-$DEFAULT_TASK}
-    local task_args=${*:2}
     [ ! "$task_name" = "vars" ] && [ -z "$IS_SUBTASK" ] && tasks.print_vars
     core.tasks.run_task "$task_name" "$task_args"
 

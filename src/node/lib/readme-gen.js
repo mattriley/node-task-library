@@ -20,12 +20,6 @@ module.exports = (userConfig = {}) => {
     const lib = {};
     let linkId = 0;
 
-    if (config.moduleComposerEnabled) {
-        require('module-composer/extensions/perf');
-        require('module-composer/extensions/eject');
-        require('module-composer/extensions/mermaid');
-    }
-
     lib.metrics = () => {
         try {
             return JSON.parse(fs.readFileSync(config.metricsSummary, 'utf-8'));

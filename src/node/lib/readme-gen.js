@@ -50,9 +50,15 @@ module.exports = (userConfig = {}) => {
         return callback(composition);
     };
 
+    // lib.mermaid = async (mermaidOptions = {}) => {
+    //     const composeOptions = { extensions: ['mermaid'] };
+    //     const render = c => lib.renderCode(c.mermaid(mermaidOptions), 'mermaid');
+    //     return lib.compose(render, undefined, composeOptions);
+    // };
+
     lib.mermaid = async (mermaidOptions = {}) => {
         const composeOptions = { extensions: ['mermaid'] };
-        const render = c => lib.renderCode(c.mermaid(mermaidOptions), 'mermaid');
+        const render = modules => lib.renderCode(modules.composition.mermaid(mermaidOptions), 'mermaid');
         return lib.compose(render, undefined, composeOptions);
     };
 
@@ -64,13 +70,29 @@ module.exports = (userConfig = {}) => {
 
         const link = lib.renderLink('https://github.com/mattriley/node-module-composer', 'Module Composer');
         return [
-            await lib.compose(c => lib.renderCode(c.mermaid(), 'mermaid'), composeFile),
+            await lib.compose(modules => lib.renderCode(modules.composition.mermaid(), 'mermaid'), composeFile),
             '<p align="center">',
             `  <em>This diagram was generated with ${link}</em>`,
             '</p>',
             '<br>'
         ].join('\n');
     };
+
+    // lib.renderModuleDiagram = async (composeFile = process.env.COMPOSE_FILE) => {
+    //     if (!process.env.MODULE_COMPOSER_DETECTED) {
+    //         console.warn('module-composer is not enabled.');
+    //         return '';
+    //     }
+
+    //     const link = lib.renderLink('https://github.com/mattriley/node-module-composer', 'Module Composer');
+    //     return [
+    //         await lib.compose(c => lib.renderCode(c.mermaid(), 'mermaid'), composeFile),
+    //         '<p align="center">',
+    //         `  <em>This diagram was generated with ${link}</em>`,
+    //         '</p>',
+    //         '<br>'
+    //     ].join('\n');
+    // };
 
     lib.renderCode = async (codePromise, lang, source) => {
         if (typeof codePromise === 'string') codePromise = { code: codePromise, lang };

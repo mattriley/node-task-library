@@ -8,7 +8,7 @@ function tasks.doctoc.precondition {
 
 function tasks.doctoc {
 
-    doctoc --title "## Table of Contents" --maxlevel 2 "$README" > /dev/null && \
+    doctoc --title "## Table of Contents" --maxlevel "$README_TOC_MAX_LEVEL" "$README" > /dev/null && \
     git add "$README"
 
 }

@@ -12,6 +12,10 @@ function README_TITLE {
     echo "$DISPLAY_NAME"
 }
 
+function README_TOC_MAX_LEVEL {
+    echo "2"
+}
+
 function README_BASE_URL {
     echo "$GITHUB_REPO_URL"
 }

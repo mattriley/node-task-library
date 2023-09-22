@@ -8,6 +8,7 @@ function tasks.gitignore {
 /*output
 /.nyc_output
 /.serverless
+/.tap
 /.vscode
 /build
 /config.*
@@ -15,7 +16,6 @@ function tasks.gitignore {
 /dist*
 /itermocil.yml
 /metrics
-/task-library
 /temp
 /node_modules
 /node_modules*

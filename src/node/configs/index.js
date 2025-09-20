@@ -1,5 +1,5 @@
 module.exports = {
-    babelConfig: require('./babel.config'),
-    eslintrc: require('./eslintrc.json'),
+    babelConfig: require('./babel.config.js'),
+    eslintConfig: require('./eslint.config.js'),
     jestConfig: require('./jest.config.json')
 };

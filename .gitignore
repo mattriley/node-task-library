@@ -1,10 +1,10 @@
 .DS_Store
-/*cache
-/*output
 /.nyc_output
 /.serverless
 /.tap
 /.vscode
+/*cache
+/*output
 /build
 /config.*
 /coverage

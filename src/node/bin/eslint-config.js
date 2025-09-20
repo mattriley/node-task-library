@@ -1,69 +1,126 @@
-const _ = require('lodash');
 const process = require('process');
-const p = require('../lib/package');
-const logJson = require('../lib/log-json');
-const eslintConfig = require('../configs/eslintrc.json');
+const pkg = require('../lib/package');
+const base = require('../configs/eslint.config.js');
 
-const dependsOn = dep => p.devDependencies?.[dep] || p.dependencies?.[dep];
+// ————— helpers —————
+const dependsOn = dep => pkg.devDependencies?.[dep] || pkg.dependencies?.[dep];
 
-if (!eslintConfig.overrides) eslintConfig.overrides = [];
-if (!eslintConfig.plugins) eslintConfig.plugins = [];
+// Small “identifier reference” wrapper so the printer emits an identifier (e.g. react),
+// not a quoted string.
+const Ref = name => ({ __ref__: name });
 
-if (p.type === 'module') {
-    _.set(eslintConfig, 'parserOptions.sourceType', 'module');
-}
+// Minimal JS printer that supports:
+// - primitives, arrays, plain objects
+// - identifier refs via Ref('name')
+// - stable key ordering
+const printJS = value => {
+    if (value === null) return 'null';
+    const t = typeof value;
+    if (t === 'string') return JSON.stringify(value);
+    if (t === 'number' || t === 'boolean') return String(value);
+    if (t === 'function') return value.toString();
+    if (t !== 'object') return 'undefined';
 
-if (dependsOn('react')) {
-    eslintConfig.extends.push('plugin:react/recommended', 'plugin:react/jsx-runtime');
-    eslintConfig.plugins.push('react');
-    eslintConfig.rules['react/display-name'] = ['off'];
-    eslintConfig.rules['react/prop-types'] = ['off'];
-    _.set(eslintConfig, 'settings.react.version', 'detect');
-    _.set(eslintConfig, 'parserOptions.ecmaFeatures.jsx', true);
-}
+    if (Array.isArray(value)) {
+        const inner = value.map(v => printJS(v)).join(', ');
+        return `[${inner}]`;
+    }
 
-if (dependsOn('jest')) {
-    eslintConfig.overrides.push(
-        {
-            files: [process.env.TEST_PATTERN],
-            plugins: ['jest'],
-            extends: ['plugin:jest/recommended'],
-            rules: {
-                'jest/require-top-level-describe': 'off',
-                'jest/prefer-expect-assertions': 'off'
-            }
-        }
-    );
-}
+    if (value.__ref__) return value.__ref__; // identifier name (unquoted)
 
-if (dependsOn('mocha')) {
-    eslintConfig.overrides.push(
-        {
-            files: [process.env.TEST_PATTERN],
-            plugins: ['mocha'],
-            extends: ['plugin:mocha/recommended']
-        }
-    );
-}
+    const keys = Object.keys(value).sort();
+    const body = keys
+        .map(k => `${JSON.stringify(k)}: ${printJS(value[k])}`)
+        .join(', ');
+    return `{ ${body} }`;
+};
 
-if (dependsOn('tape')) {
-    eslintConfig.overrides.push(
-        {
-            files: [process.env.TEST_PATTERN],
-            plugins: ['tape'],
-            extends: ['plugin:tape/recommended']
-        }
-    );
-}
+// Build the “flat” config array from the in-memory base (no require in output)
+const buildFlat = () => {
+    const flat = Array.isArray(base) ? [...base] : [base];
 
-if (dependsOn('tap')) {
-    eslintConfig.overrides.push(
-        {
-            files: [process.env.TEST_PATTERN],
-            plugins: ['tap'],
-            extends: ['plugin:tap/recommended']
-        }
-    );
-}
+    const rootIndex = flat.findIndex(c => !c.files);
+    const hasRoot = rootIndex !== -1;
+    const root = hasRoot ? flat[rootIndex] : {};
 
-logJson(eslintConfig);
+    if (pkg.type === 'module') {
+        const languageOptions = { ...(root.languageOptions || {}), sourceType: 'module' };
+        const nextRoot = { ...root, languageOptions };
+        if (hasRoot) return [...flat.slice(0, rootIndex), nextRoot, ...flat.slice(rootIndex + 1)];
+        return [nextRoot, ...flat];
+    }
+
+    return flat;
+};
+
+// Feature blocks (React / test frameworks) are appended as objects.
+const reactBlock = () => ({
+    plugins: { react: Ref('react') },
+    settings: { react: { version: 'detect' } },
+    languageOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        parserOptions: { ecmaFeatures: { jsx: true } }
+    },
+    rules: {
+        'react/display-name': 'off',
+        'react/prop-types': 'off'
+    }
+});
+
+const jestBlock = pattern => ({
+    files: [pattern],
+    plugins: { jest: Ref('jest') },
+    rules: {
+        'jest/require-top-level-describe': 'off',
+        'jest/prefer-expect-assertions': 'off'
+    }
+});
+
+const mochaBlock = pattern => ({
+    files: [pattern],
+    plugins: { mocha: Ref('mocha') }
+});
+
+const tapeBlock = pattern => ({
+    files: [pattern],
+    plugins: { tape: Ref('tape') }
+});
+
+const tapBlock = pattern => ({
+    files: [pattern],
+    plugins: { tap: Ref('tap') }
+});
+
+// Build full source (imports + module.exports) with base inlined
+const buildSource = () => {
+    const imports = [
+        // base is **inlined** below — no require here
+    ];
+    if (dependsOn('react')) imports.push("const react = require('eslint-plugin-react');");
+    if (dependsOn('jest')) imports.push("const jest = require('eslint-plugin-jest');");
+    if (dependsOn('mocha')) imports.push("const mocha = require('eslint-plugin-mocha');");
+    if (dependsOn('tape')) imports.push("const tape = require('eslint-plugin-tape');");
+    if (dependsOn('tap')) imports.push("const tap = require('eslint-plugin-tap');");
+
+    const flat = buildFlat();
+    const testPattern = process.env.TEST_PATTERN || '**/*.{spec,test}.{js,jsx,ts,tsx}';
+
+    // Append blocks conditionally
+    const withReact = dependsOn('react') ? [...flat, reactBlock()] : flat;
+    const withJest = dependsOn('jest') ? [...withReact, jestBlock(testPattern)] : withReact;
+    const withMocha = dependsOn('mocha') ? [...withJest, mochaBlock(testPattern)] : withJest;
+    const withTape = dependsOn('tape') ? [...withMocha, tapeBlock(testPattern)] : withMocha;
+    const finalFlat = dependsOn('tap') ? [...withTape, tapBlock(testPattern)] : withTape;
+
+    const header = [
+        '// Generated by tools/build-eslint-config.js',
+        '// Re-run the generator after changing dependencies or base config.\n'
+    ];
+
+    const body = `module.exports = ${printJS(finalFlat)};`;
+
+    return [...header, ...imports, '', body].join('\n');
+};
+
+console.log(buildSource());

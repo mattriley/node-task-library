@@ -2,7 +2,7 @@
 # shellcheck disable=2317
 
 function ESLINT_CONFIG {
-    echo "$PACKAGE_ROOT/.eslintrc.json"
+    echo "$PACKAGE_ROOT/eslint.config.js"
 }
 
 function ESLINT_PATHS {

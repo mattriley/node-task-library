@@ -15,28 +15,37 @@ const defaultConfig = {
 };
 
 module.exports = (userConfig = {}) => {
-
     const config = { ...defaultConfig, ...userConfig };
     const lib = {};
-    let linkId = 0;
+
+    // tiny deterministic hash for IDs (djb2-ish)
+    const hash = s => {
+        const str = String(s);
+        const code = [...str].reduce((h, ch) => ((h << 5) - h) + ch.charCodeAt(0), 5381);
+        // ensure positive and short-ish
+        return Math.abs(code).toString(36);
+    };
 
     lib.metrics = () => {
         try {
             return JSON.parse(fs.readFileSync(config.metricsSummary, 'utf-8'));
-        }
-        catch {
+        } catch {
             return {};
         }
     };
+
     lib.json = obj => JSON.stringify(obj, null, 4);
     lib.readText = loc => fs.promises.readFile(loc, 'utf-8');
-    lib.fetchText = loc => child.execSync(`curl ${loc} -s`).toString('utf8');
+    lib.fetchText = loc => child.execSync(`curl -sL ${loc}`).toString('utf8');
     lib.renderLink = (href, text) => `<a href="${href}">${text}</a>`;
-    lib.renderLinkWithId = (href, text) => `<a id="link-${++linkId}" href="${href}#user-content-link-${linkId}">${text}</a>`;
+    lib.renderLinkWithId = (href, text) => {
+        const id = hash(`${href}|${text}`);
+        return `<a id="link-${id}" href="${href}#user-content-link-${id}">${text}</a>`;
+    };
 
     lib.fetchCode = async (source, root = process.env.PACKAGE_ROOT + '/', webroot) => {
         const fullSource = path.join(root, source);
-        const getCode = fullSource.startsWith('http') ? lib.fetchText : lib.readText;
+        const getCode = /^https?:\/\//.test(fullSource) ? lib.fetchText : lib.readText;
         const code = await getCode(fullSource);
         const lang = path.extname(fullSource).replace('.', '');
         return { code, lang, source, root, webroot };
@@ -73,39 +82,37 @@ module.exports = (userConfig = {}) => {
     lib.renderCode = async (codePromise, lang, source) => {
         if (typeof codePromise === 'string') codePromise = { code: codePromise, lang };
         const { code, lang: defaultLang, source: defaultSource, webroot } = await codePromise;
-        lang = lang ?? defaultLang ?? '';
-        source = source ?? defaultSource;
+        const resolvedLang = lang ?? defaultLang ?? '';
+        const resolvedSource = source ?? defaultSource;
 
         const lines = [];
 
-        if (source) {
-            const text = webroot ? `${webroot}/${source}` : source;
+        if (resolvedSource) {
+            const text = webroot ? `${webroot}/${resolvedSource}` : resolvedSource;
             const codeBaseUrl = `${config.baseUrl}/blob/${config.gitBranch}`;
-            const href = source.startsWith('http') ? source : `${webroot ?? codeBaseUrl}/${source}`;
+            const href = /^https?:\/\//.test(resolvedSource)? resolvedSource: `${webroot ?? codeBaseUrl}/${resolvedSource}`;
             const link = lib.renderLink(href, text);
             lines.push(`###### <p align="right">${link}</p>`);
         }
 
-        if (lang === 'mermaid') {
+        if (resolvedLang === 'mermaid') {
             const link = lib.renderLinkWithId(config.baseUrl, 'View it on GitHub');
             lines.push(`###### <p align="right"><em>Can't see the diagram?</em> ${link}</p>`);
         }
 
-        lines.push('```' + lang, code.trim(), '```');
+        lines.push('```' + resolvedLang, code.trim(), '```');
         return lines.join('\n');
     };
 
-    lib.renderImage = (path, caption) => {
-        return [
-            '<br />',
-            '<p align="center">',
-            `  <img src="${path}?raw=true" />`,
-            '  <br />',
-            `  <em>${caption}</em>`,
-            '</p>',
-            '<br />'
-        ].join('\n');
-    };
+    lib.renderImage = (imgPath, caption) => [
+        '<br />',
+        '<p align="center">',
+        `  <img src="${imgPath}?raw=true" />`,
+        '  <br />',
+        `  <em>${caption}</em>`,
+        '</p>',
+        '<br />'
+    ].join('\n');
 
     lib.renderMetrics = () => {
         const { cov, sloc, files, deps, devdeps } = lib.metrics();
@@ -119,28 +126,30 @@ module.exports = (userConfig = {}) => {
         return `<p align="right">${markup}</p>`;
     };
 
-    lib.renderOpening = () => {
-        return [
-            `# ${config.title}`,
-            '',
-            lib.renderMetrics(),
-            '',
-            p.description,
-            '',
-            '<br />',
-            '',
-            '<!-- START doctoc -->',
-            '<!-- END doctoc -->'
-        ].join('\n');
-    };
+    lib.renderOpening = () => [
+        `# ${config.title}`,
+        '',
+        lib.renderMetrics(),
+        '',
+        p.description,
+        '',
+        '<br />',
+        '',
+        '<!-- START doctoc -->',
+        '<!-- END doctoc -->'
+    ].join('\n');
 
     lib.renderFile = (templateData = {}) => {
-        ejs.renderFile(config.template, { lib: { ...lib, ...templateData } }, { async: true }, async (err, p) => {
-            if (err) throw err;
-            process.stdout.write(await p);
-        });
+        ejs.renderFile(
+            config.template,
+            { lib: { ...lib, ...templateData } },
+            { async: true },
+            async (err, tpl) => {
+                if (err) throw err;
+                process.stdout.write(await tpl);
+            }
+        );
     };
 
     return lib;
-
 };

@@ -48,8 +48,8 @@
         "eslint-plugin-import": "^2.32.0",
         "eslint-plugin-mocha": "^11.1.0",
         "husky": "^9.1.7",
-        "module-indexgen": "^0.46.0",
-        "module-testrunner": "^0.21.0",
+        "module-indexgen": "*",
+        "module-testrunner": "*",
         "npm-check-updates": "^18.3.0",
         "task-library": "file:",
         "testing": "file:./testing"

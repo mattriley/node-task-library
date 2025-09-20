@@ -1,17 +1,13 @@
 #!/bin/bash
 
 function tasks.npm_latest {
-
-    local package_config_before; package_config_before=$(<"$PACKAGE_CONFIG")
-
     reporter.newline
+
+    # Upgrade other deps as normal
     ncu -u
     reporter.newline
 
-    local package_config_after; package_config_after=$(<"$PACKAGE_CONFIG")
-    [ "$package_config_after" = "$package_config_before" ] && return
-
-    npm install
+    # For "*" or "latest" deps, force a fresh resolve without pinning in package.json
+    npm install --force
     reporter.newline
-
 }
